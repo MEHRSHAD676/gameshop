@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <title>GameShop | فروشگاه اکانت گیم</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -20,13 +22,13 @@
     body {
       font-family: Tahoma, Arial, sans-serif;
       background: #080b12;
-      color: white;
+      color: #ffffff;
       line-height: 1.8;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
     button {
@@ -40,15 +42,19 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+
       height: 70px;
+
       background: rgba(8, 11, 18, 0.96);
       border-bottom: 1px solid #202938;
+
       backdrop-filter: blur(10px);
     }
 
     .header-content {
       max-width: 1200px;
       height: 100%;
+
       margin: auto;
       padding: 0 20px;
 
@@ -63,7 +69,7 @@
       color: #38bdf8;
     }
 
-    /* ================= MENU BUTTON ================= */
+    /* ================= THREE LINE MENU ================= */
 
     .menu-button {
       width: 48px;
@@ -93,6 +99,7 @@
 
     .side-menu {
       position: fixed;
+
       top: 0;
       left: -310px;
 
@@ -108,7 +115,7 @@
 
       transition: 0.3s;
 
-      box-shadow: 10px 0 40px rgba(0,0,0,0.35);
+      box-shadow: 10px 0 40px rgba(0, 0, 0, 0.35);
     }
 
     .side-menu.open {
@@ -130,7 +137,9 @@
     .close-menu {
       border: 0;
       background: transparent;
+
       color: #94a3b8;
+
       font-size: 30px;
     }
 
@@ -150,6 +159,7 @@
       color: #d1d5db;
 
       text-align: right;
+
       font-size: 15px;
 
       transition: 0.2s;
@@ -166,7 +176,7 @@
       font-weight: bold;
     }
 
-    /* ================= DARK OVERLAY ================= */
+    /* ================= OVERLAY ================= */
 
     .menu-overlay {
       position: fixed;
@@ -174,7 +184,7 @@
 
       z-index: 2500;
 
-      background: rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.6);
 
       display: none;
     }
@@ -219,7 +229,9 @@
 
     .hero p {
       color: #aeb7c7;
+
       font-size: 18px;
+
       margin-bottom: 30px;
     }
 
@@ -240,6 +252,7 @@
 
     .main-btn:hover {
       transform: translateY(-2px);
+
       background: #67cffc;
     }
 
@@ -255,17 +268,19 @@
 
       text-align: center;
 
-      background: linear-gradient(
-        135deg,
-        #172033,
-        #102536
-      );
+      background:
+        linear-gradient(
+          135deg,
+          #172033,
+          #102536
+        );
 
       border: 1px solid #28435b;
     }
 
     .promo h2 {
       color: #facc15;
+
       margin-bottom: 8px;
     }
 
@@ -273,10 +288,11 @@
       color: #cbd5e1;
     }
 
-    /* ================= SECTION ================= */
+    /* ================= SECTIONS ================= */
 
     .section {
       max-width: 1200px;
+
       margin: auto;
 
       padding: 70px 20px;
@@ -401,7 +417,7 @@
       color: white;
     }
 
-    /* ================= BOXES ================= */
+    /* ================= CART / ORDERS / PANEL ================= */
 
     .cart-box,
     .orders-box,
@@ -476,6 +492,10 @@
       color: #cbd5e1;
     }
 
+    .panel-row strong {
+      color: white;
+    }
+
     .logout-btn {
       margin-top: 20px;
 
@@ -543,7 +563,7 @@
 
       z-index: 4000;
 
-      background: rgba(0,0,0,0.75);
+      background: rgba(0, 0, 0, 0.75);
 
       align-items: center;
 
@@ -642,7 +662,8 @@
     @media (max-width: 850px) {
 
       .accounts {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
       .hero h1 {
@@ -701,7 +722,6 @@
         🎮 GameShop
       </div>
 
-      <!-- سه خط سمت چپ -->
       <button
         class="menu-button"
         onclick="openMenu()"
@@ -730,7 +750,9 @@
 
     <div class="menu-title">
 
-      <h2>🎮 GameShop</h2>
+      <h2>
+        🎮 GameShop
+      </h2>
 
       <button
         class="close-menu"
@@ -742,35 +764,58 @@
     </div>
 
 
-    <a href="#home" onclick="closeMenu()">
+    <a
+      href="#home"
+      onclick="closeMenu()"
+    >
       🏠 خانه
     </a>
 
-    <a href="#accounts" onclick="closeMenu()">
+
+    <a
+      href="#accounts"
+      onclick="closeMenu()"
+    >
       🎮 اکانت‌ها
     </a>
 
-    <a href="#about" onclick="closeMenu()">
+
+    <a
+      href="#about"
+      onclick="closeMenu()"
+    >
       📢 توضیحات سایت
     </a>
 
-    <a href="#cart" onclick="closeMenu()">
+
+    <a
+      href="#cart"
+      onclick="closeMenu()"
+    >
       🛒 سبد خرید
-      <span id="menuCartCount">0</span>
+      <span id="menuCartCount">
+        0
+      </span>
     </a>
 
-    <a href="#orders" onclick="closeMenu()">
+
+    <a
+      href="#orders"
+      onclick="closeMenu()"
+    >
       📦 سفارش‌های من
     </a>
+
 
     <a
       href="#panel"
       class="user-menu"
-      onclick="closeMenu(); openUserPanel();"
       id="userMenuButton"
+      onclick="closeMenu(); openUserPanel();"
     >
       👤 ورود / ثبت‌نام
     </a>
+
 
   </aside>
 
@@ -785,7 +830,11 @@
     <div class="hero-content">
 
       <h1>
-        به <span>GameShop</span> خوش آمدید 🎮
+        به
+        <span>
+          GameShop
+        </span>
+        خوش آمدید 🎮
       </h1>
 
       <p>
@@ -827,14 +876,15 @@
   >
 
     <h2 class="section-title">
-      🎮 <span>اکانت‌های بازی</span>
+      🎮
+      <span>
+        اکانت‌های بازی
+      </span>
     </h2>
 
 
     <div class="accounts">
 
-
-      <!-- ACCOUNT 1 -->
 
       <div class="account-card">
 
@@ -865,8 +915,6 @@
       </div>
 
 
-      <!-- ACCOUNT 2 -->
-
       <div class="account-card">
 
         <div class="account-icon">
@@ -895,8 +943,6 @@
 
       </div>
 
-
-      <!-- ACCOUNT 3 -->
 
       <div class="account-card">
 
@@ -927,8 +973,6 @@
       </div>
 
 
-      <!-- ACCOUNT 4 -->
-
       <div class="account-card">
 
         <div class="account-icon">
@@ -957,8 +1001,6 @@
 
       </div>
 
-
-      <!-- ACCOUNT 5 -->
 
       <div class="account-card">
 
@@ -989,8 +1031,6 @@
       </div>
 
 
-      <!-- ACCOUNT 6 -->
-
       <div class="account-card">
 
         <div class="account-icon">
@@ -1019,8 +1059,6 @@
 
       </div>
 
-
-      <!-- ACCOUNT 7 -->
 
       <div class="account-card">
 
@@ -1051,8 +1089,6 @@
       </div>
 
 
-      <!-- ACCOUNT 8 -->
-
       <div class="account-card">
 
         <div class="account-icon">
@@ -1082,8 +1118,6 @@
       </div>
 
 
-      <!-- ACCOUNT 9 -->
-
       <div class="account-card">
 
         <div class="account-icon">
@@ -1112,8 +1146,6 @@
 
       </div>
 
-
-      <!-- ACCOUNT 10 -->
 
       <div class="account-card">
 
@@ -1214,7 +1246,10 @@
   >
 
     <h2 class="section-title">
-      🛒 <span>سبد خرید</span>
+      🛒
+      <span>
+        سبد خرید
+      </span>
     </h2>
 
     <div
@@ -1239,7 +1274,10 @@
   >
 
     <h2 class="section-title">
-      📦 <span>سفارش‌های من</span>
+      📦
+      <span>
+        سفارش‌های من
+      </span>
     </h2>
 
     <div
@@ -1264,7 +1302,10 @@
   >
 
     <h2 class="section-title">
-      👤 <span>پنل کاربری</span>
+      👤
+      <span>
+        پنل کاربری
+      </span>
     </h2>
 
     <div
@@ -1389,23 +1430,27 @@
 
   <script>
 
-    /* DATA */
-
     let cart =
       JSON.parse(
-        localStorage.getItem("gameshopCart")
+        localStorage.getItem(
+          "gameshopCart"
+        )
       ) || [];
 
 
     let orders =
       JSON.parse(
-        localStorage.getItem("gameshopOrders")
+        localStorage.getItem(
+          "gameshopOrders"
+        )
       ) || [];
 
 
     let user =
       JSON.parse(
-        localStorage.getItem("gameshopUser")
+        localStorage.getItem(
+          "gameshopUser"
+        )
       ) || null;
 
 
@@ -1579,6 +1624,8 @@
     }
 
 
+    /* ================= AUTH FORM ================= */
+
     document
       .getElementById("authForm")
       .addEventListener(
@@ -1590,21 +1637,27 @@
 
           const username =
             document
-              .getElementById("username")
+              .getElementById(
+                "username"
+              )
               .value
               .trim();
 
 
           const email =
             document
-              .getElementById("email")
+              .getElementById(
+                "email"
+              )
               .value
               .trim();
 
 
           const password =
             document
-              .getElementById("password")
+              .getElementById(
+                "password"
+              )
               .value;
 
 
@@ -1634,16 +1687,20 @@
 
             user = {
 
-              username: username,
+              username:
+                username,
 
-              email: email
+              email:
+                email
 
             };
 
 
             localStorage.setItem(
               "gameshopUser",
-              JSON.stringify(user)
+              JSON.stringify(
+                user
+              )
             );
 
 
@@ -1659,7 +1716,6 @@
             alert(
               "ثبت‌نام با موفقیت انجام شد."
             );
-
 
           } else {
 
@@ -1696,7 +1752,8 @@
             }
 
 
-            user = savedUser;
+            user =
+              savedUser;
 
 
             localStorage.setItem(
@@ -1785,7 +1842,9 @@
 
       localStorage.setItem(
         "gameshopCart",
-        JSON.stringify(cart)
+        JSON.stringify(
+          cart
+        )
       );
 
     }
@@ -1941,7 +2000,9 @@
 
       localStorage.setItem(
         "gameshopOrders",
-        JSON.stringify(orders)
+        JSON.stringify(
+          orders
+        )
       );
 
 
@@ -2057,6 +2118,50 @@
       }
 
 
+      /* مخفی کردن ایمیل */
+
+      let hiddenEmail =
+        "ثبت نشده";
+
+
+      if (user.email) {
+
+        const parts =
+          user.email.split("@");
+
+
+        const name =
+          parts[0];
+
+
+        const domain =
+          parts[1];
+
+
+        if (
+          name.length > 3
+        ) {
+
+          hiddenEmail =
+            name.substring(
+              0,
+              3
+            ) +
+            "********" +
+            "@" +
+            domain;
+
+        } else {
+
+          hiddenEmail =
+            "***@" +
+            domain;
+
+        }
+
+      }
+
+
       box.innerHTML = `
 
         <div class="panel-row">
@@ -2075,7 +2180,7 @@
           📧 ایمیل:
 
           <strong>
-            ${user.email || "ثبت نشده"}
+            ${hiddenEmail}
           </strong>
 
         </div>
