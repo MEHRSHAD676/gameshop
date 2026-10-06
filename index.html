@@ -20,13 +20,13 @@
     body {
       font-family: Tahoma, Arial, sans-serif;
       background: #080b12;
-      color: #fff;
+      color: white;
       line-height: 1.8;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
     button {
@@ -34,77 +34,174 @@
       cursor: pointer;
     }
 
-    /* HEADER */
+    /* ================= HEADER ================= */
+
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(8, 11, 18, 0.95);
+      height: 70px;
+      background: rgba(8, 11, 18, 0.96);
       border-bottom: 1px solid #202938;
       backdrop-filter: blur(10px);
     }
 
-    .nav {
+    .header-content {
       max-width: 1200px;
+      height: 100%;
       margin: auto;
-      min-height: 70px;
       padding: 0 20px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
     }
 
     .logo {
-      font-size: 24px;
+      font-size: 25px;
       font-weight: bold;
       color: #38bdf8;
-      white-space: nowrap;
     }
 
-    .menu {
+    /* ================= MENU BUTTON ================= */
+
+    .menu-button {
+      width: 48px;
+      height: 44px;
+
+      border: 1px solid #263244;
+      border-radius: 12px;
+
+      background: #111722;
+      color: white;
+
+      font-size: 25px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
 
-    .menu a,
-    .menu button {
-      border: 0;
-      background: transparent;
-      color: #d1d5db;
-      padding: 8px 12px;
-      border-radius: 10px;
-      font-size: 14px;
       transition: 0.2s;
     }
 
-    .menu a:hover,
-    .menu button:hover {
+    .menu-button:hover {
+      background: #172033;
+      border-color: #38bdf8;
+    }
+
+    /* ================= SIDE MENU ================= */
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -310px;
+
+      width: 290px;
+      height: 100vh;
+
+      z-index: 3000;
+
+      background: #0d121c;
+      border-right: 1px solid #263244;
+
+      padding: 25px 20px;
+
+      transition: 0.3s;
+
+      box-shadow: 10px 0 40px rgba(0,0,0,0.35);
+    }
+
+    .side-menu.open {
+      left: 0;
+    }
+
+    .menu-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 25px;
+    }
+
+    .menu-title h2 {
+      color: #38bdf8;
+    }
+
+    .close-menu {
+      border: 0;
+      background: transparent;
+      color: #94a3b8;
+      font-size: 30px;
+    }
+
+    .side-menu a,
+    .side-menu button {
+      width: 100%;
+
+      display: block;
+
+      padding: 13px 15px;
+      margin-bottom: 8px;
+
+      border: 0;
+      border-radius: 10px;
+
+      background: transparent;
+      color: #d1d5db;
+
+      text-align: right;
+      font-size: 15px;
+
+      transition: 0.2s;
+    }
+
+    .side-menu a:hover,
+    .side-menu button:hover {
       background: #172033;
       color: #38bdf8;
     }
 
-    .cart-count {
-      color: #22c55e;
+    .user-menu {
+      color: #22c55e !important;
       font-weight: bold;
     }
 
-    /* HERO */
+    /* ================= DARK OVERLAY ================= */
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+
+      z-index: 2500;
+
+      background: rgba(0,0,0,0.6);
+
+      display: none;
+    }
+
+    .menu-overlay.show {
+      display: block;
+    }
+
+    /* ================= HERO ================= */
+
     .hero {
       min-height: 500px;
+
       padding: 100px 20px;
-      text-align: center;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
+      text-align: center;
+
       background:
-        radial-gradient(circle at top, #12304a 0%, #080b12 55%);
+        radial-gradient(
+          circle at top,
+          #12304a 0%,
+          #080b12 60%
+        );
     }
 
     .hero-content {
@@ -114,7 +211,6 @@
     .hero h1 {
       font-size: 48px;
       margin-bottom: 20px;
-      color: #fff;
     }
 
     .hero h1 span {
@@ -129,12 +225,16 @@
 
     .main-btn {
       display: inline-block;
-      border: 0;
+
+      padding: 13px 28px;
+
+      border-radius: 12px;
+
       background: #38bdf8;
       color: #061018;
-      padding: 13px 25px;
-      border-radius: 12px;
+
       font-weight: bold;
+
       transition: 0.2s;
     }
 
@@ -143,15 +243,24 @@
       background: #67cffc;
     }
 
-    /* PROMO */
+    /* ================= PROMO ================= */
+
     .promo {
       max-width: 1100px;
+
       margin: 35px auto;
       padding: 25px;
+
       border-radius: 18px;
+
       text-align: center;
 
-      background: linear-gradient(135deg, #172033, #102536);
+      background: linear-gradient(
+        135deg,
+        #172033,
+        #102536
+      );
+
       border: 1px solid #28435b;
     }
 
@@ -164,16 +273,20 @@
       color: #cbd5e1;
     }
 
-    /* SECTIONS */
+    /* ================= SECTION ================= */
+
     .section {
       max-width: 1200px;
       margin: auto;
+
       padding: 70px 20px;
     }
 
     .section-title {
       text-align: center;
+
       font-size: 32px;
+
       margin-bottom: 35px;
     }
 
@@ -181,28 +294,38 @@
       color: #38bdf8;
     }
 
-    /* ACCOUNTS */
+    /* ================= ACCOUNTS ================= */
+
     .accounts {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 20px;
     }
 
     .account-card {
       background: #111722;
+
       border: 1px solid #222c3c;
+
       border-radius: 18px;
+
       padding: 25px;
+
       transition: 0.25s;
     }
 
     .account-card:hover {
       transform: translateY(-5px);
+
       border-color: #38bdf8;
     }
 
     .account-icon {
       font-size: 45px;
+
       margin-bottom: 15px;
     }
 
@@ -212,161 +335,220 @@
 
     .info {
       color: #aeb7c7;
+
       margin: 7px 0;
     }
 
     .price {
       margin-top: 18px;
+
       color: #22c55e;
+
       font-size: 20px;
+
       font-weight: bold;
     }
 
     .unavailable {
       display: block;
+
       margin-top: 15px;
+
       padding: 9px;
+
       border-radius: 10px;
+
       background: #30151a;
+
       color: #f87171;
+
       text-align: center;
+
       font-size: 14px;
     }
 
-    /* ABOUT */
+    /* ================= ABOUT ================= */
+
     .about-box {
       max-width: 850px;
+
       margin: auto;
+
       padding: 35px;
+
       background: #111722;
+
       border: 1px solid #222c3c;
+
       border-radius: 20px;
+
       text-align: center;
     }
 
     .about-box h2 {
       color: #38bdf8;
+
       margin-bottom: 20px;
     }
 
     .about-box p {
       color: #cbd5e1;
+
       margin: 12px 0;
     }
 
     .about-box strong {
-      color: #fff;
+      color: white;
     }
 
-    /* CART */
+    /* ================= BOXES ================= */
+
     .cart-box,
     .orders-box,
     .panel-box {
       max-width: 900px;
+
       margin: auto;
+
       padding: 30px;
+
       background: #111722;
+
       border: 1px solid #222c3c;
+
       border-radius: 20px;
     }
 
     .empty {
       text-align: center;
+
       color: #94a3b8;
+
       padding: 25px;
     }
 
     .cart-item,
     .order-item {
       padding: 18px 0;
-      border-bottom: 1px solid #253044;
-    }
 
-    .cart-item:last-child,
-    .order-item:last-child {
-      border-bottom: 0;
+      border-bottom: 1px solid #253044;
     }
 
     .remove-btn {
       margin-top: 10px;
+
       border: 0;
+
       padding: 7px 12px;
+
       border-radius: 8px;
+
       background: #3b1720;
+
       color: #f87171;
     }
 
     .checkout-btn {
       width: 100%;
+
       margin-top: 20px;
+
       border: 0;
+
       padding: 13px;
+
       border-radius: 10px;
+
       background: #22c55e;
+
       color: #061009;
+
       font-weight: bold;
     }
 
-    /* PANEL */
+    /* ================= PANEL ================= */
+
     .panel-row {
       padding: 15px 0;
-      border-bottom: 1px solid #253044;
-      color: #cbd5e1;
-    }
 
-    .panel-row:last-child {
-      border-bottom: 0;
+      border-bottom: 1px solid #253044;
+
+      color: #cbd5e1;
     }
 
     .logout-btn {
       margin-top: 20px;
+
       border: 0;
+
       padding: 10px 18px;
+
       border-radius: 10px;
+
       background: #ef4444;
+
       color: white;
     }
 
-    /* FOOTER */
+    /* ================= FOOTER ================= */
+
     footer {
       margin-top: 50px;
+
       padding: 45px 20px;
+
       background: #05070b;
+
       border-top: 1px solid #202938;
+
       text-align: center;
     }
 
     footer h3 {
       color: #38bdf8;
+
       margin-bottom: 10px;
     }
 
     footer p {
       color: #94a3b8;
+
       margin: 6px 0;
     }
 
     .call-btn {
       display: inline-block;
+
       margin-top: 15px;
+
       padding: 10px 20px;
+
       border-radius: 10px;
+
       background: #22c55e;
+
       color: #041008;
+
       font-weight: bold;
     }
 
-    /* MODAL */
+    /* ================= MODAL ================= */
+
     .modal {
       display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
 
-      background: rgba(0, 0, 0, 0.75);
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 4000;
+
+      background: rgba(0,0,0,0.75);
 
       align-items: center;
+
       justify-content: center;
+
       padding: 20px;
     }
 
@@ -376,70 +558,89 @@
 
     .modal-box {
       width: 100%;
+
       max-width: 430px;
+
       background: #111722;
+
       border: 1px solid #29354a;
+
       border-radius: 20px;
+
       padding: 30px;
+
       position: relative;
     }
 
-    .close {
+    .close-modal {
       position: absolute;
+
       left: 18px;
       top: 15px;
 
       border: 0;
+
       background: transparent;
+
       color: #94a3b8;
+
       font-size: 24px;
     }
 
     .modal-box h2 {
       margin-bottom: 20px;
+
       color: #38bdf8;
     }
 
     .modal-box input {
       width: 100%;
+
       padding: 12px;
+
       margin-bottom: 12px;
 
       border: 1px solid #2b374b;
+
       border-radius: 10px;
+
       outline: none;
 
       background: #080b12;
-      color: white;
-    }
 
-    .modal-box input:focus {
-      border-color: #38bdf8;
+      color: white;
     }
 
     .form-btn {
       width: 100%;
+
       border: 0;
+
       padding: 12px;
+
       border-radius: 10px;
+
       background: #38bdf8;
+
       color: #061018;
+
       font-weight: bold;
     }
 
     .switch {
       margin-top: 15px;
+
       text-align: center;
+
       color: #94a3b8;
+
       cursor: pointer;
     }
 
-    .switch:hover {
-      color: #38bdf8;
-    }
+    /* ================= MOBILE ================= */
 
-    /* MOBILE */
     @media (max-width: 850px) {
+
       .accounts {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -448,19 +649,17 @@
         font-size: 38px;
       }
 
-      .nav {
-        flex-direction: column;
-        padding: 15px;
-      }
     }
 
     @media (max-width: 550px) {
+
       .accounts {
         grid-template-columns: 1fr;
       }
 
       .hero {
         min-height: 430px;
+
         padding: 70px 20px;
       }
 
@@ -468,14 +667,12 @@
         font-size: 32px;
       }
 
-      .menu {
-        gap: 2px;
+      .logo {
+        font-size: 21px;
       }
 
-      .menu a,
-      .menu button {
-        font-size: 12px;
-        padding: 7px 8px;
+      .section {
+        padding: 50px 15px;
       }
 
       .about-box,
@@ -484,41 +681,107 @@
       .panel-box {
         padding: 22px;
       }
+
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- HEADER -->
+
+  <!-- ================= HEADER ================= -->
+
   <header>
-    <div class="nav">
 
-      <a href="#home" class="logo">🎮 GameShop</a>
+    <div class="header-content">
 
-      <nav class="menu">
-        <a href="#home">خانه</a>
-        <a href="#accounts">اکانت‌ها</a>
-        <a href="#about">توضیحات سایت</a>
+      <div class="logo">
+        🎮 GameShop
+      </div>
 
-        <a href="#cart">
-          🛒 سبد خرید
-          <span class="cart-count" id="cartCount">0</span>
-        </a>
-
-        <a href="#orders">📦 سفارش‌های من</a>
-
-        <button id="loginButton" onclick="openLogin()">
-          👤 ورود / ثبت‌نام
-        </button>
-      </nav>
+      <!-- سه خط سمت چپ -->
+      <button
+        class="menu-button"
+        onclick="openMenu()"
+      >
+        ☰
+      </button>
 
     </div>
+
   </header>
 
 
-  <!-- HERO -->
-  <section class="hero" id="home">
+  <!-- ================= SIDE MENU ================= -->
+
+  <div
+    class="menu-overlay"
+    id="menuOverlay"
+    onclick="closeMenu()"
+  ></div>
+
+
+  <aside
+    class="side-menu"
+    id="sideMenu"
+  >
+
+    <div class="menu-title">
+
+      <h2>🎮 GameShop</h2>
+
+      <button
+        class="close-menu"
+        onclick="closeMenu()"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <a href="#home" onclick="closeMenu()">
+      🏠 خانه
+    </a>
+
+    <a href="#accounts" onclick="closeMenu()">
+      🎮 اکانت‌ها
+    </a>
+
+    <a href="#about" onclick="closeMenu()">
+      📢 توضیحات سایت
+    </a>
+
+    <a href="#cart" onclick="closeMenu()">
+      🛒 سبد خرید
+      <span id="menuCartCount">0</span>
+    </a>
+
+    <a href="#orders" onclick="closeMenu()">
+      📦 سفارش‌های من
+    </a>
+
+    <a
+      href="#panel"
+      class="user-menu"
+      onclick="closeMenu(); openUserPanel();"
+      id="userMenuButton"
+    >
+      👤 ورود / ثبت‌نام
+    </a>
+
+  </aside>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section
+    class="hero"
+    id="home"
+  >
+
     <div class="hero-content">
 
       <h1>
@@ -529,148 +792,400 @@
         فروشگاه خرید و فروش اکانت‌های بازی
       </p>
 
-      <a href="#accounts" class="main-btn">
+      <a
+        href="#accounts"
+        class="main-btn"
+      >
         مشاهده اکانت‌ها
       </a>
 
     </div>
+
   </section>
 
 
-  <!-- PROMO -->
+  <!-- ================= PROMO ================= -->
+
   <div class="promo">
-    <h2>🔥 پیشنهاد ویژه GameShop</h2>
+
+    <h2>
+      🔥 پیشنهاد ویژه GameShop
+    </h2>
 
     <p>
       تخفیف‌ها و پیشنهادهای ویژه به‌زودی فعال می‌شوند!
     </p>
+
   </div>
 
 
-  <!-- ACCOUNTS -->
-  <section class="section" id="accounts">
+  <!-- ================= ACCOUNTS ================= -->
+
+  <section
+    class="section"
+    id="accounts"
+  >
 
     <h2 class="section-title">
       🎮 <span>اکانت‌های بازی</span>
     </h2>
 
+
     <div class="accounts">
 
-      <div class="account-card">
-        <div class="account-icon">🎯</div>
-        <h3>اکانت شماره 1</h3>
-        <p class="info">⭐ لول: نامعلوم</p>
-        <p class="info">🎨 اسکین: نامعلوم</p>
-        <p class="price">۰ تومان</p>
-        <span class="unavailable">❌ وضعیت: ناموجود</span>
-      </div>
+
+      <!-- ACCOUNT 1 -->
 
       <div class="account-card">
-        <div class="account-icon">⚔️</div>
-        <h3>اکانت شماره 2</h3>
-        <p class="info">⭐ لول: نامعلوم</p>
-        <p class="info">🎨 اسکین: نامعلوم</p>
-        <p class="price">۰ تومان</p>
-        <span class="unavailable">❌ وضعیت: ناموجود</span>
+
+        <div class="account-icon">
+          🎯
+        </div>
+
+        <h3>
+          اکانت شماره 1
+        </h3>
+
+        <p class="info">
+          ⭐ لول: نامعلوم
+        </p>
+
+        <p class="info">
+          🎨 اسکین: نامعلوم
+        </p>
+
+        <p class="price">
+          ۰ تومان
+        </p>
+
+        <span class="unavailable">
+          ❌ وضعیت: ناموجود
+        </span>
+
       </div>
 
-      <div class="account-card">
-        <div class="account-icon">🏆</div>
-        <h3>اکانت شماره 3</h3>
-        <p class="info">⭐ لول: نامعلوم</p>
-        <p class="info">🎨 اسکین: نامعلوم</p>
-        <p class="price">۰ تومان</p>
-        <span class="unavailable">❌ وضعیت: ناموجود</span>
-      </div>
+
+      <!-- ACCOUNT 2 -->
 
       <div class="account-card">
-        <div class="account-icon">🔥</div>
-        <h3>اکانت شماره 4</h3>
-        <p class="info">⭐ لول: نامعلوم</p>
-        <p class="info">🎨 اسکین: نامعلوم</p>
-        <p class="price">۰ تومان</p>
-        <span class="unavailable">❌ وضعیت: ناموجود</span>
+
+        <div class="account-icon">
+          ⚔️
+        </div>
+
+        <h3>
+          اکانت شماره 2
+        </h3>
+
+        <p class="info">
+          ⭐ لول: نامعلوم
+        </p>
+
+        <p class="info">
+          🎨 اسکین: نامعلوم
+        </p>
+
+        <p class="price">
+          ۰ تومان
+        </p>
+
+        <span class="unavailable">
+          ❌ وضعیت: ناموجود
+        </span>
+
       </div>
 
-      <div class="account-card">
-        <div class="account-icon">💎</div>
-        <h3>اکانت شماره 5</h3>
-        <p class="info">⭐ لول: نامعلوم</p>
-        <p class="info">🎨 اسکین: نامعلوم</p>
-        <p class="price">۰ تومان</p>
-        <span class="unavailable">❌ وضعیت: ناموجود</span>
-      </div>
+
+      <!-- ACCOUNT 3 -->
 
       <div class="account-card">
-        <div class="account-icon">👑</div>
-        <h3>اکانت شماره 6</h3>
-        <p class="info">⭐ لول: نامعلوم</p>
-        <p class="info">🎨 اسکین: نامعلوم</p>
-        <p class="price">۰ تومان</p>
-        <span class="unavailable">❌ وضعیت: ناموجود</span>
+
+        <div class="account-icon">
+          🏆
+        </div>
+
+        <h3>
+          اکانت شماره 3
+        </h3>
+
+        <p class="info">
+          ⭐ لول: نامعلوم
+        </p>
+
+        <p class="info">
+          🎨 اسکین: نامعلوم
+        </p>
+
+        <p class="price">
+          ۰ تومان
+        </p>
+
+        <span class="unavailable">
+          ❌ وضعیت: ناموجود
+        </span>
+
       </div>
 
-      <div class="account-card">
-        <div class="account-icon">🚀</div>
-        <h3>اکانت شماره 7</h3>
-        <p class="info">⭐ لول: نامعلوم</p>
-        <p class="info">🎨 اسکین: نامعلوم</p>
-        <p class="price">۰ تومان</p>
-        <span class="unavailable">❌ وضعیت: ناموجود</span>
-      </div>
+
+      <!-- ACCOUNT 4 -->
 
       <div class="account-card">
-        <div class="account-icon">🎮</div>
-        <h3>اکانت شماره 8</h3>
-        <p class="info">⭐ لول: نامعلوم</p>
-        <p class="info">🎨 اسکین: نامعلوم</p>
-        <p class="price">۰ تومان</p>
-        <span class="unavailable">❌ وضعیت: ناموجود</span>
+
+        <div class="account-icon">
+          🔥
+        </div>
+
+        <h3>
+          اکانت شماره 4
+        </h3>
+
+        <p class="info">
+          ⭐ لول: نامعلوم
+        </p>
+
+        <p class="info">
+          🎨 اسکین: نامعلوم
+        </p>
+
+        <p class="price">
+          ۰ تومان
+        </p>
+
+        <span class="unavailable">
+          ❌ وضعیت: ناموجود
+        </span>
+
       </div>
 
-      <div class="account-card">
-        <div class="account-icon">💀</div>
-        <h3>اکانت شماره 9</h3>
-        <p class="info">⭐ لول: نامعلوم</p>
-        <p class="info">🎨 اسکین: نامعلوم</p>
-        <p class="price">۰ تومان</p>
-        <span class="unavailable">❌ وضعیت: ناموجود</span>
-      </div>
+
+      <!-- ACCOUNT 5 -->
 
       <div class="account-card">
-        <div class="account-icon">⚡</div>
-        <h3>اکانت شماره 10</h3>
-        <p class="info">⭐ لول: نامعلوم</p>
-        <p class="info">🎨 اسکین: نامعلوم</p>
-        <p class="price">۰ تومان</p>
-        <span class="unavailable">❌ وضعیت: ناموجود</span>
+
+        <div class="account-icon">
+          💎
+        </div>
+
+        <h3>
+          اکانت شماره 5
+        </h3>
+
+        <p class="info">
+          ⭐ لول: نامعلوم
+        </p>
+
+        <p class="info">
+          🎨 اسکین: نامعلوم
+        </p>
+
+        <p class="price">
+          ۰ تومان
+        </p>
+
+        <span class="unavailable">
+          ❌ وضعیت: ناموجود
+        </span>
+
       </div>
+
+
+      <!-- ACCOUNT 6 -->
+
+      <div class="account-card">
+
+        <div class="account-icon">
+          👑
+        </div>
+
+        <h3>
+          اکانت شماره 6
+        </h3>
+
+        <p class="info">
+          ⭐ لول: نامعلوم
+        </p>
+
+        <p class="info">
+          🎨 اسکین: نامعلوم
+        </p>
+
+        <p class="price">
+          ۰ تومان
+        </p>
+
+        <span class="unavailable">
+          ❌ وضعیت: ناموجود
+        </span>
+
+      </div>
+
+
+      <!-- ACCOUNT 7 -->
+
+      <div class="account-card">
+
+        <div class="account-icon">
+          🚀
+        </div>
+
+        <h3>
+          اکانت شماره 7
+        </h3>
+
+        <p class="info">
+          ⭐ لول: نامعلوم
+        </p>
+
+        <p class="info">
+          🎨 اسکین: نامعلوم
+        </p>
+
+        <p class="price">
+          ۰ تومان
+        </p>
+
+        <span class="unavailable">
+          ❌ وضعیت: ناموجود
+        </span>
+
+      </div>
+
+
+      <!-- ACCOUNT 8 -->
+
+      <div class="account-card">
+
+        <div class="account-icon">
+          🎮
+        </div>
+
+        <h3>
+          اکانت شماره 8
+        </h3>
+
+        <p class="info">
+          ⭐ لول: نامعلوم
+        </p>
+
+        <p class="info">
+          🎨 اسکین: نامعلوم
+        </p>
+
+        <p class="price">
+          ۰ تومان
+        </p>
+
+        <span class="unavailable">
+          ❌ وضعیت: ناموجود
+        </span>
+
+      </div>
+
+
+      <!-- ACCOUNT 9 -->
+
+      <div class="account-card">
+
+        <div class="account-icon">
+          💀
+        </div>
+
+        <h3>
+          اکانت شماره 9
+        </h3>
+
+        <p class="info">
+          ⭐ لول: نامعلوم
+        </p>
+
+        <p class="info">
+          🎨 اسکین: نامعلوم
+        </p>
+
+        <p class="price">
+          ۰ تومان
+        </p>
+
+        <span class="unavailable">
+          ❌ وضعیت: ناموجود
+        </span>
+
+      </div>
+
+
+      <!-- ACCOUNT 10 -->
+
+      <div class="account-card">
+
+        <div class="account-icon">
+          ⚡
+        </div>
+
+        <h3>
+          اکانت شماره 10
+        </h3>
+
+        <p class="info">
+          ⭐ لول: نامعلوم
+        </p>
+
+        <p class="info">
+          🎨 اسکین: نامعلوم
+        </p>
+
+        <p class="price">
+          ۰ تومان
+        </p>
+
+        <span class="unavailable">
+          ❌ وضعیت: ناموجود
+        </span>
+
+      </div>
+
 
     </div>
+
   </section>
 
 
-  <!-- ABOUT -->
-  <section class="section" id="about">
+  <!-- ================= ABOUT ================= -->
+
+  <section
+    class="section"
+    id="about"
+  >
 
     <div class="about-box">
 
-      <h2>📢 توضیحات سایت</h2>
+      <h2>
+        📢 توضیحات سایت
+      </h2>
 
       <p>
         این سایت برای
-        <strong>خرید و فروش اکانت‌های بازی</strong>
+        <strong>
+          خرید و فروش اکانت‌های بازی
+        </strong>
         ساخته شده است.
       </p>
 
       <p>
-        اگر می‌خواهید اکانتی خریداری کنید یا قصد فروش اکانت خود را دارید،
+        اگر می‌خواهید اکانتی خریداری کنید
+        یا قصد فروش اکانت خود را دارید،
         می‌توانید با پشتیبانی GameShop تماس بگیرید.
       </p>
 
       <p>
-        ⏰ <strong>زمان پاسخگویی پشتیبانی:</strong>
-        بین <strong>۱ تا ۲۴ ساعت</strong>
+        ⏰
+        <strong>
+          زمان پاسخگویی پشتیبانی:
+        </strong>
+
+        بین
+        <strong>
+          ۱ تا ۲۴ ساعت
+        </strong>
       </p>
 
       <p>
@@ -682,53 +1197,80 @@
         با تشکر از اعتماد و همراهی شما ❤️
       </p>
 
-      <strong>🎮 تیم GameShop</strong>
+      <strong>
+        🎮 تیم GameShop
+      </strong>
 
     </div>
 
   </section>
 
 
-  <!-- CART -->
-  <section class="section" id="cart">
+  <!-- ================= CART ================= -->
+
+  <section
+    class="section"
+    id="cart"
+  >
 
     <h2 class="section-title">
       🛒 <span>سبد خرید</span>
     </h2>
 
-    <div class="cart-box" id="cartBox">
+    <div
+      class="cart-box"
+      id="cartBox"
+    >
+
       <div class="empty">
         سبد خرید شما خالی است.
       </div>
+
     </div>
 
   </section>
 
 
-  <!-- ORDERS -->
-  <section class="section" id="orders">
+  <!-- ================= ORDERS ================= -->
+
+  <section
+    class="section"
+    id="orders"
+  >
 
     <h2 class="section-title">
       📦 <span>سفارش‌های من</span>
     </h2>
 
-    <div class="orders-box" id="ordersBox">
+    <div
+      class="orders-box"
+      id="ordersBox"
+    >
+
       <div class="empty">
         هنوز سفارشی ثبت نشده است.
       </div>
+
     </div>
 
   </section>
 
 
-  <!-- USER PANEL -->
-  <section class="section" id="panel">
+  <!-- ================= PANEL ================= -->
+
+  <section
+    class="section"
+    id="panel"
+  >
 
     <h2 class="section-title">
       👤 <span>پنل کاربری</span>
     </h2>
 
-    <div class="panel-box" id="panelBox">
+    <div
+      class="panel-box"
+      id="panelBox"
+    >
 
       <div class="empty">
         برای مشاهده پنل کاربری ابتدا وارد حساب شوید.
@@ -739,10 +1281,13 @@
   </section>
 
 
-  <!-- FOOTER -->
+  <!-- ================= FOOTER ================= -->
+
   <footer>
 
-    <h3>🎮 GameShop</h3>
+    <h3>
+      🎮 GameShop
+    </h3>
 
     <p>
       فروشگاه خرید و فروش اکانت‌های بازی
@@ -752,7 +1297,10 @@
       📞 پشتیبانی: 09339232786
     </p>
 
-    <a class="call-btn" href="tel:09339232786">
+    <a
+      class="call-btn"
+      href="tel:09339232786"
+    >
       تماس با پشتیبانی
     </a>
 
@@ -763,14 +1311,26 @@
   </footer>
 
 
-  <!-- LOGIN MODAL -->
-  <div class="modal" id="loginModal">
+  <!-- ================= LOGIN MODAL ================= -->
+
+  <div
+    class="modal"
+    id="loginModal"
+  >
 
     <div class="modal-box">
 
-      <button class="close" onclick="closeModal()">×</button>
+      <button
+        class="close-modal"
+        onclick="closeModal()"
+      >
+        ×
+      </button>
 
-      <h2 id="modalTitle">ورود به حساب</h2>
+      <h2 id="modalTitle">
+        ورود به حساب
+      </h2>
+
 
       <form id="authForm">
 
@@ -802,13 +1362,21 @@
           style="display:none;"
         >
 
-        <button class="form-btn" type="submit">
+        <button
+          class="form-btn"
+          type="submit"
+        >
           ورود
         </button>
 
       </form>
 
-      <div class="switch" id="switchText" onclick="switchAuth()">
+
+      <div
+        class="switch"
+        id="switchText"
+        onclick="switchAuth()"
+      >
         حساب ندارید؟ ثبت‌نام کنید
       </div>
 
@@ -817,39 +1385,101 @@
   </div>
 
 
+  <!-- ================= JAVASCRIPT ================= -->
+
   <script>
 
-    /* =========================
-       DATA
-    ========================= */
+    /* DATA */
 
-    let cart = JSON.parse(localStorage.getItem("gameshopCart")) || [];
+    let cart =
+      JSON.parse(
+        localStorage.getItem("gameshopCart")
+      ) || [];
 
-    let orders = JSON.parse(localStorage.getItem("gameshopOrders")) || [];
 
-    let user = JSON.parse(localStorage.getItem("gameshopUser")) || null;
+    let orders =
+      JSON.parse(
+        localStorage.getItem("gameshopOrders")
+      ) || [];
+
+
+    let user =
+      JSON.parse(
+        localStorage.getItem("gameshopUser")
+      ) || null;
+
 
     let loggedIn =
-      localStorage.getItem("gameshopLoggedIn") === "true";
+      localStorage.getItem(
+        "gameshopLoggedIn"
+      ) === "true";
+
 
     let isRegister = false;
 
 
-    /* =========================
-       LOGIN
-    ========================= */
+    /* ================= MENU ================= */
+
+    function openMenu() {
+
+      document
+        .getElementById("sideMenu")
+        .classList.add("open");
+
+      document
+        .getElementById("menuOverlay")
+        .classList.add("show");
+
+    }
+
+
+    function closeMenu() {
+
+      document
+        .getElementById("sideMenu")
+        .classList.remove("open");
+
+      document
+        .getElementById("menuOverlay")
+        .classList.remove("show");
+
+    }
+
+
+    /* ================= USER PANEL ================= */
+
+    function openUserPanel() {
+
+      if (!loggedIn) {
+
+        openLogin();
+
+        return;
+
+      }
+
+
+      document
+        .getElementById("panel")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    }
+
+
+    /* ================= LOGIN ================= */
 
     function openLogin() {
 
       if (loggedIn) {
-        document
-          .getElementById("panel")
-          .scrollIntoView({ behavior: "smooth" });
 
-        renderPanel();
+        openUserPanel();
 
         return;
+
       }
+
 
       document
         .getElementById("loginModal")
@@ -871,44 +1501,75 @@
 
       isRegister = !isRegister;
 
+
       const title =
-        document.getElementById("modalTitle");
+        document.getElementById(
+          "modalTitle"
+        );
+
 
       const email =
-        document.getElementById("email");
+        document.getElementById(
+          "email"
+        );
+
 
       const confirm =
-        document.getElementById("confirmPassword");
+        document.getElementById(
+          "confirmPassword"
+        );
+
 
       const button =
-        document.querySelector(".form-btn");
+        document.querySelector(
+          ".form-btn"
+        );
+
 
       const switchText =
-        document.getElementById("switchText");
+        document.getElementById(
+          "switchText"
+        );
 
 
       if (isRegister) {
 
-        title.textContent = "ثبت‌نام";
+        title.textContent =
+          "ثبت‌نام";
 
-        email.style.display = "block";
 
-        confirm.style.display = "block";
+        email.style.display =
+          "block";
 
-        button.textContent = "ثبت‌نام";
+
+        confirm.style.display =
+          "block";
+
+
+        button.textContent =
+          "ثبت‌نام";
+
 
         switchText.textContent =
           "حساب دارید؟ وارد شوید";
 
       } else {
 
-        title.textContent = "ورود به حساب";
+        title.textContent =
+          "ورود به حساب";
 
-        email.style.display = "none";
 
-        confirm.style.display = "none";
+        email.style.display =
+          "none";
 
-        button.textContent = "ورود";
+
+        confirm.style.display =
+          "none";
+
+
+        button.textContent =
+          "ورود";
+
 
         switchText.textContent =
           "حساب ندارید؟ ثبت‌نام کنید";
@@ -920,95 +1581,180 @@
 
     document
       .getElementById("authForm")
-      .addEventListener("submit", function(e) {
+      .addEventListener(
+        "submit",
+        function(e) {
 
-        e.preventDefault();
-
-        const username =
-          document.getElementById("username").value.trim();
-
-        const email =
-          document.getElementById("email").value.trim();
-
-        const password =
-          document.getElementById("password").value;
-
-        const confirmPassword =
-          document.getElementById("confirmPassword").value;
+          e.preventDefault();
 
 
-        if (isRegister) {
+          const username =
+            document
+              .getElementById("username")
+              .value
+              .trim();
 
-          if (password !== confirmPassword) {
 
-            alert("رمز عبور و تکرار آن یکسان نیست.");
+          const email =
+            document
+              .getElementById("email")
+              .value
+              .trim();
 
-            return;
-          }
 
-          user = {
-            username: username,
-            email: email
-          };
+          const password =
+            document
+              .getElementById("password")
+              .value;
 
-          localStorage.setItem(
-            "gameshopUser",
-            JSON.stringify(user)
-          );
 
-          localStorage.setItem(
-            "gameshopLoggedIn",
-            "true"
-          );
+          const confirmPassword =
+            document
+              .getElementById(
+                "confirmPassword"
+              )
+              .value;
 
-          loggedIn = true;
 
-          alert("ثبت‌نام با موفقیت انجام شد.");
+          if (isRegister) {
 
-        } else {
+            if (
+              password !==
+              confirmPassword
+            ) {
 
-          const savedUser =
-            JSON.parse(
-              localStorage.getItem("gameshopUser")
+              alert(
+                "رمز عبور و تکرار آن یکسان نیست."
+              );
+
+              return;
+
+            }
+
+
+            user = {
+
+              username: username,
+
+              email: email
+
+            };
+
+
+            localStorage.setItem(
+              "gameshopUser",
+              JSON.stringify(user)
             );
 
-          if (!savedUser) {
 
-            alert("ابتدا باید ثبت‌نام کنید.");
+            localStorage.setItem(
+              "gameshopLoggedIn",
+              "true"
+            );
 
-            return;
+
+            loggedIn = true;
+
+
+            alert(
+              "ثبت‌نام با موفقیت انجام شد."
+            );
+
+
+          } else {
+
+            const savedUser =
+              JSON.parse(
+                localStorage.getItem(
+                  "gameshopUser"
+                )
+              );
+
+
+            if (!savedUser) {
+
+              alert(
+                "ابتدا باید ثبت‌نام کنید."
+              );
+
+              return;
+
+            }
+
+
+            if (
+              savedUser.username !==
+              username
+            ) {
+
+              alert(
+                "نام کاربری صحیح نیست."
+              );
+
+              return;
+
+            }
+
+
+            user = savedUser;
+
+
+            localStorage.setItem(
+              "gameshopLoggedIn",
+              "true"
+            );
+
+
+            loggedIn = true;
+
+
+            alert(
+              "با موفقیت وارد شدید."
+            );
+
           }
 
-          if (
-            savedUser.username !== username
-          ) {
 
-            alert("نام کاربری صحیح نیست.");
+          closeModal();
 
-            return;
-          }
+          updateUserMenu();
 
-          localStorage.setItem(
-            "gameshopLoggedIn",
-            "true"
-          );
-
-          loggedIn = true;
-
-          user = savedUser;
-
-          alert("با موفقیت وارد شدید.");
+          renderPanel();
 
         }
+      );
 
-        closeModal();
 
-        updateLoginButton();
+    /* ================= USER MENU ================= */
 
-        renderPanel();
+    function updateUserMenu() {
 
-      });
+      const button =
+        document.getElementById(
+          "userMenuButton"
+        );
 
+
+      if (
+        loggedIn &&
+        user
+      ) {
+
+        button.innerHTML =
+          "👤 " +
+          user.username;
+
+      } else {
+
+        button.innerHTML =
+          "👤 ورود / ثبت‌نام";
+
+      }
+
+    }
+
+
+    /* ================= LOGOUT ================= */
 
     function logout() {
 
@@ -1017,40 +1763,23 @@
         "false"
       );
 
+
       loggedIn = false;
 
-      updateLoginButton();
+
+      updateUserMenu();
 
       renderPanel();
 
-      alert("از حساب خارج شدید.");
+
+      alert(
+        "از حساب خارج شدید."
+      );
 
     }
 
 
-    function updateLoginButton() {
-
-      const button =
-        document.getElementById("loginButton");
-
-      if (loggedIn && user) {
-
-        button.textContent =
-          "👤 " + user.username;
-
-      } else {
-
-        button.textContent =
-          "👤 ورود / ثبت‌نام";
-
-      }
-
-    }
-
-
-    /* =========================
-       CART
-    ========================= */
+    /* ================= CART ================= */
 
     function saveCart() {
 
@@ -1065,66 +1794,92 @@
     function renderCart() {
 
       const box =
-        document.getElementById("cartBox");
+        document.getElementById(
+          "cartBox"
+        );
+
 
       const count =
-        document.getElementById("cartCount");
+        document.getElementById(
+          "menuCartCount"
+        );
 
-      count.textContent = cart.length;
+
+      count.textContent =
+        cart.length;
 
 
-      if (cart.length === 0) {
+      if (
+        cart.length === 0
+      ) {
 
         box.innerHTML =
           '<div class="empty">سبد خرید شما خالی است.</div>';
 
         return;
+
       }
 
 
       let html = "";
 
-      cart.forEach(function(item, index) {
 
-        html += `
-          <div class="cart-item">
+      cart.forEach(
+        function(item, index) {
 
-            <h3>${item.name}</h3>
+          html += `
 
-            <p class="info">
-              💰 قیمت: ${item.price}
-            </p>
+            <div class="cart-item">
 
-            <button
-              class="remove-btn"
-              onclick="removeFromCart(${index})"
-            >
-              حذف
-            </button>
+              <h3>
+                ${item.name}
+              </h3>
 
-          </div>
-        `;
+              <p class="info">
+                💰 قیمت:
+                ${item.price}
+              </p>
 
-      });
+              <button
+                class="remove-btn"
+                onclick="removeFromCart(${index})"
+              >
+                حذف
+              </button>
+
+            </div>
+
+          `;
+
+        }
+      );
 
 
       html += `
+
         <button
           class="checkout-btn"
           onclick="checkout()"
         >
           ثبت سفارش
         </button>
+
       `;
 
-      box.innerHTML = html;
+
+      box.innerHTML =
+        html;
 
     }
 
 
     function removeFromCart(index) {
 
-      cart.splice(index, 1);
+      cart.splice(
+        index,
+        1
+      );
+
 
       saveCart();
 
@@ -1144,14 +1899,20 @@
         openLogin();
 
         return;
+
       }
 
 
-      if (cart.length === 0) {
+      if (
+        cart.length === 0
+      ) {
 
-        alert("سبد خرید خالی است.");
+        alert(
+          "سبد خرید خالی است."
+        );
 
         return;
+
       }
 
 
@@ -1162,7 +1923,10 @@
           Date.now(),
 
         date:
-          new Date().toLocaleString("fa-IR"),
+          new Date()
+            .toLocaleString(
+              "fa-IR"
+            ),
 
         items:
           [...cart]
@@ -1170,7 +1934,10 @@
       };
 
 
-      orders.push(order);
+      orders.push(
+        order
+      );
+
 
       localStorage.setItem(
         "gameshopOrders",
@@ -1180,11 +1947,15 @@
 
       cart = [];
 
+
       saveCart();
 
       renderCart();
 
       renderOrders();
+
+      renderPanel();
+
 
       alert(
         "سفارش شما با موفقیت ثبت شد."
@@ -1193,14 +1964,14 @@
     }
 
 
-    /* =========================
-       ORDERS
-    ========================= */
+    /* ================= ORDERS ================= */
 
     function renderOrders() {
 
       const box =
-        document.getElementById("ordersBox");
+        document.getElementById(
+          "ordersBox"
+        );
 
 
       if (!loggedIn) {
@@ -1209,92 +1980,139 @@
           '<div class="empty">برای مشاهده سفارش‌ها وارد حساب شوید.</div>';
 
         return;
+
       }
 
 
-      if (orders.length === 0) {
+      if (
+        orders.length === 0
+      ) {
 
         box.innerHTML =
           '<div class="empty">هنوز سفارشی ثبت نشده است.</div>';
 
         return;
+
       }
 
 
       let html = "";
 
-      orders.forEach(function(order) {
 
-        html += `
-          <div class="order-item">
+      orders.forEach(
+        function(order) {
 
-            <h3>📦 سفارش ${order.id}</h3>
+          html += `
 
-            <p class="info">
-              📅 ${order.date}
-            </p>
+            <div class="order-item">
 
-            <p class="info">
-              🎮 تعداد اکانت:
-              ${order.items.length}
-            </p>
+              <h3>
+                📦 سفارش
+                ${order.id}
+              </h3>
 
-          </div>
-        `;
+              <p class="info">
+                📅 ${order.date}
+              </p>
 
-      });
+              <p class="info">
+                🎮 تعداد اکانت:
+                ${order.items.length}
+              </p>
+
+            </div>
+
+          `;
+
+        }
+      );
 
 
-      box.innerHTML = html;
+      box.innerHTML =
+        html;
 
     }
 
 
-    /* =========================
-       PANEL
-    ========================= */
+    /* ================= PANEL ================= */
 
     function renderPanel() {
 
       const box =
-        document.getElementById("panelBox");
+        document.getElementById(
+          "panelBox"
+        );
 
 
-      if (!loggedIn || !user) {
+      if (
+        !loggedIn ||
+        !user
+      ) {
 
         box.innerHTML =
           '<div class="empty">برای مشاهده پنل کاربری ابتدا وارد حساب شوید.</div>';
 
         return;
+
       }
 
 
       box.innerHTML = `
 
         <div class="panel-row">
+
           👤 نام کاربری:
-          <strong>${user.username}</strong>
+
+          <strong>
+            ${user.username}
+          </strong>
+
         </div>
 
+
         <div class="panel-row">
+
           📧 ایمیل:
-          <strong>${user.email || "ثبت نشده"}</strong>
+
+          <strong>
+            ${user.email || "ثبت نشده"}
+          </strong>
+
         </div>
 
+
         <div class="panel-row">
+
           🛒 تعداد سبد خرید:
-          <strong>${cart.length}</strong>
+
+          <strong>
+            ${cart.length}
+          </strong>
+
         </div>
 
+
         <div class="panel-row">
+
           📦 تعداد سفارش‌ها:
-          <strong>${orders.length}</strong>
+
+          <strong>
+            ${orders.length}
+          </strong>
+
         </div>
 
+
         <div class="panel-row">
+
           ❤️ علاقه‌مندی‌ها:
-          <strong>۰</strong>
+
+          <strong>
+            ۰
+          </strong>
+
         </div>
+
 
         <button
           class="logout-btn"
@@ -1308,11 +2126,9 @@
     }
 
 
-    /* =========================
-       START
-    ========================= */
+    /* ================= START ================= */
 
-    updateLoginButton();
+    updateUserMenu();
 
     renderCart();
 
