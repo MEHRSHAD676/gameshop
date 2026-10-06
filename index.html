@@ -15,13 +15,18 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: Tahoma, Arial, sans-serif;
             background: #080b16;
-            color: white;
+            color: #ffffff;
         }
 
-        /* هدر */
+        /* ================= HEADER ================= */
+
         header {
             background: #0d1224;
             padding: 18px 7%;
@@ -29,19 +34,20 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #26345f;
+
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 27px;
             font-weight: bold;
             color: #38bdf8;
         }
 
         nav a {
-            color: #ddd;
+            color: #dddddd;
             text-decoration: none;
             margin-right: 25px;
             transition: 0.3s;
@@ -51,23 +57,30 @@
             color: #38bdf8;
         }
 
-        /* صفحه اصلی */
+        /* ================= HERO ================= */
+
         .hero {
             min-height: 430px;
+
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
 
             background:
-                radial-gradient(circle at top, #1d3b75, transparent 55%),
+                radial-gradient(
+                    circle at top,
+                    #1d3b75,
+                    transparent 55%
+                ),
                 #080b16;
         }
 
-        .hero .icon {
-            font-size: 70px;
+        .hero-icon {
+            font-size: 75px;
             margin-bottom: 20px;
         }
 
@@ -83,18 +96,25 @@
         .hero p {
             color: #aeb9d6;
             font-size: 19px;
-            max-width: 600px;
             line-height: 2;
+            max-width: 650px;
         }
 
         .hero-button {
+            display: inline-block;
+
             margin-top: 30px;
-            padding: 14px 30px;
-            border-radius: 10px;
+            padding: 14px 32px;
+
             background: #2563eb;
             color: white;
+
             text-decoration: none;
+
+            border-radius: 10px;
+
             font-size: 17px;
+
             transition: 0.3s;
         }
 
@@ -103,9 +123,10 @@
             transform: translateY(-3px);
         }
 
-        /* محصولات */
+        /* ================= PRODUCTS ================= */
+
         .products {
-            padding: 70px 7%;
+            padding: 75px 7%;
         }
 
         .section-title {
@@ -122,28 +143,47 @@
             color: #8995b3;
         }
 
+        /* کارت‌ها */
+
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
             gap: 25px;
         }
 
         .card {
-            background: linear-gradient(145deg, #141b31, #0e1425);
+            background:
+                linear-gradient(
+                    145deg,
+                    #141b31,
+                    #0e1425
+                );
+
             border: 1px solid #273456;
+
             border-radius: 18px;
+
             padding: 30px;
+
             text-align: center;
+
             transition: 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-7px);
+
             border-color: #38bdf8;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+
+            box-shadow:
+                0 15px 35px
+                rgba(0, 0, 0, 0.35);
         }
 
-        .game {
+        .game-icon {
             font-size: 55px;
             margin-bottom: 15px;
         }
@@ -160,78 +200,116 @@
 
         .price {
             color: #22c55e;
-            font-size: 23px;
+
+            font-size: 22px;
+
             font-weight: bold;
+
             margin-top: 20px;
+        }
+
+        .status {
+            color: #ef4444 !important;
+
+            font-weight: bold;
         }
 
         .buy-button {
-            margin-top: 20px;
             width: 100%;
+
+            margin-top: 20px;
+
             padding: 13px;
+
             border: none;
+
             border-radius: 10px;
-            background: #2563eb;
-            color: white;
+
+            background: #374151;
+
+            color: #9ca3af;
+
             font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
+
+            cursor: not-allowed;
         }
 
-        .buy-button:hover {
-            background: #3b82f6;
-        }
+        /* ================= SUPPORT ================= */
 
-        /* پشتیبانی */
         footer {
             background: #0d1224;
+
             border-top: 1px solid #202b49;
+
             text-align: center;
-            padding: 40px 20px;
+
+            padding: 45px 20px;
+
             color: #7f8ba8;
+
             line-height: 2;
         }
 
         footer h2 {
             color: white;
-            margin-bottom: 10px;
+
+            margin-bottom: 12px;
         }
 
         .support-button {
             display: inline-block;
-            margin-top: 18px;
-            padding: 13px 28px;
+
+            margin-top: 20px;
+
+            padding: 14px 30px;
+
             background: #22c55e;
+
             color: white;
+
             text-decoration: none;
+
             border-radius: 10px;
+
             font-size: 17px;
+
             transition: 0.3s;
         }
 
         .support-button:hover {
             background: #16a34a;
+
             transform: translateY(-3px);
         }
 
         .phone-number {
             color: #38bdf8;
-            font-size: 20px;
+
+            font-size: 21px;
+
             margin-top: 15px;
         }
 
-        /* موبایل */
+        /* ================= MOBILE ================= */
+
         @media (max-width: 600px) {
 
             header {
                 padding: 18px 20px;
+
                 flex-direction: column;
+
                 gap: 15px;
             }
 
             nav a {
                 margin: 0 8px;
+
                 font-size: 14px;
+            }
+
+            .hero {
+                min-height: 400px;
             }
 
             .hero h1 {
@@ -243,15 +321,22 @@
             }
 
             .products {
-                padding: 50px 20px;
+                padding: 55px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
             }
         }
     </style>
 </head>
 
+
 <body>
 
-    <!-- هدر -->
+
+    <!-- ================= HEADER ================= -->
+
     <header>
 
         <div class="logo">
@@ -259,44 +344,67 @@
         </div>
 
         <nav>
-            <a href="#">خانه</a>
-            <a href="#accounts">اکانت‌ها</a>
-            <a href="#contact">پشتیبانی</a>
+
+            <a href="#">
+                خانه
+            </a>
+
+            <a href="#accounts">
+                اکانت‌ها
+            </a>
+
+            <a href="#contact">
+                پشتیبانی
+            </a>
+
         </nav>
 
     </header>
 
 
-    <!-- صفحه اصلی -->
+    <!-- ================= HERO ================= -->
+
     <section class="hero">
 
-        <div class="icon">🎮</div>
+        <div class="hero-icon">
+            🎮
+        </div>
 
         <h1>
             به <span>GameShop</span> خوش آمدید
         </h1>
 
         <p>
-            بهترین اکانت‌های بازی را با مشخصات کامل مشاهده کنید.
-            اکانت مورد نظر خود را انتخاب کنید و برای خرید با پشتیبانی تماس بگیرید.
+            فروشگاه اکانت گیم
+            <br>
+            اکانت‌های مورد نظر خود را در اینجا پیدا کنید.
         </p>
 
-        <a class="hero-button" href="#accounts">
+        <a
+            class="hero-button"
+            href="#accounts"
+        >
             مشاهده اکانت‌ها
         </a>
 
     </section>
 
 
-    <!-- اکانت‌ها -->
-    <section class="products" id="accounts">
+    <!-- ================= ACCOUNTS ================= -->
+
+    <section
+        class="products"
+        id="accounts"
+    >
 
         <div class="section-title">
 
-            <h2>🔥 اکانت‌های ویژه</h2>
+            <h2>
+                🔥 اکانت‌های فروشگاه
+            </h2>
 
             <p>
-                اکانت مورد نظر خود را انتخاب کنید
+                در حال حاضر همه اکانت‌ها ناموجود هستند.
             </p>
 
         </div>
@@ -305,73 +413,381 @@
         <div class="cards">
 
 
-            <!-- اکانت اول -->
+            <!-- ACCOUNT 1 -->
+
             <div class="card">
 
-                <div class="game">🎯</div>
+                <div class="game-icon">
+                    🎯
+                </div>
 
                 <h3>
                     اکانت شماره ۱
                 </h3>
 
-                <p>⭐ لول: 50</p>
-                <p>🎨 اسکین: 20</p>
-                <p>🏆 وضعیت: عالی</p>
+                <p>
+                    ⭐ لول: نامعلوم
+                </p>
+
+                <p>
+                    🎨 اسکین: نامعلوم
+                </p>
+
+                <p class="status">
+                    ❌ وضعیت: ناموجود
+                </p>
 
                 <div class="price">
-                    500,000 تومان
+                    ۰ تومان
                 </div>
 
-                <button class="buy-button" onclick="showMessage()">
-                    مشاهده اکانت
+                <button
+                    class="buy-button"
+                    disabled
+                >
+                    ناموجود
                 </button>
 
             </div>
 
 
-            <!-- اکانت دوم -->
+            <!-- ACCOUNT 2 -->
+
             <div class="card">
 
-                <div class="game">⚔️</div>
+                <div class="game-icon">
+                    ⚔️
+                </div>
 
                 <h3>
                     اکانت شماره ۲
                 </h3>
 
-                <p>⭐ لول: 80</p>
-                <p>🎨 اسکین: 35</p>
-                <p>🏆 وضعیت: عالی</p>
+                <p>
+                    ⭐ لول: نامعلوم
+                </p>
+
+                <p>
+                    🎨 اسکین: نامعلوم
+                </p>
+
+                <p class="status">
+                    ❌ وضعیت: ناموجود
+                </p>
 
                 <div class="price">
-                    800,000 تومان
+                    ۰ تومان
                 </div>
 
-                <button class="buy-button" onclick="showMessage()">
-                    مشاهده اکانت
+                <button
+                    class="buy-button"
+                    disabled
+                >
+                    ناموجود
                 </button>
 
             </div>
 
 
-            <!-- اکانت ویژه -->
+            <!-- ACCOUNT 3 -->
+
             <div class="card">
 
-                <div class="game">🏆</div>
-
-                <h3>
-                    اکانت ویژه
-                </h3>
-
-                <p>⭐ لول: 120</p>
-                <p>🎨 اسکین: 60</p>
-                <p>🏆 وضعیت: فوق‌العاده</p>
-
-                <div class="price">
-                    1,500,000 تومان
+                <div class="game-icon">
+                    🏆
                 </div>
 
-                <button class="buy-button" onclick="showMessage()">
-                    مشاهده اکانت
+                <h3>
+                    اکانت شماره ۳
+                </h3>
+
+                <p>
+                    ⭐ لول: نامعلوم
+                </p>
+
+                <p>
+                    🎨 اسکین: نامعلوم
+                </p>
+
+                <p class="status">
+                    ❌ وضعیت: ناموجود
+                </p>
+
+                <div class="price">
+                    ۰ تومان
+                </div>
+
+                <button
+                    class="buy-button"
+                    disabled
+                >
+                    ناموجود
+                </button>
+
+            </div>
+
+
+            <!-- ACCOUNT 4 -->
+
+            <div class="card">
+
+                <div class="game-icon">
+                    🔥
+                </div>
+
+                <h3>
+                    اکانت شماره ۴
+                </h3>
+
+                <p>
+                    ⭐ لول: نامعلوم
+                </p>
+
+                <p>
+                    🎨 اسکین: نامعلوم
+                </p>
+
+                <p class="status">
+                    ❌ وضعیت: ناموجود
+                </p>
+
+                <div class="price">
+                    ۰ تومان
+                </div>
+
+                <button
+                    class="buy-button"
+                    disabled
+                >
+                    ناموجود
+                </button>
+
+            </div>
+
+
+            <!-- ACCOUNT 5 -->
+
+            <div class="card">
+
+                <div class="game-icon">
+                    💎
+                </div>
+
+                <h3>
+                    اکانت شماره ۵
+                </h3>
+
+                <p>
+                    ⭐ لول: نامعلوم
+                </p>
+
+                <p>
+                    🎨 اسکین: نامعلوم
+                </p>
+
+                <p class="status">
+                    ❌ وضعیت: ناموجود
+                </p>
+
+                <div class="price">
+                    ۰ تومان
+                </div>
+
+                <button
+                    class="buy-button"
+                    disabled
+                >
+                    ناموجود
+                </button>
+
+            </div>
+
+
+            <!-- ACCOUNT 6 -->
+
+            <div class="card">
+
+                <div class="game-icon">
+                    👑
+                </div>
+
+                <h3>
+                    اکانت شماره ۶
+                </h3>
+
+                <p>
+                    ⭐ لول: نامعلوم
+                </p>
+
+                <p>
+                    🎨 اسکین: نامعلوم
+                </p>
+
+                <p class="status">
+                    ❌ وضعیت: ناموجود
+                </p>
+
+                <div class="price">
+                    ۰ تومان
+                </div>
+
+                <button
+                    class="buy-button"
+                    disabled
+                >
+                    ناموجود
+                </button>
+
+            </div>
+
+
+            <!-- ACCOUNT 7 -->
+
+            <div class="card">
+
+                <div class="game-icon">
+                    🚀
+                </div>
+
+                <h3>
+                    اکانت شماره ۷
+                </h3>
+
+                <p>
+                    ⭐ لول: نامعلوم
+                </p>
+
+                <p>
+                    🎨 اسکین: نامعلوم
+                </p>
+
+                <p class="status">
+                    ❌ وضعیت: ناموجود
+                </p>
+
+                <div class="price">
+                    ۰ تومان
+                </div>
+
+                <button
+                    class="buy-button"
+                    disabled
+                >
+                    ناموجود
+                </button>
+
+            </div>
+
+
+            <!-- ACCOUNT 8 -->
+
+            <div class="card">
+
+                <div class="game-icon">
+                    🎮
+                </div>
+
+                <h3>
+                    اکانت شماره ۸
+                </h3>
+
+                <p>
+                    ⭐ لول: نامعلوم
+                </p>
+
+                <p>
+                    🎨 اسکین: نامعلوم
+                </p>
+
+                <p class="status">
+                    ❌ وضعیت: ناموجود
+                </p>
+
+                <div class="price">
+                    ۰ تومان
+                </div>
+
+                <button
+                    class="buy-button"
+                    disabled
+                >
+                    ناموجود
+                </button>
+
+            </div>
+
+
+            <!-- ACCOUNT 9 -->
+
+            <div class="card">
+
+                <div class="game-icon">
+                    💀
+                </div>
+
+                <h3>
+                    اکانت شماره ۹
+                </h3>
+
+                <p>
+                    ⭐ لول: نامعلوم
+                </p>
+
+                <p>
+                    🎨 اسکین: نامعلوم
+                </p>
+
+                <p class="status">
+                    ❌ وضعیت: ناموجود
+                </p>
+
+                <div class="price">
+                    ۰ تومان
+                </div>
+
+                <button
+                    class="buy-button"
+                    disabled
+                >
+                    ناموجود
+                </button>
+
+            </div>
+
+
+            <!-- ACCOUNT 10 -->
+
+            <div class="card">
+
+                <div class="game-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    اکانت شماره ۱۰
+                </h3>
+
+                <p>
+                    ⭐ لول: نامعلوم
+                </p>
+
+                <p>
+                    🎨 اسکین: نامعلوم
+                </p>
+
+                <p class="status">
+                    ❌ وضعیت: ناموجود
+                </p>
+
+                <div class="price">
+                    ۰ تومان
+                </div>
+
+                <button
+                    class="buy-button"
+                    disabled
+                >
+                    ناموجود
                 </button>
 
             </div>
@@ -382,7 +798,8 @@
     </section>
 
 
-    <!-- پشتیبانی -->
+    <!-- ================= SUPPORT ================= -->
+
     <footer id="contact">
 
         <h2>
@@ -390,10 +807,14 @@
         </h2>
 
         <p>
-            برای سوال، خرید یا دریافت راهنمایی با ما تماس بگیرید.
+            برای سوال، خرید یا اطلاعات بیشتر
+            با پشتیبانی تماس بگیرید.
         </p>
 
-        <a class="support-button" href="tel:09339232786">
+        <a
+            class="support-button"
+            href="tel:09339232786"
+        >
             📱 تماس با پشتیبانی
         </a>
 
@@ -410,19 +831,14 @@
     </footer>
 
 
-    <script>
-
-        function showMessage() {
-
-            alert("برای خرید این اکانت با پشتیبانی تماس بگیرید 📞");
-
-        }
-
-    </script>
-
 </body>
 
 </html>
 ```
+
+    
+        
+      
  
+
 
