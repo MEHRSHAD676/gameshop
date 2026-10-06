@@ -2863,6 +2863,18 @@ function init(){
 init();
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+const SUPABASE_URL = "https://gwxurhfiyrefsatyxwpr.supabase.co";
+const SUPABASE_KEY = "sb_publishable_kWYNV4OA3Tt2VN4szEKSYg_axVAPagA";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+console.log("GameShop → Supabase connected");
+</script>
 </body>
 </html>
