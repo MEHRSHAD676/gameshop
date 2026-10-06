@@ -1,2443 +1,1326 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>GameShop | فروشگاه اکانت گیم</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Tahoma, Arial, sans-serif;
-            background: #080b16;
-            color: white;
-        }
-
-        /* ================= HEADER ================= */
-
-        header {
-            background: #0d1224;
-            padding: 17px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #26345f;
-
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 27px;
-            font-weight: bold;
-            color: #38bdf8;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: #ddd;
-            text-decoration: none;
-            transition: .3s;
-        }
-
-        nav a:hover {
-            color: #38bdf8;
-        }
-
-        .header-button {
-            border: none;
-            border-radius: 9px;
-            padding: 10px 15px;
-            color: white;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .login-button {
-            background: #2563eb;
-        }
-
-        .cart-button {
-            background: #7c3aed;
-        }
-
-        .header-button:hover {
-            opacity: .85;
-        }
-
-        /* ================= SALE BANNER ================= */
-
-        .sale-banner {
-            background:
-                linear-gradient(
-                    90deg,
-                    #7c2d12,
-                    #dc2626,
-                    #7f1d1d
-                );
-
-            padding: 15px 20px;
-            text-align: center;
-            border-bottom: 1px solid #ef4444;
-        }
-
-        .sale-banner strong {
-            font-size: 20px;
-        }
-
-        .sale-banner span {
-            color: #fde68a;
-            margin-right: 10px;
-        }
-
-        /* ================= HERO ================= */
-
-        .hero {
-            min-height: 440px;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-            padding: 50px 20px;
-
-            background:
-                radial-gradient(
-                    circle at top,
-                    #1d3b75,
-                    transparent 55%
-                ),
-                #080b16;
-        }
-
-        .hero-icon {
-            font-size: 75px;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 18px;
-        }
-
-        .hero h1 span {
-            color: #38bdf8;
-        }
-
-        .hero p {
-            color: #aeb9d6;
-            font-size: 19px;
-            line-height: 2;
-        }
-
-        .hero-button {
-            display: inline-block;
-            margin-top: 28px;
-            padding: 14px 32px;
-
-            background: #2563eb;
-            color: white;
-
-            text-decoration: none;
-            border-radius: 10px;
-
-            font-size: 17px;
-            transition: .3s;
-        }
-
-        .hero-button:hover {
-            background: #3b82f6;
-            transform: translateY(-3px);
-        }
-
-        /* ================= GENERAL ================= */
-
-        .section {
-            padding: 70px 6%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 34px;
-            margin-bottom: 12px;
-        }
-
-        .section-title p {
-            color: #8995b3;
-        }
-
-        /* ================= PRODUCTS ================= */
-
-        .cards {
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(245px, 1fr));
-
-            gap: 25px;
-        }
-
-        .card {
-            background:
-                linear-gradient(
-                    145deg,
-                    #141b31,
-                    #0e1425
-                );
-
-            border: 1px solid #273456;
-            border-radius: 18px;
-
-            padding: 28px;
-            text-align: center;
-
-            transition: .3s;
-        }
-
-        .card:hover {
-            transform: translateY(-7px);
-
-            border-color: #38bdf8;
-
-            box-shadow:
-                0 15px 35px
-                rgba(0,0,0,.35);
-        }
-
-        .game-icon {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            font-size: 22px;
-            margin-bottom: 18px;
-        }
-
-        .card p {
-            color: #aeb9d6;
-            margin: 9px 0;
-        }
-
-        .price {
-            color: #22c55e;
-            font-size: 21px;
-            font-weight: bold;
-            margin-top: 18px;
-        }
-
-        .status {
-            color: #ef4444 !important;
-            font-weight: bold;
-        }
-
-        .buy-button {
-            width: 100%;
-            margin-top: 18px;
-
-            padding: 12px;
-
-            border: none;
-            border-radius: 9px;
-
-            background: #374151;
-            color: #9ca3af;
-
-            cursor: not-allowed;
-            font-size: 15px;
-        }
-
-        /* ================= CART ================= */
-
-        .cart-section {
-            background: #0b1020;
-            border-top: 1px solid #202b49;
-            border-bottom: 1px solid #202b49;
-        }
-
-        .cart-box {
-            max-width: 900px;
-            margin: auto;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #141b31,
-                    #0e1425
-                );
-
-            border: 1px solid #273456;
-            border-radius: 18px;
-
-            padding: 30px;
-        }
-
-        .cart-empty {
-            text-align: center;
-            color: #8995b3;
-            padding: 30px;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            background: #0b1020;
-            border: 1px solid #273456;
-
-            padding: 18px;
-            border-radius: 12px;
-
-            margin-bottom: 12px;
-        }
-
-        .remove-button {
-            background: #dc2626;
-            color: white;
-            border: none;
-
-            padding: 8px 14px;
-            border-radius: 8px;
-
-            cursor: pointer;
-        }
-
-        .cart-total {
-            border-top: 1px solid #273456;
-            margin-top: 20px;
-            padding-top: 20px;
-
-            display: flex;
-            justify-content: space-between;
-
-            font-size: 20px;
-        }
-
-        .checkout-button {
-            width: 100%;
-            margin-top: 20px;
-
-            padding: 14px;
-
-            background: #22c55e;
-            color: white;
-
-            border: none;
-            border-radius: 10px;
-
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        /* ================= USER PANEL ================= */
-
-        .panel-section {
-            background: #080b16;
-        }
-
-        .panel-box {
-            max-width: 950px;
-            margin: auto;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #141b31,
-                    #0e1425
-                );
-
-            border: 1px solid #273456;
-            border-radius: 20px;
-
-            padding: 35px;
-        }
-
-        .panel-title {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .panel-title h2 {
-            color: #38bdf8;
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        .panel-title p {
-            color: #8995b3;
-        }
-
-        .panel-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 18px;
-        }
-
-        .panel-item {
-            background: #0b1020;
-            border: 1px solid #273456;
-
-            padding: 25px;
-            border-radius: 14px;
-
-            text-align: center;
-            transition: .3s;
-        }
-
-        .panel-item:hover {
-            border-color: #38bdf8;
-            transform: translateY(-4px);
-        }
-
-        .panel-icon {
-            font-size: 35px;
-            margin-bottom: 10px;
-        }
-
-        .panel-item h3 {
-            margin-bottom: 8px;
-        }
-
-        .panel-item p {
-            color: #8995b3;
-        }
-
-        .logout-button {
-            width: 100%;
-
-            margin-top: 25px;
-            padding: 13px;
-
-            background: #dc2626;
-            color: white;
-
-            border: none;
-            border-radius: 10px;
-
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        /* ================= ORDERS ================= */
-
-        .orders-box {
-            max-width: 950px;
-            margin: auto;
-        }
-
-        .order {
-            background:
-                linear-gradient(
-                    145deg,
-                    #141b31,
-                    #0e1425
-                );
-
-            border: 1px solid #273456;
-
-            padding: 22px;
-            border-radius: 14px;
-
-            margin-bottom: 15px;
-        }
-
-        .order-top {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-        }
-
-        .order-number {
-            color: #38bdf8;
-        }
-
-        .order-status {
-            color: #f59e0b;
-        }
-
-        .no-orders {
-            text-align: center;
-            color: #8995b3;
-            padding: 30px;
-        }
-
-        /* ================= MODAL ================= */
-
-        .modal {
-            display: none;
-
-            position: fixed;
-            inset: 0;
-
-            background: rgba(0,0,0,.78);
-
-            z-index: 3000;
-
-            justify-content: center;
-            align-items: center;
-
-            padding: 20px;
-        }
-
-        .modal-box {
-            width: 100%;
-            max-width: 430px;
-
-            background: #10172b;
-
-            border: 1px solid #2d3b66;
-            border-radius: 18px;
-
-            padding: 30px;
-
-            position: relative;
-        }
-
-        .close {
-            position: absolute;
-
-            top: 10px;
-            left: 15px;
-
-            background: none;
-            border: none;
-
-            color: #aaa;
-
-            font-size: 27px;
-            cursor: pointer;
-        }
-
-        .modal-box h2 {
-            text-align: center;
-            color: #38bdf8;
-
-            margin-bottom: 25px;
-        }
-
-        .input-group {
-            margin-bottom: 16px;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #cbd5e1;
-        }
-
-        .input-group input {
-            width: 100%;
-
-            padding: 13px;
-
-            border-radius: 9px;
-            border: 1px solid #334155;
-
-            background: #080b16;
-            color: white;
-
-            outline: none;
-        }
-
-        .input-group input:focus {
-            border-color: #38bdf8;
-        }
-
-        .submit-button {
-            width: 100%;
-
-            padding: 13px;
-
-            border: none;
-            border-radius: 9px;
-
-            background: #2563eb;
-            color: white;
-
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .switch-text {
-            text-align: center;
-
-            color: #8995b3;
-
-            margin-top: 18px;
-
-            cursor: pointer;
-        }
-
-        .switch-text span {
-            color: #38bdf8;
-        }
-
-        .message {
-            text-align: center;
-            min-height: 22px;
-            margin-top: 12px;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            background: #0d1224;
-
-            border-top: 1px solid #202b49;
-
-            text-align: center;
-
-            padding: 45px 20px;
-
-            color: #7f8ba8;
-
-            line-height: 2;
-        }
-
-        footer h2 {
-            color: white;
-            margin-bottom: 12px;
-        }
-
-        .support-button {
-            display: inline-block;
-
-            margin-top: 20px;
-
-            padding: 14px 30px;
-
-            background: #22c55e;
-            color: white;
-
-            text-decoration: none;
-
-            border-radius: 10px;
-        }
-
-        .phone-number {
-            color: #38bdf8;
-            font-size: 21px;
-            margin-top: 15px;
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 700px) {
-
-            header {
-                flex-direction: column;
-                gap: 15px;
-                padding: 18px 20px;
-            }
-
-            nav {
-                justify-content: center;
-            }
-
-            .hero h1 {
-                font-size: 34px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .section {
-                padding: 55px 20px;
-            }
-
-            .panel-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .panel-box {
-                padding: 22px;
-            }
-
-            .cart-item {
-                gap: 12px;
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .order-top {
-                flex-direction: column;
-                gap: 8px;
-            }
-
-        }
-
-    </style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GameShop | فروشگاه اکانت گیم</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: #080b12;
+      color: #fff;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 11, 18, 0.95);
+      border-bottom: 1px solid #202938;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      min-height: 70px;
+      padding: 0 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #38bdf8;
+      white-space: nowrap;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .menu a,
+    .menu button {
+      border: 0;
+      background: transparent;
+      color: #d1d5db;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .menu a:hover,
+    .menu button:hover {
+      background: #172033;
+      color: #38bdf8;
+    }
+
+    .cart-count {
+      color: #22c55e;
+      font-weight: bold;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 500px;
+      padding: 100px 20px;
+      text-align: center;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        radial-gradient(circle at top, #12304a 0%, #080b12 55%);
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+    }
+
+    .hero p {
+      color: #aeb7c7;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .main-btn {
+      display: inline-block;
+      border: 0;
+      background: #38bdf8;
+      color: #061018;
+      padding: 13px 25px;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .main-btn:hover {
+      transform: translateY(-2px);
+      background: #67cffc;
+    }
+
+    /* PROMO */
+    .promo {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 25px;
+      border-radius: 18px;
+      text-align: center;
+
+      background: linear-gradient(135deg, #172033, #102536);
+      border: 1px solid #28435b;
+    }
+
+    .promo h2 {
+      color: #facc15;
+      margin-bottom: 8px;
+    }
+
+    .promo p {
+      color: #cbd5e1;
+    }
+
+    /* SECTIONS */
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 70px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 35px;
+    }
+
+    .section-title span {
+      color: #38bdf8;
+    }
+
+    /* ACCOUNTS */
+    .accounts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .account-card {
+      background: #111722;
+      border: 1px solid #222c3c;
+      border-radius: 18px;
+      padding: 25px;
+      transition: 0.25s;
+    }
+
+    .account-card:hover {
+      transform: translateY(-5px);
+      border-color: #38bdf8;
+    }
+
+    .account-icon {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .account-card h3 {
+      margin-bottom: 15px;
+    }
+
+    .info {
+      color: #aeb7c7;
+      margin: 7px 0;
+    }
+
+    .price {
+      margin-top: 18px;
+      color: #22c55e;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .unavailable {
+      display: block;
+      margin-top: 15px;
+      padding: 9px;
+      border-radius: 10px;
+      background: #30151a;
+      color: #f87171;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* ABOUT */
+    .about-box {
+      max-width: 850px;
+      margin: auto;
+      padding: 35px;
+      background: #111722;
+      border: 1px solid #222c3c;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .about-box h2 {
+      color: #38bdf8;
+      margin-bottom: 20px;
+    }
+
+    .about-box p {
+      color: #cbd5e1;
+      margin: 12px 0;
+    }
+
+    .about-box strong {
+      color: #fff;
+    }
+
+    /* CART */
+    .cart-box,
+    .orders-box,
+    .panel-box {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+      background: #111722;
+      border: 1px solid #222c3c;
+      border-radius: 20px;
+    }
+
+    .empty {
+      text-align: center;
+      color: #94a3b8;
+      padding: 25px;
+    }
+
+    .cart-item,
+    .order-item {
+      padding: 18px 0;
+      border-bottom: 1px solid #253044;
+    }
+
+    .cart-item:last-child,
+    .order-item:last-child {
+      border-bottom: 0;
+    }
+
+    .remove-btn {
+      margin-top: 10px;
+      border: 0;
+      padding: 7px 12px;
+      border-radius: 8px;
+      background: #3b1720;
+      color: #f87171;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      margin-top: 20px;
+      border: 0;
+      padding: 13px;
+      border-radius: 10px;
+      background: #22c55e;
+      color: #061009;
+      font-weight: bold;
+    }
+
+    /* PANEL */
+    .panel-row {
+      padding: 15px 0;
+      border-bottom: 1px solid #253044;
+      color: #cbd5e1;
+    }
+
+    .panel-row:last-child {
+      border-bottom: 0;
+    }
+
+    .logout-btn {
+      margin-top: 20px;
+      border: 0;
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: #ef4444;
+      color: white;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 50px;
+      padding: 45px 20px;
+      background: #05070b;
+      border-top: 1px solid #202938;
+      text-align: center;
+    }
+
+    footer h3 {
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      color: #94a3b8;
+      margin: 6px 0;
+    }
+
+    .call-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: #22c55e;
+      color: #041008;
+      font-weight: bold;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+
+      background: rgba(0, 0, 0, 0.75);
+
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 430px;
+      background: #111722;
+      border: 1px solid #29354a;
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      left: 18px;
+      top: 15px;
+
+      border: 0;
+      background: transparent;
+      color: #94a3b8;
+      font-size: 24px;
+    }
+
+    .modal-box h2 {
+      margin-bottom: 20px;
+      color: #38bdf8;
+    }
+
+    .modal-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+
+      border: 1px solid #2b374b;
+      border-radius: 10px;
+      outline: none;
+
+      background: #080b12;
+      color: white;
+    }
+
+    .modal-box input:focus {
+      border-color: #38bdf8;
+    }
+
+    .form-btn {
+      width: 100%;
+      border: 0;
+      padding: 12px;
+      border-radius: 10px;
+      background: #38bdf8;
+      color: #061018;
+      font-weight: bold;
+    }
+
+    .switch {
+      margin-top: 15px;
+      text-align: center;
+      color: #94a3b8;
+      cursor: pointer;
+    }
+
+    .switch:hover {
+      color: #38bdf8;
+    }
+
+    /* MOBILE */
+    @media (max-width: 850px) {
+      .accounts {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .nav {
+        flex-direction: column;
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .accounts {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 430px;
+        padding: 70px 20px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .menu {
+        gap: 2px;
+      }
+
+      .menu a,
+      .menu button {
+        font-size: 12px;
+        padding: 7px 8px;
+      }
+
+      .about-box,
+      .cart-box,
+      .orders-box,
+      .panel-box {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
+  <!-- HEADER -->
+  <header>
+    <div class="nav">
 
-<!-- ================= HEADER ================= -->
+      <a href="#home" class="logo">🎮 GameShop</a>
 
-<header>
-
-    <div class="logo">
-        🎮 GameShop
-    </div>
-
-    <nav>
-
-        <a href="#">
-            خانه
-        </a>
-
-        <a href="#accounts">
-            اکانت‌ها
-        </a>
+      <nav class="menu">
+        <a href="#home">خانه</a>
+        <a href="#accounts">اکانت‌ها</a>
+        <a href="#about">توضیحات سایت</a>
 
         <a href="#cart">
-            🛒 سبد خرید
+          🛒 سبد خرید
+          <span class="cart-count" id="cartCount">0</span>
         </a>
 
-        <a href="#user-panel">
-            👤 پنل کاربری
-        </a>
+        <a href="#orders">📦 سفارش‌های من</a>
 
-        <a href="#orders">
-            📦 سفارش‌های من
-        </a>
-
-        <button
-            class="header-button cart-button"
-            onclick="goToCart()"
-        >
-            🛒 سبد
-            <span id="cartCount">0</span>
+        <button id="loginButton" onclick="openLogin()">
+          👤 ورود / ثبت‌نام
         </button>
+      </nav>
 
-        <button
-            class="header-button login-button"
-            onclick="openLogin()"
-        >
-            👤 ورود / ثبت‌نام
-        </button>
-
-    </nav>
-
-</header>
-
-
-<!-- ================= SALE ================= -->
-
-<div class="sale-banner">
-
-    🔥
-    <strong>
-        پیشنهاد ویژه GameShop
-    </strong>
-
-    <span>
-        تخفیف‌های ویژه به‌زودی فعال می‌شوند!
-    </span>
-
-</div>
-
-
-<!-- ================= HERO ================= -->
-
-<section class="hero">
-
-    <div class="hero-icon">
-        🎮
     </div>
+  </header>
 
-    <h1>
-        به
-        <span>
-            GameShop
-        </span>
-        خوش آمدید
-    </h1>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+
+      <h1>
+        به <span>GameShop</span> خوش آمدید 🎮
+      </h1>
+
+      <p>
+        فروشگاه خرید و فروش اکانت‌های بازی
+      </p>
+
+      <a href="#accounts" class="main-btn">
+        مشاهده اکانت‌ها
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- PROMO -->
+  <div class="promo">
+    <h2>🔥 پیشنهاد ویژه GameShop</h2>
 
     <p>
-        فروشگاه حرفه‌ای اکانت گیم
-        <br>
-        اکانت مورد علاقه خود را پیدا کنید.
+      تخفیف‌ها و پیشنهادهای ویژه به‌زودی فعال می‌شوند!
+    </p>
+  </div>
+
+
+  <!-- ACCOUNTS -->
+  <section class="section" id="accounts">
+
+    <h2 class="section-title">
+      🎮 <span>اکانت‌های بازی</span>
+    </h2>
+
+    <div class="accounts">
+
+      <div class="account-card">
+        <div class="account-icon">🎯</div>
+        <h3>اکانت شماره 1</h3>
+        <p class="info">⭐ لول: نامعلوم</p>
+        <p class="info">🎨 اسکین: نامعلوم</p>
+        <p class="price">۰ تومان</p>
+        <span class="unavailable">❌ وضعیت: ناموجود</span>
+      </div>
+
+      <div class="account-card">
+        <div class="account-icon">⚔️</div>
+        <h3>اکانت شماره 2</h3>
+        <p class="info">⭐ لول: نامعلوم</p>
+        <p class="info">🎨 اسکین: نامعلوم</p>
+        <p class="price">۰ تومان</p>
+        <span class="unavailable">❌ وضعیت: ناموجود</span>
+      </div>
+
+      <div class="account-card">
+        <div class="account-icon">🏆</div>
+        <h3>اکانت شماره 3</h3>
+        <p class="info">⭐ لول: نامعلوم</p>
+        <p class="info">🎨 اسکین: نامعلوم</p>
+        <p class="price">۰ تومان</p>
+        <span class="unavailable">❌ وضعیت: ناموجود</span>
+      </div>
+
+      <div class="account-card">
+        <div class="account-icon">🔥</div>
+        <h3>اکانت شماره 4</h3>
+        <p class="info">⭐ لول: نامعلوم</p>
+        <p class="info">🎨 اسکین: نامعلوم</p>
+        <p class="price">۰ تومان</p>
+        <span class="unavailable">❌ وضعیت: ناموجود</span>
+      </div>
+
+      <div class="account-card">
+        <div class="account-icon">💎</div>
+        <h3>اکانت شماره 5</h3>
+        <p class="info">⭐ لول: نامعلوم</p>
+        <p class="info">🎨 اسکین: نامعلوم</p>
+        <p class="price">۰ تومان</p>
+        <span class="unavailable">❌ وضعیت: ناموجود</span>
+      </div>
+
+      <div class="account-card">
+        <div class="account-icon">👑</div>
+        <h3>اکانت شماره 6</h3>
+        <p class="info">⭐ لول: نامعلوم</p>
+        <p class="info">🎨 اسکین: نامعلوم</p>
+        <p class="price">۰ تومان</p>
+        <span class="unavailable">❌ وضعیت: ناموجود</span>
+      </div>
+
+      <div class="account-card">
+        <div class="account-icon">🚀</div>
+        <h3>اکانت شماره 7</h3>
+        <p class="info">⭐ لول: نامعلوم</p>
+        <p class="info">🎨 اسکین: نامعلوم</p>
+        <p class="price">۰ تومان</p>
+        <span class="unavailable">❌ وضعیت: ناموجود</span>
+      </div>
+
+      <div class="account-card">
+        <div class="account-icon">🎮</div>
+        <h3>اکانت شماره 8</h3>
+        <p class="info">⭐ لول: نامعلوم</p>
+        <p class="info">🎨 اسکین: نامعلوم</p>
+        <p class="price">۰ تومان</p>
+        <span class="unavailable">❌ وضعیت: ناموجود</span>
+      </div>
+
+      <div class="account-card">
+        <div class="account-icon">💀</div>
+        <h3>اکانت شماره 9</h3>
+        <p class="info">⭐ لول: نامعلوم</p>
+        <p class="info">🎨 اسکین: نامعلوم</p>
+        <p class="price">۰ تومان</p>
+        <span class="unavailable">❌ وضعیت: ناموجود</span>
+      </div>
+
+      <div class="account-card">
+        <div class="account-icon">⚡</div>
+        <h3>اکانت شماره 10</h3>
+        <p class="info">⭐ لول: نامعلوم</p>
+        <p class="info">🎨 اسکین: نامعلوم</p>
+        <p class="price">۰ تومان</p>
+        <span class="unavailable">❌ وضعیت: ناموجود</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+
+    <div class="about-box">
+
+      <h2>📢 توضیحات سایت</h2>
+
+      <p>
+        این سایت برای
+        <strong>خرید و فروش اکانت‌های بازی</strong>
+        ساخته شده است.
+      </p>
+
+      <p>
+        اگر می‌خواهید اکانتی خریداری کنید یا قصد فروش اکانت خود را دارید،
+        می‌توانید با پشتیبانی GameShop تماس بگیرید.
+      </p>
+
+      <p>
+        ⏰ <strong>زمان پاسخگویی پشتیبانی:</strong>
+        بین <strong>۱ تا ۲۴ ساعت</strong>
+      </p>
+
+      <p>
+        📞 برای خرید، فروش یا دریافت اطلاعات بیشتر،
+        با پشتیبانی در ارتباط باشید.
+      </p>
+
+      <p>
+        با تشکر از اعتماد و همراهی شما ❤️
+      </p>
+
+      <strong>🎮 تیم GameShop</strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- CART -->
+  <section class="section" id="cart">
+
+    <h2 class="section-title">
+      🛒 <span>سبد خرید</span>
+    </h2>
+
+    <div class="cart-box" id="cartBox">
+      <div class="empty">
+        سبد خرید شما خالی است.
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ORDERS -->
+  <section class="section" id="orders">
+
+    <h2 class="section-title">
+      📦 <span>سفارش‌های من</span>
+    </h2>
+
+    <div class="orders-box" id="ordersBox">
+      <div class="empty">
+        هنوز سفارشی ثبت نشده است.
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- USER PANEL -->
+  <section class="section" id="panel">
+
+    <h2 class="section-title">
+      👤 <span>پنل کاربری</span>
+    </h2>
+
+    <div class="panel-box" id="panelBox">
+
+      <div class="empty">
+        برای مشاهده پنل کاربری ابتدا وارد حساب شوید.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <h3>🎮 GameShop</h3>
+
+    <p>
+      فروشگاه خرید و فروش اکانت‌های بازی
     </p>
 
-    <a
-        class="hero-button"
-        href="#accounts"
-    >
-        مشاهده اکانت‌ها
+    <p>
+      📞 پشتیبانی: 09339232786
+    </p>
+
+    <a class="call-btn" href="tel:09339232786">
+      تماس با پشتیبانی
     </a>
 
-</section>
+    <p style="margin-top:20px;">
+      © 2026 GameShop - تمامی حقوق محفوظ است.
+    </p>
 
+  </footer>
 
-<!-- ================= ACCOUNTS ================= -->
 
-<section
-    class="section"
-    id="accounts"
->
-
-    <div class="section-title">
-
-        <h2>
-            🔥 اکانت‌های فروشگاه
-        </h2>
-
-        <p>
-            اکانت‌های جدید به‌زودی اضافه می‌شوند.
-        </p>
-
-    </div>
-
-
-    <div class="cards">
-
-
-        <!-- ACCOUNT 1 -->
-
-        <div class="card">
-
-            <div class="game-icon">
-                🎯
-            </div>
-
-            <h3>
-                اکانت شماره ۱
-            </h3>
-
-            <p>
-                ⭐ لول: نامعلوم
-            </p>
-
-            <p>
-                🎨 اسکین: نامعلوم
-            </p>
-
-            <p class="status">
-                ❌ وضعیت: ناموجود
-            </p>
-
-            <div class="price">
-                ۰ تومان
-            </div>
-
-            <button
-                class="buy-button"
-                disabled
-            >
-                ناموجود
-            </button>
-
-        </div>
-
-
-        <!-- ACCOUNT 2 -->
-
-        <div class="card">
-
-            <div class="game-icon">
-                ⚔️
-            </div>
-
-            <h3>
-                اکانت شماره ۲
-            </h3>
-
-            <p>
-                ⭐ لول: نامعلوم
-            </p>
-
-            <p>
-                🎨 اسکین: نامعلوم
-            </p>
-
-            <p class="status">
-                ❌ وضعیت: ناموجود
-            </p>
-
-            <div class="price">
-                ۰ تومان
-            </div>
-
-            <button
-                class="buy-button"
-                disabled
-            >
-                ناموجود
-            </button>
-
-        </div>
-
-
-        <!-- ACCOUNT 3 -->
-
-        <div class="card">
-
-            <div class="game-icon">
-                🏆
-            </div>
-
-            <h3>
-                اکانت شماره ۳
-            </h3>
-
-            <p>
-                ⭐ لول: نامعلوم
-            </p>
-
-            <p>
-                🎨 اسکین: نامعلوم
-            </p>
-
-            <p class="status">
-                ❌ وضعیت: ناموجود
-            </p>
-
-            <div class="price">
-                ۰ تومان
-            </div>
-
-            <button
-                class="buy-button"
-                disabled
-            >
-                ناموجود
-            </button>
-
-        </div>
-
-
-        <!-- ACCOUNT 4 -->
-
-        <div class="card">
-
-            <div class="game-icon">
-                🔥
-            </div>
-
-            <h3>
-                اکانت شماره ۴
-            </h3>
-
-            <p>
-                ⭐ لول: نامعلوم
-            </p>
-
-            <p>
-                🎨 اسکین: نامعلوم
-            </p>
-
-            <p class="status">
-                ❌ وضعیت: ناموجود
-            </p>
-
-            <div class="price">
-                ۰ تومان
-            </div>
-
-            <button
-                class="buy-button"
-                disabled
-            >
-                ناموجود
-            </button>
-
-        </div>
-
-
-        <!-- ACCOUNT 5 -->
-
-        <div class="card">
-
-            <div class="game-icon">
-                💎
-            </div>
-
-            <h3>
-                اکانت شماره ۵
-            </h3>
-
-            <p>
-                ⭐ لول: نامعلوم
-            </p>
-
-            <p>
-                🎨 اسکین: نامعلوم
-            </p>
-
-            <p class="status">
-                ❌ وضعیت: ناموجود
-            </p>
-
-            <div class="price">
-                ۰ تومان
-            </div>
-
-            <button
-                class="buy-button"
-                disabled
-            >
-                ناموجود
-            </button>
-
-        </div>
-
-
-        <!-- ACCOUNT 6 -->
-
-        <div class="card">
-
-            <div class="game-icon">
-                👑
-            </div>
-
-            <h3>
-                اکانت شماره ۶
-            </h3>
-
-            <p>
-                ⭐ لول: نامعلوم
-            </p>
-
-            <p>
-                🎨 اسکین: نامعلوم
-            </p>
-
-            <p class="status">
-                ❌ وضعیت: ناموجود
-            </p>
-
-            <div class="price">
-                ۰ تومان
-            </div>
-
-            <button
-                class="buy-button"
-                disabled
-            >
-                ناموجود
-            </button>
-
-        </div>
-
-
-        <!-- ACCOUNT 7 -->
-
-        <div class="card">
-
-            <div class="game-icon">
-                🚀
-            </div>
-
-            <h3>
-                اکانت شماره ۷
-            </h3>
-
-            <p>
-                ⭐ لول: نامعلوم
-            </p>
-
-            <p>
-                🎨 اسکین: نامعلوم
-            </p>
-
-            <p class="status">
-                ❌ وضعیت: ناموجود
-            </p>
-
-            <div class="price">
-                ۰ تومان
-            </div>
-
-            <button
-                class="buy-button"
-                disabled
-            >
-                ناموجود
-            </button>
-
-        </div>
-
-
-        <!-- ACCOUNT 8 -->
-
-        <div class="card">
-
-            <div class="game-icon">
-                🎮
-            </div>
-
-            <h3>
-                اکانت شماره ۸
-            </h3>
-
-            <p>
-                ⭐ لول: نامعلوم
-            </p>
-
-            <p>
-                🎨 اسکین: نامعلوم
-            </p>
-
-            <p class="status">
-                ❌ وضعیت: ناموجود
-            </p>
-
-            <div class="price">
-                ۰ تومان
-            </div>
-
-            <button
-                class="buy-button"
-                disabled
-            >
-                ناموجود
-            </button>
-
-        </div>
-
-
-        <!-- ACCOUNT 9 -->
-
-        <div class="card">
-
-            <div class="game-icon">
-                💀
-            </div>
-
-            <h3>
-                اکانت شماره ۹
-            </h3>
-
-            <p>
-                ⭐ لول: نامعلوم
-            </p>
-
-            <p>
-                🎨 اسکین: نامعلوم
-            </p>
-
-            <p class="status">
-                ❌ وضعیت: ناموجود
-            </p>
-
-            <div class="price">
-                ۰ تومان
-            </div>
-
-            <button
-                class="buy-button"
-                disabled
-            >
-                ناموجود
-            </button>
-
-        </div>
-
-
-        <!-- ACCOUNT 10 -->
-
-        <div class="card">
-
-            <div class="game-icon">
-                ⚡
-            </div>
-
-            <h3>
-                اکانت شماره ۱۰
-            </h3>
-
-            <p>
-                ⭐ لول: نامعلوم
-            </p>
-
-            <p>
-                🎨 اسکین: نامعلوم
-            </p>
-
-            <p class="status">
-                ❌ وضعیت: ناموجود
-            </p>
-
-            <div class="price">
-                ۰ تومان
-            </div>
-
-            <button
-                class="buy-button"
-                disabled
-            >
-                ناموجود
-            </button>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- ================= CART ================= -->
-
-<section
-    class="section cart-section"
-    id="cart"
->
-
-    <div class="section-title">
-
-        <h2>
-            🛒 سبد خرید
-        </h2>
-
-        <p>
-            اکانت‌های انتخاب‌شده شما
-        </p>
-
-    </div>
-
-
-    <div class="cart-box">
-
-        <div
-            id="cartItems"
-            class="cart-empty"
-        >
-            🛒 سبد خرید شما خالی است.
-        </div>
-
-        <div
-            class="cart-total"
-            id="cartTotal"
-            style="display:none;"
-        >
-
-            <span>
-                مجموع:
-            </span>
-
-            <strong>
-                ۰ تومان
-            </strong>
-
-        </div>
-
-        <button
-            class="checkout-button"
-            id="checkoutButton"
-            style="display:none;"
-            onclick="checkout()"
-        >
-            ثبت سفارش
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ================= USER PANEL ================= -->
-
-<section
-    class="section panel-section"
-    id="user-panel"
->
-
-    <div class="panel-box">
-
-        <div class="panel-title">
-
-            <h2>
-                👤 پنل کاربری
-            </h2>
-
-            <p id="welcomeText">
-                برای مشاهده حساب وارد شوید.
-            </p>
-
-        </div>
-
-
-        <div class="panel-grid">
-
-
-            <div class="panel-item">
-
-                <div class="panel-icon">
-                    👤
-                </div>
-
-                <h3>
-                    حساب من
-                </h3>
-
-                <p id="usernameDisplay">
-                    وارد نشده‌اید
-                </p>
-
-            </div>
-
-
-            <div class="panel-item">
-
-                <div class="panel-icon">
-                    📦
-                </div>
-
-                <h3>
-                    سفارش‌های من
-                </h3>
-
-                <p id="orderCount">
-                    ۰ سفارش
-                </p>
-
-            </div>
-
-
-            <div class="panel-item">
-
-                <div class="panel-icon">
-                    🛒
-                </div>
-
-                <h3>
-                    سبد خرید
-                </h3>
-
-                <p id="panelCartCount">
-                    ۰ اکانت
-                </p>
-
-            </div>
-
-
-            <div class="panel-item">
-
-                <div class="panel-icon">
-                    ❤️
-                </div>
-
-                <h3>
-                    علاقه‌مندی‌ها
-                </h3>
-
-                <p>
-                    ۰ اکانت
-                </p>
-
-            </div>
-
-
-            <div class="panel-item">
-
-                <div class="panel-icon">
-                    🎮
-                </div>
-
-                <h3>
-                    اکانت‌های خریداری‌شده
-                </h3>
-
-                <p>
-                    ۰ اکانت
-                </p>
-
-            </div>
-
-
-            <div class="panel-item">
-
-                <div class="panel-icon">
-                    ⚙️
-                </div>
-
-                <h3>
-                    تنظیمات حساب
-                </h3>
-
-                <p>
-                    مدیریت حساب
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-        <button
-            class="logout-button"
-            onclick="logout()"
-        >
-            🚪 خروج از حساب
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ================= ORDERS ================= -->
-
-<section
-    class="section"
-    id="orders"
->
-
-    <div class="section-title">
-
-        <h2>
-            📦 سفارش‌های من
-        </h2>
-
-        <p>
-            تاریخچه سفارش‌های شما
-        </p>
-
-    </div>
-
-
-    <div
-        class="orders-box"
-        id="ordersList"
-    >
-
-        <div class="no-orders">
-            📦 هنوز سفارشی ثبت نشده است.
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= LOGIN MODAL ================= -->
-
-<div
-    class="modal"
-    id="accountModal"
->
+  <!-- LOGIN MODAL -->
+  <div class="modal" id="loginModal">
 
     <div class="modal-box">
 
-        <button
-            class="close"
-            onclick="closeModal()"
+      <button class="close" onclick="closeModal()">×</button>
+
+      <h2 id="modalTitle">ورود به حساب</h2>
+
+      <form id="authForm">
+
+        <input
+          type="text"
+          id="username"
+          placeholder="نام کاربری"
+          required
         >
-            ×
+
+        <input
+          type="email"
+          id="email"
+          placeholder="ایمیل"
+          style="display:none;"
+        >
+
+        <input
+          type="password"
+          id="password"
+          placeholder="رمز عبور"
+          required
+        >
+
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="تکرار رمز عبور"
+          style="display:none;"
+        >
+
+        <button class="form-btn" type="submit">
+          ورود
         </button>
 
+      </form>
 
-        <h2 id="modalTitle">
-            👤 ورود به حساب
-        </h2>
-
-
-        <!-- LOGIN -->
-
-        <form id="loginForm">
-
-            <div class="input-group">
-
-                <label>
-                    👤 نام کاربری
-                </label>
-
-                <input
-                    type="text"
-                    id="loginUsername"
-                    placeholder="نام کاربری"
-                    required
-                >
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>
-                    🔒 رمز عبور
-                </label>
-
-                <input
-                    type="password"
-                    id="loginPassword"
-                    placeholder="رمز عبور"
-                    required
-                >
-
-            </div>
-
-
-            <button
-                class="submit-button"
-                type="submit"
-            >
-                ورود
-            </button>
-
-
-            <div
-                class="message"
-                id="loginMessage"
-            ></div>
-
-
-            <p
-                class="switch-text"
-                onclick="showRegister()"
-            >
-                حساب ندارید؟
-                <span>
-                    ثبت‌نام کنید
-                </span>
-            </p>
-
-        </form>
-
-
-        <!-- REGISTER -->
-
-        <form
-            id="registerForm"
-            style="display:none;"
-        >
-
-            <div class="input-group">
-
-                <label>
-                    👤 نام کاربری
-                </label>
-
-                <input
-                    type="text"
-                    id="registerUsername"
-                    placeholder="نام کاربری"
-                    required
-                >
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>
-                    📧 ایمیل
-                </label>
-
-                <input
-                    type="email"
-                    id="registerEmail"
-                    placeholder="ایمیل"
-                    required
-                >
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>
-                    🔒 رمز عبور
-                </label>
-
-                <input
-                    type="password"
-                    id="registerPassword"
-                    placeholder="رمز عبور"
-                    required
-                >
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>
-                    🔒 تکرار رمز عبور
-                </label>
-
-                <input
-                    type="password"
-                    id="registerPassword2"
-                    placeholder="تکرار رمز عبور"
-                    required
-                >
-
-            </div>
-
-
-            <button
-                class="submit-button"
-                type="submit"
-            >
-                ساخت حساب
-            </button>
-
-
-            <div
-                class="message"
-                id="registerMessage"
-            ></div>
-
-
-            <p
-                class="switch-text"
-                onclick="showLogin()"
-            >
-                قبلاً حساب دارید؟
-                <span>
-                    وارد شوید
-                </span>
-            </p>
-
-        </form>
+      <div class="switch" id="switchText" onclick="switchAuth()">
+        حساب ندارید؟ ثبت‌نام کنید
+      </div>
 
     </div>
 
-</div>
+  </div>
 
 
-<!-- ================= FOOTER ================= -->
+  <script>
 
-<footer id="contact">
+    /* =========================
+       DATA
+    ========================= */
 
-    <h2>
-        📞 پشتیبانی GameShop
-    </h2>
+    let cart = JSON.parse(localStorage.getItem("gameshopCart")) || [];
 
-    <p>
-        برای سوال، خرید یا اطلاعات بیشتر
-        با پشتیبانی تماس بگیرید.
-    </p>
+    let orders = JSON.parse(localStorage.getItem("gameshopOrders")) || [];
 
-    <a
-        class="support-button"
-        href="tel:09339232786"
-    >
-        📱 تماس با پشتیبانی
-    </a>
+    let user = JSON.parse(localStorage.getItem("gameshopUser")) || null;
 
-    <p class="phone-number">
-        09339232786
-    </p>
+    let loggedIn =
+      localStorage.getItem("gameshopLoggedIn") === "true";
 
-    <br>
-
-    <p>
-        © 2026 GameShop
-    </p>
-
-</footer>
+    let isRegister = false;
 
 
-<script>
-
-    /* ================= DATA ================= */
-
-    let cart =
-        JSON.parse(
-            localStorage.getItem("gameshopCart")
-        ) || [];
-
-    let orders =
-        JSON.parse(
-            localStorage.getItem("gameshopOrders")
-        ) || [];
-
-
-    /* ================= MODAL ================= */
-
-    const modal =
-        document.getElementById("accountModal");
-
+    /* =========================
+       LOGIN
+    ========================= */
 
     function openLogin() {
 
-        modal.style.display = "flex";
+      if (loggedIn) {
+        document
+          .getElementById("panel")
+          .scrollIntoView({ behavior: "smooth" });
 
-        showLogin();
+        renderPanel();
+
+        return;
+      }
+
+      document
+        .getElementById("loginModal")
+        .classList.add("active");
 
     }
 
 
     function closeModal() {
 
-        modal.style.display = "none";
+      document
+        .getElementById("loginModal")
+        .classList.remove("active");
 
     }
 
 
-    function showLogin() {
+    function switchAuth() {
 
-        document.getElementById(
-            "loginForm"
-        ).style.display = "block";
+      isRegister = !isRegister;
 
-        document.getElementById(
-            "registerForm"
-        ).style.display = "none";
+      const title =
+        document.getElementById("modalTitle");
 
-        document.getElementById(
-            "modalTitle"
-        ).innerText = "👤 ورود به حساب";
+      const email =
+        document.getElementById("email");
+
+      const confirm =
+        document.getElementById("confirmPassword");
+
+      const button =
+        document.querySelector(".form-btn");
+
+      const switchText =
+        document.getElementById("switchText");
+
+
+      if (isRegister) {
+
+        title.textContent = "ثبت‌نام";
+
+        email.style.display = "block";
+
+        confirm.style.display = "block";
+
+        button.textContent = "ثبت‌نام";
+
+        switchText.textContent =
+          "حساب دارید؟ وارد شوید";
+
+      } else {
+
+        title.textContent = "ورود به حساب";
+
+        email.style.display = "none";
+
+        confirm.style.display = "none";
+
+        button.textContent = "ورود";
+
+        switchText.textContent =
+          "حساب ندارید؟ ثبت‌نام کنید";
+
+      }
 
     }
 
 
-    function showRegister() {
+    document
+      .getElementById("authForm")
+      .addEventListener("submit", function(e) {
 
-        document.getElementById(
-            "loginForm"
-        ).style.display = "none";
+        e.preventDefault();
 
-        document.getElementById(
-            "registerForm"
-        ).style.display = "block";
+        const username =
+          document.getElementById("username").value.trim();
 
-        document.getElementById(
-            "modalTitle"
-        ).innerText = "📝 ساخت حساب";
+        const email =
+          document.getElementById("email").value.trim();
 
-    }
+        const password =
+          document.getElementById("password").value;
 
-
-    /* ================= REGISTER ================= */
-
-    document.getElementById(
-        "registerForm"
-    ).addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
 
 
-            const username =
-                document.getElementById(
-                    "registerUsername"
-                ).value.trim();
+        if (isRegister) {
 
+          if (password !== confirmPassword) {
 
-            const email =
-                document.getElementById(
-                    "registerEmail"
-                ).value.trim();
+            alert("رمز عبور و تکرار آن یکسان نیست.");
 
+            return;
+          }
 
-            const password =
-                document.getElementById(
-                    "registerPassword"
-                ).value;
+          user = {
+            username: username,
+            email: email
+          };
 
+          localStorage.setItem(
+            "gameshopUser",
+            JSON.stringify(user)
+          );
 
-            const password2 =
-                document.getElementById(
-                    "registerPassword2"
-                ).value;
+          localStorage.setItem(
+            "gameshopLoggedIn",
+            "true"
+          );
 
+          loggedIn = true;
 
-            const message =
-                document.getElementById(
-                    "registerMessage"
-                );
+          alert("ثبت‌نام با موفقیت انجام شد.");
 
+        } else {
 
-            if (password !== password2) {
-
-                message.style.color =
-                    "#ef4444";
-
-                message.innerText =
-                    "❌ رمزهای عبور یکسان نیستند.";
-
-                return;
-
-            }
-
-
-            if (password.length < 6) {
-
-                message.style.color =
-                    "#ef4444";
-
-                message.innerText =
-                    "❌ رمز عبور باید حداقل ۶ کاراکتر باشد.";
-
-                return;
-
-            }
-
-
-            const user = {
-
-                username: username,
-                email: email,
-                password: password
-
-            };
-
-
-            localStorage.setItem(
-                "gameshopUser",
-                JSON.stringify(user)
+          const savedUser =
+            JSON.parse(
+              localStorage.getItem("gameshopUser")
             );
 
+          if (!savedUser) {
 
-            message.style.color =
-                "#22c55e";
+            alert("ابتدا باید ثبت‌نام کنید.");
 
-            message.innerText =
-                "✅ حساب با موفقیت ساخته شد!";
+            return;
+          }
 
+          if (
+            savedUser.username !== username
+          ) {
 
-            setTimeout(
-                function() {
+            alert("نام کاربری صحیح نیست.");
 
-                    showLogin();
+            return;
+          }
 
-                },
-                1000
-            );
+          localStorage.setItem(
+            "gameshopLoggedIn",
+            "true"
+          );
 
-        }
-    );
+          loggedIn = true;
 
+          user = savedUser;
 
-    /* ================= LOGIN ================= */
-
-    document.getElementById(
-        "loginForm"
-    ).addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-
-            const username =
-                document.getElementById(
-                    "loginUsername"
-                ).value.trim();
-
-
-            const password =
-                document.getElementById(
-                    "loginPassword"
-                ).value;
-
-
-            const message =
-                document.getElementById(
-                    "loginMessage"
-                );
-
-
-            const savedUser =
-                localStorage.getItem(
-                    "gameshopUser"
-                );
-
-
-            if (!savedUser) {
-
-                message.style.color =
-                    "#ef4444";
-
-                message.innerText =
-                    "❌ ابتدا ثبت‌نام کنید.";
-
-                return;
-
-            }
-
-
-            const user =
-                JSON.parse(savedUser);
-
-
-            if (
-                username === user.username &&
-                password === user.password
-            ) {
-
-                localStorage.setItem(
-                    "gameshopLoggedIn",
-                    "true"
-                );
-
-
-                message.style.color =
-                    "#22c55e";
-
-                message.innerText =
-                    "✅ ورود موفق بود!";
-
-
-                updatePanel();
-
-
-                setTimeout(
-                    function() {
-
-                        closeModal();
-
-                        document.getElementById(
-                            "user-panel"
-                        ).scrollIntoView();
-
-                    },
-                    700
-                );
-
-            } else {
-
-                message.style.color =
-                    "#ef4444";
-
-                message.innerText =
-                    "❌ نام کاربری یا رمز عبور اشتباه است.";
-
-            }
+          alert("با موفقیت وارد شدید.");
 
         }
-    );
+
+        closeModal();
+
+        updateLoginButton();
+
+        renderPanel();
+
+      });
 
 
-    /* ================= CART ================= */
+    function logout() {
 
-    function addToCart(name, price) {
+      localStorage.setItem(
+        "gameshopLoggedIn",
+        "false"
+      );
 
-        cart.push({
-            name: name,
-            price: price
-        });
+      loggedIn = false;
 
+      updateLoginButton();
 
-        saveCart();
+      renderPanel();
 
-        renderCart();
+      alert("از حساب خارج شدید.");
 
     }
 
 
-    function removeFromCart(index) {
+    function updateLoginButton() {
 
-        cart.splice(index, 1);
+      const button =
+        document.getElementById("loginButton");
 
-        saveCart();
+      if (loggedIn && user) {
 
-        renderCart();
+        button.textContent =
+          "👤 " + user.username;
+
+      } else {
+
+        button.textContent =
+          "👤 ورود / ثبت‌نام";
+
+      }
 
     }
 
+
+    /* =========================
+       CART
+    ========================= */
 
     function saveCart() {
 
-        localStorage.setItem(
-            "gameshopCart",
-            JSON.stringify(cart)
-        );
+      localStorage.setItem(
+        "gameshopCart",
+        JSON.stringify(cart)
+      );
 
     }
 
 
     function renderCart() {
 
-        const container =
-            document.getElementById(
-                "cartItems"
-            );
+      const box =
+        document.getElementById("cartBox");
+
+      const count =
+        document.getElementById("cartCount");
+
+      count.textContent = cart.length;
 
 
-        const totalBox =
-            document.getElementById(
-                "cartTotal"
-            );
+      if (cart.length === 0) {
+
+        box.innerHTML =
+          '<div class="empty">سبد خرید شما خالی است.</div>';
+
+        return;
+      }
 
 
-        const checkoutButton =
-            document.getElementById(
-                "checkoutButton"
-            );
+      let html = "";
 
+      cart.forEach(function(item, index) {
 
-        const count =
-            document.getElementById(
-                "cartCount"
-            );
+        html += `
+          <div class="cart-item">
 
+            <h3>${item.name}</h3>
 
-        const panelCount =
-            document.getElementById(
-                "panelCartCount"
-            );
+            <p class="info">
+              💰 قیمت: ${item.price}
+            </p>
 
+            <button
+              class="remove-btn"
+              onclick="removeFromCart(${index})"
+            >
+              حذف
+            </button>
 
-        count.innerText =
-            cart.length;
-
-
-        panelCount.innerText =
-            cart.length + " اکانت";
-
-
-        if (cart.length === 0) {
-
-            container.className =
-                "cart-empty";
-
-            container.innerHTML =
-                "🛒 سبد خرید شما خالی است.";
-
-            totalBox.style.display =
-                "none";
-
-            checkoutButton.style.display =
-                "none";
-
-            return;
-
-        }
-
-
-        container.className = "";
-
-
-        container.innerHTML = "";
-
-
-        let total = 0;
-
-
-        cart.forEach(
-            function(item, index) {
-
-                total += item.price;
-
-
-                const div =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                div.className =
-                    "cart-item";
-
-
-                div.innerHTML = `
-
-                    <div>
-                        🎮 ${item.name}
-                        <br>
-                        <strong>
-                            ${item.price.toLocaleString()}
-                            تومان
-                        </strong>
-                    </div>
-
-                    <button
-                        class="remove-button"
-                        onclick="removeFromCart(${index})"
-                    >
-                        حذف
-                    </button>
-
-                `;
-
-
-                container.appendChild(div);
-
-            }
-        );
-
-
-        totalBox.style.display =
-            "flex";
-
-
-        totalBox.innerHTML = `
-
-            <span>
-                مجموع:
-            </span>
-
-            <strong>
-                ${total.toLocaleString()}
-                تومان
-            </strong>
-
+          </div>
         `;
 
+      });
 
-        checkoutButton.style.display =
-            "block";
+
+      html += `
+        <button
+          class="checkout-btn"
+          onclick="checkout()"
+        >
+          ثبت سفارش
+        </button>
+      `;
+
+      box.innerHTML = html;
 
     }
 
 
-    function goToCart() {
+    function removeFromCart(index) {
 
-        document.getElementById(
-            "cart"
-        ).scrollIntoView();
+      cart.splice(index, 1);
+
+      saveCart();
+
+      renderCart();
 
     }
 
-
-    /* ================= CHECKOUT ================= */
 
     function checkout() {
 
-        const loggedIn =
-            localStorage.getItem(
-                "gameshopLoggedIn"
-            );
-
-
-        if (loggedIn !== "true") {
-
-            alert(
-                "برای ثبت سفارش ابتدا وارد حساب خود شوید."
-            );
-
-            openLogin();
-
-            return;
-
-        }
-
-
-        if (cart.length === 0) {
-
-            alert(
-                "سبد خرید خالی است."
-            );
-
-            return;
-
-        }
-
-
-        const total =
-            cart.reduce(
-                function(sum, item) {
-
-                    return sum + item.price;
-
-                },
-                0
-            );
-
-
-        const order = {
-
-            id:
-                "GS-" +
-                Date.now(),
-
-            items: [...cart],
-
-            total: total,
-
-            status:
-                "در انتظار بررسی",
-
-            date:
-                new Date().toLocaleDateString(
-                    "fa-IR"
-                )
-
-        };
-
-
-        orders.push(order);
-
-
-        localStorage.setItem(
-            "gameshopOrders",
-            JSON.stringify(orders)
-        );
-
-
-        cart = [];
-
-
-        saveCart();
-
-        renderCart();
-
-        renderOrders();
-
-        updatePanel();
-
+      if (!loggedIn) {
 
         alert(
-            "✅ سفارش شما با موفقیت ثبت شد!"
+          "برای ثبت سفارش ابتدا وارد حساب شوید."
         );
 
+        openLogin();
 
-        document.getElementById(
-            "orders"
-        ).scrollIntoView();
+        return;
+      }
+
+
+      if (cart.length === 0) {
+
+        alert("سبد خرید خالی است.");
+
+        return;
+      }
+
+
+      const order = {
+
+        id:
+          "GS-" +
+          Date.now(),
+
+        date:
+          new Date().toLocaleString("fa-IR"),
+
+        items:
+          [...cart]
+
+      };
+
+
+      orders.push(order);
+
+      localStorage.setItem(
+        "gameshopOrders",
+        JSON.stringify(orders)
+      );
+
+
+      cart = [];
+
+      saveCart();
+
+      renderCart();
+
+      renderOrders();
+
+      alert(
+        "سفارش شما با موفقیت ثبت شد."
+      );
 
     }
 
 
-    /* ================= ORDERS ================= */
+    /* =========================
+       ORDERS
+    ========================= */
 
     function renderOrders() {
 
-        const container =
-            document.getElementById(
-                "ordersList"
-            );
+      const box =
+        document.getElementById("ordersBox");
 
 
-        document.getElementById(
-            "orderCount"
-        ).innerText =
-            orders.length + " سفارش";
+      if (!loggedIn) {
+
+        box.innerHTML =
+          '<div class="empty">برای مشاهده سفارش‌ها وارد حساب شوید.</div>';
+
+        return;
+      }
 
 
-        if (orders.length === 0) {
+      if (orders.length === 0) {
 
-            container.innerHTML = `
+        box.innerHTML =
+          '<div class="empty">هنوز سفارشی ثبت نشده است.</div>';
 
-                <div class="no-orders">
-
-                    📦 هنوز سفارشی ثبت نشده است.
-
-                </div>
-
-            `;
-
-            return;
-
-        }
+        return;
+      }
 
 
-        container.innerHTML = "";
+      let html = "";
+
+      orders.forEach(function(order) {
+
+        html += `
+          <div class="order-item">
+
+            <h3>📦 سفارش ${order.id}</h3>
+
+            <p class="info">
+              📅 ${order.date}
+            </p>
+
+            <p class="info">
+              🎮 تعداد اکانت:
+              ${order.items.length}
+            </p>
+
+          </div>
+        `;
+
+      });
 
 
-        orders
-            .slice()
-            .reverse()
-            .forEach(
-                function(order) {
-
-                    const div =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    div.className =
-                        "order";
-
-
-                    const itemNames =
-                        order.items
-                            .map(
-                                item =>
-                                    item.name
-                            )
-                            .join("، ");
-
-
-                    div.innerHTML = `
-
-                        <div class="order-top">
-
-                            <span class="order-number">
-
-                                سفارش ${order.id}
-
-                            </span>
-
-                            <span class="order-status">
-
-                                🟠 ${order.status}
-
-                            </span>
-
-                        </div>
-
-                        <p>
-                            🎮 ${itemNames}
-                        </p>
-
-                        <p>
-                            💰 مبلغ:
-                            ${order.total.toLocaleString()}
-                            تومان
-                        </p>
-
-                        <p>
-                            📅 تاریخ:
-                            ${order.date}
-                        </p>
-
-                    `;
-
-
-                    container.appendChild(div);
-
-                }
-            );
+      box.innerHTML = html;
 
     }
 
 
-    /* ================= PANEL ================= */
+    /* =========================
+       PANEL
+    ========================= */
 
-    function updatePanel() {
+    function renderPanel() {
 
-        const savedUser =
-            localStorage.getItem(
-                "gameshopUser"
-            );
-
-
-        const loggedIn =
-            localStorage.getItem(
-                "gameshopLoggedIn"
-            );
+      const box =
+        document.getElementById("panelBox");
 
 
-        if (
-            savedUser &&
-            loggedIn === "true"
-        ) {
+      if (!loggedIn || !user) {
 
-            const user =
-                JSON.parse(savedUser);
+        box.innerHTML =
+          '<div class="empty">برای مشاهده پنل کاربری ابتدا وارد حساب شوید.</div>';
 
-
-            document.getElementById(
-                "usernameDisplay"
-            ).innerText =
-                user.username;
+        return;
+      }
 
 
-            document.getElementById(
-                "welcomeText"
-            ).innerText =
-                "خوش آمدید " +
-                user.username +
-                " 👋";
+      box.innerHTML = `
 
-        }
+        <div class="panel-row">
+          👤 نام کاربری:
+          <strong>${user.username}</strong>
+        </div>
 
+        <div class="panel-row">
+          📧 ایمیل:
+          <strong>${user.email || "ثبت نشده"}</strong>
+        </div>
 
-        else {
+        <div class="panel-row">
+          🛒 تعداد سبد خرید:
+          <strong>${cart.length}</strong>
+        </div>
 
-            document.getElementById(
-                "usernameDisplay"
-            ).innerText =
-                "وارد نشده‌اید";
+        <div class="panel-row">
+          📦 تعداد سفارش‌ها:
+          <strong>${orders.length}</strong>
+        </div>
 
+        <div class="panel-row">
+          ❤️ علاقه‌مندی‌ها:
+          <strong>۰</strong>
+        </div>
 
-            document.getElementById(
-                "welcomeText"
-            ).innerText =
-                "برای مشاهده حساب وارد شوید.";
+        <button
+          class="logout-btn"
+          onclick="logout()"
+        >
+          خروج از حساب
+        </button>
 
-        }
-
-
-        document.getElementById(
-            "orderCount"
-        ).innerText =
-            orders.length +
-            " سفارش";
+      `;
 
     }
 
 
-    /* ================= LOGOUT ================= */
+    /* =========================
+       START
+    ========================= */
 
-    function logout() {
-
-        localStorage.removeItem(
-            "gameshopLoggedIn"
-        );
-
-
-        updatePanel();
-
-
-        alert(
-            "👋 با موفقیت از حساب خارج شدید."
-        );
-
-    }
-
-
-    /* ================= OUTSIDE MODAL ================= */
-
-    window.addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target === modal
-            ) {
-
-                closeModal();
-
-            }
-
-        }
-    );
-
-
-    /* ================= START ================= */
+    updateLoginButton();
 
     renderCart();
 
     renderOrders();
 
-    updatePanel();
+    renderPanel();
 
-</script>
-
+  </script>
 
 </body>
-
 </html>
