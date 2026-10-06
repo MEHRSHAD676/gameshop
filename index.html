@@ -51,7 +51,7 @@
             color: #38bdf8;
         }
 
-        /* بخش اصلی */
+        /* صفحه اصلی */
         .hero {
             min-height: 430px;
             display: flex;
@@ -182,14 +182,42 @@
             background: #3b82f6;
         }
 
-        /* فوتر */
+        /* پشتیبانی */
         footer {
             background: #0d1224;
             border-top: 1px solid #202b49;
             text-align: center;
-            padding: 30px;
+            padding: 40px 20px;
             color: #7f8ba8;
             line-height: 2;
+        }
+
+        footer h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .support-button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 13px 28px;
+            background: #22c55e;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 17px;
+            transition: 0.3s;
+        }
+
+        .support-button:hover {
+            background: #16a34a;
+            transform: translateY(-3px);
+        }
+
+        .phone-number {
+            color: #38bdf8;
+            font-size: 20px;
+            margin-top: 15px;
         }
 
         /* موبایل */
@@ -239,7 +267,7 @@
     </header>
 
 
-    <!-- بخش اصلی -->
+    <!-- صفحه اصلی -->
     <section class="hero">
 
         <div class="icon">🎮</div>
@@ -250,7 +278,7 @@
 
         <p>
             بهترین اکانت‌های بازی را با مشخصات کامل مشاهده کنید.
-            فروشگاه گیمینگ شما در یک قدمی شروع است!
+            اکانت مورد نظر خود را انتخاب کنید و برای خرید با پشتیبانی تماس بگیرید.
         </p>
 
         <a class="hero-button" href="#accounts">
@@ -275,6 +303,7 @@
 
 
         <div class="cards">
+
 
             <!-- اکانت اول -->
             <div class="card">
@@ -347,19 +376,36 @@
 
             </div>
 
+
         </div>
 
     </section>
 
 
-    <!-- فوتر -->
+    <!-- پشتیبانی -->
     <footer id="contact">
 
-        📞 پشتیبانی: به‌زودی فعال می‌شود
+        <h2>
+            📞 پشتیبانی GameShop
+        </h2>
+
+        <p>
+            برای سوال، خرید یا دریافت راهنمایی با ما تماس بگیرید.
+        </p>
+
+        <a class="support-button" href="tel:09339232786">
+            📱 تماس با پشتیبانی
+        </a>
+
+        <p class="phone-number">
+            09339232786
+        </p>
 
         <br>
 
-        © 2026 GameShop
+        <p>
+            © 2026 GameShop
+        </p>
 
     </footer>
 
@@ -368,7 +414,7 @@
 
         function showMessage() {
 
-            alert("این بخش به‌زودی فعال می‌شود 😎");
+            alert("برای خرید این اکانت با پشتیبانی تماس بگیرید 📞");
 
         }
 
@@ -378,4 +424,5 @@
 
 </html>
 ```
+ 
 
