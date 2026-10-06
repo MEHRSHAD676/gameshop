@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -22,10 +21,10 @@
         body {
             font-family: Tahoma, Arial, sans-serif;
             background: #080b16;
-            color: #ffffff;
+            color: white;
         }
 
-        /* ================= HEADER ================= */
+        /* HEADER */
 
         header {
             background: #0d1224;
@@ -34,7 +33,6 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #26345f;
-
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -46,36 +44,49 @@
             color: #38bdf8;
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
         nav a {
-            color: #dddddd;
+            color: #ddd;
             text-decoration: none;
-            margin-right: 25px;
-            transition: 0.3s;
+            transition: .3s;
         }
 
         nav a:hover {
             color: #38bdf8;
         }
 
-        /* ================= HERO ================= */
+        .account-button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .account-button:hover {
+            background: #3b82f6;
+        }
+
+        /* HERO */
 
         .hero {
             min-height: 430px;
-
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-
             text-align: center;
             padding: 50px 20px;
 
             background:
-                radial-gradient(
-                    circle at top,
-                    #1d3b75,
-                    transparent 55%
-                ),
+                radial-gradient(circle at top, #1d3b75, transparent 55%),
                 #080b16;
         }
 
@@ -97,25 +108,18 @@
             color: #aeb9d6;
             font-size: 19px;
             line-height: 2;
-            max-width: 650px;
         }
 
         .hero-button {
             display: inline-block;
-
             margin-top: 30px;
             padding: 14px 32px;
-
             background: #2563eb;
             color: white;
-
             text-decoration: none;
-
             border-radius: 10px;
-
             font-size: 17px;
-
-            transition: 0.3s;
+            transition: .3s;
         }
 
         .hero-button:hover {
@@ -123,7 +127,7 @@
             transform: translateY(-3px);
         }
 
-        /* ================= PRODUCTS ================= */
+        /* PRODUCTS */
 
         .products {
             padding: 75px 7%;
@@ -143,44 +147,25 @@
             color: #8995b3;
         }
 
-        /* کارت‌ها */
-
         .cards {
             display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(250px, 1fr));
-
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
         }
 
         .card {
-            background:
-                linear-gradient(
-                    145deg,
-                    #141b31,
-                    #0e1425
-                );
-
+            background: linear-gradient(145deg, #141b31, #0e1425);
             border: 1px solid #273456;
-
             border-radius: 18px;
-
             padding: 30px;
-
             text-align: center;
-
-            transition: 0.3s;
+            transition: .3s;
         }
 
         .card:hover {
             transform: translateY(-7px);
-
             border-color: #38bdf8;
-
-            box-shadow:
-                0 15px 35px
-                rgba(0, 0, 0, 0.35);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .35);
         }
 
         .game-icon {
@@ -200,116 +185,262 @@
 
         .price {
             color: #22c55e;
-
             font-size: 22px;
-
             font-weight: bold;
-
             margin-top: 20px;
         }
 
         .status {
             color: #ef4444 !important;
-
             font-weight: bold;
         }
 
         .buy-button {
             width: 100%;
-
             margin-top: 20px;
-
             padding: 13px;
-
             border: none;
-
             border-radius: 10px;
-
             background: #374151;
-
             color: #9ca3af;
-
             font-size: 16px;
-
             cursor: not-allowed;
         }
 
-        /* ================= SUPPORT ================= */
+        /* USER PANEL */
+
+        .panel-section {
+            padding: 70px 7%;
+            background: #0b1020;
+            border-top: 1px solid #202b49;
+        }
+
+        .panel-box {
+            max-width: 850px;
+            margin: auto;
+            background: linear-gradient(145deg, #141b31, #0e1425);
+            border: 1px solid #273456;
+            border-radius: 20px;
+            padding: 35px;
+        }
+
+        .panel-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .panel-title h2 {
+            font-size: 32px;
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .panel-title p {
+            color: #8995b3;
+        }
+
+        .panel-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .panel-item {
+            background: #0b1020;
+            border: 1px solid #273456;
+            padding: 25px;
+            border-radius: 14px;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .panel-item:hover {
+            border-color: #38bdf8;
+            transform: translateY(-4px);
+        }
+
+        .panel-item .icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .panel-item h3 {
+            margin-bottom: 8px;
+        }
+
+        .panel-item p {
+            color: #8995b3;
+        }
+
+        .logout-button {
+            display: block;
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #dc2626;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background: #ef4444;
+        }
+
+        /* MODAL */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .75);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 430px;
+            background: #10172b;
+            border: 1px solid #2d3b66;
+            border-radius: 18px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 12px;
+            left: 15px;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .modal-box h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #38bdf8;
+        }
+
+        .input-group {
+            margin-bottom: 17px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 13px;
+            border-radius: 9px;
+            border: 1px solid #334155;
+            background: #080b16;
+            color: white;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .input-group input:focus {
+            border-color: #38bdf8;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 9px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .submit-button:hover {
+            background: #3b82f6;
+        }
+
+        .switch-text {
+            text-align: center;
+            color: #8995b3;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .switch-text span {
+            color: #38bdf8;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            color: #22c55e;
+            min-height: 20px;
+        }
+
+        /* SUPPORT */
 
         footer {
             background: #0d1224;
-
             border-top: 1px solid #202b49;
-
             text-align: center;
-
             padding: 45px 20px;
-
             color: #7f8ba8;
-
             line-height: 2;
         }
 
         footer h2 {
             color: white;
-
             margin-bottom: 12px;
         }
 
         .support-button {
             display: inline-block;
-
             margin-top: 20px;
-
             padding: 14px 30px;
-
             background: #22c55e;
-
             color: white;
-
             text-decoration: none;
-
             border-radius: 10px;
-
             font-size: 17px;
-
-            transition: 0.3s;
+            transition: .3s;
         }
 
         .support-button:hover {
             background: #16a34a;
-
             transform: translateY(-3px);
         }
 
         .phone-number {
             color: #38bdf8;
-
             font-size: 21px;
-
             margin-top: 15px;
         }
 
-        /* ================= MOBILE ================= */
+        /* MOBILE */
 
         @media (max-width: 600px) {
 
             header {
                 padding: 18px 20px;
-
                 flex-direction: column;
-
                 gap: 15px;
             }
 
-            nav a {
-                margin: 0 8px;
-
-                font-size: 14px;
-            }
-
-            .hero {
-                min-height: 400px;
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
             }
 
             .hero h1 {
@@ -327,15 +458,21 @@
             .section-title h2 {
                 font-size: 28px;
             }
+
+            .panel-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .panel-box {
+                padding: 22px;
+            }
         }
     </style>
 </head>
 
-
 <body>
 
-
-    <!-- ================= HEADER ================= -->
+    <!-- HEADER -->
 
     <header>
 
@@ -353,16 +490,24 @@
                 اکانت‌ها
             </a>
 
+            <a href="#user-panel">
+                پنل کاربری
+            </a>
+
             <a href="#contact">
                 پشتیبانی
             </a>
+
+            <button class="account-button" onclick="openLogin()">
+                👤 ورود / ثبت‌نام
+            </button>
 
         </nav>
 
     </header>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- HERO -->
 
     <section class="hero">
 
@@ -377,25 +522,19 @@
         <p>
             فروشگاه اکانت گیم
             <br>
-            اکانت‌های مورد نظر خود را در اینجا پیدا کنید.
+            اکانت مورد نظر خود را اینجا پیدا کنید.
         </p>
 
-        <a
-            class="hero-button"
-            href="#accounts"
-        >
+        <a class="hero-button" href="#accounts">
             مشاهده اکانت‌ها
         </a>
 
     </section>
 
 
-    <!-- ================= ACCOUNTS ================= -->
+    <!-- ACCOUNTS -->
 
-    <section
-        class="products"
-        id="accounts"
-    >
+    <section class="products" id="accounts">
 
         <div class="section-title">
 
@@ -409,396 +548,441 @@
 
         </div>
 
-
         <div class="cards">
 
 
-            <!-- ACCOUNT 1 -->
-
             <div class="card">
-
-                <div class="game-icon">
-                    🎯
-                </div>
-
-                <h3>
-                    اکانت شماره ۱
-                </h3>
-
-                <p>
-                    ⭐ لول: نامعلوم
-                </p>
-
-                <p>
-                    🎨 اسکین: نامعلوم
-                </p>
-
-                <p class="status">
-                    ❌ وضعیت: ناموجود
-                </p>
-
-                <div class="price">
-                    ۰ تومان
-                </div>
-
-                <button
-                    class="buy-button"
-                    disabled
-                >
-                    ناموجود
-                </button>
-
+                <div class="game-icon">🎯</div>
+                <h3>اکانت شماره ۱</h3>
+                <p>⭐ لول: نامعلوم</p>
+                <p>🎨 اسکین: نامعلوم</p>
+                <p class="status">❌ وضعیت: ناموجود</p>
+                <div class="price">۰ تومان</div>
+                <button class="buy-button" disabled>ناموجود</button>
             </div>
 
 
-            <!-- ACCOUNT 2 -->
-
             <div class="card">
-
-                <div class="game-icon">
-                    ⚔️
-                </div>
-
-                <h3>
-                    اکانت شماره ۲
-                </h3>
-
-                <p>
-                    ⭐ لول: نامعلوم
-                </p>
-
-                <p>
-                    🎨 اسکین: نامعلوم
-                </p>
-
-                <p class="status">
-                    ❌ وضعیت: ناموجود
-                </p>
-
-                <div class="price">
-                    ۰ تومان
-                </div>
-
-                <button
-                    class="buy-button"
-                    disabled
-                >
-                    ناموجود
-                </button>
-
+                <div class="game-icon">⚔️</div>
+                <h3>اکانت شماره ۲</h3>
+                <p>⭐ لول: نامعلوم</p>
+                <p>🎨 اسکین: نامعلوم</p>
+                <p class="status">❌ وضعیت: ناموجود</p>
+                <div class="price">۰ تومان</div>
+                <button class="buy-button" disabled>ناموجود</button>
             </div>
 
 
-            <!-- ACCOUNT 3 -->
-
             <div class="card">
-
-                <div class="game-icon">
-                    🏆
-                </div>
-
-                <h3>
-                    اکانت شماره ۳
-                </h3>
-
-                <p>
-                    ⭐ لول: نامعلوم
-                </p>
-
-                <p>
-                    🎨 اسکین: نامعلوم
-                </p>
-
-                <p class="status">
-                    ❌ وضعیت: ناموجود
-                </p>
-
-                <div class="price">
-                    ۰ تومان
-                </div>
-
-                <button
-                    class="buy-button"
-                    disabled
-                >
-                    ناموجود
-                </button>
-
+                <div class="game-icon">🏆</div>
+                <h3>اکانت شماره ۳</h3>
+                <p>⭐ لول: نامعلوم</p>
+                <p>🎨 اسکین: نامعلوم</p>
+                <p class="status">❌ وضعیت: ناموجود</p>
+                <div class="price">۰ تومان</div>
+                <button class="buy-button" disabled>ناموجود</button>
             </div>
 
 
-            <!-- ACCOUNT 4 -->
-
             <div class="card">
-
-                <div class="game-icon">
-                    🔥
-                </div>
-
-                <h3>
-                    اکانت شماره ۴
-                </h3>
-
-                <p>
-                    ⭐ لول: نامعلوم
-                </p>
-
-                <p>
-                    🎨 اسکین: نامعلوم
-                </p>
-
-                <p class="status">
-                    ❌ وضعیت: ناموجود
-                </p>
-
-                <div class="price">
-                    ۰ تومان
-                </div>
-
-                <button
-                    class="buy-button"
-                    disabled
-                >
-                    ناموجود
-                </button>
-
+                <div class="game-icon">🔥</div>
+                <h3>اکانت شماره ۴</h3>
+                <p>⭐ لول: نامعلوم</p>
+                <p>🎨 اسکین: نامعلوم</p>
+                <p class="status">❌ وضعیت: ناموجود</p>
+                <div class="price">۰ تومان</div>
+                <button class="buy-button" disabled>ناموجود</button>
             </div>
 
 
-            <!-- ACCOUNT 5 -->
-
             <div class="card">
-
-                <div class="game-icon">
-                    💎
-                </div>
-
-                <h3>
-                    اکانت شماره ۵
-                </h3>
-
-                <p>
-                    ⭐ لول: نامعلوم
-                </p>
-
-                <p>
-                    🎨 اسکین: نامعلوم
-                </p>
-
-                <p class="status">
-                    ❌ وضعیت: ناموجود
-                </p>
-
-                <div class="price">
-                    ۰ تومان
-                </div>
-
-                <button
-                    class="buy-button"
-                    disabled
-                >
-                    ناموجود
-                </button>
-
+                <div class="game-icon">💎</div>
+                <h3>اکانت شماره ۵</h3>
+                <p>⭐ لول: نامعلوم</p>
+                <p>🎨 اسکین: نامعلوم</p>
+                <p class="status">❌ وضعیت: ناموجود</p>
+                <div class="price">۰ تومان</div>
+                <button class="buy-button" disabled>ناموجود</button>
             </div>
 
 
-            <!-- ACCOUNT 6 -->
-
             <div class="card">
-
-                <div class="game-icon">
-                    👑
-                </div>
-
-                <h3>
-                    اکانت شماره ۶
-                </h3>
-
-                <p>
-                    ⭐ لول: نامعلوم
-                </p>
-
-                <p>
-                    🎨 اسکین: نامعلوم
-                </p>
-
-                <p class="status">
-                    ❌ وضعیت: ناموجود
-                </p>
-
-                <div class="price">
-                    ۰ تومان
-                </div>
-
-                <button
-                    class="buy-button"
-                    disabled
-                >
-                    ناموجود
-                </button>
-
+                <div class="game-icon">👑</div>
+                <h3>اکانت شماره ۶</h3>
+                <p>⭐ لول: نامعلوم</p>
+                <p>🎨 اسکین: نامعلوم</p>
+                <p class="status">❌ وضعیت: ناموجود</p>
+                <div class="price">۰ تومان</div>
+                <button class="buy-button" disabled>ناموجود</button>
             </div>
 
 
-            <!-- ACCOUNT 7 -->
-
             <div class="card">
-
-                <div class="game-icon">
-                    🚀
-                </div>
-
-                <h3>
-                    اکانت شماره ۷
-                </h3>
-
-                <p>
-                    ⭐ لول: نامعلوم
-                </p>
-
-                <p>
-                    🎨 اسکین: نامعلوم
-                </p>
-
-                <p class="status">
-                    ❌ وضعیت: ناموجود
-                </p>
-
-                <div class="price">
-                    ۰ تومان
-                </div>
-
-                <button
-                    class="buy-button"
-                    disabled
-                >
-                    ناموجود
-                </button>
-
+                <div class="game-icon">🚀</div>
+                <h3>اکانت شماره ۷</h3>
+                <p>⭐ لول: نامعلوم</p>
+                <p>🎨 اسکین: نامعلوم</p>
+                <p class="status">❌ وضعیت: ناموجود</p>
+                <div class="price">۰ تومان</div>
+                <button class="buy-button" disabled>ناموجود</button>
             </div>
 
 
-            <!-- ACCOUNT 8 -->
-
             <div class="card">
-
-                <div class="game-icon">
-                    🎮
-                </div>
-
-                <h3>
-                    اکانت شماره ۸
-                </h3>
-
-                <p>
-                    ⭐ لول: نامعلوم
-                </p>
-
-                <p>
-                    🎨 اسکین: نامعلوم
-                </p>
-
-                <p class="status">
-                    ❌ وضعیت: ناموجود
-                </p>
-
-                <div class="price">
-                    ۰ تومان
-                </div>
-
-                <button
-                    class="buy-button"
-                    disabled
-                >
-                    ناموجود
-                </button>
-
+                <div class="game-icon">🎮</div>
+                <h3>اکانت شماره ۸</h3>
+                <p>⭐ لول: نامعلوم</p>
+                <p>🎨 اسکین: نامعلوم</p>
+                <p class="status">❌ وضعیت: ناموجود</p>
+                <div class="price">۰ تومان</div>
+                <button class="buy-button" disabled>ناموجود</button>
             </div>
 
 
-            <!-- ACCOUNT 9 -->
-
             <div class="card">
-
-                <div class="game-icon">
-                    💀
-                </div>
-
-                <h3>
-                    اکانت شماره ۹
-                </h3>
-
-                <p>
-                    ⭐ لول: نامعلوم
-                </p>
-
-                <p>
-                    🎨 اسکین: نامعلوم
-                </p>
-
-                <p class="status">
-                    ❌ وضعیت: ناموجود
-                </p>
-
-                <div class="price">
-                    ۰ تومان
-                </div>
-
-                <button
-                    class="buy-button"
-                    disabled
-                >
-                    ناموجود
-                </button>
-
+                <div class="game-icon">💀</div>
+                <h3>اکانت شماره ۹</h3>
+                <p>⭐ لول: نامعلوم</p>
+                <p>🎨 اسکین: نامعلوم</p>
+                <p class="status">❌ وضعیت: ناموجود</p>
+                <div class="price">۰ تومان</div>
+                <button class="buy-button" disabled>ناموجود</button>
             </div>
 
 
-            <!-- ACCOUNT 10 -->
-
             <div class="card">
-
-                <div class="game-icon">
-                    ⚡
-                </div>
-
-                <h3>
-                    اکانت شماره ۱۰
-                </h3>
-
-                <p>
-                    ⭐ لول: نامعلوم
-                </p>
-
-                <p>
-                    🎨 اسکین: نامعلوم
-                </p>
-
-                <p class="status">
-                    ❌ وضعیت: ناموجود
-                </p>
-
-                <div class="price">
-                    ۰ تومان
-                </div>
-
-                <button
-                    class="buy-button"
-                    disabled
-                >
-                    ناموجود
-                </button>
-
+                <div class="game-icon">⚡</div>
+                <h3>اکانت شماره ۱۰</h3>
+                <p>⭐ لول: نامعلوم</p>
+                <p>🎨 اسکین: نامعلوم</p>
+                <p class="status">❌ وضعیت: ناموجود</p>
+                <div class="price">۰ تومان</div>
+                <button class="buy-button" disabled>ناموجود</button>
             </div>
-
 
         </div>
 
     </section>
 
 
-    <!-- ================= SUPPORT ================= -->
+    <!-- USER PANEL -->
+
+    <section class="panel-section" id="user-panel">
+
+        <div class="panel-box">
+
+            <div class="panel-title">
+
+                <h2>
+                    👤 پنل کاربری
+                </h2>
+
+                <p id="welcomeText">
+                    برای مشاهده اطلاعات حساب، وارد شوید.
+                </p>
+
+            </div>
+
+
+            <div class="panel-grid">
+
+                <div class="panel-item">
+
+                    <div class="icon">
+                        👤
+                    </div>
+
+                    <h3>
+                        حساب من
+                    </h3>
+
+                    <p id="usernameDisplay">
+                        هنوز وارد نشده‌اید
+                    </p>
+
+                </div>
+
+
+                <div class="panel-item">
+
+                    <div class="icon">
+                        📦
+                    </div>
+
+                    <h3>
+                        سفارش‌های من
+                    </h3>
+
+                    <p>
+                        هنوز سفارشی ندارید
+                    </p>
+
+                </div>
+
+
+                <div class="panel-item">
+
+                    <div class="icon">
+                        🎮
+                    </div>
+
+                    <h3>
+                        اکانت‌های خریداری‌شده
+                    </h3>
+
+                    <p>
+                        ۰ اکانت
+                    </p>
+
+                </div>
+
+
+                <div class="panel-item">
+
+                    <div class="icon">
+                        ❤️
+                    </div>
+
+                    <h3>
+                        علاقه‌مندی‌ها
+                    </h3>
+
+                    <p>
+                        ۰ اکانت
+                    </p>
+
+                </div>
+
+
+                <div class="panel-item">
+
+                    <div class="icon">
+                        ⚙️
+                    </div>
+
+                    <h3>
+                        تنظیمات حساب
+                    </h3>
+
+                    <p>
+                        مدیریت حساب
+                    </p>
+
+                </div>
+
+
+                <div class="panel-item">
+
+                    <div class="icon">
+                        🛡️
+                    </div>
+
+                    <h3>
+                        امنیت حساب
+                    </h3>
+
+                    <p>
+                        حساب شما محافظت می‌شود
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="logout-button"
+                onclick="logout()"
+            >
+                🚪 خروج از حساب
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOGIN / REGISTER MODAL -->
+
+    <div class="modal" id="accountModal">
+
+        <div class="modal-box">
+
+            <button
+                class="close"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
+
+            <h2 id="modalTitle">
+                👤 ورود به حساب
+            </h2>
+
+
+            <!-- LOGIN -->
+
+            <form id="loginForm">
+
+                <div class="input-group">
+
+                    <label>
+                        👤 نام کاربری
+                    </label>
+
+                    <input
+                        type="text"
+                        id="loginUsername"
+                        required
+                        placeholder="نام کاربری"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        🔒 رمز عبور
+                    </label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        required
+                        placeholder="رمز عبور"
+                    >
+
+                </div>
+
+
+                <button
+                    class="submit-button"
+                    type="submit"
+                >
+                    ورود به حساب
+                </button>
+
+                <div
+                    class="message"
+                    id="loginMessage"
+                ></div>
+
+                <p
+                    class="switch-text"
+                    onclick="showRegister()"
+                >
+                    حساب ندارید؟
+                    <span>
+                        ثبت‌نام کنید
+                    </span>
+                </p>
+
+            </form>
+
+
+            <!-- REGISTER -->
+
+            <form
+                id="registerForm"
+                style="display:none;"
+            >
+
+                <div class="input-group">
+
+                    <label>
+                        👤 نام کاربری
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerUsername"
+                        required
+                        placeholder="نام کاربری"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        📧 ایمیل
+                    </label>
+
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        required
+                        placeholder="example@gmail.com"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        🔒 رمز عبور
+                    </label>
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        required
+                        placeholder="رمز عبور"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        🔒 تکرار رمز عبور
+                    </label>
+
+                    <input
+                        type="password"
+                        id="registerPassword2"
+                        required
+                        placeholder="تکرار رمز عبور"
+                    >
+
+                </div>
+
+
+                <button
+                    class="submit-button"
+                    type="submit"
+                >
+                    ساخت حساب
+                </button>
+
+                <div
+                    class="message"
+                    id="registerMessage"
+                ></div>
+
+                <p
+                    class="switch-text"
+                    onclick="showLogin()"
+                >
+                    قبلاً حساب دارید؟
+                    <span>
+                        وارد شوید
+                    </span>
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUPPORT -->
 
     <footer id="contact">
 
@@ -831,14 +1015,342 @@
     </footer>
 
 
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        const modal = document.getElementById("accountModal");
+
+        const loginForm = document.getElementById("loginForm");
+
+        const registerForm =
+            document.getElementById("registerForm");
+
+
+        function openLogin() {
+
+            modal.style.display = "flex";
+
+            showLogin();
+
+        }
+
+
+        function closeModal() {
+
+            modal.style.display = "none";
+
+        }
+
+
+        function showRegister() {
+
+            loginForm.style.display = "none";
+
+            registerForm.style.display = "block";
+
+            document.getElementById("modalTitle").innerText =
+                "📝 ساخت حساب GameShop";
+
+        }
+
+
+        function showLogin() {
+
+            loginForm.style.display = "block";
+
+            registerForm.style.display = "none";
+
+            document.getElementById("modalTitle").innerText =
+                "👤 ورود به حساب";
+
+        }
+
+
+        /* REGISTER */
+
+        registerForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const username =
+                    document.getElementById(
+                        "registerUsername"
+                    ).value.trim();
+
+
+                const email =
+                    document.getElementById(
+                        "registerEmail"
+                    ).value.trim();
+
+
+                const password =
+                    document.getElementById(
+                        "registerPassword"
+                    ).value;
+
+
+                const password2 =
+                    document.getElementById(
+                        "registerPassword2"
+                    ).value;
+
+
+                const message =
+                    document.getElementById(
+                        "registerMessage"
+                    );
+
+
+                if (password !== password2) {
+
+                    message.style.color = "#ef4444";
+
+                    message.innerText =
+                        "❌ رمزهای عبور یکسان نیستند.";
+
+                    return;
+
+                }
+
+
+                if (password.length < 6) {
+
+                    message.style.color = "#ef4444";
+
+                    message.innerText =
+                        "❌ رمز عبور باید حداقل ۶ کاراکتر باشد.";
+
+                    return;
+
+                }
+
+
+                const user = {
+
+                    username: username,
+
+                    email: email,
+
+                    password: password
+
+                };
+
+
+                localStorage.setItem(
+                    "gameshopUser",
+                    JSON.stringify(user)
+                );
+
+
+                message.style.color = "#22c55e";
+
+                message.innerText =
+                    "✅ حساب با موفقیت ساخته شد!";
+
+
+                setTimeout(
+                    function() {
+
+                        showLogin();
+
+                    },
+                    1200
+                );
+
+            }
+        );
+
+
+        /* LOGIN */
+
+        loginForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const username =
+                    document.getElementById(
+                        "loginUsername"
+                    ).value.trim();
+
+
+                const password =
+                    document.getElementById(
+                        "loginPassword"
+                    ).value;
+
+
+                const message =
+                    document.getElementById(
+                        "loginMessage"
+                    );
+
+
+                const savedUser =
+                    localStorage.getItem(
+                        "gameshopUser"
+                    );
+
+
+                if (!savedUser) {
+
+                    message.style.color = "#ef4444";
+
+                    message.innerText =
+                        "❌ ابتدا باید ثبت‌نام کنید.";
+
+                    return;
+
+                }
+
+
+                const user =
+                    JSON.parse(savedUser);
+
+
+                if (
+                    username === user.username &&
+                    password === user.password
+                ) {
+
+                    localStorage.setItem(
+                        "gameshopLoggedIn",
+                        "true"
+                    );
+
+
+                    message.style.color =
+                        "#22c55e";
+
+                    message.innerText =
+                        "✅ ورود موفق بود!";
+
+
+                    updatePanel();
+
+
+                    setTimeout(
+                        function() {
+
+                            closeModal();
+
+                            document.getElementById(
+                                "user-panel"
+                            ).scrollIntoView();
+
+                        },
+                        800
+                    );
+
+                } else {
+
+                    message.style.color =
+                        "#ef4444";
+
+                    message.innerText =
+                        "❌ نام کاربری یا رمز عبور اشتباه است.";
+
+                }
+
+            }
+        );
+
+
+        /* UPDATE PANEL */
+
+        function updatePanel() {
+
+            const savedUser =
+                localStorage.getItem(
+                    "gameshopUser"
+                );
+
+
+            const loggedIn =
+                localStorage.getItem(
+                    "gameshopLoggedIn"
+                );
+
+
+            if (
+                savedUser &&
+                loggedIn === "true"
+            ) {
+
+                const user =
+                    JSON.parse(savedUser);
+
+
+                document.getElementById(
+                    "usernameDisplay"
+                ).innerText =
+                    user.username;
+
+
+                document.getElementById(
+                    "welcomeText"
+                ).innerText =
+                    "خوش آمدید " +
+                    user.username +
+                    " 👋";
+
+            }
+
+        }
+
+
+        /* LOGOUT */
+
+        function logout() {
+
+            localStorage.removeItem(
+                "gameshopLoggedIn"
+            );
+
+
+            document.getElementById(
+                "usernameDisplay"
+            ).innerText =
+                "هنوز وارد نشده‌اید";
+
+
+            document.getElementById(
+                "welcomeText"
+            ).innerText =
+                "برای مشاهده اطلاعات حساب، وارد شوید.";
+
+        }
+
+
+        /* CLOSE MODAL WHEN CLICK OUTSIDE */
+
+        window.addEventListener(
+            "click",
+            function(event) {
+
+                if (event.target === modal) {
+
+                    closeModal();
+
+                }
+
+            }
+        );
+
+
+        /* CHECK LOGIN */
+
+        updatePanel();
+
+    </script>
+
 </body>
 
 </html>
-```
-
-    
-        
-      
- 
-
-
