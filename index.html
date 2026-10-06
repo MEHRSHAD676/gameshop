@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Account Shop</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            direction: rtl;
+        }
+
+        header {
+            background: #111827;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #2563eb;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 70px 20px;
+            background: linear-gradient(135deg, #1e3a8a, #0f172a);
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #cbd5e1;
+        }
+
+        .products {
+            padding: 40px;
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 35px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #1e293b;
+            width: 280px;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .game {
+            font-size: 55px;
+        }
+
+        .card h3 {
+            font-size: 24px;
+        }
+
+        .price {
+            color: #22c55e;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #111827;
+            margin-top: 40px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🎮 GameShop</div>
+
+    <nav>
+        <a href="#">خانه</a>
+        <a href="#accounts">اکانت‌ها</a>
+        <a href="#contact">پشتیبانی</a>
+    </nav>
+</header>
+
+
+<section class="hero">
+    <h1>🎮 فروشگاه اکانت گیم</h1>
+
+    <p>
+        اکانت‌های مختلف بازی را اینجا مشاهده کنید
+    </p>
+</section>
+
+
+<section class="products" id="accounts">
+
+    <h2>🔥 اکانت‌های ویژه</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="game">🎯</div>
+
+            <h3>اکانت شماره ۱</h3>
+
+            <p>لول: 50</p>
+            <p>اسکین: 20</p>
+
+            <div class="price">
+                500,000 تومان
+            </div>
+
+            <button onclick="showMessage()">
+                مشاهده اکانت
+            </button>
+        </div>
+
+
+        <div class="card">
+            <div class="game">⚔️</div>
+
+            <h3>اکانت شماره ۲</h3>
+
+            <p>لول: 80</p>
+            <p>اسکین: 35</p>
+
+            <div class="price">
+                800,000 تومان
+            </div>
+
+            <button onclick="showMessage()">
+                مشاهده اکانت
+            </button>
+        </div>
+
+
+        <div class="card">
+            <div class="game">🏆</div>
+
+            <h3>اکانت ویژه</h3>
+
+            <p>لول: 120</p>
+            <p>اسکین: 60</p>
+
+            <div class="price">
+                1,500,000 تومان
+            </div>
+
+            <button onclick="showMessage()">
+                مشاهده اکانت
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer id="contact">
+    📞 پشتیبانی: به‌زودی فعال می‌شود
+    <br><br>
+    © 2024 GameShop
+</footer>
+
+
+<script>
+
+function showMessage() {
+    alert("این بخش فعلاً دمو است 😎");
+}
+
+</script>
+
+</body>
+</html>
