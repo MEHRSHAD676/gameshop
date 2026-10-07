@@ -6,10 +6,10 @@
 
 <title>GameShop | فروشگاه اکانت گیم</title>
 
-<meta name="description" content="GameShop - فروش و خرید اکانت‌های بازی">
-<meta name="theme-color" content="#0b0f19">
+<meta name="description" content="GameShop - فروش و خرید اکانت بازی">
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -27,6 +27,11 @@ body{
     line-height:1.8;
 }
 
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
 button,
 input,
 select{
@@ -37,12 +42,12 @@ button{
     cursor:pointer;
 }
 
-a{
-    color:inherit;
-    text-decoration:none;
+.container{
+    width:min(1150px,92%);
+    margin:auto;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 header{
     position:sticky;
@@ -50,114 +55,111 @@ header{
     z-index:1000;
     background:rgba(8,11,18,.94);
     backdrop-filter:blur(12px);
-    border-bottom:1px solid #202838;
+    border-bottom:1px solid #202738;
 }
 
 .header-inner{
-    max-width:1200px;
-    margin:auto;
-    min-height:75px;
+    height:75px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 20px;
 }
 
 .logo{
-    font-size:24px;
+    font-size:25px;
     font-weight:bold;
     color:#00e5ff;
 }
 
 .menu-btn{
-    width:46px;
-    height:42px;
-    border:1px solid #293246;
-    border-radius:10px;
-    background:#111827;
-    color:white;
-    font-size:24px;
+    width:45px;
+    height:45px;
+    border:1px solid #273043;
+    background:#111724;
+    color:#fff;
+    border-radius:12px;
+    font-size:25px;
 }
 
-/* ================= SIDE MENU ================= */
-
-.side-menu{
-    position:fixed;
-    top:0;
-    left:-310px;
-    width:300px;
-    height:100vh;
-    background:#0d121c;
-    border-right:1px solid #263044;
-    z-index:3000;
-    padding:25px 18px;
-    transition:.3s;
-    overflow-y:auto;
+.menu-btn:hover{
+    background:#182033;
 }
 
-.side-menu.active{
-    left:0;
-}
-
-.menu-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:25px;
-}
-
-.menu-title h2{
-    color:#00e5ff;
-}
-
-.close-menu{
-    background:#1b2230;
-    color:white;
-    border:0;
-    width:38px;
-    height:38px;
-    border-radius:8px;
-    font-size:20px;
-}
-
-.side-menu a{
-    display:block;
-    padding:14px;
-    margin:8px 0;
-    border-radius:10px;
-    color:#ddd;
-    background:#111722;
-    transition:.2s;
-}
-
-.side-menu a:hover{
-    background:#172235;
-    color:#00e5ff;
-}
+/* SIDE MENU */
 
 .overlay{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.65);
-    z-index:2500;
     display:none;
+    z-index:1998;
 }
 
-.overlay.active{
+.overlay.show{
     display:block;
 }
 
-/* ================= HERO ================= */
+.side-menu{
+    position:fixed;
+    top:0;
+    left:-330px;
+    width:310px;
+    height:100vh;
+    background:#0d121c;
+    z-index:1999;
+    padding:25px 20px;
+    transition:.3s;
+    border-right:1px solid #252e40;
+    overflow-y:auto;
+}
+
+.side-menu.open{
+    left:0;
+}
+
+.close-menu{
+    width:40px;
+    height:40px;
+    border:0;
+    border-radius:10px;
+    background:#1b2332;
+    color:#fff;
+    font-size:22px;
+    margin-bottom:25px;
+}
+
+.menu-title{
+    font-size:22px;
+    font-weight:bold;
+    color:#00e5ff;
+    margin-bottom:20px;
+}
+
+.menu-link{
+    width:100%;
+    display:block;
+    padding:13px 15px;
+    margin:7px 0;
+    border-radius:12px;
+    background:#121925;
+    border:1px solid #202a3b;
+    transition:.2s;
+}
+
+.menu-link:hover{
+    background:#182337;
+    border-color:#00bcd4;
+    transform:translateX(-3px);
+}
+
+/* HERO */
 
 .hero{
-    min-height:500px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    padding:90px 0;
     text-align:center;
-    padding:70px 20px;
     background:
-        radial-gradient(circle at top,#102b3a 0,#080b12 55%);
+    radial-gradient(circle at top,#123449 0%,transparent 40%),
+    linear-gradient(180deg,#090e18,#080b12);
 }
 
 .hero h1{
@@ -170,25 +172,17 @@ header{
 }
 
 .hero p{
-    max-width:650px;
-    margin:auto;
-    color:#aab3c2;
+    color:#aeb8ca;
     font-size:18px;
-}
-
-.hero-buttons{
-    margin-top:30px;
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
+    max-width:700px;
+    margin:0 auto 30px;
 }
 
 .btn{
     border:0;
-    border-radius:10px;
-    padding:12px 20px;
-    font-size:15px;
+    padding:13px 22px;
+    border-radius:12px;
+    font-weight:bold;
     transition:.2s;
 }
 
@@ -197,40 +191,35 @@ header{
 }
 
 .btn-primary{
-    background:#00c8e8;
+    background:#00e5ff;
     color:#001014;
-    font-weight:bold;
 }
 
 .btn-secondary{
-    background:#182130;
-    color:white;
-    border:1px solid #29364b;
+    background:#1b2434;
+    color:#fff;
 }
 
-/* ================= PROMO ================= */
+/* PROMO */
 
 .promo{
-    max-width:1200px;
-    margin:30px auto;
+    margin:35px 0;
     padding:22px;
-    border:1px solid #194c59;
-    border-radius:15px;
-    background:linear-gradient(135deg,#09222b,#101722);
+    border-radius:18px;
+    background:linear-gradient(135deg,#13283c,#101923);
+    border:1px solid #23445b;
     text-align:center;
 }
 
 .promo strong{
     color:#00e5ff;
-    font-size:20px;
+    font-size:22px;
 }
 
-/* ================= CONTAINER ================= */
+/* SECTIONS */
 
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:60px 20px;
+section{
+    padding:65px 0;
 }
 
 .section-title{
@@ -240,43 +229,44 @@ header{
 
 .section-title h2{
     font-size:32px;
+    margin-bottom:8px;
 }
 
 .section-title p{
-    color:#8f99aa;
-    margin-top:5px;
+    color:#8995aa;
 }
 
-/* ================= FILTER ================= */
+/* SEARCH */
 
 .filters{
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr 1fr;
+    display:flex;
     gap:12px;
+    flex-wrap:wrap;
     margin-bottom:30px;
 }
 
-.filters input,
-.filters select,
-.form input,
-.form select{
+.search{
+    flex:1;
+    min-width:220px;
+}
+
+input,
+select{
     width:100%;
-    padding:13px;
-    background:#101620;
-    color:white;
-    border:1px solid #283346;
-    border-radius:10px;
+    padding:13px 15px;
+    border-radius:12px;
+    border:1px solid #293448;
+    background:#101722;
+    color:#fff;
     outline:none;
 }
 
-.filters input:focus,
-.filters select:focus,
-.form input:focus,
-.form select:focus{
-    border-color:#00c8e8;
+input:focus,
+select:focus{
+    border-color:#00bcd4;
 }
 
-/* ================= PRODUCTS ================= */
+/* PRODUCTS */
 
 .products{
     display:grid;
@@ -285,9 +275,9 @@ header{
 }
 
 .card{
-    background:#0f141d;
-    border:1px solid #202a3a;
-    border-radius:15px;
+    background:#0f151f;
+    border:1px solid #222c3d;
+    border-radius:18px;
     padding:20px;
     transition:.25s;
     position:relative;
@@ -295,207 +285,189 @@ header{
 
 .card:hover{
     transform:translateY(-5px);
-    border-color:#00aac5;
+    border-color:#00a8c0;
 }
 
 .card-icon{
-    height:120px;
-    border-radius:12px;
+    width:65px;
+    height:65px;
+    border-radius:16px;
+    background:#172131;
     display:flex;
-    justify-content:center;
     align-items:center;
-    font-size:55px;
-    background:linear-gradient(135deg,#121c2a,#0a1018);
-    margin-bottom:16px;
+    justify-content:center;
+    font-size:32px;
+    margin-bottom:18px;
 }
 
 .card h3{
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
-.card-info{
-    color:#aab3c2;
+.card p{
+    color:#9aa6b8;
     font-size:14px;
+    min-height:50px;
 }
 
-.card-info div{
-    margin:5px 0;
+.info{
+    margin:15px 0;
+}
+
+.info div{
+    display:flex;
+    justify-content:space-between;
+    padding:5px 0;
+    border-bottom:1px solid #1d2634;
 }
 
 .price{
+    font-size:21px;
     color:#00e5ff;
-    font-size:22px;
     font-weight:bold;
     margin:15px 0;
 }
 
-.available{
-    color:#5cff8d;
-}
-
-.unavailable{
-    color:#ff6565;
-}
-
-.card-buttons{
-    display:grid;
-    grid-template-columns:1fr 45px;
+.card-actions{
+    display:flex;
     gap:8px;
 }
 
+.card-actions button{
+    flex:1;
+}
+
 .favorite{
-    border:1px solid #2a3548;
-    background:#151c27;
-    color:white;
+    position:absolute;
+    top:15px;
+    left:15px;
+    width:40px;
+    height:40px;
+    border:1px solid #303a4b;
     border-radius:10px;
-    font-size:20px;
+    background:#131b28;
+    color:#fff;
+    font-size:19px;
 }
 
 .favorite.active{
     color:#ff477e;
 }
 
-/* ================= EMPTY ================= */
-
-.empty{
-    text-align:center;
-    padding:40px;
-    color:#8791a1;
-    border:1px dashed #2b3546;
-    border-radius:12px;
-}
-
-/* ================= ABOUT ================= */
+/* ABOUT */
 
 .about-box{
     max-width:850px;
     margin:auto;
-    background:#0f141d;
-    border:1px solid #202a3a;
-    border-radius:15px;
+    background:#0f151f;
+    border:1px solid #222c3d;
+    border-radius:18px;
     padding:30px;
 }
 
 .about-box p{
-    color:#b4bdcb;
+    color:#b0bacb;
     margin-bottom:15px;
 }
 
-/* ================= CART / ORDERS ================= */
+/* CART / ORDERS */
 
-.list-box{
-    max-width:850px;
-    margin:auto;
+.panel-box{
+    background:#0f151f;
+    border:1px solid #222c3d;
+    border-radius:18px;
+    padding:25px;
 }
 
-.list-item{
-    background:#0f141d;
-    border:1px solid #202a3a;
-    border-radius:12px;
-    padding:18px;
-    margin-bottom:12px;
+.empty{
+    text-align:center;
+    color:#8792a6;
+    padding:30px;
+}
+
+.cart-item,
+.order-item{
     display:flex;
     justify-content:space-between;
     align-items:center;
     gap:15px;
-}
-
-.list-item small{
-    color:#8791a1;
+    padding:15px 0;
+    border-bottom:1px solid #202a38;
 }
 
 .total{
-    text-align:center;
-    padding:20px;
-    background:#101722;
-    border-radius:12px;
-    margin-top:15px;
+    display:flex;
+    justify-content:space-between;
+    margin-top:20px;
+    font-size:20px;
+    font-weight:bold;
 }
 
-/* ================= PANEL ================= */
+/* USER PANEL */
 
-.panel{
-    max-width:850px;
+.user-panel{
+    max-width:700px;
     margin:auto;
 }
 
-.profile-box{
-    background:#0f141d;
-    border:1px solid #202a3a;
-    border-radius:15px;
-    padding:25px;
-}
-
 .profile-row{
-    padding:13px 0;
-    border-bottom:1px solid #202838;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:14px 0;
+    border-bottom:1px solid #202a38;
 }
 
-.profile-row:last-child{
-    border-bottom:0;
+.profile-row span:first-child{
+    color:#8490a5;
 }
 
-.profile-row span{
-    color:#7f8a9d;
-}
-
-/* ================= FAQ ================= */
+/* FAQ */
 
 .faq{
     max-width:850px;
     margin:auto;
 }
 
-details{
-    background:#0f141d;
-    border:1px solid #202a3a;
-    border-radius:10px;
-    padding:15px;
-    margin-bottom:10px;
+.faq-item{
+    background:#0f151f;
+    border:1px solid #222c3d;
+    border-radius:15px;
+    margin-bottom:12px;
+    overflow:hidden;
 }
 
-summary{
-    cursor:pointer;
+.faq-question{
+    padding:18px;
     font-weight:bold;
+    cursor:pointer;
 }
 
-details p{
-    color:#aab3c2;
-    margin-top:10px;
+.faq-answer{
+    display:none;
+    padding:0 18px 18px;
+    color:#aeb8c8;
 }
 
-/* ================= FOOTER ================= */
+.faq-item.open .faq-answer{
+    display:block;
+}
+
+/* FOOTER */
 
 footer{
-    margin-top:50px;
-    padding:45px 20px;
     background:#06090e;
     border-top:1px solid #202838;
+    padding:45px 0;
     text-align:center;
 }
 
-footer h3{
-    color:#00e5ff;
-    margin-bottom:10px;
-}
-
 footer p{
-    color:#8d97a7;
+    color:#8994a7;
+    margin:8px 0;
 }
 
-.footer-links{
-    margin:20px 0;
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.footer-links a{
-    color:#aeb8c7;
-}
-
-/* ================= MODAL ================= */
+/* MODAL */
 
 .modal{
     position:fixed;
@@ -504,40 +476,39 @@ footer p{
     display:none;
     align-items:center;
     justify-content:center;
-    z-index:5000;
+    z-index:3000;
     padding:20px;
 }
 
-.modal.active{
+.modal.show{
     display:flex;
 }
 
 .modal-box{
-    width:100%;
-    max-width:500px;
-    background:#0d121b;
-    border:1px solid #28354a;
-    border-radius:15px;
+    width:min(450px,100%);
+    background:#0e141e;
+    border:1px solid #293448;
+    border-radius:20px;
     padding:25px;
-    max-height:90vh;
-    overflow:auto;
-}
-
-.modal-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
+    position:relative;
 }
 
 .modal-close{
-    width:38px;
-    height:38px;
+    position:absolute;
+    left:15px;
+    top:15px;
+    width:35px;
+    height:35px;
     border:0;
-    border-radius:8px;
-    background:#192130;
-    color:white;
-    font-size:20px;
+    border-radius:10px;
+    background:#1b2432;
+    color:#fff;
+}
+
+.modal-title{
+    text-align:center;
+    margin-bottom:25px;
+    color:#00e5ff;
 }
 
 .form-group{
@@ -547,35 +518,42 @@ footer p{
 .form-group label{
     display:block;
     margin-bottom:6px;
-    color:#aeb8c7;
+    color:#aab4c5;
 }
 
-.form-actions{
+.form-buttons{
     display:flex;
     gap:10px;
-    flex-wrap:wrap;
-    margin-top:15px;
+    margin-top:20px;
+}
+
+.form-buttons button{
+    flex:1;
 }
 
 .switch-auth{
     text-align:center;
-    color:#00d9f7;
-    margin-top:15px;
-    cursor:pointer;
+    margin-top:18px;
+    color:#8995a8;
 }
 
-/* ================= TOAST ================= */
+.switch-auth button{
+    background:none;
+    border:0;
+    color:#00e5ff;
+}
+
+/* TOAST */
 
 .toast{
     position:fixed;
-    bottom:25px;
-    right:25px;
-    background:#101822;
-    border:1px solid #00aac5;
-    color:white;
-    padding:14px 18px;
-    border-radius:10px;
-    z-index:7000;
+    right:20px;
+    bottom:20px;
+    background:#131c29;
+    border:1px solid #2a3a50;
+    padding:15px 20px;
+    border-radius:13px;
+    z-index:5000;
     transform:translateY(100px);
     opacity:0;
     transition:.3s;
@@ -586,59 +564,20 @@ footer p{
     opacity:1;
 }
 
-/* ================= ADMIN ================= */
-
-.admin-box{
-    max-width:1000px;
-    margin:auto;
-}
-
-.admin-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-.admin-card{
-    background:#0f141d;
-    border:1px solid #202a3a;
-    border-radius:15px;
-    padding:22px;
-}
-
-.admin-products{
-    margin-top:20px;
-}
-
-.admin-product{
-    padding:15px;
-    border-bottom:1px solid #222c3c;
-}
-
-.admin-product:last-child{
-    border-bottom:0;
-}
-
-.admin-actions{
-    display:flex;
-    gap:8px;
-    margin-top:10px;
-    flex-wrap:wrap;
-}
-
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE */
 
 @media(max-width:900px){
     .products{
         grid-template-columns:repeat(2,1fr);
     }
-
-    .filters{
-        grid-template-columns:1fr 1fr;
-    }
 }
 
 @media(max-width:600px){
+
+    .hero{
+        padding:65px 0;
+    }
+
     .hero h1{
         font-size:34px;
     }
@@ -647,760 +586,674 @@ footer p{
         grid-template-columns:1fr;
     }
 
-    .filters{
-        grid-template-columns:1fr;
+    .header-inner{
+        height:65px;
     }
 
-    .list-item{
+    .side-menu{
+        width:285px;
+    }
+
+    .cart-item,
+    .order-item{
         flex-direction:column;
-        align-items:stretch;
+        align-items:flex-start;
     }
 
-    .admin-grid{
-        grid-template-columns:1fr;
-    }
-
-    .container{
-        padding:45px 15px;
-    }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ================= SIDE MENU ================= -->
+<!-- SUPABASE -->
 
-<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<aside class="side-menu" id="sideMenu">
+<script>
 
-    <div class="menu-title">
-        <h2>🎮 GameShop</h2>
-        <button class="close-menu" onclick="closeMenu()">×</button>
-    </div>
+const SUPABASE_URL = "https://gwxurhfiyrefsatyxwpr.supabase.co";
 
-    <a href="#home" onclick="closeMenu()">🏠 خانه</a>
-    <a href="#accounts" onclick="closeMenu()">🎮 اکانت‌ها</a>
-    <a href="#about" onclick="closeMenu()">📢 توضیحات سایت</a>
-    <a href="#cart" onclick="closeMenu()">🛒 سبد خرید <span id="menuCartCount">0</span></a>
-    <a href="#orders" onclick="closeMenu()">📦 سفارش‌های من</a>
-    <a href="#favorites" onclick="closeMenu()">❤️ علاقه‌مندی‌ها</a>
-    <a href="#faq" onclick="closeMenu()">❓ سوالات متداول</a>
-    <a href="#panel" onclick="openUserPanel()">👤 <span id="menuUser">ورود / ثبت‌نام</span></a>
+/*
+  اینجا فقط Publishable Key خودت را قرار بده.
+  Secret / Service Role Key را هرگز اینجا نگذار.
+*/
+const SUPABASE_KEY = "sb_publishable_kWYNV4OA3Tt2VN4szEKSYg_axVAPagA";
 
-    <a href="#admin" onclick="openAdmin()">👑 پنل مدیریت</a>
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
-</aside>
+</script>
 
-<!-- ================= HEADER ================= -->
+
+<!-- HEADER -->
 
 <header>
 
-    <div class="header-inner">
+<div class="container header-inner">
 
-        <div class="logo">🎮 GameShop</div>
-
-        <button class="menu-btn" onclick="openMenu()">☰</button>
-
+    <div class="logo">
+        🎮 GameShop
     </div>
+
+    <button class="menu-btn" onclick="openMenu()">
+        ☰
+    </button>
+
+</div>
 
 </header>
 
-<!-- ================= HERO ================= -->
 
-<section class="hero" id="home">
+<!-- SIDE MENU -->
 
-    <div>
+<div id="overlay" class="overlay" onclick="closeMenu()"></div>
 
-        <h1>
-            به <span>GameShop</span> خوش آمدید 🎮
-        </h1>
+<div id="sideMenu" class="side-menu">
 
-        <p>
-            خرید و فروش اکانت‌های بازی با محیطی ساده، سریع و حرفه‌ای
-        </p>
+    <button class="close-menu" onclick="closeMenu()">✕</button>
 
-        <div class="hero-buttons">
-
-            <a href="#accounts" class="btn btn-primary">
-                مشاهده اکانت‌ها
-            </a>
-
-            <a href="#about" class="btn btn-secondary">
-                درباره سایت
-            </a>
-
-        </div>
-
+    <div class="menu-title">
+        🎮 GameShop
     </div>
+
+    <a class="menu-link" href="#home" onclick="closeMenu()">
+        🏠 خانه
+    </a>
+
+    <a class="menu-link" href="#accounts" onclick="closeMenu()">
+        🎮 اکانت‌ها
+    </a>
+
+    <a class="menu-link" href="#about" onclick="closeMenu()">
+        📢 توضیحات سایت
+    </a>
+
+    <a class="menu-link" href="#cart" onclick="closeMenu()">
+        🛒 سبد خرید
+        <span id="menuCartCount">0</span>
+    </a>
+
+    <a class="menu-link" href="#orders" onclick="closeMenu()">
+        📦 سفارش‌های من
+    </a>
+
+    <a class="menu-link" href="#favorites" onclick="closeMenu()">
+        ❤️ علاقه‌مندی‌ها
+    </a>
+
+    <a class="menu-link" href="#faq" onclick="closeMenu()">
+        ❓ سوالات متداول
+    </a>
+
+    <button
+        id="userMenuBtn"
+        class="menu-link"
+        onclick="handleUserMenu()"
+    >
+        👤 ورود / ثبت‌نام
+    </button>
+
+</div>
+
+
+<!-- HERO -->
+
+<section id="home" class="hero">
+
+<div class="container">
+
+    <h1>
+        به <span>GameShop</span> خوش آمدید 🎮
+    </h1>
+
+    <p>
+        خرید و فروش اکانت‌های بازی با محیطی ساده،
+        سریع و حرفه‌ای
+    </p>
+
+    <a href="#accounts" class="btn btn-primary">
+        مشاهده اکانت‌ها
+    </a>
+
+</div>
 
 </section>
 
-<!-- ================= PROMO ================= -->
+
+<!-- PROMO -->
+
+<div class="container">
 
 <div class="promo">
 
-    🎁 <strong>جشنواره GameShop</strong>
+    <strong>
+        📢 تخفیف‌های ویژه GameShop
+    </strong>
 
     <p>
-        برای اطلاع از تخفیف‌ها و اکانت‌های جدید، سایت را دنبال کنید.
+        برای اطلاع از اکانت‌های جدید و تخفیف‌ها
+        سایت را دنبال کنید.
     </p>
 
 </div>
 
-<!-- ================= ACCOUNTS ================= -->
+</div>
 
-<section class="container" id="accounts">
 
-    <div class="section-title">
+<!-- ACCOUNTS -->
 
-        <h2>🎮 اکانت‌ها</h2>
+<section id="accounts">
 
-        <p>
-            اکانت موردنظرت را پیدا کن
-        </p>
+<div class="container">
 
-    </div>
+<div class="section-title">
 
-    <div class="filters">
+    <h2>🎮 اکانت‌های فروشگاه</h2>
+
+    <p>
+        اکانت‌های موجود را از اینجا مشاهده کنید
+    </p>
+
+</div>
+
+
+<div class="filters">
+
+    <div class="search">
 
         <input
-            type="text"
             id="searchInput"
-            placeholder="🔍 جستجوی اکانت..."
-            oninput="renderProducts()"
+            type="text"
+            placeholder="🔎 جستجوی اکانت..."
+            oninput="renderAccounts()"
         >
 
-        <select id="gameFilter" onchange="renderProducts()">
-            <option value="all">🎮 همه بازی‌ها</option>
-            <option value="steam">Steam</option>
-            <option value="pubg">PUBG</option>
-            <option value="fortnite">Fortnite</option>
-            <option value="valorant">Valorant</option>
+    </div>
+
+    <div>
+
+        <select id="sortSelect" onchange="renderAccounts()">
+
+            <option value="default">
+                مرتب‌سازی
+            </option>
+
+            <option value="low">
+                ارزان‌ترین
+            </option>
+
+            <option value="high">
+                گران‌ترین
+            </option>
+
         </select>
 
-        <select id="statusFilter" onchange="renderProducts()">
-            <option value="all">همه وضعیت‌ها</option>
-            <option value="available">موجود</option>
-            <option value="unavailable">ناموجود</option>
-        </select>
-
-        <select id="sortFilter" onchange="renderProducts()">
-            <option value="default">مرتب‌سازی</option>
-            <option value="low">ارزان‌ترین</option>
-            <option value="high">گران‌ترین</option>
-        </select>
-
     </div>
 
-    <div class="products" id="products"></div>
+</div>
+
+
+<div id="accountsGrid" class="products">
+
+    <div class="empty">
+        در حال دریافت اکانت‌ها...
+    </div>
+
+</div>
+
+</div>
 
 </section>
 
-<!-- ================= FAVORITES ================= -->
 
-<section class="container" id="favorites">
+<!-- FAVORITES -->
 
-    <div class="section-title">
+<section id="favorites">
 
-        <h2>❤️ علاقه‌مندی‌ها</h2>
+<div class="container">
 
-        <p>اکانت‌هایی که ذخیره کرده‌ای</p>
+<div class="section-title">
 
+    <h2>❤️ علاقه‌مندی‌ها</h2>
+
+    <p>
+        اکانت‌هایی که ذخیره کرده‌اید
+    </p>
+
+</div>
+
+<div id="favoritesGrid" class="products">
+
+    <div class="empty">
+        هنوز اکانتی به علاقه‌مندی‌ها اضافه نکرده‌اید.
     </div>
 
-    <div id="favoritesList"></div>
+</div>
+
+</div>
 
 </section>
 
-<!-- ================= ABOUT ================= -->
 
-<section class="container" id="about">
+<!-- ABOUT -->
 
-    <div class="section-title">
+<section id="about">
 
-        <h2>📢 توضیحات سایت</h2>
+<div class="container">
 
-    </div>
+<div class="section-title">
 
-    <div class="about-box">
+    <h2>📢 توضیحات سایت</h2>
 
-        <p>
-            این سایت برای خرید اکانت‌ها یا برای فروش اکانت شما ساخته شده است.
-        </p>
+</div>
 
-        <p>
-            اگر می‌خواهید اکانتی بخرید یا بفروشید می‌توانید با پشتیبانی تماس بگیرید.
-        </p>
+<div class="about-box">
 
-        <p>
-            پشتیبانی می‌تواند در بازه ۱ تا ۲۴ ساعت پاسخ شما را بدهد.
-        </p>
+    <p>
+        این سایت برای خرید اکانت‌ها یا برای فروش اکانت شما ساخته شده است.
+    </p>
 
-        <p>
-            با تشکر از اعتماد شما ❤️
-        </p>
+    <p>
+        اگر می‌خواهید اکانتی بخرید یا بفروشید
+        می‌توانید با پشتیبانی تماس بگیرید.
+    </p>
 
-    </div>
+    <p>
+        🕐 پشتیبانی می‌تواند در بازه
+        <strong>۱ تا ۲۴ ساعت</strong>
+        به شما پاسخ بدهد.
+    </p>
 
-</section>
+    <p>
+        با تشکر از همراهی شما ❤️
+    </p>
 
-<!-- ================= CART ================= -->
+</div>
 
-<section class="container" id="cart">
-
-    <div class="section-title">
-
-        <h2>🛒 سبد خرید</h2>
-
-    </div>
-
-    <div class="list-box" id="cartList"></div>
+</div>
 
 </section>
 
-<!-- ================= ORDERS ================= -->
 
-<section class="container" id="orders">
+<!-- CART -->
 
-    <div class="section-title">
+<section id="cart">
 
-        <h2>📦 سفارش‌های من</h2>
+<div class="container">
 
-    </div>
+<div class="section-title">
 
-    <div class="list-box" id="ordersList"></div>
+    <h2>🛒 سبد خرید</h2>
 
-</section>
+</div>
 
-<!-- ================= USER PANEL ================= -->
+<div class="panel-box">
 
-<section class="container" id="panel">
+    <div id="cartList">
 
-    <div class="section-title">
-
-        <h2>👤 پنل کاربری</h2>
-
-    </div>
-
-    <div class="panel" id="panelContent"></div>
-
-</section>
-
-<!-- ================= FAQ ================= -->
-
-<section class="container" id="faq">
-
-    <div class="section-title">
-
-        <h2>❓ سوالات متداول</h2>
-
-    </div>
-
-    <div class="faq">
-
-        <details>
-            <summary>چطور اکانت بخرم؟</summary>
-            <p>
-                اکانت موردنظر را انتخاب کنید و در صورت موجود بودن آن را به سبد خرید اضافه کنید.
-            </p>
-        </details>
-
-        <details>
-            <summary>چطور اکانت خودم را برای فروش ثبت کنم؟</summary>
-            <p>
-                برای فروش اکانت می‌توانید با پشتیبانی تماس بگیرید.
-            </p>
-        </details>
-
-        <details>
-            <summary>آیا پرداخت آنلاین فعال است؟</summary>
-            <p>
-                در نسخه فعلی پرداخت آنلاین واقعی فعال نیست و سیستم فروش حالت آزمایشی دارد.
-            </p>
-        </details>
-
-        <details>
-            <summary>پشتیبانی چه زمانی پاسخ می‌دهد؟</summary>
-            <p>
-                پشتیبانی می‌تواند در بازه ۱ تا ۲۴ ساعت پاسخ دهد.
-            </p>
-        </details>
-
-    </div>
-
-</section>
-
-<!-- ================= ADMIN ================= -->
-
-<section class="container" id="admin">
-
-    <div class="section-title">
-
-        <h2>👑 پنل مدیریت</h2>
-
-        <p>
-            مدیریت اکانت‌ها و تخفیف‌ها
-        </p>
-
-    </div>
-
-    <div class="admin-box">
-
-        <div class="admin-grid">
-
-            <div class="admin-card">
-
-                <h3>➕ افزودن اکانت</h3>
-
-                <br>
-
-                <div class="form-group">
-                    <label>نام اکانت</label>
-                    <input id="adminName" placeholder="مثلاً Steam Account 11">
-                </div>
-
-                <div class="form-group">
-                    <label>بازی</label>
-
-                    <select id="adminGame">
-
-                        <option value="steam">Steam</option>
-                        <option value="pubg">PUBG</option>
-                        <option value="fortnite">Fortnite</option>
-                        <option value="valorant">Valorant</option>
-
-                    </select>
-
-                </div>
-
-                <div class="form-group">
-                    <label>قیمت</label>
-                    <input id="adminPrice" type="number" placeholder="300000">
-                </div>
-
-                <div class="form-group">
-                    <label>لول</label>
-                    <input id="adminLevel" placeholder="25">
-                </div>
-
-                <div class="form-group">
-                    <label>اسکین</label>
-                    <input id="adminSkins" placeholder="8">
-                </div>
-
-                <div class="form-group">
-                    <label>وضعیت</label>
-
-                    <select id="adminStatus">
-                        <option value="available">موجود</option>
-                        <option value="unavailable">ناموجود</option>
-                    </select>
-
-                </div>
-
-                <button class="btn btn-primary" onclick="addProduct()">
-                    افزودن اکانت
-                </button>
-
-            </div>
-
-            <div class="admin-card">
-
-                <h3>🎟️ تخفیف</h3>
-
-                <br>
-
-                <div class="form-group">
-                    <label>کد تخفیف</label>
-                    <input id="discountCode" placeholder="GAME10">
-                </div>
-
-                <div class="form-group">
-                    <label>درصد تخفیف</label>
-                    <input id="discountPercent" type="number" placeholder="10">
-                </div>
-
-                <button class="btn btn-primary" onclick="saveDiscount()">
-                    ذخیره تخفیف
-                </button>
-
-                <br><br>
-
-                <h3>📢 اطلاعیه</h3>
-
-                <br>
-
-                <div class="form-group">
-                    <input id="announcement" placeholder="متن اطلاعیه">
-                </div>
-
-                <button class="btn btn-primary" onclick="saveAnnouncement()">
-                    انتشار
-                </button>
-
-            </div>
-
-        </div>
-
-        <div class="admin-card admin-products">
-
-            <h3>📦 مدیریت اکانت‌ها</h3>
-
-            <div id="adminProducts"></div>
-
+        <div class="empty">
+            سبد خرید شما خالی است.
         </div>
 
     </div>
 
+</div>
+
+</div>
+
 </section>
 
-<!-- ================= FOOTER ================= -->
+
+<!-- ORDERS -->
+
+<section id="orders">
+
+<div class="container">
+
+<div class="section-title">
+
+    <h2>📦 سفارش‌های من</h2>
+
+    <p>
+        سفارش‌های ثبت‌شده شما
+    </p>
+
+</div>
+
+<div class="panel-box">
+
+    <div id="ordersList">
+
+        <div class="empty">
+            برای مشاهده سفارش‌ها ابتدا وارد حساب شوید.
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- USER PANEL -->
+
+<section id="userPanel">
+
+<div class="container">
+
+<div class="section-title">
+
+    <h2>👤 پنل کاربری</h2>
+
+</div>
+
+<div class="user-panel">
+
+<div class="panel-box">
+
+    <div id="panelContent">
+
+        <div class="empty">
+            برای مشاهده پنل وارد حساب شوید.
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section id="faq">
+
+<div class="container">
+
+<div class="section-title">
+
+    <h2>❓ سوالات متداول</h2>
+
+</div>
+
+<div class="faq">
+
+    <div class="faq-item">
+
+        <div
+            class="faq-question"
+            onclick="toggleFaq(this)"
+        >
+            چطور ثبت‌نام کنم؟
+        </div>
+
+        <div class="faq-answer">
+            از منوی سه‌خطی وارد بخش ورود / ثبت‌نام شوید
+            و حساب خود را ایجاد کنید.
+        </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <div
+            class="faq-question"
+            onclick="toggleFaq(this)"
+        >
+            چطور اکانت بخرم؟
+        </div>
+
+        <div class="faq-answer">
+            اکانت موردنظر را به سبد خرید اضافه کرده
+            و مراحل سفارش را انجام دهید.
+        </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <div
+            class="faq-question"
+            onclick="toggleFaq(this)"
+        >
+            چطور اکانت خودم را بفروشم؟
+        </div>
+
+        <div class="faq-answer">
+            برای فروش اکانت می‌توانید با پشتیبانی تماس بگیرید.
+        </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <div
+            class="faq-question"
+            onclick="toggleFaq(this)"
+        >
+            پشتیبانی چه زمانی پاسخ می‌دهد؟
+        </div>
+
+        <div class="faq-answer">
+            پشتیبانی در بازه ۱ تا ۲۴ ساعت پاسخ می‌دهد.
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
 
 <footer>
 
-    <h3>🎮 GameShop</h3>
+<div class="container">
+
+    <h2>🎮 GameShop</h2>
 
     <p>
-        فروشگاه اکانت‌های بازی
+        فروشگاه خرید و فروش اکانت بازی
     </p>
-
-    <div class="footer-links">
-
-        <a href="#about">درباره ما</a>
-        <a href="#faq">سوالات متداول</a>
-        <a href="#accounts">اکانت‌ها</a>
-        <a href="#panel">حساب کاربری</a>
-
-    </div>
 
     <p>
-        📞 پشتیبانی: 09339232786
+        📞 پشتیبانی:
+        09339232786
     </p>
-
-    <br>
 
     <a
         href="tel:09339232786"
         class="btn btn-primary"
+        style="display:inline-block;margin-top:15px;"
     >
         📞 تماس با پشتیبانی
     </a>
 
-    <br><br>
+    <p style="margin-top:25px;">
+        © 2026 GameShop
+    </p>
 
-    <small>
-        © 2026 GameShop - تمامی حقوق محفوظ است
-    </small>
+</div>
 
 </footer>
 
-<!-- ================= AUTH MODAL ================= -->
 
-<div class="modal" id="authModal">
+<!-- AUTH MODAL -->
 
-    <div class="modal-box">
+<div id="authModal" class="modal">
 
-        <div class="modal-header">
+<div class="modal-box">
 
-            <h2 id="authTitle">
-                ورود به حساب
-            </h2>
+<button
+    class="modal-close"
+    onclick="closeAuth()"
+>
+    ✕
+</button>
 
-            <button
-                class="modal-close"
-                onclick="closeModal()"
-            >
-                ×
-            </button>
 
-        </div>
+<h2
+    id="authTitle"
+    class="modal-title"
+>
+    ورود به حساب
+</h2>
 
-        <form id="authForm">
 
-            <div
-                class="form-group"
-                id="registerNameBox"
-                style="display:none"
-            >
+<form id="authForm">
 
-                <label>نام کاربری</label>
+<div
+    id="usernameGroup"
+    class="form-group"
+    style="display:none;"
+>
 
-                <input
-                    id="authUsername"
-                    type="text"
-                    placeholder="نام کاربری"
-                >
+    <label>
+        نام کاربری
+    </label>
 
-            </div>
-
-            <div class="form-group">
-
-                <label>ایمیل</label>
-
-                <input
-                    id="authEmail"
-                    type="email"
-                    placeholder="example@gmail.com"
-                >
-
-            </div>
-
-            <div class="form-group">
-
-                <label>رمز عبور</label>
-
-                <input
-                    id="authPassword"
-                    type="password"
-                    placeholder="رمز عبور"
-                >
-
-            </div>
-
-            <div
-                class="form-group"
-                id="confirmPasswordBox"
-                style="display:none"
-            >
-
-                <label>تکرار رمز عبور</label>
-
-                <input
-                    id="authConfirm"
-                    type="password"
-                    placeholder="تکرار رمز"
-                >
-
-            </div>
-
-            <button
-                class="btn btn-primary"
-                style="width:100%"
-                type="submit"
-            >
-                ادامه
-            </button>
-
-        </form>
-
-        <div
-            class="switch-auth"
-            onclick="switchAuth()"
-            id="switchText"
-        >
-            حساب ندارید؟ ثبت‌نام کنید
-        </div>
-
-    </div>
+    <input
+        id="usernameInput"
+        type="text"
+        placeholder="نام کاربری"
+    >
 
 </div>
 
-<!-- ================= PRODUCT MODAL ================= -->
 
-<div class="modal" id="productModal">
+<div class="form-group">
 
-    <div class="modal-box">
+    <label>
+        ایمیل
+    </label>
 
-        <div class="modal-header">
-
-            <h2 id="productModalTitle"></h2>
-
-            <button
-                class="modal-close"
-                onclick="closeProductModal()"
-            >
-                ×
-            </button>
-
-        </div>
-
-        <div id="productModalContent"></div>
-
-    </div>
+    <input
+        id="emailInput"
+        type="email"
+        placeholder="example@gmail.com"
+        required
+    >
 
 </div>
 
-<!-- ================= TOAST ================= -->
 
-<div class="toast" id="toast"></div>
+<div class="form-group">
+
+    <label>
+        رمز عبور
+    </label>
+
+    <input
+        id="passwordInput"
+        type="password"
+        placeholder="رمز عبور"
+        required
+    >
+
+</div>
+
+
+<div
+    id="confirmGroup"
+    class="form-group"
+    style="display:none;"
+>
+
+    <label>
+        تکرار رمز عبور
+    </label>
+
+    <input
+        id="confirmInput"
+        type="password"
+        placeholder="تکرار رمز عبور"
+    >
+
+</div>
+
+
+<div class="form-buttons">
+
+    <button
+        type="submit"
+        class="btn btn-primary"
+    >
+        <span id="authSubmitText">
+            ورود
+        </span>
+    </button>
+
+</div>
+
+</form>
+
+
+<div class="switch-auth">
+
+    <span id="switchText">
+        حساب ندارید؟
+    </span>
+
+    <button
+        type="button"
+        onclick="switchAuth()"
+        id="switchBtn"
+    >
+        ثبت‌نام
+    </button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div id="toast" class="toast"></div>
+
 
 <script>
 
-/* =========================================================
-   DATA
-========================================================= */
+/* =========================
+   VARIABLES
+========================= */
 
-let products = JSON.parse(
-    localStorage.getItem("gameshopProducts")
-) || [
+let currentUser = null;
 
-    {
-        id:1,
-        name:"Steam Account #1",
-        game:"steam",
-        icon:"🎯",
-        price:0,
-        level:"نامعلوم",
-        skins:"نامعلوم",
-        status:"unavailable"
-    },
+let accounts = [];
 
-    {
-        id:2,
-        name:"Steam Account #2",
-        game:"steam",
-        icon:"⚔️",
-        price:0,
-        level:"نامعلوم",
-        skins:"نامعلوم",
-        status:"unavailable"
-    },
+let cart = JSON.parse(
+    localStorage.getItem("gameshopCart") || "[]"
+);
 
-    {
-        id:3,
-        name:"PUBG Account #3",
-        game:"pubg",
-        icon:"🏆",
-        price:0,
-        level:"نامعلوم",
-        skins:"نامعلوم",
-        status:"unavailable"
-    },
-
-    {
-        id:4,
-        name:"Fortnite Account #4",
-        game:"fortnite",
-        icon:"🔥",
-        price:0,
-        level:"نامعلوم",
-        skins:"نامعلوم",
-        status:"unavailable"
-    },
-
-    {
-        id:5,
-        name:"Valorant Account #5",
-        game:"valorant",
-        icon:"💎",
-        price:0,
-        level:"نامعلوم",
-        skins:"نامعلوم",
-        status:"unavailable"
-    },
-
-    {
-        id:6,
-        name:"Steam Account #6",
-        game:"steam",
-        icon:"👑",
-        price:0,
-        level:"نامعلوم",
-        skins:"نامعلوم",
-        status:"unavailable"
-    },
-
-    {
-        id:7,
-        name:"PUBG Account #7",
-        game:"pubg",
-        icon:"🚀",
-        price:0,
-        level:"نامعلوم",
-        skins:"نامعلوم",
-        status:"unavailable"
-    },
-
-    {
-        id:8,
-        name:"Fortnite Account #8",
-        game:"fortnite",
-        icon:"🎮",
-        price:0,
-        level:"نامعلوم",
-        skins:"نامعلوم",
-        status:"unavailable"
-    },
-
-    {
-        id:9,
-        name:"Valorant Account #9",
-        game:"valorant",
-        icon:"💀",
-        price:0,
-        level:"نامعلوم",
-        skins:"نامعلوم",
-        status:"unavailable"
-    },
-
-    {
-        id:10,
-        name:"Steam Account #10",
-        game:"steam",
-        icon:"⚡",
-        price:0,
-        level:"نامعلوم",
-        skins:"نامعلوم",
-        status:"unavailable"
-    }
-
-];
-
-let cart =
-    JSON.parse(localStorage.getItem("gameshopCart")) || [];
-
-let orders =
-    JSON.parse(localStorage.getItem("gameshopOrders")) || [];
-
-let favorites =
-    JSON.parse(localStorage.getItem("gameshopFavorites")) || [];
-
-let user =
-    JSON.parse(localStorage.getItem("gameshopUser")) || null;
-
-let loggedIn =
-    localStorage.getItem("gameshopLoggedIn") === "true";
+let favorites = JSON.parse(
+    localStorage.getItem("gameshopFavorites") || "[]"
+);
 
 let authMode = "login";
 
-let discount =
-    JSON.parse(localStorage.getItem("gameshopDiscount")) || null;
 
-
-/* =========================================================
-   MENU
-========================================================= */
-
-function openMenu(){
-
-    document
-        .getElementById("sideMenu")
-        .classList.add("active");
-
-    document
-        .getElementById("overlay")
-        .classList.add("active");
-
-}
-
-function closeMenu(){
-
-    document
-        .getElementById("sideMenu")
-        .classList.remove("active");
-
-    document
-        .getElementById("overlay")
-        .classList.remove("active");
-
-}
-
-
-/* =========================================================
+/* =========================
    TOAST
-========================================================= */
+========================= */
 
 function showToast(message){
 
@@ -1411,738 +1264,70 @@ function showToast(message){
 
     toast.classList.add("show");
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
         toast.classList.remove("show");
 
-    },2500);
+    },3000);
 
 }
 
 
-/* =========================================================
-   PRODUCTS
-========================================================= */
+/* =========================
+   MENU
+========================= */
 
-function renderProducts(){
-
-    const container =
-        document.getElementById("products");
-
-    const search =
-        document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase();
-
-    const game =
-        document
-        .getElementById("gameFilter")
-        .value;
-
-    const status =
-        document
-        .getElementById("statusFilter")
-        .value;
-
-    const sort =
-        document
-        .getElementById("sortFilter")
-        .value;
-
-    let filtered =
-        products.filter(product => {
-
-            const matchesSearch =
-                product.name
-                .toLowerCase()
-                .includes(search);
-
-            const matchesGame =
-                game === "all" ||
-                product.game === game;
-
-            const matchesStatus =
-                status === "all" ||
-                product.status === status;
-
-            return (
-                matchesSearch &&
-                matchesGame &&
-                matchesStatus
-            );
-
-        });
-
-    if(sort === "low"){
-
-        filtered.sort(
-            (a,b)=>a.price-b.price
-        );
-
-    }
-
-    if(sort === "high"){
-
-        filtered.sort(
-            (a,b)=>b.price-a.price
-        );
-
-    }
-
-    if(filtered.length === 0){
-
-        container.innerHTML =
-            `<div class="empty">
-                اکانتی پیدا نشد 😕
-             </div>`;
-
-        return;
-
-    }
-
-    container.innerHTML =
-        filtered.map(product => {
-
-            const isFavorite =
-                favorites.includes(product.id);
-
-            const available =
-                product.status === "available";
-
-            return `
-
-                <div class="card">
-
-                    <div class="card-icon">
-                        ${product.icon || "🎮"}
-                    </div>
-
-                    <h3>
-                        ${product.name}
-                    </h3>
-
-                    <div class="card-info">
-
-                        <div>
-                            🎮 بازی:
-                            ${product.game}
-                        </div>
-
-                        <div>
-                            ⭐ لول:
-                            ${product.level}
-                        </div>
-
-                        <div>
-                            🎨 اسکین:
-                            ${product.skins}
-                        </div>
-
-                        <div class="${
-                            available
-                            ? "available"
-                            : "unavailable"
-                        }">
-
-                            ${
-                                available
-                                ? "🟢 موجود"
-                                : "❌ ناموجود"
-                            }
-
-                        </div>
-
-                    </div>
-
-                    <div class="price">
-
-                        ${
-                            Number(product.price).toLocaleString()
-                        }
-
-                        تومان
-
-                    </div>
-
-                    <div class="card-buttons">
-
-                        <button
-                            class="btn btn-primary"
-                            onclick="openProduct(${product.id})"
-                        >
-                            مشاهده
-                        </button>
-
-                        <button
-                            class="favorite ${
-                                isFavorite
-                                ? "active"
-                                : ""
-                            }"
-                            onclick="toggleFavorite(${product.id})"
-                        >
-                            ${
-                                isFavorite
-                                ? "♥"
-                                : "♡"
-                            }
-                        </button>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        }).join("");
-
-}
-
-
-/* =========================================================
-   PRODUCT MODAL
-========================================================= */
-
-function openProduct(id){
-
-    const product =
-        products.find(p => p.id === id);
-
-    if(!product) return;
+function openMenu(){
 
     document
-        .getElementById("productModalTitle")
-        .textContent =
-        product.name;
-
-    const available =
-        product.status === "available";
+        .getElementById("sideMenu")
+        .classList.add("open");
 
     document
-        .getElementById("productModalContent")
-        .innerHTML = `
+        .getElementById("overlay")
+        .classList.add("show");
 
-            <div class="card-icon">
-                ${product.icon || "🎮"}
-            </div>
+}
 
-            <p>🎮 بازی: ${product.game}</p>
-            <p>⭐ لول: ${product.level}</p>
-            <p>🎨 اسکین: ${product.skins}</p>
 
-            <div class="price">
-                ${Number(product.price).toLocaleString()}
-                تومان
-            </div>
-
-            <p class="${
-                available
-                ? "available"
-                : "unavailable"
-            }">
-
-                ${
-                    available
-                    ? "🟢 این اکانت موجود است"
-                    : "❌ این اکانت فعلاً ناموجود است"
-                }
-
-            </p>
-
-            <br>
-
-            ${
-                available
-
-                ?
-
-                `
-                <button
-                    class="btn btn-primary"
-                    style="width:100%"
-                    onclick="addToCart(${product.id})"
-                >
-                    🛒 افزودن به سبد خرید
-                </button>
-                `
-
-                :
-
-                `
-                <button
-                    class="btn btn-secondary"
-                    style="width:100%"
-                    disabled
-                >
-                    فعلاً قابل خرید نیست
-                </button>
-                `
-
-            }
-
-        `;
+function closeMenu(){
 
     document
-        .getElementById("productModal")
-        .classList.add("active");
-
-}
-
-function closeProductModal(){
+        .getElementById("sideMenu")
+        .classList.remove("open");
 
     document
-        .getElementById("productModal")
-        .classList.remove("active");
+        .getElementById("overlay")
+        .classList.remove("show");
 
 }
 
 
-/* =========================================================
-   FAVORITES
-========================================================= */
+/* =========================
+   AUTH MODAL
+========================= */
 
-function toggleFavorite(id){
+function openAuth(mode="login"){
 
-    if(favorites.includes(id)){
-
-        favorites =
-            favorites.filter(
-                item => item !== id
-            );
-
-        showToast("از علاقه‌مندی‌ها حذف شد");
-
-    }else{
-
-        favorites.push(id);
-
-        showToast("به علاقه‌مندی‌ها اضافه شد");
-
-    }
-
-    localStorage.setItem(
-        "gameshopFavorites",
-        JSON.stringify(favorites)
-    );
-
-    renderProducts();
-    renderFavorites();
-
-}
-
-function renderFavorites(){
-
-    const box =
-        document.getElementById("favoritesList");
-
-    const list =
-        products.filter(
-            p => favorites.includes(p.id)
-        );
-
-    if(list.length === 0){
-
-        box.innerHTML =
-            `<div class="empty">
-                هنوز اکانتی به علاقه‌مندی‌ها اضافه نکرده‌ای ❤️
-             </div>`;
-
-        return;
-
-    }
-
-    box.innerHTML =
-        `<div class="products">
-
-            ${
-                list.map(p => `
-
-                    <div class="card">
-
-                        <div class="card-icon">
-                            ${p.icon}
-                        </div>
-
-                        <h3>${p.name}</h3>
-
-                        <div class="price">
-                            ${Number(p.price).toLocaleString()}
-                            تومان
-                        </div>
-
-                        <button
-                            class="btn btn-primary"
-                            style="width:100%"
-                            onclick="openProduct(${p.id})"
-                        >
-                            مشاهده
-                        </button>
-
-                    </div>
-
-                `).join("")
-            }
-
-        </div>`;
-
-}
-
-
-/* =========================================================
-   CART
-========================================================= */
-
-function addToCart(id){
-
-    const product =
-        products.find(p => p.id === id);
-
-    if(!product) return;
-
-    if(product.status !== "available"){
-
-        showToast("این اکانت موجود نیست");
-
-        return;
-
-    }
-
-    if(cart.includes(id)){
-
-        showToast("این اکانت قبلاً در سبد است");
-
-        return;
-
-    }
-
-    cart.push(id);
-
-    saveCart();
-
-    renderCart();
-
-    showToast("به سبد خرید اضافه شد");
-
-    closeProductModal();
-
-}
-
-function saveCart(){
-
-    localStorage.setItem(
-        "gameshopCart",
-        JSON.stringify(cart)
-    );
-
-    updateCartCount();
-
-}
-
-function removeFromCart(id){
-
-    cart =
-        cart.filter(
-            item => item !== id
-        );
-
-    saveCart();
-
-    renderCart();
-
-}
-
-function updateCartCount(){
-
-    document
-        .getElementById("menuCartCount")
-        .textContent = cart.length;
-
-}
-
-function renderCart(){
-
-    const box =
-        document.getElementById("cartList");
-
-    if(cart.length === 0){
-
-        box.innerHTML =
-            `<div class="empty">
-                🛒 سبد خرید خالی است
-             </div>`;
-
-        return;
-
-    }
-
-    const items =
-        cart
-        .map(id =>
-            products.find(p => p.id === id)
-        )
-        .filter(Boolean);
-
-    let total = 0;
-
-    box.innerHTML =
-        items.map(product => {
-
-            total += Number(product.price);
-
-            return `
-
-                <div class="list-item">
-
-                    <div>
-
-                        <strong>
-                            ${product.icon}
-                            ${product.name}
-                        </strong>
-
-                        <br>
-
-                        <small>
-                            ${Number(product.price).toLocaleString()}
-                            تومان
-                        </small>
-
-                    </div>
-
-                    <button
-                        class="btn btn-secondary"
-                        onclick="removeFromCart(${product.id})"
-                    >
-                        حذف
-                    </button>
-
-                </div>
-
-            `;
-
-        }).join("") +
-
-        `
-
-        <div class="total">
-
-            <h3>
-                مبلغ کل:
-                ${total.toLocaleString()}
-                تومان
-            </h3>
-
-            <br>
-
-            <button
-                class="btn btn-primary"
-                onclick="checkout()"
-            >
-                📦 ثبت سفارش
-            </button>
-
-        </div>
-
-        `;
-
-}
-
-function checkout(){
-
-    if(!loggedIn){
-
-        showToast("ابتدا وارد حساب شوید");
-
-        openLogin();
-
-        return;
-
-    }
-
-    if(cart.length === 0){
-
-        showToast("سبد خرید خالی است");
-
-        return;
-
-    }
-
-    const items =
-        cart
-        .map(id =>
-            products.find(p => p.id === id)
-        )
-        .filter(Boolean);
-
-    const total =
-        items.reduce(
-            (sum,item)=>
-                sum + Number(item.price),
-            0
-        );
-
-    const order = {
-
-        id:
-            "GS-" +
-            Date.now(),
-
-        username:
-            user.username,
-
-        items:
-            items.map(item => item.name),
-
-        total:total,
-
-        date:
-            new Date().toLocaleString("fa-IR"),
-
-        status:
-            "در انتظار بررسی"
-
-    };
-
-    orders.push(order);
-
-    localStorage.setItem(
-        "gameshopOrders",
-        JSON.stringify(orders)
-    );
-
-    cart = [];
-
-    saveCart();
-
-    renderCart();
-
-    renderOrders();
-
-    showToast("سفارش با موفقیت ثبت شد");
-
-}
-
-
-/* =========================================================
-   ORDERS
-========================================================= */
-
-function renderOrders(){
-
-    const box =
-        document.getElementById("ordersList");
-
-    if(!loggedIn){
-
-        box.innerHTML =
-            `<div class="empty">
-                برای مشاهده سفارش‌ها وارد حساب شوید 👤
-             </div>`;
-
-        return;
-
-    }
-
-    const myOrders =
-        orders.filter(
-            order =>
-                order.username === user.username
-        );
-
-    if(myOrders.length === 0){
-
-        box.innerHTML =
-            `<div class="empty">
-                هنوز سفارشی ثبت نکرده‌ای 📦
-             </div>`;
-
-        return;
-
-    }
-
-    box.innerHTML =
-        myOrders.map(order => `
-
-            <div class="list-item">
-
-                <div>
-
-                    <strong>
-                        📦 ${order.id}
-                    </strong>
-
-                    <br>
-
-                    <small>
-                        ${order.date}
-                    </small>
-
-                    <br>
-
-                    <small>
-                        ${order.items.join("، ")}
-                    </small>
-
-                </div>
-
-                <div>
-
-                    <strong>
-                        ${Number(order.total).toLocaleString()}
-                        تومان
-                    </strong>
-
-                    <br>
-
-                    <small>
-                        ${order.status}
-                    </small>
-
-                </div>
-
-            </div>
-
-        `).join("");
-
-}
-
-
-/* =========================================================
-   AUTH
-========================================================= */
-
-function openLogin(){
-
-    if(loggedIn){
-
-        document
-            .getElementById("panel")
-            .scrollIntoView();
-
-        closeMenu();
-
-        return;
-
-    }
-
-    authMode = "login";
+    authMode = mode;
 
     updateAuthUI();
 
     document
         .getElementById("authModal")
-        .classList.add("active");
+        .classList.add("show");
 
 }
 
-function closeModal(){
+
+function closeAuth(){
 
     document
         .getElementById("authModal")
-        .classList.remove("active");
+        .classList.remove("show");
 
 }
+
 
 function switchAuth(){
 
@@ -2155,196 +1340,193 @@ function switchAuth(){
 
 }
 
+
 function updateAuthUI(){
 
-    const register =
-        authMode === "register";
+    const title =
+        document.getElementById("authTitle");
 
-    document
-        .getElementById("authTitle")
-        .textContent =
-        register
-        ? "ثبت‌نام"
-        : "ورود به حساب";
+    const usernameGroup =
+        document.getElementById("usernameGroup");
 
-    document
-        .getElementById("registerNameBox")
-        .style.display =
-        register
-        ? "block"
-        : "none";
+    const confirmGroup =
+        document.getElementById("confirmGroup");
 
-    document
-        .getElementById("confirmPasswordBox")
-        .style.display =
-        register
-        ? "block"
-        : "none";
+    const submitText =
+        document.getElementById("authSubmitText");
 
-    document
-        .getElementById("switchText")
-        .textContent =
-        register
-        ? "قبلاً حساب دارید؟ وارد شوید"
-        : "حساب ندارید؟ ثبت‌نام کنید";
+    const switchText =
+        document.getElementById("switchText");
+
+    const switchBtn =
+        document.getElementById("switchBtn");
+
+
+    if(authMode === "register"){
+
+        title.textContent =
+            "ساخت حساب کاربری";
+
+        usernameGroup.style.display =
+            "block";
+
+        confirmGroup.style.display =
+            "block";
+
+        submitText.textContent =
+            "ثبت‌نام";
+
+        switchText.textContent =
+            "قبلاً حساب دارید؟";
+
+        switchBtn.textContent =
+            "ورود";
+
+    }else{
+
+        title.textContent =
+            "ورود به حساب";
+
+        usernameGroup.style.display =
+            "none";
+
+        confirmGroup.style.display =
+            "none";
+
+        submitText.textContent =
+            "ورود";
+
+        switchText.textContent =
+            "حساب ندارید؟";
+
+        switchBtn.textContent =
+            "ثبت‌نام";
+
+    }
 
 }
 
-document
-    .getElementById("authForm")
-    .addEventListener(
-        "submit",
-        function(e){
 
-            e.preventDefault();
-
-            const username =
-                document
-                .getElementById("authUsername")
-                .value
-                .trim();
-
-            const email =
-                document
-                .getElementById("authEmail")
-                .value
-                .trim();
-
-            const password =
-                document
-                .getElementById("authPassword")
-                .value;
-
-            const confirm =
-                document
-                .getElementById("authConfirm")
-                .value;
-
-            if(authMode === "register"){
-
-                if(!username || !email || !password){
-
-                    showToast("همه فیلدها را پر کنید");
-
-                    return;
-
-                }
-
-                if(password !== confirm){
-
-                    showToast("رمزها یکسان نیستند");
-
-                    return;
-
-                }
-
-                user = {
-
-                    username:username,
-                    email:email
-
-                };
-
-                localStorage.setItem(
-                    "gameshopUser",
-                    JSON.stringify(user)
-                );
-
-                localStorage.setItem(
-                    "gameshopLoggedIn",
-                    "true"
-                );
-
-                loggedIn = true;
-
-                showToast(
-                    "ثبت‌نام با موفقیت انجام شد 🎉"
-                );
-
-            }else{
-
-                if(!email || !password){
-
-                    showToast(
-                        "ایمیل و رمز عبور را وارد کنید"
-                    );
-
-                    return;
-
-                }
-
-                /*
-                  در نسخه GitHub Pages
-                  احراز هویت واقعی وجود ندارد.
-                  برای دمو اطلاعات وارد شده ذخیره می‌شود.
-                */
-
-                if(!user){
-
-                    user = {
-
-                        username:
-                            email.split("@")[0],
-
-                        email:email
-
-                    };
-
-                    localStorage.setItem(
-                        "gameshopUser",
-                        JSON.stringify(user)
-                    );
-
-                }
-
-                localStorage.setItem(
-                    "gameshopLoggedIn",
-                    "true"
-                );
-
-                loggedIn = true;
-
-                showToast(
-                    "با موفقیت وارد شدید 👋"
-                );
-
-            }
-
-            closeModal();
-
-            updateUserMenu();
-
-            renderPanel();
-
-            renderOrders();
-
-        }
-    );
-
-
-/* =========================================================
+/* =========================
    USER MENU
-========================================================= */
+========================= */
 
-function updateUserMenu(){
+function handleUserMenu(){
 
-    document
-        .getElementById("menuUser")
-        .textContent =
-        loggedIn && user
-        ? user.username
-        : "ورود / ثبت‌نام";
+    closeMenu();
+
+    if(currentUser){
+
+        document
+            .getElementById("userPanel")
+            .scrollIntoView({
+                behavior:"smooth"
+            });
+
+    }else{
+
+        openAuth("login");
+
+    }
 
 }
 
-function logout(){
 
-    loggedIn = false;
+/* =========================
+   SUPABASE AUTH
+========================= */
 
-    localStorage.setItem(
-        "gameshopLoggedIn",
-        "false"
-    );
+async function loadCurrentUser(){
+
+    const {
+        data,
+        error
+    } = await supabaseClient.auth.getSession();
+
+
+    if(error){
+
+        console.error(error);
+
+        return;
+
+    }
+
+
+    if(data.session){
+
+        await setCurrentUser(
+            data.session.user
+        );
+
+    }else{
+
+        currentUser = null;
+
+        updateUserMenu();
+
+        renderPanel();
+
+        renderOrders();
+
+    }
+
+}
+
+
+async function setCurrentUser(authUser){
+
+    if(!authUser){
+
+        currentUser = null;
+
+        return;
+
+    }
+
+
+    let username =
+        authUser.user_metadata?.username;
+
+
+    if(!username){
+
+        username =
+            authUser.email
+            ? authUser.email.split("@")[0]
+            : "کاربر";
+
+    }
+
+
+    currentUser = {
+
+        id:authUser.id,
+
+        email:authUser.email,
+
+        username:username
+
+    };
+
+
+    /*
+      اطمینان از وجود پروفایل
+    */
+
+    await supabaseClient
+        .from("profiles")
+        .upsert({
+
+            id:authUser.id,
+
+            username:username
+
+        },{
+            onConflict:"id"
+
+        });
+
 
     updateUserMenu();
 
@@ -2352,45 +1534,1176 @@ function logout(){
 
     renderOrders();
 
-    showToast("از حساب خارج شدید");
-
 }
 
-function openUserPanel(){
 
-    closeMenu();
+/* =========================
+   AUTH SUBMIT
+========================= */
 
-    if(!loggedIn){
+document
+.getElementById("authForm")
+.addEventListener("submit", async function(e){
 
-        openLogin();
+    e.preventDefault();
+
+
+    const email =
+        document
+        .getElementById("emailInput")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("passwordInput")
+        .value;
+
+
+    if(authMode === "register"){
+
+        const username =
+            document
+            .getElementById("usernameInput")
+            .value
+            .trim();
+
+        const confirm =
+            document
+            .getElementById("confirmInput")
+            .value;
+
+
+        if(!username){
+
+            showToast(
+                "نام کاربری را وارد کنید."
+            );
+
+            return;
+
+        }
+
+
+        if(password !== confirm){
+
+            showToast(
+                "رمزهای عبور یکسان نیستند."
+            );
+
+            return;
+
+        }
+
+
+        if(password.length < 6){
+
+            showToast(
+                "رمز عبور باید حداقل ۶ کاراکتر باشد."
+            );
+
+            return;
+
+        }
+
+
+        const {
+            data,
+            error
+        } = await supabaseClient.auth.signUp({
+
+            email:email,
+
+            password:password,
+
+            options:{
+
+                data:{
+                    username:username
+                }
+
+            }
+
+        });
+
+
+        if(error){
+
+            showToast(error.message);
+
+            return;
+
+        }
+
+
+        if(data.session){
+
+            await setCurrentUser(
+                data.user
+            );
+
+            closeAuth();
+
+            showToast(
+                "حساب شما با موفقیت ساخته شد 🎉"
+            );
+
+        }else{
+
+            closeAuth();
+
+            showToast(
+                "ثبت‌نام انجام شد؛ ایمیل تأیید حساب را بررسی کنید."
+            );
+
+        }
+
+
+    }else{
+
+        const {
+            data,
+            error
+        } = await supabaseClient.auth.signInWithPassword({
+
+            email:email,
+
+            password:password
+
+        });
+
+
+        if(error){
+
+            showToast(
+                "ایمیل یا رمز عبور اشتباه است."
+            );
+
+            return;
+
+        }
+
+
+        await setCurrentUser(
+            data.user
+        );
+
+
+        closeAuth();
+
+
+        showToast(
+            "خوش آمدید 👋"
+        );
+
+    }
+
+});
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+async function logout(){
+
+    const {
+        error
+    } = await supabaseClient.auth.signOut();
+
+
+    if(error){
+
+        showToast(
+            "خطا در خروج از حساب"
+        );
 
         return;
 
     }
 
-    setTimeout(()=>{
 
-        document
-            .getElementById("panel")
-            .scrollIntoView({
-                behavior:"smooth"
-            });
+    currentUser = null;
 
-    },100);
+    updateUserMenu();
+
+    renderPanel();
+
+    renderOrders();
+
+    showToast(
+        "از حساب خارج شدید."
+    );
 
 }
 
 
-/* =========================================================
-   EMAIL MASK
-========================================================= */
+/* =========================
+   USER MENU UI
+========================= */
+
+function updateUserMenu(){
+
+    const btn =
+        document.getElementById("userMenuBtn");
+
+
+    if(currentUser){
+
+        btn.innerHTML =
+            "👤 " +
+            escapeHtml(currentUser.username);
+
+    }else{
+
+        btn.textContent =
+            "👤 ورود / ثبت‌نام";
+
+    }
+
+}
+
+
+/* =========================
+   LOAD ACCOUNTS
+========================= */
+
+async function loadAccounts(){
+
+    const {
+        data,
+        error
+    } = await supabaseClient
+        .from("accounts")
+        .select("*")
+        .order("id",{ascending:true});
+
+
+    if(error){
+
+        console.error(error);
+
+        document
+        .getElementById("accountsGrid")
+        .innerHTML = `
+
+            <div class="empty">
+                خطا در دریافت اکانت‌ها.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    accounts = data || [];
+
+    renderAccounts();
+
+    renderFavorites();
+
+}
+
+
+/* =========================
+   RENDER ACCOUNTS
+========================= */
+
+function renderAccounts(){
+
+    const grid =
+        document.getElementById("accountsGrid");
+
+    const search =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const sort =
+        document
+        .getElementById("sortSelect")
+        .value;
+
+
+    let list =
+        accounts.filter(account => {
+
+            const text =
+                `${account.title || ""}
+                 ${account.game || ""}
+                 ${account.description || ""}`
+                .toLowerCase();
+
+            return text.includes(search);
+
+        });
+
+
+    if(sort === "low"){
+
+        list.sort(
+            (a,b) =>
+            Number(a.price || 0)
+            -
+            Number(b.price || 0)
+        );
+
+    }
+
+
+    if(sort === "high"){
+
+        list.sort(
+            (a,b) =>
+            Number(b.price || 0)
+            -
+            Number(a.price || 0)
+        );
+
+    }
+
+
+    if(!list.length){
+
+        grid.innerHTML = `
+
+            <div class="empty">
+                اکانتی پیدا نشد.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+        list.map(account =>
+            accountCard(account)
+        ).join("");
+
+}
+
+
+/* =========================
+   ACCOUNT CARD
+========================= */
+
+function accountCard(account){
+
+    const isFavorite =
+        favorites.includes(account.id);
+
+
+    const isAvailable =
+        account.status === "available";
+
+
+    const price =
+        Number(account.price || 0);
+
+
+    return `
+
+    <div class="card">
+
+        <button
+            class="favorite ${isFavorite ? "active" : ""}"
+            onclick="toggleFavorite(${account.id})"
+        >
+            ${isFavorite ? "♥" : "♡"}
+        </button>
+
+
+        <div class="card-icon">
+            🎮
+        </div>
+
+
+        <h3>
+            ${escapeHtml(account.title || "اکانت")}
+        </h3>
+
+
+        <p>
+            ${escapeHtml(
+                account.description ||
+                "اکانت بازی"
+            )}
+        </p>
+
+
+        <div class="info">
+
+            <div>
+                <span>🎮 بازی</span>
+                <span>
+                    ${escapeHtml(
+                        account.game || "نامعلوم"
+                    )}
+                </span>
+            </div>
+
+
+            <div>
+                <span>⭐ لول</span>
+                <span>
+                    ${escapeHtml(
+                        account.level || "نامعلوم"
+                    )}
+                </span>
+            </div>
+
+
+            <div>
+                <span>🎨 اسکین</span>
+                <span>
+                    ${escapeHtml(
+                        account.skins || "نامعلوم"
+                    )}
+                </span>
+            </div>
+
+
+            <div>
+                <span>📌 وضعیت</span>
+                <span>
+                    ${
+                        isAvailable
+                        ? "🟢 موجود"
+                        : "❌ ناموجود"
+                    }
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="price">
+
+            ${
+                price > 0
+                ? price.toLocaleString("fa-IR") + " تومان"
+                : "۰ تومان"
+            }
+
+        </div>
+
+
+        <div class="card-actions">
+
+            ${
+                isAvailable
+                ? `
+                    <button
+                        class="btn btn-primary"
+                        onclick="addToCart(${account.id})"
+                    >
+                        🛒 افزودن
+                    </button>
+                `
+                :
+                `
+                    <button
+                        class="btn btn-secondary"
+                        disabled
+                    >
+                        ❌ ناموجود
+                    </button>
+                `
+            }
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+
+/* =========================
+   CART
+========================= */
+
+function saveCart(){
+
+    localStorage.setItem(
+        "gameshopCart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+function addToCart(id){
+
+    const account =
+        accounts.find(
+            a => Number(a.id) === Number(id)
+        );
+
+
+    if(!account){
+
+        showToast(
+            "اکانت پیدا نشد."
+        );
+
+        return;
+
+    }
+
+
+    if(account.status !== "available"){
+
+        showToast(
+            "این اکانت موجود نیست."
+        );
+
+        return;
+
+    }
+
+
+    if(cart.includes(id)){
+
+        showToast(
+            "این اکانت قبلاً در سبد خرید است."
+        );
+
+        return;
+
+    }
+
+
+    cart.push(id);
+
+    saveCart();
+
+    renderCart();
+
+    updateCartCount();
+
+    showToast(
+        "به سبد خرید اضافه شد 🛒"
+    );
+
+}
+
+
+function removeFromCart(id){
+
+    cart =
+        cart.filter(
+            item =>
+            Number(item) !== Number(id)
+        );
+
+    saveCart();
+
+    renderCart();
+
+    updateCartCount();
+
+}
+
+
+function renderCart(){
+
+    const box =
+        document.getElementById("cartList");
+
+
+    const items =
+        cart
+        .map(id =>
+            accounts.find(
+                a =>
+                Number(a.id) === Number(id)
+            )
+        )
+        .filter(Boolean);
+
+
+    if(!items.length){
+
+        box.innerHTML = `
+
+            <div class="empty">
+                🛒 سبد خرید شما خالی است.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    box.innerHTML =
+        items.map(account => {
+
+            const price =
+                Number(account.price || 0);
+
+            total += price;
+
+
+            return `
+
+            <div class="cart-item">
+
+                <div>
+
+                    <strong>
+                        ${escapeHtml(account.title)}
+                    </strong>
+
+                    <br>
+
+                    <span>
+                        ${price.toLocaleString("fa-IR")}
+                        تومان
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="removeFromCart(${account.id})"
+                >
+                    حذف
+                </button>
+
+            </div>
+
+            `;
+
+        }).join("");
+
+
+    box.innerHTML += `
+
+        <div class="total">
+
+            <span>
+                مجموع:
+            </span>
+
+            <span>
+                ${total.toLocaleString("fa-IR")}
+                تومان
+            </span>
+
+        </div>
+
+
+        <button
+            class="btn btn-primary"
+            style="width:100%;margin-top:20px;"
+            onclick="checkout()"
+        >
+            📦 ثبت سفارش
+        </button>
+
+    `;
+
+}
+
+
+function updateCartCount(){
+
+    document
+        .getElementById("menuCartCount")
+        .textContent = cart.length;
+
+}
+
+
+/* =========================
+   CHECKOUT
+========================= */
+
+async function checkout(){
+
+    if(!currentUser){
+
+        showToast(
+            "برای ثبت سفارش ابتدا وارد حساب شوید."
+        );
+
+        openAuth("login");
+
+        return;
+
+    }
+
+
+    if(!cart.length){
+
+        showToast(
+            "سبد خرید خالی است."
+        );
+
+        return;
+
+    }
+
+
+    const items =
+        cart
+        .map(id =>
+            accounts.find(
+                a =>
+                Number(a.id) === Number(id)
+            )
+        )
+        .filter(Boolean);
+
+
+    if(!items.length){
+
+        return;
+
+    }
+
+
+    const total =
+        items.reduce(
+            (sum,item) =>
+            sum + Number(item.price || 0),
+            0
+        );
+
+
+    /*
+      ساخت سفارش
+    */
+
+    const {
+        data:order,
+        error:orderError
+    } =
+        await supabaseClient
+        .from("orders")
+        .insert({
+
+            user_id:currentUser.id,
+
+            total_price:total,
+
+            status:"pending"
+
+        })
+        .select()
+        .single();
+
+
+    if(orderError){
+
+        console.error(orderError);
+
+        showToast(
+            "خطا در ثبت سفارش."
+        );
+
+        return;
+
+    }
+
+
+    /*
+      ساخت آیتم‌های سفارش
+    */
+
+    const orderItems =
+        items.map(item => ({
+
+            order_id:order.id,
+
+            account_id:item.id,
+
+            price:Number(item.price || 0)
+
+        }));
+
+
+    const {
+        error:itemError
+    } =
+        await supabaseClient
+        .from("order_items")
+        .insert(orderItems);
+
+
+    if(itemError){
+
+        console.error(itemError);
+
+        showToast(
+            "سفارش ایجاد شد ولی آیتم‌ها ثبت نشدند."
+        );
+
+        return;
+
+    }
+
+
+    cart = [];
+
+    saveCart();
+
+    renderCart();
+
+    updateCartCount();
+
+    renderOrders();
+
+
+    showToast(
+        "سفارش با موفقیت ثبت شد 🎉"
+    );
+
+}
+
+
+/* =========================
+   ORDERS
+========================= */
+
+async function renderOrders(){
+
+    const box =
+        document.getElementById("ordersList");
+
+
+    if(!currentUser){
+
+        box.innerHTML = `
+
+            <div class="empty">
+                برای مشاهده سفارش‌ها
+                ابتدا وارد حساب شوید.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+        .from("orders")
+        .select("*")
+        .eq(
+            "user_id",
+            currentUser.id
+        )
+        .order(
+            "created_at",
+            {ascending:false}
+        );
+
+
+    if(error){
+
+        console.error(error);
+
+        box.innerHTML = `
+
+            <div class="empty">
+                خطا در دریافت سفارش‌ها.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    if(!data || !data.length){
+
+        box.innerHTML = `
+
+            <div class="empty">
+                هنوز سفارشی ثبت نکرده‌اید.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        data.map(order => `
+
+        <div class="order-item">
+
+            <div>
+
+                <strong>
+                    سفارش #${order.id}
+                </strong>
+
+                <br>
+
+                <small>
+                    ${new Date(
+                        order.created_at
+                    ).toLocaleString("fa-IR")}
+                </small>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    ${Number(
+                        order.total_price || 0
+                    ).toLocaleString("fa-IR")}
+                    تومان
+                </strong>
+
+                <br>
+
+                <span>
+                    ${orderStatus(order.status)}
+                </span>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+function orderStatus(status){
+
+    const statuses = {
+
+        pending:"⏳ در انتظار بررسی",
+
+        paid:"💰 پرداخت شده",
+
+        completed:"✅ تکمیل شده",
+
+        cancelled:"❌ لغو شده"
+
+    };
+
+
+    return statuses[status] || status;
+
+}
+
+
+/* =========================
+   FAVORITES
+========================= */
+
+async function toggleFavorite(id){
+
+    if(!currentUser){
+
+        showToast(
+            "برای علاقه‌مندی ابتدا وارد حساب شوید."
+        );
+
+        openAuth("login");
+
+        return;
+
+    }
+
+
+    const exists =
+        favorites.includes(id);
+
+
+    if(exists){
+
+        favorites =
+            favorites.filter(
+                x =>
+                Number(x) !== Number(id)
+            );
+
+        localStorage.setItem(
+            "gameshopFavorites",
+            JSON.stringify(favorites)
+        );
+
+
+        await supabaseClient
+        .from("favorites")
+        .delete()
+        .eq(
+            "user_id",
+            currentUser.id
+        )
+        .eq(
+            "account_id",
+            id
+        );
+
+
+    }else{
+
+        favorites.push(id);
+
+        localStorage.setItem(
+            "gameshopFavorites",
+            JSON.stringify(favorites)
+        );
+
+
+        await supabaseClient
+        .from("favorites")
+        .insert({
+
+            user_id:currentUser.id,
+
+            account_id:id
+
+        });
+
+    }
+
+
+    renderAccounts();
+
+    renderFavorites();
+
+}
+
+
+async function loadFavorites(){
+
+    if(!currentUser){
+
+        return;
+
+    }
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+        .from("favorites")
+        .select("account_id")
+        .eq(
+            "user_id",
+            currentUser.id
+        );
+
+
+    if(error){
+
+        return;
+
+    }
+
+
+    favorites =
+        (data || [])
+        .map(
+            item =>
+            Number(item.account_id)
+        );
+
+
+    localStorage.setItem(
+        "gameshopFavorites",
+        JSON.stringify(favorites)
+    );
+
+
+    renderFavorites();
+
+    renderAccounts();
+
+}
+
+
+function renderFavorites(){
+
+    const grid =
+        document.getElementById("favoritesGrid");
+
+
+    const list =
+        accounts.filter(
+            account =>
+            favorites.includes(
+                Number(account.id)
+            )
+        );
+
+
+    if(!list.length){
+
+        grid.innerHTML = `
+
+            <div class="empty">
+                هنوز اکانتی ذخیره نکرده‌اید.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+        list
+        .map(account =>
+            accountCard(account)
+        )
+        .join("");
+
+}
+
+
+/* =========================
+   USER PANEL
+========================= */
 
 function maskEmail(email){
 
-    if(!email) return "---";
+    if(!email){
+
+        return "---";
+
+    }
+
 
     const parts =
         email.split("@");
+
 
     if(parts.length !== 2){
 
@@ -2398,51 +2711,54 @@ function maskEmail(email){
 
     }
 
-    const name =
+
+    const username =
         parts[0];
 
     const domain =
         parts[1];
 
-    if(name.length <= 3){
+
+    if(username.length <= 3){
 
         return "***@" + domain;
 
     }
 
+
     return (
-        name.substring(0,3) +
-        "********@" +
+        username.substring(0,3)
+        +
+        "********"
+        +
+        "@"
+        +
         domain
     );
 
 }
 
 
-/* =========================================================
-   USER PANEL
-========================================================= */
-
 function renderPanel(){
 
     const box =
         document.getElementById("panelContent");
 
-    if(!loggedIn || !user){
+
+    if(!currentUser){
 
         box.innerHTML = `
 
             <div class="empty">
 
-                <p>
-                    برای مشاهده پنل کاربری ابتدا وارد شوید.
-                </p>
+                برای مشاهده پنل
+                ابتدا وارد حساب شوید.
 
-                <br>
+                <br><br>
 
                 <button
                     class="btn btn-primary"
-                    onclick="openLogin()"
+                    onclick="openAuth('login')"
                 >
                     ورود / ثبت‌نام
                 </button>
@@ -2455,426 +2771,164 @@ function renderPanel(){
 
     }
 
-    const myOrders =
-        orders.filter(
-            order =>
-                order.username === user.username
-        );
 
     box.innerHTML = `
 
-        <div class="profile-box">
+        <div class="profile-row">
 
-            <div class="profile-row">
+            <span>
+                👤 نام کاربری
+            </span>
 
-                👤 نام کاربری:
-
-                <strong>
-                    ${user.username}
-                </strong>
-
-            </div>
-
-            <div class="profile-row">
-
-                📧 ایمیل:
-
-                <strong>
-                    ${maskEmail(user.email)}
-                </strong>
-
-            </div>
-
-            <div class="profile-row">
-
-                📦 تعداد سفارش‌ها:
-
-                <strong>
-                    ${myOrders.length}
-                </strong>
-
-            </div>
-
-            <div class="profile-row">
-
-                ❤️ علاقه‌مندی‌ها:
-
-                <strong>
-                    ${favorites.length}
-                </strong>
-
-            </div>
-
-            <div class="profile-row">
-
-                🛒 سبد خرید:
-
-                <strong>
-                    ${cart.length}
-                </strong>
-
-            </div>
-
-            <br>
-
-            <button
-                class="btn btn-secondary"
-                onclick="logout()"
-            >
-                🚪 خروج از حساب
-            </button>
+            <strong>
+                ${escapeHtml(
+                    currentUser.username
+                )}
+            </strong>
 
         </div>
+
+
+        <div class="profile-row">
+
+            <span>
+                📧 ایمیل
+            </span>
+
+            <strong>
+                ${escapeHtml(
+                    maskEmail(
+                        currentUser.email
+                    )
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="profile-row">
+
+            <span>
+                🛒 تعداد سبد خرید
+            </span>
+
+            <strong>
+                ${cart.length}
+            </strong>
+
+        </div>
+
+
+        <button
+            class="btn btn-secondary"
+            style="width:100%;margin-top:20px;"
+            onclick="logout()"
+        >
+            🚪 خروج از حساب
+        </button>
 
     `;
 
 }
 
 
-/* =========================================================
-   ADMIN
-========================================================= */
+/* =========================
+   FAQ
+========================= */
 
-function addProduct(){
+function toggleFaq(element){
 
-    const name =
-        document
-        .getElementById("adminName")
-        .value
-        .trim();
+    element
+        .parentElement
+        .classList
+        .toggle("open");
 
-    const game =
-        document
-        .getElementById("adminGame")
-        .value;
+}
 
-    const price =
-        Number(
-            document
-            .getElementById("adminPrice")
-            .value
-        );
 
-    const level =
-        document
-        .getElementById("adminLevel")
-        .value
-        .trim();
+/* =========================
+   ESCAPE HTML
+========================= */
 
-    const skins =
-        document
-        .getElementById("adminSkins")
-        .value
-        .trim();
+function escapeHtml(value){
 
-    const status =
-        document
-        .getElementById("adminStatus")
-        .value;
+    if(value === null || value === undefined){
 
-    if(!name){
-
-        showToast("نام اکانت را وارد کنید");
-
-        return;
+        return "";
 
     }
 
-    const newProduct = {
 
-        id:Date.now(),
+    return String(value)
 
-        name:name,
+        .replaceAll("&","&amp;")
 
-        game:game,
+        .replaceAll("<","&lt;")
 
-        icon:"🎮",
+        .replaceAll(">","&gt;")
 
-        price:price || 0,
+        .replaceAll('"',"&quot;")
 
-        level:level || "نامعلوم",
-
-        skins:skins || "نامعلوم",
-
-        status:status
-
-    };
-
-    products.push(newProduct);
-
-    saveProducts();
-
-    renderProducts();
-
-    renderAdminProducts();
-
-    showToast("اکانت اضافه شد");
+        .replaceAll("'","&#039;");
 
 }
 
-function saveProducts(){
 
-    localStorage.setItem(
-        "gameshopProducts",
-        JSON.stringify(products)
-    );
+/* =========================
+   AUTH STATE LISTENER
+========================= */
 
-}
+supabaseClient.auth.onAuthStateChange(
+    async (event, session) => {
 
-function deleteProduct(id){
+        if(session?.user){
 
-    if(!confirm("این اکانت حذف شود؟")){
+            await setCurrentUser(
+                session.user
+            );
 
-        return;
+            await loadFavorites();
+
+        }else{
+
+            currentUser = null;
+
+            updateUserMenu();
+
+            renderPanel();
+
+            renderOrders();
+
+        }
 
     }
+);
 
-    products =
-        products.filter(
-            p => p.id !== id
-        );
 
-    favorites =
-        favorites.filter(
-            f => f !== id
-        );
+/* =========================
+   INIT
+========================= */
 
-    cart =
-        cart.filter(
-            c => c !== id
-        );
-
-    saveProducts();
-
-    localStorage.setItem(
-        "gameshopFavorites",
-        JSON.stringify(favorites)
-    );
-
-    saveCart();
-
-    renderProducts();
-
-    renderFavorites();
-
-    renderAdminProducts();
-
-    showToast("اکانت حذف شد");
-
-}
-
-function toggleProductStatus(id){
-
-    const product =
-        products.find(
-            p => p.id === id
-        );
-
-    if(!product) return;
-
-    product.status =
-        product.status === "available"
-        ? "unavailable"
-        : "available";
-
-    saveProducts();
-
-    renderProducts();
-
-    renderAdminProducts();
-
-    showToast("وضعیت تغییر کرد");
-
-}
-
-function renderAdminProducts(){
-
-    const box =
-        document.getElementById("adminProducts");
-
-    if(products.length === 0){
-
-        box.innerHTML =
-            `<div class="empty">
-                هیچ اکانتی وجود ندارد
-             </div>`;
-
-        return;
-
-    }
-
-    box.innerHTML =
-        products.map(product => `
-
-            <div class="admin-product">
-
-                <strong>
-                    ${product.icon}
-                    ${product.name}
-                </strong>
-
-                <br>
-
-                <small>
-                    ${Number(product.price).toLocaleString()}
-                    تومان
-                    |
-                    ${product.status}
-                </small>
-
-                <div class="admin-actions">
-
-                    <button
-                        class="btn btn-secondary"
-                        onclick="toggleProductStatus(${product.id})"
-                    >
-                        تغییر وضعیت
-                    </button>
-
-                    <button
-                        class="btn btn-secondary"
-                        onclick="deleteProduct(${product.id})"
-                    >
-                        🗑️ حذف
-                    </button>
-
-                </div>
-
-            </div>
-
-        `).join("");
-
-}
-
-
-/* =========================================================
-   DISCOUNT
-========================================================= */
-
-function saveDiscount(){
-
-    const code =
-        document
-        .getElementById("discountCode")
-        .value
-        .trim()
-        .toUpperCase();
-
-    const percent =
-        Number(
-            document
-            .getElementById("discountPercent")
-            .value
-        );
-
-    if(!code || !percent){
-
-        showToast("اطلاعات تخفیف را کامل کنید");
-
-        return;
-
-    }
-
-    discount = {
-
-        code:code,
-        percent:percent
-
-    };
-
-    localStorage.setItem(
-        "gameshopDiscount",
-        JSON.stringify(discount)
-    );
-
-    showToast(
-        "کد تخفیف ذخیره شد: " + code
-    );
-
-}
-
-function saveAnnouncement(){
-
-    const text =
-        document
-        .getElementById("announcement")
-        .value
-        .trim();
-
-    if(!text){
-
-        showToast("متن اطلاعیه را وارد کنید");
-
-        return;
-
-    }
-
-    localStorage.setItem(
-        "gameshopAnnouncement",
-        text
-    );
-
-    showToast("اطلاعیه منتشر شد");
-
-}
-
-
-/* =========================================================
-   ADMIN OPEN
-========================================================= */
-
-function openAdmin(){
-
-    closeMenu();
-
-    document
-        .getElementById("admin")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-}
-
-
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
-function init(){
-
-    updateUserMenu();
+async function init(){
 
     updateCartCount();
 
-    renderProducts();
-
-    renderFavorites();
-
     renderCart();
-
-    renderOrders();
 
     renderPanel();
 
-    renderAdminProducts();
+    await loadAccounts();
+
+    await loadCurrentUser();
 
 }
+
+
+/* START */
 
 init();
 
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
-const SUPABASE_URL = "https://gwxurhfiyrefsatyxwpr.supabase.co";
-const SUPABASE_KEY = "sb_publishable_kWYNV4OA3Tt2VN4szEKSYg_axVAPagA";
-
-const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
-
-console.log("GameShop → Supabase connected");
-</script>
 </body>
 </html>
