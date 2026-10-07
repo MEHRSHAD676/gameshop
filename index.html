@@ -4,47 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GameShop | فروشگاه اکانت گیم</title>
-
-<meta name="description" content="GameShop - فروش و خرید اکانت بازی">
+<title>GameShop | فروشگاه اکانت</title>
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
     font-family:Tahoma,Arial,sans-serif;
     background:#080b12;
     color:#fff;
-    line-height:1.8;
+    line-height:1.8
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
-}
+button,input,select{font-family:inherit}
 
-button,
-input,
-select{
-    font-family:inherit;
-}
+button{cursor:pointer}
 
-button{
-    cursor:pointer;
-}
+a{text-decoration:none;color:inherit}
 
 .container{
     width:min(1150px,92%);
-    margin:auto;
+    margin:auto
 }
 
 /* HEADER */
@@ -53,103 +35,94 @@ header{
     position:sticky;
     top:0;
     z-index:1000;
-    background:rgba(8,11,18,.94);
+    background:rgba(8,11,18,.95);
     backdrop-filter:blur(12px);
-    border-bottom:1px solid #202738;
+    border-bottom:1px solid #202838
 }
 
-.header-inner{
-    height:75px;
+.header{
+    height:70px;
     display:flex;
     align-items:center;
-    justify-content:space-between;
+    justify-content:space-between
 }
 
 .logo{
-    font-size:25px;
-    font-weight:bold;
     color:#00e5ff;
+    font-size:25px;
+    font-weight:bold
 }
 
 .menu-btn{
     width:45px;
     height:45px;
-    border:1px solid #273043;
-    background:#111724;
-    color:#fff;
+    border:1px solid #293448;
     border-radius:12px;
-    font-size:25px;
+    background:#111824;
+    color:white;
+    font-size:25px
 }
 
-.menu-btn:hover{
-    background:#182033;
-}
-
-/* SIDE MENU */
+/* MENU */
 
 .overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.65);
-    display:none;
+    background:rgba(0,0,0,.7);
     z-index:1998;
+    display:none
 }
 
-.overlay.show{
-    display:block;
-}
+.overlay.show{display:block}
 
 .side-menu{
     position:fixed;
+    left:-320px;
     top:0;
-    left:-330px;
-    width:310px;
+    width:300px;
     height:100vh;
-    background:#0d121c;
+    background:#0d121b;
+    border-right:1px solid #263145;
     z-index:1999;
-    padding:25px 20px;
+    padding:20px;
     transition:.3s;
-    border-right:1px solid #252e40;
-    overflow-y:auto;
+    overflow-y:auto
 }
 
-.side-menu.open{
-    left:0;
-}
+.side-menu.open{left:0}
 
 .close-menu{
     width:40px;
     height:40px;
     border:0;
     border-radius:10px;
-    background:#1b2332;
-    color:#fff;
-    font-size:22px;
-    margin-bottom:25px;
+    background:#1b2432;
+    color:white;
+    font-size:20px
 }
 
 .menu-title{
+    color:#00e5ff;
     font-size:22px;
     font-weight:bold;
-    color:#00e5ff;
-    margin-bottom:20px;
+    margin:20px 0
 }
 
 .menu-link{
     width:100%;
     display:block;
-    padding:13px 15px;
-    margin:7px 0;
-    border-radius:12px;
+    border:1px solid #222d3e;
     background:#121925;
-    border:1px solid #202a3b;
-    transition:.2s;
+    color:white;
+    padding:13px;
+    margin:8px 0;
+    border-radius:12px;
+    text-align:right
 }
 
 .menu-link:hover{
-    background:#182337;
-    border-color:#00bcd4;
-    transform:translateX(-3px);
+    border-color:#00cfe8;
+    background:#182234
 }
 
 /* HERO */
@@ -158,46 +131,49 @@ header{
     padding:90px 0;
     text-align:center;
     background:
-    radial-gradient(circle at top,#123449 0%,transparent 40%),
-    linear-gradient(180deg,#090e18,#080b12);
+    radial-gradient(circle at top,#12374a,transparent 45%),
+    #080b12
 }
 
 .hero h1{
     font-size:48px;
-    margin-bottom:15px;
+    margin-bottom:15px
 }
 
-.hero h1 span{
-    color:#00e5ff;
-}
+.hero h1 span{color:#00e5ff}
 
 .hero p{
-    color:#aeb8ca;
+    color:#aab5c7;
     font-size:18px;
     max-width:700px;
-    margin:0 auto 30px;
+    margin:0 auto 30px
 }
+
+/* BUTTON */
 
 .btn{
     border:0;
-    padding:13px 22px;
     border-radius:12px;
+    padding:12px 20px;
     font-weight:bold;
-    transition:.2s;
+    transition:.2s
 }
 
-.btn:hover{
-    transform:translateY(-2px);
-}
+.btn:hover{transform:translateY(-2px)}
 
-.btn-primary{
+.primary{
     background:#00e5ff;
-    color:#001014;
+    color:#001014
 }
 
-.btn-secondary{
-    background:#1b2434;
-    color:#fff;
+.secondary{
+    background:#1b2535;
+    color:white
+}
+
+.danger{
+    background:#4b1d29;
+    color:#ff9aae
 }
 
 /* PROMO */
@@ -205,194 +181,169 @@ header{
 .promo{
     margin:35px 0;
     padding:22px;
-    border-radius:18px;
-    background:linear-gradient(135deg,#13283c,#101923);
-    border:1px solid #23445b;
     text-align:center;
+    border:1px solid #23455a;
+    border-radius:18px;
+    background:#101b27
 }
 
 .promo strong{
     color:#00e5ff;
-    font-size:22px;
+    font-size:21px
 }
 
-/* SECTIONS */
+/* SECTION */
 
-section{
-    padding:65px 0;
-}
+section{padding:65px 0}
 
-.section-title{
+.title{
     text-align:center;
-    margin-bottom:35px;
+    margin-bottom:35px
 }
 
-.section-title h2{
-    font-size:32px;
-    margin-bottom:8px;
+.title h2{
+    font-size:32px
 }
 
-.section-title p{
-    color:#8995aa;
+.title p{
+    color:#8995a8
 }
 
-/* SEARCH */
+/* FILTER */
 
 .filters{
     display:flex;
     gap:12px;
-    flex-wrap:wrap;
-    margin-bottom:30px;
+    margin-bottom:25px;
+    flex-wrap:wrap
 }
 
 .search{
     flex:1;
-    min-width:220px;
+    min-width:220px
 }
 
-input,
-select{
+input,select{
     width:100%;
-    padding:13px 15px;
-    border-radius:12px;
-    border:1px solid #293448;
+    padding:13px;
     background:#101722;
-    color:#fff;
-    outline:none;
+    border:1px solid #293448;
+    color:white;
+    border-radius:12px;
+    outline:none
 }
 
-input:focus,
-select:focus{
-    border-color:#00bcd4;
+input:focus,select:focus{
+    border-color:#00e5ff
 }
 
-/* PRODUCTS */
+/* CARDS */
 
-.products{
+.grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    gap:20px
 }
 
 .card{
+    position:relative;
+    padding:20px;
     background:#0f151f;
     border:1px solid #222c3d;
     border-radius:18px;
-    padding:20px;
-    transition:.25s;
-    position:relative;
+    transition:.25s
 }
 
 .card:hover{
     transform:translateY(-5px);
-    border-color:#00a8c0;
+    border-color:#00bcd4
 }
 
-.card-icon{
+.icon{
     width:65px;
     height:65px;
-    border-radius:16px;
-    background:#172131;
     display:flex;
     align-items:center;
     justify-content:center;
+    background:#172131;
+    border-radius:16px;
     font-size:32px;
-    margin-bottom:18px;
+    margin-bottom:15px
 }
 
-.card h3{
-    margin-bottom:8px;
-}
+.card h3{margin-bottom:8px}
 
-.card p{
-    color:#9aa6b8;
-    font-size:14px;
+.description{
     min-height:50px;
+    color:#9da8ba;
+    font-size:14px
 }
 
 .info{
-    margin:15px 0;
+    margin:15px 0
 }
 
 .info div{
     display:flex;
     justify-content:space-between;
+    border-bottom:1px solid #1e2836;
     padding:5px 0;
-    border-bottom:1px solid #1d2634;
+    font-size:14px
 }
 
 .price{
-    font-size:21px;
     color:#00e5ff;
+    font-size:21px;
     font-weight:bold;
-    margin:15px 0;
-}
-
-.card-actions{
-    display:flex;
-    gap:8px;
-}
-
-.card-actions button{
-    flex:1;
+    margin:15px 0
 }
 
 .favorite{
     position:absolute;
-    top:15px;
     left:15px;
+    top:15px;
     width:40px;
     height:40px;
-    border:1px solid #303a4b;
     border-radius:10px;
+    border:1px solid #303b4d;
     background:#131b28;
-    color:#fff;
-    font-size:19px;
+    color:white;
+    font-size:20px
 }
 
-.favorite.active{
-    color:#ff477e;
+.favorite.active{color:#ff4d83}
+
+.card-actions{
+    display:flex;
+    gap:8px
 }
 
-/* ABOUT */
+.card-actions button{flex:1}
 
-.about-box{
-    max-width:850px;
-    margin:auto;
+/* BOX */
+
+.box{
     background:#0f151f;
     border:1px solid #222c3d;
     border-radius:18px;
-    padding:30px;
-}
-
-.about-box p{
-    color:#b0bacb;
-    margin-bottom:15px;
-}
-
-/* CART / ORDERS */
-
-.panel-box{
-    background:#0f151f;
-    border:1px solid #222c3d;
-    border-radius:18px;
-    padding:25px;
+    padding:25px
 }
 
 .empty{
     text-align:center;
-    color:#8792a6;
     padding:30px;
+    color:#8995a8
 }
 
-.cart-item,
-.order-item{
+/* ITEMS */
+
+.item{
     display:flex;
     justify-content:space-between;
     align-items:center;
     gap:15px;
     padding:15px 0;
-    border-bottom:1px solid #202a38;
+    border-bottom:1px solid #202a38
 }
 
 .total{
@@ -400,97 +351,91 @@ select:focus{
     justify-content:space-between;
     margin-top:20px;
     font-size:20px;
-    font-weight:bold;
+    font-weight:bold
 }
 
-/* USER PANEL */
+/* ABOUT */
 
-.user-panel{
+.about{
+    max-width:850px;
+    margin:auto
+}
+
+.about p{
+    color:#b0bacb;
+    margin-bottom:15px
+}
+
+/* PROFILE */
+
+.profile{
     max-width:700px;
-    margin:auto;
+    margin:auto
 }
 
 .profile-row{
     display:flex;
     justify-content:space-between;
-    gap:20px;
+    gap:15px;
     padding:14px 0;
-    border-bottom:1px solid #202a38;
+    border-bottom:1px solid #202a38
 }
 
 .profile-row span:first-child{
-    color:#8490a5;
+    color:#8490a5
 }
 
 /* FAQ */
 
 .faq{
     max-width:850px;
-    margin:auto;
+    margin:auto
 }
 
 .faq-item{
     background:#0f151f;
     border:1px solid #222c3d;
-    border-radius:15px;
+    border-radius:14px;
     margin-bottom:12px;
-    overflow:hidden;
+    overflow:hidden
 }
 
-.faq-question{
-    padding:18px;
-    font-weight:bold;
+.question{
+    padding:17px;
     cursor:pointer;
+    font-weight:bold
 }
 
-.faq-answer{
+.answer{
     display:none;
-    padding:0 18px 18px;
     color:#aeb8c8;
+    padding:0 17px 17px
 }
 
-.faq-item.open .faq-answer{
-    display:block;
-}
-
-/* FOOTER */
-
-footer{
-    background:#06090e;
-    border-top:1px solid #202838;
-    padding:45px 0;
-    text-align:center;
-}
-
-footer p{
-    color:#8994a7;
-    margin:8px 0;
-}
+.faq-item.open .answer{display:block}
 
 /* MODAL */
 
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.75);
+    z-index:3000;
+    background:rgba(0,0,0,.78);
     display:none;
     align-items:center;
     justify-content:center;
-    z-index:3000;
-    padding:20px;
+    padding:20px
 }
 
-.modal.show{
-    display:flex;
-}
+.modal.show{display:flex}
 
 .modal-box{
-    width:min(450px,100%);
+    width:min(440px,100%);
     background:#0e141e;
     border:1px solid #293448;
     border-radius:20px;
     padding:25px;
-    position:relative;
+    position:relative
 }
 
 .modal-close{
@@ -502,45 +447,35 @@ footer p{
     border:0;
     border-radius:10px;
     background:#1b2432;
-    color:#fff;
+    color:white
 }
 
-.modal-title{
+.modal h2{
     text-align:center;
-    margin-bottom:25px;
     color:#00e5ff;
+    margin-bottom:25px
 }
 
-.form-group{
-    margin-bottom:15px;
-}
+.form-group{margin-bottom:15px}
 
 .form-group label{
     display:block;
-    margin-bottom:6px;
     color:#aab4c5;
+    margin-bottom:6px
 }
 
-.form-buttons{
-    display:flex;
-    gap:10px;
-    margin-top:20px;
-}
+.form-buttons button{width:100%}
 
-.form-buttons button{
-    flex:1;
-}
-
-.switch-auth{
+.switch{
     text-align:center;
     margin-top:18px;
-    color:#8995a8;
+    color:#8995a8
 }
 
-.switch-auth button{
-    background:none;
+.switch button{
     border:0;
-    color:#00e5ff;
+    background:none;
+    color:#00e5ff
 }
 
 /* TOAST */
@@ -549,83 +484,84 @@ footer p{
     position:fixed;
     right:20px;
     bottom:20px;
-    background:#131c29;
-    border:1px solid #2a3a50;
-    padding:15px 20px;
-    border-radius:13px;
     z-index:5000;
-    transform:translateY(100px);
+    background:#141d2a;
+    border:1px solid #2b3a50;
+    border-radius:12px;
+    padding:14px 20px;
     opacity:0;
-    transition:.3s;
+    transform:translateY(80px);
+    transition:.3s
 }
 
 .toast.show{
-    transform:translateY(0);
     opacity:1;
+    transform:translateY(0)
 }
 
-/* RESPONSIVE */
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:45px 0;
+    background:#06090e;
+    border-top:1px solid #202838
+}
+
+footer p{
+    color:#8994a7;
+    margin:7px
+}
+
+/* MOBILE */
 
 @media(max-width:900px){
-    .products{
-        grid-template-columns:repeat(2,1fr);
-    }
+    .grid{grid-template-columns:repeat(2,1fr)}
 }
 
 @media(max-width:600px){
 
-    .hero{
-        padding:65px 0;
-    }
+    .grid{grid-template-columns:1fr}
 
-    .hero h1{
-        font-size:34px;
-    }
+    .hero{padding:65px 0}
 
-    .products{
-        grid-template-columns:1fr;
-    }
+    .hero h1{font-size:34px}
 
-    .header-inner{
-        height:65px;
-    }
+    .side-menu{width:285px}
 
-    .side-menu{
-        width:285px;
-    }
-
-    .cart-item,
-    .order-item{
+    .item{
         flex-direction:column;
-        align-items:flex-start;
+        align-items:flex-start
     }
 
+    .profile-row{
+        flex-direction:column;
+        gap:3px
+    }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- SUPABASE -->
+<!-- =========================
+     SUPABASE
+========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+const SUPABASE_URL =
+"https://gwxurhfiyrefsatyxwpr.supabase.co";
 
-const SUPABASE_URL = "https://gwxurhfiyrefsatyxwpr.supabase.co";
+const SUPABASE_KEY =
+"sb_publishable_kWYNV4OA3Tt2VN4szEKSYg_axVAPagA";
 
-/*
-  اینجا فقط Publishable Key خودت را قرار بده.
-  Secret / Service Role Key را هرگز اینجا نگذار.
-*/
-const SUPABASE_KEY = "sb_publishable_kWYNV4OA3Tt2VN4szEKSYg_axVAPagA";
-
-const supabaseClient = supabase.createClient(
+const supabaseClient =
+supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
-
 </script>
 
 
@@ -633,13 +569,16 @@ const supabaseClient = supabase.createClient(
 
 <header>
 
-<div class="container header-inner">
+<div class="container header">
 
     <div class="logo">
         🎮 GameShop
     </div>
 
-    <button class="menu-btn" onclick="openMenu()">
+    <button
+        class="menu-btn"
+        onclick="openMenu()"
+    >
         ☰
     </button>
 
@@ -648,54 +587,94 @@ const supabaseClient = supabase.createClient(
 </header>
 
 
-<!-- SIDE MENU -->
+<!-- MENU -->
 
-<div id="overlay" class="overlay" onclick="closeMenu()"></div>
+<div
+    id="overlay"
+    class="overlay"
+    onclick="closeMenu()"
+></div>
 
-<div id="sideMenu" class="side-menu">
+<div
+    id="sideMenu"
+    class="side-menu"
+>
 
-    <button class="close-menu" onclick="closeMenu()">✕</button>
+<button
+    class="close-menu"
+    onclick="closeMenu()"
+>
+    ✕
+</button>
 
-    <div class="menu-title">
-        🎮 GameShop
-    </div>
+<div class="menu-title">
+    🎮 GameShop
+</div>
 
-    <a class="menu-link" href="#home" onclick="closeMenu()">
-        🏠 خانه
-    </a>
+<a
+    class="menu-link"
+    href="#home"
+    onclick="closeMenu()"
+>
+    🏠 خانه
+</a>
 
-    <a class="menu-link" href="#accounts" onclick="closeMenu()">
-        🎮 اکانت‌ها
-    </a>
+<a
+    class="menu-link"
+    href="#accounts"
+    onclick="closeMenu()"
+>
+    🎮 اکانت‌ها
+</a>
 
-    <a class="menu-link" href="#about" onclick="closeMenu()">
-        📢 توضیحات سایت
-    </a>
+<a
+    class="menu-link"
+    href="#about"
+    onclick="closeMenu()"
+>
+    📢 توضیحات سایت
+</a>
 
-    <a class="menu-link" href="#cart" onclick="closeMenu()">
-        🛒 سبد خرید
-        <span id="menuCartCount">0</span>
-    </a>
+<a
+    class="menu-link"
+    href="#cart"
+    onclick="closeMenu()"
+>
+    🛒 سبد خرید
+    (<span id="cartCount">0</span>)
+</a>
 
-    <a class="menu-link" href="#orders" onclick="closeMenu()">
-        📦 سفارش‌های من
-    </a>
+<a
+    class="menu-link"
+    href="#orders"
+    onclick="closeMenu()"
+>
+    📦 سفارش‌های من
+</a>
 
-    <a class="menu-link" href="#favorites" onclick="closeMenu()">
-        ❤️ علاقه‌مندی‌ها
-    </a>
+<a
+    class="menu-link"
+    href="#favorites"
+    onclick="closeMenu()"
+>
+    ❤️ علاقه‌مندی‌ها
+</a>
 
-    <a class="menu-link" href="#faq" onclick="closeMenu()">
-        ❓ سوالات متداول
-    </a>
+<a
+    class="menu-link"
+    href="#faq"
+    onclick="closeMenu()"
+>
+    ❓ سوالات متداول
+</a>
 
-    <button
-        id="userMenuBtn"
-        class="menu-link"
-        onclick="handleUserMenu()"
-    >
-        👤 ورود / ثبت‌نام
-    </button>
+<button
+    id="userButton"
+    class="menu-link"
+    onclick="userButtonClick()"
+>
+    👤 ورود / ثبت‌نام
+</button>
 
 </div>
 
@@ -706,18 +685,21 @@ const supabaseClient = supabase.createClient(
 
 <div class="container">
 
-    <h1>
-        به <span>GameShop</span> خوش آمدید 🎮
-    </h1>
+<h1>
+    به <span>GameShop</span> خوش آمدید 🎮
+</h1>
 
-    <p>
-        خرید و فروش اکانت‌های بازی با محیطی ساده،
-        سریع و حرفه‌ای
-    </p>
+<p>
+    خرید و فروش اکانت‌های بازی
+    با محیطی ساده، سریع و حرفه‌ای
+</p>
 
-    <a href="#accounts" class="btn btn-primary">
-        مشاهده اکانت‌ها
-    </a>
+<a
+    href="#accounts"
+    class="btn primary"
+>
+    مشاهده اکانت‌ها
+</a>
 
 </div>
 
@@ -730,14 +712,14 @@ const supabaseClient = supabase.createClient(
 
 <div class="promo">
 
-    <strong>
-        📢 تخفیف‌های ویژه GameShop
-    </strong>
+<strong>
+    📢 تخفیف‌های ویژه GameShop
+</strong>
 
-    <p>
-        برای اطلاع از اکانت‌های جدید و تخفیف‌ها
-        سایت را دنبال کنید.
-    </p>
+<p>
+    برای اطلاع از اکانت‌های جدید و تخفیف‌ها
+    سایت را دنبال کنید.
+</p>
 
 </div>
 
@@ -750,58 +732,61 @@ const supabaseClient = supabase.createClient(
 
 <div class="container">
 
-<div class="section-title">
+<div class="title">
 
-    <h2>🎮 اکانت‌های فروشگاه</h2>
+<h2>🎮 اکانت‌های فروشگاه</h2>
 
-    <p>
-        اکانت‌های موجود را از اینجا مشاهده کنید
-    </p>
+<p>
+    اکانت‌های موجود را مشاهده کنید
+</p>
 
 </div>
 
 
 <div class="filters">
 
-    <div class="search">
+<div class="search">
 
-        <input
-            id="searchInput"
-            type="text"
-            placeholder="🔎 جستجوی اکانت..."
-            oninput="renderAccounts()"
-        >
-
-    </div>
-
-    <div>
-
-        <select id="sortSelect" onchange="renderAccounts()">
-
-            <option value="default">
-                مرتب‌سازی
-            </option>
-
-            <option value="low">
-                ارزان‌ترین
-            </option>
-
-            <option value="high">
-                گران‌ترین
-            </option>
-
-        </select>
-
-    </div>
+<input
+    id="search"
+    type="text"
+    placeholder="🔎 جستجوی اکانت..."
+    oninput="renderAccounts()"
+>
 
 </div>
 
 
-<div id="accountsGrid" class="products">
+<select
+    id="sort"
+    onchange="renderAccounts()"
+>
 
-    <div class="empty">
-        در حال دریافت اکانت‌ها...
-    </div>
+<option value="default">
+    مرتب‌سازی
+</option>
+
+<option value="low">
+    ارزان‌ترین
+</option>
+
+<option value="high">
+    گران‌ترین
+</option>
+
+</select>
+
+</div>
+
+
+<div
+    id="accounts"
+    class="grid"
+>
+
+<div class="empty">
+    در حال دریافت اکانت‌ها...
+</div>
 
 </div>
 
@@ -816,21 +801,24 @@ const supabaseClient = supabase.createClient(
 
 <div class="container">
 
-<div class="section-title">
+<div class="title">
 
-    <h2>❤️ علاقه‌مندی‌ها</h2>
+<h2>❤️ علاقه‌مندی‌ها</h2>
 
-    <p>
-        اکانت‌هایی که ذخیره کرده‌اید
-    </p>
+<p>
+    اکانت‌های ذخیره‌شده شما
+</p>
 
 </div>
 
-<div id="favoritesGrid" class="products">
+<div
+    id="favoriteGrid"
+    class="grid"
+>
 
-    <div class="empty">
-        هنوز اکانتی به علاقه‌مندی‌ها اضافه نکرده‌اید.
-    </div>
+<div class="empty">
+    هنوز اکانتی ذخیره نکرده‌اید.
+</div>
 
 </div>
 
@@ -845,32 +833,30 @@ const supabaseClient = supabase.createClient(
 
 <div class="container">
 
-<div class="section-title">
-
-    <h2>📢 توضیحات سایت</h2>
-
+<div class="title">
+<h2>📢 توضیحات سایت</h2>
 </div>
 
-<div class="about-box">
+<div class="box about">
 
-    <p>
-        این سایت برای خرید اکانت‌ها یا برای فروش اکانت شما ساخته شده است.
-    </p>
+<p>
+این سایت برای خرید اکانت‌ها یا برای فروش اکانت شما ساخته شده است.
+</p>
 
-    <p>
-        اگر می‌خواهید اکانتی بخرید یا بفروشید
-        می‌توانید با پشتیبانی تماس بگیرید.
-    </p>
+<p>
+اگر می‌خواهید اکانتی بخرید یا بفروشید
+می‌توانید با پشتیبانی تماس بگیرید.
+</p>
 
-    <p>
-        🕐 پشتیبانی می‌تواند در بازه
-        <strong>۱ تا ۲۴ ساعت</strong>
-        به شما پاسخ بدهد.
-    </p>
+<p>
+پشتیبانی می‌تواند در بازه
+<strong>۱ تا ۲۴ ساعت</strong>
+به شما پاسخ بدهد.
+</p>
 
-    <p>
-        با تشکر از همراهی شما ❤️
-    </p>
+<p>
+با تشکر از همراهی شما ❤️
+</p>
 
 </div>
 
@@ -885,21 +871,19 @@ const supabaseClient = supabase.createClient(
 
 <div class="container">
 
-<div class="section-title">
-
-    <h2>🛒 سبد خرید</h2>
-
+<div class="title">
+<h2>🛒 سبد خرید</h2>
 </div>
 
-<div class="panel-box">
+<div class="box">
 
-    <div id="cartList">
+<div id="cartList">
 
-        <div class="empty">
-            سبد خرید شما خالی است.
-        </div>
+<div class="empty">
+سبد خرید شما خالی است.
+</div>
 
-    </div>
+</div>
 
 </div>
 
@@ -914,25 +898,25 @@ const supabaseClient = supabase.createClient(
 
 <div class="container">
 
-<div class="section-title">
+<div class="title">
 
-    <h2>📦 سفارش‌های من</h2>
+<h2>📦 سفارش‌های من</h2>
 
-    <p>
-        سفارش‌های ثبت‌شده شما
-    </p>
+<p>
+سفارش‌های ثبت‌شده شما
+</p>
 
 </div>
 
-<div class="panel-box">
+<div class="box">
 
-    <div id="ordersList">
+<div id="ordersList">
 
-        <div class="empty">
-            برای مشاهده سفارش‌ها ابتدا وارد حساب شوید.
-        </div>
+<div class="empty">
+برای مشاهده سفارش‌ها وارد حساب شوید.
+</div>
 
-    </div>
+</div>
 
 </div>
 
@@ -941,29 +925,23 @@ const supabaseClient = supabase.createClient(
 </section>
 
 
-<!-- USER PANEL -->
+<!-- PROFILE -->
 
-<section id="userPanel">
+<section id="profile">
 
 <div class="container">
 
-<div class="section-title">
-
-    <h2>👤 پنل کاربری</h2>
-
+<div class="title">
+<h2>👤 پنل کاربری</h2>
 </div>
 
-<div class="user-panel">
+<div class="profile">
 
-<div class="panel-box">
+<div class="box" id="profileBox">
 
-    <div id="panelContent">
-
-        <div class="empty">
-            برای مشاهده پنل وارد حساب شوید.
-        </div>
-
-    </div>
+<div class="empty">
+برای مشاهده پنل وارد حساب شوید.
+</div>
 
 </div>
 
@@ -980,78 +958,76 @@ const supabaseClient = supabase.createClient(
 
 <div class="container">
 
-<div class="section-title">
-
-    <h2>❓ سوالات متداول</h2>
-
+<div class="title">
+<h2>❓ سوالات متداول</h2>
 </div>
 
 <div class="faq">
 
-    <div class="faq-item">
+<div class="faq-item">
 
-        <div
-            class="faq-question"
-            onclick="toggleFaq(this)"
-        >
-            چطور ثبت‌نام کنم؟
-        </div>
+<div
+    class="question"
+    onclick="toggleFaq(this)"
+>
+چطور ثبت‌نام کنم؟
+</div>
 
-        <div class="faq-answer">
-            از منوی سه‌خطی وارد بخش ورود / ثبت‌نام شوید
-            و حساب خود را ایجاد کنید.
-        </div>
+<div class="answer">
+از منوی سه‌خطی وارد بخش ورود / ثبت‌نام شوید
+و حساب خود را ایجاد کنید.
+</div>
 
-    </div>
-
-
-    <div class="faq-item">
-
-        <div
-            class="faq-question"
-            onclick="toggleFaq(this)"
-        >
-            چطور اکانت بخرم؟
-        </div>
-
-        <div class="faq-answer">
-            اکانت موردنظر را به سبد خرید اضافه کرده
-            و مراحل سفارش را انجام دهید.
-        </div>
-
-    </div>
+</div>
 
 
-    <div class="faq-item">
+<div class="faq-item">
 
-        <div
-            class="faq-question"
-            onclick="toggleFaq(this)"
-        >
-            چطور اکانت خودم را بفروشم؟
-        </div>
+<div
+    class="question"
+    onclick="toggleFaq(this)"
+>
+چطور اکانت بخرم؟
+</div>
 
-        <div class="faq-answer">
-            برای فروش اکانت می‌توانید با پشتیبانی تماس بگیرید.
-        </div>
+<div class="answer">
+اکانت موجود را به سبد خرید اضافه کنید
+و سفارش خود را ثبت کنید.
+</div>
 
-    </div>
+</div>
 
 
-    <div class="faq-item">
+<div class="faq-item">
 
-        <div
-            class="faq-question"
-            onclick="toggleFaq(this)"
-        >
-            پشتیبانی چه زمانی پاسخ می‌دهد؟
-        </div>
+<div
+    class="question"
+    onclick="toggleFaq(this)"
+>
+چطور اکانت بفروشم؟
+</div>
 
-        <div class="faq-answer">
-            پشتیبانی در بازه ۱ تا ۲۴ ساعت پاسخ می‌دهد.
-        </div>
+<div class="answer">
+برای فروش اکانت با پشتیبانی تماس بگیرید.
+</div>
 
-    </div>
+</div>
+
+
+<div class="faq-item">
+
+<div
+    class="question"
+    onclick="toggleFaq(this)"
+>
+پشتیبانی چه زمانی جواب می‌دهد؟
+</div>
+
+<div class="answer">
+پشتیبانی در بازه ۱ تا ۲۴ ساعت پاسخ می‌دهد.
+</div>
+
+</div>
 
 </div>
 
@@ -1066,28 +1042,27 @@ const supabaseClient = supabase.createClient(
 
 <div class="container">
 
-    <h2>🎮 GameShop</h2>
+<h2>🎮 GameShop</h2>
 
-    <p>
-        فروشگاه خرید و فروش اکانت بازی
-    </p>
+<p>
+فروشگاه خرید و فروش اکانت بازی
+</p>
 
-    <p>
-        📞 پشتیبانی:
-        09339232786
-    </p>
+<p>
+📞 پشتیبانی: 09339232786
+</p>
 
-    <a
-        href="tel:09339232786"
-        class="btn btn-primary"
-        style="display:inline-block;margin-top:15px;"
-    >
-        📞 تماس با پشتیبانی
-    </a>
+<a
+    href="tel:09339232786"
+    class="btn primary"
+    style="display:inline-block;margin-top:15px"
+>
+📞 تماس با پشتیبانی
+</a>
 
-    <p style="margin-top:25px;">
-        © 2026 GameShop
-    </p>
+<p style="margin-top:25px">
+© 2026 GameShop
+</p>
 
 </div>
 
@@ -1096,7 +1071,10 @@ const supabaseClient = supabase.createClient(
 
 <!-- AUTH MODAL -->
 
-<div id="authModal" class="modal">
+<div
+    id="authModal"
+    class="modal"
+>
 
 <div class="modal-box">
 
@@ -1104,67 +1082,64 @@ const supabaseClient = supabase.createClient(
     class="modal-close"
     onclick="closeAuth()"
 >
-    ✕
+✕
 </button>
 
-
-<h2
-    id="authTitle"
-    class="modal-title"
->
-    ورود به حساب
+<h2 id="authTitle">
+ورود به حساب
 </h2>
 
 
 <form id="authForm">
 
+
 <div
     id="usernameGroup"
     class="form-group"
-    style="display:none;"
+    style="display:none"
 >
 
-    <label>
-        نام کاربری
-    </label>
+<label>
+نام کاربری
+</label>
 
-    <input
-        id="usernameInput"
-        type="text"
-        placeholder="نام کاربری"
-    >
-
-</div>
-
-
-<div class="form-group">
-
-    <label>
-        ایمیل
-    </label>
-
-    <input
-        id="emailInput"
-        type="email"
-        placeholder="example@gmail.com"
-        required
-    >
+<input
+    id="username"
+    type="text"
+    placeholder="نام کاربری"
+>
 
 </div>
 
 
 <div class="form-group">
 
-    <label>
-        رمز عبور
-    </label>
+<label>
+ایمیل
+</label>
 
-    <input
-        id="passwordInput"
-        type="password"
-        placeholder="رمز عبور"
-        required
-    >
+<input
+    id="email"
+    type="email"
+    placeholder="example@gmail.com"
+    required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+رمز عبور
+</label>
+
+<input
+    id="password"
+    type="password"
+    placeholder="حداقل ۶ کاراکتر"
+    required
+>
 
 </div>
 
@@ -1172,51 +1147,50 @@ const supabaseClient = supabase.createClient(
 <div
     id="confirmGroup"
     class="form-group"
-    style="display:none;"
+    style="display:none"
 >
 
-    <label>
-        تکرار رمز عبور
-    </label>
+<label>
+تکرار رمز عبور
+</label>
 
-    <input
-        id="confirmInput"
-        type="password"
-        placeholder="تکرار رمز عبور"
-    >
+<input
+    id="confirm"
+    type="password"
+    placeholder="تکرار رمز عبور"
+>
 
 </div>
 
 
 <div class="form-buttons">
 
-    <button
-        type="submit"
-        class="btn btn-primary"
-    >
-        <span id="authSubmitText">
-            ورود
-        </span>
-    </button>
+<button
+    class="btn primary"
+    type="submit"
+    id="authSubmit"
+>
+ورود
+</button>
 
 </div>
 
 </form>
 
 
-<div class="switch-auth">
+<div class="switch">
 
-    <span id="switchText">
-        حساب ندارید؟
-    </span>
+<span id="switchText">
+حساب ندارید؟
+</span>
 
-    <button
-        type="button"
-        onclick="switchAuth()"
-        id="switchBtn"
-    >
-        ثبت‌نام
-    </button>
+<button
+    onclick="switchAuth()"
+    type="button"
+    id="switchButton"
+>
+ثبت‌نام
+</button>
 
 </div>
 
@@ -1227,7 +1201,10 @@ const supabaseClient = supabase.createClient(
 
 <!-- TOAST -->
 
-<div id="toast" class="toast"></div>
+<div
+    id="toast"
+    class="toast"
+></div>
 
 
 <script>
@@ -1236,9 +1213,11 @@ const supabaseClient = supabase.createClient(
    VARIABLES
 ========================= */
 
+let accountsData = [];
+
 let currentUser = null;
 
-let accounts = [];
+let authMode = "login";
 
 let cart = JSON.parse(
     localStorage.getItem("gameshopCart") || "[]"
@@ -1248,28 +1227,24 @@ let favorites = JSON.parse(
     localStorage.getItem("gameshopFavorites") || "[]"
 );
 
-let authMode = "login";
-
 
 /* =========================
    TOAST
 ========================= */
 
-function showToast(message){
+function toast(message){
 
-    const toast =
+    const box =
         document.getElementById("toast");
 
-    toast.textContent = message;
+    box.textContent = message;
 
-    toast.classList.add("show");
+    box.classList.add("show");
 
-    setTimeout(() => {
-
-        toast.classList.remove("show");
-
-    },3000);
-
+    setTimeout(
+        () => box.classList.remove("show"),
+        3000
+    );
 }
 
 
@@ -1280,26 +1255,39 @@ function showToast(message){
 function openMenu(){
 
     document
-        .getElementById("sideMenu")
-        .classList.add("open");
+    .getElementById("sideMenu")
+    .classList.add("open");
 
     document
-        .getElementById("overlay")
-        .classList.add("show");
-
+    .getElementById("overlay")
+    .classList.add("show");
 }
 
 
 function closeMenu(){
 
     document
-        .getElementById("sideMenu")
-        .classList.remove("open");
+    .getElementById("sideMenu")
+    .classList.remove("open");
 
     document
-        .getElementById("overlay")
-        .classList.remove("show");
+    .getElementById("overlay")
+    .classList.remove("show");
+}
 
+
+/* =========================
+   ESCAPE
+========================= */
+
+function safe(value){
+
+    return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
 
 
@@ -1307,25 +1295,23 @@ function closeMenu(){
    AUTH MODAL
 ========================= */
 
-function openAuth(mode="login"){
+function openAuth(mode){
 
-    authMode = mode;
+    authMode = mode || "login";
 
     updateAuthUI();
 
     document
-        .getElementById("authModal")
-        .classList.add("show");
-
+    .getElementById("authModal")
+    .classList.add("show");
 }
 
 
 function closeAuth(){
 
     document
-        .getElementById("authModal")
-        .classList.remove("show");
-
+    .getElementById("authModal")
+    .classList.remove("show");
 }
 
 
@@ -1337,166 +1323,255 @@ function switchAuth(){
         : "login";
 
     updateAuthUI();
-
 }
 
 
 function updateAuthUI(){
 
-    const title =
-        document.getElementById("authTitle");
+    const register =
+        authMode === "register";
 
-    const usernameGroup =
-        document.getElementById("usernameGroup");
+    document
+    .getElementById("authTitle")
+    .textContent =
+        register
+        ? "ساخت حساب کاربری"
+        : "ورود به حساب";
 
-    const confirmGroup =
-        document.getElementById("confirmGroup");
+    document
+    .getElementById("usernameGroup")
+    .style.display =
+        register ? "block" : "none";
 
-    const submitText =
-        document.getElementById("authSubmitText");
+    document
+    .getElementById("confirmGroup")
+    .style.display =
+        register ? "block" : "none";
 
-    const switchText =
-        document.getElementById("switchText");
+    document
+    .getElementById("authSubmit")
+    .textContent =
+        register ? "ثبت‌نام" : "ورود";
 
-    const switchBtn =
-        document.getElementById("switchBtn");
+    document
+    .getElementById("switchText")
+    .textContent =
+        register
+        ? "قبلاً حساب دارید؟"
+        : "حساب ندارید؟";
 
-
-    if(authMode === "register"){
-
-        title.textContent =
-            "ساخت حساب کاربری";
-
-        usernameGroup.style.display =
-            "block";
-
-        confirmGroup.style.display =
-            "block";
-
-        submitText.textContent =
-            "ثبت‌نام";
-
-        switchText.textContent =
-            "قبلاً حساب دارید؟";
-
-        switchBtn.textContent =
-            "ورود";
-
-    }else{
-
-        title.textContent =
-            "ورود به حساب";
-
-        usernameGroup.style.display =
-            "none";
-
-        confirmGroup.style.display =
-            "none";
-
-        submitText.textContent =
-            "ورود";
-
-        switchText.textContent =
-            "حساب ندارید؟";
-
-        switchBtn.textContent =
-            "ثبت‌نام";
-
-    }
-
+    document
+    .getElementById("switchButton")
+    .textContent =
+        register ? "ورود" : "ثبت‌نام";
 }
 
 
 /* =========================
-   USER MENU
+   USER BUTTON
 ========================= */
 
-function handleUserMenu(){
+function userButtonClick(){
 
     closeMenu();
 
     if(currentUser){
 
         document
-            .getElementById("userPanel")
-            .scrollIntoView({
-                behavior:"smooth"
-            });
+        .getElementById("profile")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 
     }else{
 
         openAuth("login");
 
     }
-
 }
 
 
 /* =========================
-   SUPABASE AUTH
+   AUTH SUBMIT
 ========================= */
 
-async function loadCurrentUser(){
+document
+.getElementById("authForm")
+.addEventListener(
+"submit",
+async function(e){
+
+    e.preventDefault();
+
+    const email =
+        document
+        .getElementById("email")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("password")
+        .value;
+
+
+    /* REGISTER */
+
+    if(authMode === "register"){
+
+        const username =
+            document
+            .getElementById("username")
+            .value
+            .trim();
+
+        const confirm =
+            document
+            .getElementById("confirm")
+            .value;
+
+
+        if(!username){
+
+            toast("نام کاربری را وارد کنید.");
+
+            return;
+        }
+
+
+        if(password.length < 6){
+
+            toast(
+                "رمز عبور باید حداقل ۶ کاراکتر باشد."
+            );
+
+            return;
+        }
+
+
+        if(password !== confirm){
+
+            toast(
+                "رمزهای عبور یکسان نیستند."
+            );
+
+            return;
+        }
+
+
+        const {
+            data,
+            error
+        } =
+        await supabaseClient.auth.signUp({
+
+            email:email,
+
+            password:password,
+
+            options:{
+                data:{
+                    username:username
+                }
+            }
+
+        });
+
+
+        if(error){
+
+            toast(
+                "خطا: " + error.message
+            );
+
+            return;
+        }
+
+
+        closeAuth();
+
+
+        if(data.session){
+
+            await setUser(data.user);
+
+            toast(
+                "حساب شما ساخته شد 🎉"
+            );
+
+        }else{
+
+            toast(
+                "ثبت‌نام انجام شد. ایمیل تأیید حساب را بررسی کنید."
+            );
+
+        }
+
+
+        return;
+    }
+
+
+    /* LOGIN */
 
     const {
         data,
         error
-    } = await supabaseClient.auth.getSession();
+    } =
+    await supabaseClient.auth.signInWithPassword({
+
+        email:email,
+
+        password:password
+
+    });
 
 
     if(error){
 
-        console.error(error);
-
-        return;
-
-    }
-
-
-    if(data.session){
-
-        await setCurrentUser(
-            data.session.user
+        toast(
+            "ایمیل یا رمز عبور اشتباه است."
         );
 
-    }else{
-
-        currentUser = null;
-
-        updateUserMenu();
-
-        renderPanel();
-
-        renderOrders();
-
+        return;
     }
 
-}
+
+    await setUser(data.user);
+
+    closeAuth();
+
+    toast("خوش آمدید 👋");
+
+});
 
 
-async function setCurrentUser(authUser){
+/* =========================
+   SET USER
+========================= */
+
+async function setUser(authUser){
 
     if(!authUser){
 
         currentUser = null;
 
+        updateUserUI();
+
+        renderProfile();
+
+        renderOrders();
+
         return;
-
     }
 
 
-    let username =
-        authUser.user_metadata?.username;
-
-
-    if(!username){
-
-        username =
-            authUser.email
-            ? authUser.email.split("@")[0]
-            : "کاربر";
-
-    }
+    const username =
+        authUser.user_metadata?.username
+        ||
+        authUser.email?.split("@")[0]
+        ||
+        "کاربر";
 
 
     currentUser = {
@@ -1511,194 +1586,55 @@ async function setCurrentUser(authUser){
 
 
     /*
-      اطمینان از وجود پروفایل
+      ایجاد / بروزرسانی پروفایل
     */
 
     await supabaseClient
-        .from("profiles")
-        .upsert({
+    .from("profiles")
+    .upsert({
 
-            id:authUser.id,
+        id:authUser.id,
 
-            username:username
+        username:username
 
-        },{
-            onConflict:"id"
+    },{
+        onConflict:"id"
+    });
 
-        });
 
+    updateUserUI();
 
-    updateUserMenu();
+    renderProfile();
 
-    renderPanel();
+    await loadFavorites();
 
-    renderOrders();
-
+    await renderOrders();
 }
 
 
 /* =========================
-   AUTH SUBMIT
+   USER UI
 ========================= */
 
-document
-.getElementById("authForm")
-.addEventListener("submit", async function(e){
+function updateUserUI(){
 
-    e.preventDefault();
-
-
-    const email =
-        document
-        .getElementById("emailInput")
-        .value
-        .trim();
-
-    const password =
-        document
-        .getElementById("passwordInput")
-        .value;
+    const button =
+        document.getElementById("userButton");
 
 
-    if(authMode === "register"){
+    if(currentUser){
 
-        const username =
-            document
-            .getElementById("usernameInput")
-            .value
-            .trim();
-
-        const confirm =
-            document
-            .getElementById("confirmInput")
-            .value;
-
-
-        if(!username){
-
-            showToast(
-                "نام کاربری را وارد کنید."
-            );
-
-            return;
-
-        }
-
-
-        if(password !== confirm){
-
-            showToast(
-                "رمزهای عبور یکسان نیستند."
-            );
-
-            return;
-
-        }
-
-
-        if(password.length < 6){
-
-            showToast(
-                "رمز عبور باید حداقل ۶ کاراکتر باشد."
-            );
-
-            return;
-
-        }
-
-
-        const {
-            data,
-            error
-        } = await supabaseClient.auth.signUp({
-
-            email:email,
-
-            password:password,
-
-            options:{
-
-                data:{
-                    username:username
-                }
-
-            }
-
-        });
-
-
-        if(error){
-
-            showToast(error.message);
-
-            return;
-
-        }
-
-
-        if(data.session){
-
-            await setCurrentUser(
-                data.user
-            );
-
-            closeAuth();
-
-            showToast(
-                "حساب شما با موفقیت ساخته شد 🎉"
-            );
-
-        }else{
-
-            closeAuth();
-
-            showToast(
-                "ثبت‌نام انجام شد؛ ایمیل تأیید حساب را بررسی کنید."
-            );
-
-        }
-
+        button.textContent =
+            "👤 " +
+            currentUser.username;
 
     }else{
 
-        const {
-            data,
-            error
-        } = await supabaseClient.auth.signInWithPassword({
-
-            email:email,
-
-            password:password
-
-        });
-
-
-        if(error){
-
-            showToast(
-                "ایمیل یا رمز عبور اشتباه است."
-            );
-
-            return;
-
-        }
-
-
-        await setCurrentUser(
-            data.user
-        );
-
-
-        closeAuth();
-
-
-        showToast(
-            "خوش آمدید 👋"
-        );
+        button.textContent =
+            "👤 ورود / ثبت‌نام";
 
     }
-
-});
+}
 
 
 /* =========================
@@ -1709,63 +1645,32 @@ async function logout(){
 
     const {
         error
-    } = await supabaseClient.auth.signOut();
+    } =
+    await supabaseClient.auth.signOut();
 
 
     if(error){
 
-        showToast(
-            "خطا در خروج از حساب"
-        );
+        toast("خطا در خروج از حساب.");
 
         return;
-
     }
 
 
     currentUser = null;
 
-    updateUserMenu();
+    updateUserUI();
 
-    renderPanel();
+    renderProfile();
 
     renderOrders();
 
-    showToast(
-        "از حساب خارج شدید."
-    );
-
+    toast("از حساب خارج شدید.");
 }
 
 
 /* =========================
-   USER MENU UI
-========================= */
-
-function updateUserMenu(){
-
-    const btn =
-        document.getElementById("userMenuBtn");
-
-
-    if(currentUser){
-
-        btn.innerHTML =
-            "👤 " +
-            escapeHtml(currentUser.username);
-
-    }else{
-
-        btn.textContent =
-            "👤 ورود / ثبت‌نام";
-
-    }
-
-}
-
-
-/* =========================
-   LOAD ACCOUNTS
+   ACCOUNTS FROM SUPABASE
 ========================= */
 
 async function loadAccounts(){
@@ -1773,10 +1678,13 @@ async function loadAccounts(){
     const {
         data,
         error
-    } = await supabaseClient
-        .from("accounts")
-        .select("*")
-        .order("id",{ascending:true});
+    } =
+    await supabaseClient
+    .from("accounts")
+    .select("*")
+    .order("id",{
+        ascending:true
+    });
 
 
     if(error){
@@ -1784,26 +1692,159 @@ async function loadAccounts(){
         console.error(error);
 
         document
-        .getElementById("accountsGrid")
+        .getElementById("accounts")
         .innerHTML = `
 
-            <div class="empty">
-                خطا در دریافت اکانت‌ها.
-            </div>
+        <div class="empty">
+            خطا در اتصال به دیتابیس.
+            <br>
+            تنظیمات Supabase را بررسی کنید.
+        </div>
 
         `;
 
         return;
-
     }
 
 
-    accounts = data || [];
+    accountsData = data || [];
 
     renderAccounts();
 
     renderFavorites();
 
+    renderCart();
+}
+
+
+/* =========================
+   ACCOUNT CARD
+========================= */
+
+function card(account){
+
+    const favorite =
+        favorites.includes(
+            Number(account.id)
+        );
+
+    const available =
+        account.status === "available";
+
+    const price =
+        Number(account.price || 0);
+
+
+    return `
+
+    <div class="card">
+
+        <button
+            class="favorite ${favorite ? "active" : ""}"
+            onclick="toggleFavorite(${account.id})"
+        >
+            ${favorite ? "♥" : "♡"}
+        </button>
+
+        <div class="icon">
+            🎮
+        </div>
+
+        <h3>
+            ${safe(account.title || "اکانت")}
+        </h3>
+
+        <div class="description">
+            ${safe(
+                account.description ||
+                "اکانت بازی"
+            )}
+        </div>
+
+        <div class="info">
+
+            <div>
+                <span>🎮 بازی</span>
+                <span>
+                    ${safe(
+                        account.game || "نامعلوم"
+                    )}
+                </span>
+            </div>
+
+            <div>
+                <span>⭐ لول</span>
+                <span>
+                    ${safe(
+                        account.level || "نامعلوم"
+                    )}
+                </span>
+            </div>
+
+            <div>
+                <span>🎨 اسکین</span>
+                <span>
+                    ${safe(
+                        account.skins || "نامعلوم"
+                    )}
+                </span>
+            </div>
+
+            <div>
+                <span>📌 وضعیت</span>
+                <span>
+                    ${
+                        available
+                        ? "🟢 موجود"
+                        : "❌ ناموجود"
+                    }
+                </span>
+            </div>
+
+        </div>
+
+        <div class="price">
+            ${
+                price
+                ? price.toLocaleString("fa-IR")
+                  + " تومان"
+                : "۰ تومان"
+            }
+        </div>
+
+        <div class="card-actions">
+
+        ${
+            available
+
+            ?
+
+            `
+            <button
+                class="btn primary"
+                onclick="addCart(${account.id})"
+            >
+                🛒 افزودن
+            </button>
+            `
+
+            :
+
+            `
+            <button
+                class="btn secondary"
+                disabled
+            >
+                ❌ ناموجود
+            </button>
+            `
+        }
+
+        </div>
+
+    </div>
+
+    `;
 }
 
 
@@ -1814,32 +1855,44 @@ async function loadAccounts(){
 function renderAccounts(){
 
     const grid =
-        document.getElementById("accountsGrid");
+        document.getElementById("accounts");
 
     const search =
         document
-        .getElementById("searchInput")
+        .getElementById("search")
         .value
         .toLowerCase()
         .trim();
 
     const sort =
         document
-        .getElementById("sortSelect")
+        .getElementById("sort")
         .value;
 
 
     let list =
-        accounts.filter(account => {
+        accountsData.filter(account => {
 
             const text =
-                `${account.title || ""}
-                 ${account.game || ""}
-                 ${account.description || ""}`
-                .toLowerCase();
+                (
+                    account.title || ""
+                )
+                +
+                " "
+                +
+                (
+                    account.game || ""
+                )
+                +
+                " "
+                +
+                (
+                    account.description || ""
+                );
 
-            return text.includes(search);
-
+            return text
+            .toLowerCase()
+            .includes(search);
         });
 
 
@@ -1851,7 +1904,6 @@ function renderAccounts(){
             -
             Number(b.price || 0)
         );
-
     }
 
 
@@ -1863,7 +1915,6 @@ function renderAccounts(){
             -
             Number(a.price || 0)
         );
-
     }
 
 
@@ -1871,159 +1922,18 @@ function renderAccounts(){
 
         grid.innerHTML = `
 
-            <div class="empty">
-                اکانتی پیدا نشد.
-            </div>
+        <div class="empty">
+            اکانتی پیدا نشد.
+        </div>
 
         `;
 
         return;
-
     }
 
 
     grid.innerHTML =
-        list.map(account =>
-            accountCard(account)
-        ).join("");
-
-}
-
-
-/* =========================
-   ACCOUNT CARD
-========================= */
-
-function accountCard(account){
-
-    const isFavorite =
-        favorites.includes(account.id);
-
-
-    const isAvailable =
-        account.status === "available";
-
-
-    const price =
-        Number(account.price || 0);
-
-
-    return `
-
-    <div class="card">
-
-        <button
-            class="favorite ${isFavorite ? "active" : ""}"
-            onclick="toggleFavorite(${account.id})"
-        >
-            ${isFavorite ? "♥" : "♡"}
-        </button>
-
-
-        <div class="card-icon">
-            🎮
-        </div>
-
-
-        <h3>
-            ${escapeHtml(account.title || "اکانت")}
-        </h3>
-
-
-        <p>
-            ${escapeHtml(
-                account.description ||
-                "اکانت بازی"
-            )}
-        </p>
-
-
-        <div class="info">
-
-            <div>
-                <span>🎮 بازی</span>
-                <span>
-                    ${escapeHtml(
-                        account.game || "نامعلوم"
-                    )}
-                </span>
-            </div>
-
-
-            <div>
-                <span>⭐ لول</span>
-                <span>
-                    ${escapeHtml(
-                        account.level || "نامعلوم"
-                    )}
-                </span>
-            </div>
-
-
-            <div>
-                <span>🎨 اسکین</span>
-                <span>
-                    ${escapeHtml(
-                        account.skins || "نامعلوم"
-                    )}
-                </span>
-            </div>
-
-
-            <div>
-                <span>📌 وضعیت</span>
-                <span>
-                    ${
-                        isAvailable
-                        ? "🟢 موجود"
-                        : "❌ ناموجود"
-                    }
-                </span>
-            </div>
-
-        </div>
-
-
-        <div class="price">
-
-            ${
-                price > 0
-                ? price.toLocaleString("fa-IR") + " تومان"
-                : "۰ تومان"
-            }
-
-        </div>
-
-
-        <div class="card-actions">
-
-            ${
-                isAvailable
-                ? `
-                    <button
-                        class="btn btn-primary"
-                        onclick="addToCart(${account.id})"
-                    >
-                        🛒 افزودن
-                    </button>
-                `
-                :
-                `
-                    <button
-                        class="btn btn-secondary"
-                        disabled
-                    >
-                        ❌ ناموجود
-                    </button>
-                `
-            }
-
-        </div>
-
-    </div>
-
-    `;
-
+        list.map(card).join("");
 }
 
 
@@ -2037,52 +1947,45 @@ function saveCart(){
         "gameshopCart",
         JSON.stringify(cart)
     );
-
 }
 
 
-function addToCart(id){
+function addCart(id){
 
     const account =
-        accounts.find(
-            a => Number(a.id) === Number(id)
+        accountsData.find(
+            a =>
+            Number(a.id) === Number(id)
         );
 
 
     if(!account){
 
-        showToast(
-            "اکانت پیدا نشد."
-        );
+        toast("اکانت پیدا نشد.");
 
         return;
-
     }
 
 
     if(account.status !== "available"){
 
-        showToast(
-            "این اکانت موجود نیست."
-        );
+        toast("این اکانت موجود نیست.");
 
         return;
-
     }
 
 
-    if(cart.includes(id)){
+    if(cart.includes(Number(id))){
 
-        showToast(
-            "این اکانت قبلاً در سبد خرید است."
+        toast(
+            "این اکانت قبلاً در سبد است."
         );
 
         return;
-
     }
 
 
-    cart.push(id);
+    cart.push(Number(id));
 
     saveCart();
 
@@ -2090,19 +1993,20 @@ function addToCart(id){
 
     updateCartCount();
 
-    showToast(
-        "به سبد خرید اضافه شد 🛒"
-    );
+    renderProfile();
 
+    toast(
+        "اکانت به سبد خرید اضافه شد 🛒"
+    );
 }
 
 
-function removeFromCart(id){
+function removeCart(id){
 
     cart =
         cart.filter(
-            item =>
-            Number(item) !== Number(id)
+            x =>
+            Number(x) !== Number(id)
         );
 
     saveCart();
@@ -2111,6 +2015,7 @@ function removeFromCart(id){
 
     updateCartCount();
 
+    renderProfile();
 }
 
 
@@ -2123,7 +2028,7 @@ function renderCart(){
     const items =
         cart
         .map(id =>
-            accounts.find(
+            accountsData.find(
                 a =>
                 Number(a.id) === Number(id)
             )
@@ -2135,14 +2040,13 @@ function renderCart(){
 
         box.innerHTML = `
 
-            <div class="empty">
-                🛒 سبد خرید شما خالی است.
-            </div>
+        <div class="empty">
+            🛒 سبد خرید شما خالی است.
+        </div>
 
         `;
 
         return;
-
     }
 
 
@@ -2150,22 +2054,22 @@ function renderCart(){
 
 
     box.innerHTML =
-        items.map(account => {
+        items.map(item => {
 
             const price =
-                Number(account.price || 0);
+                Number(item.price || 0);
 
             total += price;
 
 
             return `
 
-            <div class="cart-item">
+            <div class="item">
 
                 <div>
 
                     <strong>
-                        ${escapeHtml(account.title)}
+                        ${safe(item.title)}
                     </strong>
 
                     <br>
@@ -2177,10 +2081,9 @@ function renderCart(){
 
                 </div>
 
-
                 <button
-                    class="btn btn-secondary"
-                    onclick="removeFromCart(${account.id})"
+                    class="btn danger"
+                    onclick="removeCart(${item.id})"
                 >
                     حذف
                 </button>
@@ -2197,7 +2100,7 @@ function renderCart(){
         <div class="total">
 
             <span>
-                مجموع:
+                مجموع
             </span>
 
             <span>
@@ -2207,26 +2110,23 @@ function renderCart(){
 
         </div>
 
-
         <button
-            class="btn btn-primary"
-            style="width:100%;margin-top:20px;"
+            class="btn primary"
+            style="width:100%;margin-top:20px"
             onclick="checkout()"
         >
             📦 ثبت سفارش
         </button>
 
     `;
-
 }
 
 
 function updateCartCount(){
 
     document
-        .getElementById("menuCartCount")
-        .textContent = cart.length;
-
+    .getElementById("cartCount")
+    .textContent = cart.length;
 }
 
 
@@ -2238,44 +2138,33 @@ async function checkout(){
 
     if(!currentUser){
 
-        showToast(
-            "برای ثبت سفارش ابتدا وارد حساب شوید."
+        toast(
+            "ابتدا وارد حساب شوید."
         );
 
         openAuth("login");
 
         return;
-
     }
 
 
     if(!cart.length){
 
-        showToast(
-            "سبد خرید خالی است."
-        );
+        toast("سبد خرید خالی است.");
 
         return;
-
     }
 
 
     const items =
         cart
         .map(id =>
-            accounts.find(
+            accountsData.find(
                 a =>
                 Number(a.id) === Number(id)
             )
         )
         .filter(Boolean);
-
-
-    if(!items.length){
-
-        return;
-
-    }
 
 
     const total =
@@ -2286,45 +2175,36 @@ async function checkout(){
         );
 
 
-    /*
-      ساخت سفارش
-    */
-
     const {
         data:order,
-        error:orderError
+        error
     } =
-        await supabaseClient
-        .from("orders")
-        .insert({
+    await supabaseClient
+    .from("orders")
+    .insert({
 
-            user_id:currentUser.id,
+        user_id:currentUser.id,
 
-            total_price:total,
+        total_price:total,
 
-            status:"pending"
+        status:"pending"
 
-        })
-        .select()
-        .single();
+    })
+    .select()
+    .single();
 
 
-    if(orderError){
+    if(error){
 
-        console.error(orderError);
+        console.error(error);
 
-        showToast(
+        toast(
             "خطا در ثبت سفارش."
         );
 
         return;
-
     }
 
-
-    /*
-      ساخت آیتم‌های سفارش
-    */
 
     const orderItems =
         items.map(item => ({
@@ -2341,21 +2221,20 @@ async function checkout(){
     const {
         error:itemError
     } =
-        await supabaseClient
-        .from("order_items")
-        .insert(orderItems);
+    await supabaseClient
+    .from("order_items")
+    .insert(orderItems);
 
 
     if(itemError){
 
         console.error(itemError);
 
-        showToast(
-            "سفارش ایجاد شد ولی آیتم‌ها ثبت نشدند."
+        toast(
+            "خطا در ثبت محصولات سفارش."
         );
 
         return;
-
     }
 
 
@@ -2367,13 +2246,13 @@ async function checkout(){
 
     updateCartCount();
 
-    renderOrders();
+    renderProfile();
 
+    await renderOrders();
 
-    showToast(
+    toast(
         "سفارش با موفقیت ثبت شد 🎉"
     );
-
 }
 
 
@@ -2391,15 +2270,13 @@ async function renderOrders(){
 
         box.innerHTML = `
 
-            <div class="empty">
-                برای مشاهده سفارش‌ها
-                ابتدا وارد حساب شوید.
-            </div>
+        <div class="empty">
+            برای مشاهده سفارش‌ها وارد حساب شوید.
+        </div>
 
         `;
 
         return;
-
     }
 
 
@@ -2407,17 +2284,17 @@ async function renderOrders(){
         data,
         error
     } =
-        await supabaseClient
-        .from("orders")
-        .select("*")
-        .eq(
-            "user_id",
-            currentUser.id
-        )
-        .order(
-            "created_at",
-            {ascending:false}
-        );
+    await supabaseClient
+    .from("orders")
+    .select("*")
+    .eq(
+        "user_id",
+        currentUser.id
+    )
+    .order(
+        "created_at",
+        {ascending:false}
+    );
 
 
     if(error){
@@ -2426,36 +2303,34 @@ async function renderOrders(){
 
         box.innerHTML = `
 
-            <div class="empty">
-                خطا در دریافت سفارش‌ها.
-            </div>
+        <div class="empty">
+            خطا در دریافت سفارش‌ها.
+        </div>
 
         `;
 
         return;
-
     }
 
 
-    if(!data || !data.length){
+    if(!data?.length){
 
         box.innerHTML = `
 
-            <div class="empty">
-                هنوز سفارشی ثبت نکرده‌اید.
-            </div>
+        <div class="empty">
+            هنوز سفارشی ثبت نکرده‌اید.
+        </div>
 
         `;
 
         return;
-
     }
 
 
     box.innerHTML =
         data.map(order => `
 
-        <div class="order-item">
+        <div class="item">
 
             <div>
 
@@ -2473,7 +2348,6 @@ async function renderOrders(){
 
             </div>
 
-
             <div>
 
                 <strong>
@@ -2485,22 +2359,19 @@ async function renderOrders(){
 
                 <br>
 
-                <span>
-                    ${orderStatus(order.status)}
-                </span>
+                ${orderStatus(order.status)}
 
             </div>
 
         </div>
 
-    `).join("");
-
+        `).join("");
 }
 
 
 function orderStatus(status){
 
-    const statuses = {
+    const map = {
 
         pending:"⏳ در انتظار بررسی",
 
@@ -2512,9 +2383,7 @@ function orderStatus(status){
 
     };
 
-
-    return statuses[status] || status;
-
+    return map[status] || status;
 }
 
 
@@ -2522,38 +2391,78 @@ function orderStatus(status){
    FAVORITES
 ========================= */
 
+async function loadFavorites(){
+
+    if(!currentUser){
+
+        favorites = [];
+
+        renderFavorites();
+
+        return;
+    }
+
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+    .from("favorites")
+    .select("account_id")
+    .eq(
+        "user_id",
+        currentUser.id
+    );
+
+
+    if(error){
+
+        console.error(error);
+
+        return;
+    }
+
+
+    favorites =
+        (data || [])
+        .map(
+            x =>
+            Number(x.account_id)
+        );
+
+
+    localStorage.setItem(
+        "gameshopFavorites",
+        JSON.stringify(favorites)
+    );
+
+
+    renderFavorites();
+
+    renderAccounts();
+}
+
+
 async function toggleFavorite(id){
 
     if(!currentUser){
 
-        showToast(
+        toast(
             "برای علاقه‌مندی ابتدا وارد حساب شوید."
         );
 
         openAuth("login");
 
         return;
-
     }
 
 
     const exists =
-        favorites.includes(id);
+        favorites.includes(Number(id));
 
 
     if(exists){
-
-        favorites =
-            favorites.filter(
-                x =>
-                Number(x) !== Number(id)
-            );
-
-        localStorage.setItem(
-            "gameshopFavorites",
-            JSON.stringify(favorites)
-        );
-
 
         await supabaseClient
         .from("favorites")
@@ -2567,17 +2476,11 @@ async function toggleFavorite(id){
             id
         );
 
-
     }else{
 
-        favorites.push(id);
-
-        localStorage.setItem(
-            "gameshopFavorites",
-            JSON.stringify(favorites)
-        );
-
-
+        const {
+            error
+        } =
         await supabaseClient
         .from("favorites")
         .insert({
@@ -2588,74 +2491,32 @@ async function toggleFavorite(id){
 
         });
 
+
+        if(error){
+
+            console.error(error);
+
+            toast(
+                "خطا در ذخیره علاقه‌مندی."
+            );
+
+            return;
+        }
     }
 
 
-    renderAccounts();
-
-    renderFavorites();
-
-}
-
-
-async function loadFavorites(){
-
-    if(!currentUser){
-
-        return;
-
-    }
-
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-        .from("favorites")
-        .select("account_id")
-        .eq(
-            "user_id",
-            currentUser.id
-        );
-
-
-    if(error){
-
-        return;
-
-    }
-
-
-    favorites =
-        (data || [])
-        .map(
-            item =>
-            Number(item.account_id)
-        );
-
-
-    localStorage.setItem(
-        "gameshopFavorites",
-        JSON.stringify(favorites)
-    );
-
-
-    renderFavorites();
-
-    renderAccounts();
-
+    await loadFavorites();
 }
 
 
 function renderFavorites(){
 
     const grid =
-        document.getElementById("favoritesGrid");
+        document.getElementById("favoriteGrid");
 
 
     const list =
-        accounts.filter(
+        accountsData.filter(
             account =>
             favorites.includes(
                 Number(account.id)
@@ -2667,38 +2528,28 @@ function renderFavorites(){
 
         grid.innerHTML = `
 
-            <div class="empty">
-                هنوز اکانتی ذخیره نکرده‌اید.
-            </div>
+        <div class="empty">
+            هنوز اکانتی ذخیره نکرده‌اید.
+        </div>
 
         `;
 
         return;
-
     }
 
 
     grid.innerHTML =
-        list
-        .map(account =>
-            accountCard(account)
-        )
-        .join("");
-
+        list.map(card).join("");
 }
 
 
 /* =========================
-   USER PANEL
+   PROFILE
 ========================= */
 
 function maskEmail(email){
 
-    if(!email){
-
-        return "---";
-
-    }
+    if(!email) return "---";
 
 
     const parts =
@@ -2708,26 +2559,22 @@ function maskEmail(email){
     if(parts.length !== 2){
 
         return "***";
-
     }
 
 
-    const username =
-        parts[0];
+    const name = parts[0];
 
-    const domain =
-        parts[1];
+    const domain = parts[1];
 
 
-    if(username.length <= 3){
+    if(name.length <= 3){
 
         return "***@" + domain;
-
     }
 
 
     return (
-        username.substring(0,3)
+        name.substring(0,3)
         +
         "********"
         +
@@ -2735,100 +2582,88 @@ function maskEmail(email){
         +
         domain
     );
-
 }
 
 
-function renderPanel(){
+function renderProfile(){
 
     const box =
-        document.getElementById("panelContent");
+        document.getElementById("profileBox");
 
 
     if(!currentUser){
 
         box.innerHTML = `
 
-            <div class="empty">
+        <div class="empty">
 
-                برای مشاهده پنل
-                ابتدا وارد حساب شوید.
+            برای مشاهده پنل وارد حساب شوید.
 
-                <br><br>
+            <br><br>
 
-                <button
-                    class="btn btn-primary"
-                    onclick="openAuth('login')"
-                >
-                    ورود / ثبت‌نام
-                </button>
+            <button
+                class="btn primary"
+                onclick="openAuth('login')"
+            >
+                ورود / ثبت‌نام
+            </button>
 
-            </div>
+        </div>
 
         `;
 
         return;
-
     }
 
 
     box.innerHTML = `
 
-        <div class="profile-row">
+    <div class="profile-row">
 
-            <span>
-                👤 نام کاربری
-            </span>
+        <span>👤 نام کاربری</span>
 
-            <strong>
-                ${escapeHtml(
-                    currentUser.username
-                )}
-            </strong>
+        <strong>
+            ${safe(currentUser.username)}
+        </strong>
 
-        </div>
+    </div>
 
 
-        <div class="profile-row">
+    <div class="profile-row">
 
-            <span>
-                📧 ایمیل
-            </span>
+        <span>📧 ایمیل</span>
 
-            <strong>
-                ${escapeHtml(
-                    maskEmail(
-                        currentUser.email
-                    )
-                )}
-            </strong>
+        <strong>
+            ${safe(
+                maskEmail(
+                    currentUser.email
+                )
+            )}
+        </strong>
 
-        </div>
+    </div>
 
 
-        <div class="profile-row">
+    <div class="profile-row">
 
-            <span>
-                🛒 تعداد سبد خرید
-            </span>
+        <span>🛒 سبد خرید</span>
 
-            <strong>
-                ${cart.length}
-            </strong>
+        <strong>
+            ${cart.length}
+        </strong>
 
-        </div>
+    </div>
 
 
-        <button
-            class="btn btn-secondary"
-            style="width:100%;margin-top:20px;"
-            onclick="logout()"
-        >
-            🚪 خروج از حساب
-        </button>
+    <button
+        class="btn danger"
+        style="width:100%;margin-top:20px"
+        onclick="logout()"
+    >
+        🚪 خروج از حساب
+    </button>
 
     `;
-
 }
 
 
@@ -2839,70 +2674,38 @@ function renderPanel(){
 function toggleFaq(element){
 
     element
-        .parentElement
-        .classList
-        .toggle("open");
-
+    .parentElement
+    .classList
+    .toggle("open");
 }
 
 
 /* =========================
-   ESCAPE HTML
-========================= */
-
-function escapeHtml(value){
-
-    if(value === null || value === undefined){
-
-        return "";
-
-    }
-
-
-    return String(value)
-
-        .replaceAll("&","&amp;")
-
-        .replaceAll("<","&lt;")
-
-        .replaceAll(">","&gt;")
-
-        .replaceAll('"',"&quot;")
-
-        .replaceAll("'","&#039;");
-
-}
-
-
-/* =========================
-   AUTH STATE LISTENER
+   AUTH STATE
 ========================= */
 
 supabaseClient.auth.onAuthStateChange(
-    async (event, session) => {
+async function(event,session){
 
-        if(session?.user){
+    if(session?.user){
 
-            await setCurrentUser(
-                session.user
-            );
+        await setUser(
+            session.user
+        );
 
-            await loadFavorites();
+    }else{
 
-        }else{
+        currentUser = null;
 
-            currentUser = null;
+        updateUserUI();
 
-            updateUserMenu();
+        renderProfile();
 
-            renderPanel();
-
-            renderOrders();
-
-        }
+        renderOrders();
 
     }
-);
+
+});
 
 
 /* =========================
@@ -2915,16 +2718,33 @@ async function init(){
 
     renderCart();
 
-    renderPanel();
+    renderProfile();
 
     await loadAccounts();
 
-    await loadCurrentUser();
+
+    const {
+        data
+    } =
+    await supabaseClient.auth.getSession();
+
+
+    if(data.session){
+
+        await setUser(
+            data.session.user
+        );
+
+    }else{
+
+        updateUserUI();
+
+        renderProfile();
+
+    }
 
 }
 
-
-/* START */
 
 init();
 
