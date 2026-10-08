@@ -1,4891 +1,4304 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GameShop | فروشگاه اکانت گیم</title>
+  <title>GameShop | فروشگاه اکانت گیم</title>
 
-<meta name="description"
-content="GameShop - فروشگاه اکانت گیمینگ">
+  <meta name="description" content="GameShop - فروشگاه اکانت‌های گیمینگ">
+  <meta name="theme-color" content="#0b1020">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap"
-rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<style>
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg2: #0d1322;
+      --card: #111827;
+      --card2: #151e30;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: rgba(255,255,255,.09);
+      --primary: #7c3aed;
+      --primary2: #06b6d4;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
 
-/* =========================
-   ROOT
-========================= */
+    body.light {
+      --bg: #f4f7fb;
+      --bg2: #ffffff;
+      --card: #ffffff;
+      --card2: #f8fafc;
+      --text: #111827;
+      --muted: #64748b;
+      --border: rgba(15,23,42,.1);
+      --shadow: 0 20px 50px rgba(15,23,42,.1);
+    }
 
-:root{
-    --bg:#070b12;
-    --panel:#0e1520;
-    --panel2:#111b29;
-    --text:#eef4ff;
-    --muted:#91a0b5;
-    --line:#1d2a3b;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    --primary:#5b8cff;
-    --primary2:#7c5cff;
+    html {
+      scroll-behavior: smooth;
+    }
 
-    --green:#22c55e;
-    --red:#ef4444;
-    --yellow:#f59e0b;
-
-    --shadow:0 20px 60px rgba(0,0,0,.28);
-}
-
-body.light{
-    --bg:#f4f7fb;
-    --panel:#ffffff;
-    --panel2:#f8fafc;
-    --text:#172033;
-    --muted:#64748b;
-    --line:#dce4ef;
-    --shadow:0 15px 40px rgba(15,23,42,.09);
-}
-
-/* =========================
-   RESET
-========================= */
-
-*{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    margin:0;
-    background:
-        radial-gradient(
-            circle at 20% 0%,
-            rgba(91,140,255,.12),
-            transparent 30%
-        ),
+    body {
+      font-family: "Vazirmatn", "Inter", sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(124,58,237,.12), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(6,182,212,.09), transparent 30%),
         var(--bg);
-    color:var(--text);
-    font-family:
-        Vazirmatn,
-        Inter,
-        sans-serif;
-}
-
-button,
-input,
-select,
-textarea{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-a{
-    color:inherit;
-}
-
-.hidden{
-    display:none !important;
-}
-
-.container{
-    width:min(1200px,calc(100% - 30px));
-    margin:auto;
-}
-
-/* =========================
-   HEADER
-========================= */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:100;
-    background:rgba(7,11,18,.86);
-    backdrop-filter:blur(16px);
-    border-bottom:1px solid var(--line);
-}
-
-body.light header{
-    background:rgba(255,255,255,.88);
-}
-
-.nav{
-    height:70px;
-    display:flex;
-    align-items:center;
-    gap:16px;
-}
-
-.brand{
-    font-size:22px;
-    font-weight:900;
-    text-decoration:none;
-}
-
-.brand span{
-    color:var(--primary);
-}
-
-nav{
-    display:flex;
-    gap:5px;
-    margin-right:auto;
-}
-
-nav a{
-    text-decoration:none;
-    color:var(--muted);
-    padding:10px 12px;
-    border-radius:10px;
-}
-
-nav a:hover{
-    background:var(--panel2);
-    color:var(--text);
-}
-
-.nav-actions{
-    display:flex;
-    align-items:center;
-    gap:7px;
-}
-
-.icon-btn,
-.btn{
-    border:1px solid var(--line);
-    background:var(--panel);
-    color:var(--text);
-    border-radius:11px;
-    padding:10px 13px;
-}
-
-.btn{
-    border:0;
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary2)
-        );
-    color:white;
-    font-weight:800;
-}
-
-.btn.secondary{
-    background:var(--panel2);
-    border:1px solid var(--line);
-}
-
-.btn.danger{
-    background:var(--red);
-}
-
-.btn.green{
-    background:var(--green);
-    color:#03140a;
-}
-
-.hamb{
-    display:none;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    padding:75px 0 55px;
-}
-
-.hero-grid{
-    display:grid;
-    grid-template-columns:1.35fr .65fr;
-    gap:30px;
-    align-items:center;
-}
-
-.eyebrow{
-    display:inline-flex;
-    padding:7px 11px;
-    border:1px solid var(--line);
-    background:var(--panel);
-    border-radius:999px;
-    color:#9cb9ff;
-    font-size:13px;
-}
-
-.hero h1{
-    font-size:clamp(38px,6vw,72px);
-    line-height:1.05;
-    margin:18px 0;
-}
-
-.hero h1 span{
-    color:var(--primary);
-}
-
-.hero p{
-    color:var(--muted);
-    font-size:17px;
-    line-height:2;
-}
-
-.hero-actions{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:24px;
-}
-
-.hero-card{
-    background:
-        linear-gradient(
-            145deg,
-            var(--panel),
-            var(--panel2)
-        );
-    border:1px solid var(--line);
-    border-radius:28px;
-    padding:28px;
-    box-shadow:var(--shadow);
-}
-
-.hero-card .big{
-    font-size:70px;
-    text-align:center;
-}
-
-/* =========================
-   SECTIONS
-========================= */
-
-.section{
-    padding:55px 0;
-}
-
-.section-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-    gap:15px;
-    margin-bottom:20px;
-}
-
-.section-title{
-    font-size:30px;
-    font-weight:900;
-    margin:0;
-}
-
-.muted{
-    color:var(--muted);
-}
-
-/* =========================
-   TOOLBAR
-========================= */
-
-.toolbar{
-    display:grid;
-    grid-template-columns:1fr 180px 180px;
-    gap:10px;
-    margin-bottom:20px;
-}
-
-.field{
-    width:100%;
-    background:var(--panel);
-    color:var(--text);
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:12px 14px;
-    outline:none;
-}
-
-.field:focus{
-    border-color:var(--primary);
-}
-
-/* =========================
-   ACCOUNT CARDS
-========================= */
-
-.cards{
-    display:grid;
-    grid-template-columns:
-        repeat(3,1fr);
-    gap:18px;
-}
-
-.card{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:var(--shadow);
-}
-
-.card-img{
-    height:170px;
-    background:
-        linear-gradient(
-            135deg,
-            #16243a,
-            #0c1320
-        );
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:55px;
-}
-
-.card-img img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.card-body{
-    padding:18px;
-}
-
-.card-top{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-}
-
-.card h3{
-    margin:0 0 7px;
-}
-
-.card-desc{
-    color:var(--muted);
-    min-height:45px;
-    line-height:1.8;
-    font-size:13px;
-}
-
-.meta{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-    margin:14px 0;
-}
-
-.meta div{
-    background:var(--panel2);
-    padding:9px;
-    border-radius:10px;
-    font-size:12px;
-}
-
-.price{
-    font-size:20px;
-    font-weight:900;
-}
-
-.card-actions{
-    display:flex;
-    gap:8px;
-    margin-top:14px;
-}
-
-.card-actions>*{
-    flex:1;
-}
-
-/* =========================
-   BADGES
-========================= */
-
-.badge{
-    display:inline-flex;
-    padding:5px 9px;
-    border-radius:999px;
-    font-size:12px;
-    font-weight:800;
-}
-
-.available,
-.approved{
-    background:rgba(34,197,94,.14);
-    color:#4ade80;
-}
-
-.unavailable,
-.cancelled{
-    background:rgba(239,68,68,.14);
-    color:#f87171;
-}
-
-.pending{
-    background:rgba(245,158,11,.14);
-    color:#fbbf24;
-}
-
-/* =========================
-   ABOUT
-========================= */
-
-.about{
-    display:grid;
-    grid-template-columns:
-        repeat(3,1fr);
-    gap:15px;
-}
-
-.feature{
-    background:var(--panel);
-    border:1px solid var(--line);
-    padding:22px;
-    border-radius:18px;
-}
-
-.feature b{
-    display:block;
-    margin-bottom:7px;
-}
-
-/* =========================
-   FAQ
-========================= */
-
-.faq{
-    display:grid;
-    gap:10px;
-}
-
-.faq details{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:15px;
-}
-
-.faq summary{
-    cursor:pointer;
-    font-weight:800;
-}
-
-.faq p{
-    color:var(--muted);
-    line-height:1.9;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    border-top:1px solid var(--line);
-    padding:35px 0;
-    color:var(--muted);
-}
-
-/* =========================
-   MODALS
-========================= */
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.7);
-    z-index:500;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:15px;
-}
-
-.modal-box{
-    width:min(500px,100%);
-    max-height:90vh;
-    overflow:auto;
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:22px;
-    padding:24px;
-}
-
-.modal-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.close{
-    border:0;
-    background:transparent;
-    color:var(--muted);
-    font-size:25px;
-}
-
-.form{
-    display:grid;
-    gap:12px;
-}
-
-.form-group{
-    display:grid;
-    gap:6px;
-}
-
-.form-group label{
-    font-size:13px;
-    color:var(--muted);
-}
-
-.tabs{
-    display:flex;
-    gap:8px;
-    margin:15px 0;
-}
-
-.tabs button{
-    flex:1;
-}
-
-.list{
-    display:grid;
-    gap:10px;
-}
-
-.list-item{
-    background:var(--panel2);
-    border:1px solid var(--line);
-    border-radius:13px;
-    padding:13px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-}
-
-.empty{
-    padding:35px;
-    text-align:center;
-    color:var(--muted);
-}
-
-/* =========================
-   TOAST
-========================= */
-
-.toast{
-    position:fixed;
-    left:20px;
-    bottom:20px;
-    z-index:1000;
-    background:#101827;
-    color:white;
-    border:1px solid #26364e;
-    padding:13px 16px;
-    border-radius:12px;
-    box-shadow:var(--shadow);
-    opacity:0;
-    transform:translateY(10px);
-    transition:.25s;
-}
-
-.toast.show{
-    opacity:1;
-    transform:none;
-}
-
-/* =========================
-   ADMIN
-========================= */
-
-.admin{
-    min-height:100vh;
-    padding:25px;
-    background:var(--bg);
-}
-
-.admin-layout{
-    display:grid;
-    grid-template-columns:240px 1fr;
-    gap:20px;
-    max-width:1500px;
-    margin:auto;
-}
-
-.admin-sidebar{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:20px;
-    padding:18px;
-    height:max-content;
-    position:sticky;
-    top:90px;
-}
-
-.admin-brand{
-    font-size:20px;
-    font-weight:900;
-    padding:8px 10px 20px;
-}
-
-.admin-menu{
-    display:grid;
-    gap:7px;
-}
-
-.admin-menu button{
-    width:100%;
-    text-align:right;
-    border:0;
-    background:transparent;
-    color:var(--muted);
-    padding:12px;
-    border-radius:11px;
-}
-
-.admin-menu button:hover,
-.admin-menu button.active{
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary2)
-        );
-    color:white;
-}
-
-.admin-main{
-    min-width:0;
-}
-
-.admin-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:12px;
-    margin-bottom:18px;
-}
-
-.admin-title{
-    font-size:30px;
-    font-weight:900;
-}
-
-.admin-grid{
-    display:grid;
-    grid-template-columns:
-        repeat(4,1fr);
-    gap:15px;
-}
-
-.stat{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:17px;
-    padding:20px;
-}
-
-.stat-icon{
-    font-size:27px;
-}
-
-.stat-label{
-    color:var(--muted);
-    font-size:13px;
-    margin-top:8px;
-}
-
-.stat-value{
-    font-size:28px;
-    font-weight:900;
-    margin-top:5px;
-}
-
-.admin-card{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:17px;
-    padding:20px;
-    margin-top:18px;
-}
-
-.admin-table-wrap{
-    overflow:auto;
-}
-
-.admin-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-.admin-table th,
-.admin-table td{
-    padding:12px 9px;
-    border-bottom:1px solid var(--line);
-    text-align:right;
-    white-space:nowrap;
-}
-
-.admin-table th{
-    color:var(--muted);
-    font-size:12px;
-}
-
-.admin-actions{
-    display:flex;
-    gap:7px;
-}
-
-.admin-action{
-    border:0;
-    background:var(--primary);
-    color:white;
-    border-radius:8px;
-    padding:7px 10px;
-}
-
-.admin-page{
-    display:none;
-}
-
-.admin-page.active{
-    display:block;
-}
-
-.admin-toolbar{
-    display:flex;
-    gap:10px;
-    margin-bottom:15px;
-    flex-wrap:wrap;
-}
-
-.chart{
-    height:180px;
-    display:flex;
-    align-items:end;
-    gap:8px;
-    padding-top:20px;
-}
-
-.bar{
-    flex:1;
-    background:
-        linear-gradient(
-            to top,
-            var(--primary),
-            var(--primary2)
-        );
-    border-radius:7px 7px 2px 2px;
-    min-height:8px;
-    position:relative;
-}
-
-.bar span{
-    position:absolute;
-    bottom:-22px;
-    width:100%;
-    text-align:center;
-    font-size:10px;
-    color:var(--muted);
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:950px){
-
-    nav{
-        display:none;
+      color: var(--text);
+      min-height: 100vh;
+      transition: .25s ease;
     }
 
-    .hamb{
-        display:block;
+    body,
+    button,
+    input,
+    select,
+    textarea {
+      font-family: "Vazirmatn", "Inter", sans-serif;
     }
 
-    .hero-grid{
-        grid-template-columns:1fr;
+    button,
+    input,
+    select {
+      border: none;
+      outline: none;
     }
 
-    .cards{
-        grid-template-columns:repeat(2,1fr);
+    button {
+      cursor: pointer;
     }
 
-    .about{
-        grid-template-columns:1fr 1fr;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .toolbar{
-        grid-template-columns:1fr 1fr;
+    .hidden {
+      display: none !important;
     }
 
-    .toolbar .field:first-child{
-        grid-column:1/-1;
+    .container {
+      width: min(1200px, 92%);
+      margin: auto;
     }
 
-    .admin-layout{
-        grid-template-columns:1fr;
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(7,11,20,.82);
+      border-bottom: 1px solid var(--border);
     }
 
-    .admin-sidebar{
-        position:static;
+    body.light header {
+      background: rgba(255,255,255,.86);
     }
 
-    .admin-menu{
-        grid-template-columns:
-            repeat(3,1fr);
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
-    .admin-grid{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-}
-
-@media(max-width:600px){
-
-    .container{
-        width:min(100% - 20px,1200px);
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      white-space: nowrap;
     }
 
-    .cards,
-    .about{
-        grid-template-columns:1fr;
+    .logo span {
+      background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
-    .toolbar{
-        grid-template-columns:1fr;
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      align-items: center;
     }
 
-    .admin{
-        padding:12px;
+    .nav-links a {
+      color: var(--muted);
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: .2s;
+      font-weight: 600;
     }
 
-    .admin-menu{
-        grid-template-columns:1fr 1fr;
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(124,58,237,.12);
     }
 
-    .admin-grid{
-        grid-template-columns:1fr 1fr;
+    .nav-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
     }
 
-    .admin-title{
-        font-size:23px;
+    .icon-btn,
+    .menu-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      font-size: 18px;
     }
 
-    .nav{
-        height:62px;
+    .menu-btn {
+      display: none;
     }
 
-    .hero{
-        padding:45px 0 30px;
-    }
-}
+    /* HERO */
 
-</style>
+    .hero {
+      padding: 90px 0 60px;
+    }
+
+    .hero-box {
+      position: relative;
+      overflow: hidden;
+      padding: 65px 40px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(124,58,237,.22), rgba(6,182,212,.08)),
+        var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-box::before {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background: rgba(124,58,237,.15);
+      filter: blur(80px);
+      border-radius: 50%;
+      top: -180px;
+      left: -100px;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 720px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 68px);
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #a78bfa, #22d3ee);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      line-height: 2;
+      font-size: 17px;
+      margin-bottom: 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: .2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--primary), #5b21b6);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: var(--card2);
+      border: 1px solid var(--border);
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: white;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+    }
+
+    /* PROMO */
+
+    .promo {
+      margin: 20px 0 40px;
+      padding: 18px 22px;
+      border: 1px solid rgba(34,197,94,.25);
+      background: rgba(34,197,94,.08);
+      border-radius: 15px;
+      color: #86efac;
+      font-weight: 600;
+    }
+
+    /* SECTION */
+
+    section {
+      padding: 45px 0;
+    }
+
+    .section-title {
+      margin-bottom: 25px;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    /* FILTERS */
+
+    .filters {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .input,
+    .select {
+      width: 100%;
+      padding: 13px 15px;
+      border-radius: 12px;
+      color: var(--text);
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .select option {
+      background: var(--card);
+      color: var(--text);
+    }
+
+    /* ACCOUNTS */
+
+    .accounts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .account-card {
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+      transition: .25s;
+    }
+
+    .account-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(124,58,237,.45);
+    }
+
+    .account-image {
+      height: 175px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+      background:
+        linear-gradient(135deg, rgba(124,58,237,.2), rgba(6,182,212,.12)),
+        var(--card2);
+      overflow: hidden;
+    }
+
+    .account-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .account-body {
+      padding: 18px;
+    }
+
+    .account-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .account-title {
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .favorite-btn {
+      background: transparent;
+      color: var(--muted);
+      font-size: 23px;
+    }
+
+    .favorite-btn.active {
+      color: #f43f5e;
+    }
+
+    .account-game {
+      color: var(--primary2);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .account-description {
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 14px 0;
+      min-height: 50px;
+      font-size: 14px;
+    }
+
+    .account-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .meta-item {
+      padding: 10px;
+      border-radius: 10px;
+      background: var(--card2);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .meta-item strong {
+      color: var(--text);
+      display: block;
+      margin-top: 3px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 8px;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .status.available {
+      background: rgba(34,197,94,.12);
+      color: #4ade80;
+    }
+
+    .status.unavailable {
+      background: rgba(239,68,68,.12);
+      color: #f87171;
+    }
+
+    /* FEATURES */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+    }
+
+    .feature {
+      padding: 25px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+    }
+
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .feature h3 {
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    /* FAQ */
+
+    .faq {
+      display: grid;
+      gap: 10px;
+    }
+
+    details {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    details p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-top: 12px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 50px;
+      padding: 45px 0;
+      border-top: 1px solid var(--border);
+      background: var(--bg2);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    .footer-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    footer p,
+    footer a {
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    .telegram-link {
+      color: #38bdf8;
+      font-weight: 700;
+    }
+
+    /* MODALS */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0,0,0,.7);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-box {
+      width: min(500px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 25px;
+      border-radius: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .close-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--card2);
+      color: var(--text);
+      font-size: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    /* PROFILE */
+
+    .profile-box {
+      display: grid;
+      gap: 12px;
+    }
+
+    .profile-item {
+      padding: 14px;
+      border-radius: 12px;
+      background: var(--card2);
+    }
+
+    .profile-item small {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ADMIN */
+
+    .admin-dashboard {
+      min-height: 100vh;
+      background: var(--bg);
+    }
+
+    .admin-layout {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      min-height: 100vh;
+    }
+
+    .admin-sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 20px;
+      background: var(--card);
+      border-left: 1px solid var(--border);
+    }
+
+    [dir="ltr"] .admin-sidebar {
+      border-left: 0;
+      border-right: 1px solid var(--border);
+    }
+
+    .admin-brand {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 25px;
+    }
+
+    .admin-menu {
+      display: grid;
+      gap: 7px;
+    }
+
+    .admin-menu-item {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 11px;
+      background: transparent;
+      color: var(--muted);
+      text-align: right;
+      font-weight: 600;
+    }
+
+    [dir="ltr"] .admin-menu-item {
+      text-align: left;
+    }
+
+    .admin-menu-item:hover,
+    .admin-menu-item.active {
+      color: white;
+      background: linear-gradient(135deg, var(--primary), #5b21b6);
+    }
+
+    .admin-main {
+      padding: 25px;
+      overflow: hidden;
+    }
+
+    .admin-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .admin-topbar h1 {
+      font-size: 28px;
+    }
+
+    .admin-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .dashboard-stat {
+      padding: 20px;
+      border-radius: 17px;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .dashboard-stat small {
+      color: var(--muted);
+    }
+
+    .dashboard-stat strong {
+      display: block;
+      font-size: 28px;
+      margin-top: 8px;
+    }
+
+    .admin-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .admin-card h3 {
+      margin-bottom: 15px;
+    }
+
+    .admin-table-wrap {
+      overflow-x: auto;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+    }
+
+    .admin-table th,
+    .admin-table td {
+      padding: 13px 10px;
+      border-bottom: 1px solid var(--border);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    [dir="ltr"] .admin-table th,
+    [dir="ltr"] .admin-table td {
+      text-align: left;
+    }
+
+    .admin-table th {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .admin-table td {
+      font-size: 14px;
+    }
+
+    .admin-filter {
+      margin-bottom: 15px;
+      max-width: 450px;
+    }
+
+    /* TOAST */
+
+    .toast-container {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 9999;
+      display: grid;
+      gap: 10px;
+    }
+
+    .toast {
+      min-width: 260px;
+      max-width: 360px;
+      padding: 14px 17px;
+      border-radius: 13px;
+      color: white;
+      background: #111827;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      animation: toastIn .25s ease;
+    }
+
+    .toast.success {
+      border-right: 4px solid var(--success);
+    }
+
+    .toast.error {
+      border-right: 4px solid var(--danger);
+    }
+
+    @keyframes toastIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+      .accounts-grid,
+      .features-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .admin-stat-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .admin-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-sidebar {
+        position: relative;
+        height: auto;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        right: 4%;
+        left: 4%;
+        padding: 12px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        flex-direction: column;
+      }
+
+      [dir="ltr"] .nav-links {
+        right: 4%;
+        left: 4%;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero-box {
+        padding: 45px 22px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .filters {
+        grid-template-columns: 1fr;
+      }
+
+      .accounts-grid,
+      .features-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .admin-main {
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
-<header>
-
-<div class="container nav">
-
-<button
-class="icon-btn hamb"
-onclick="toggleMobileNav()">
-☰
-</button>
-
-<a class="brand" href="#home">
-🎮 Game<span>Shop</span>
-</a>
-
-<nav id="mainNav">
-
-<a href="#home">خانه</a>
-<a href="#accounts">اکانت‌ها</a>
-<a href="#about">درباره</a>
-<a href="#faq">سؤالات</a>
-<a href="#support">پشتیبانی</a>
-
-</nav>
-
-<div class="nav-actions">
-
-<button
-class="icon-btn"
-onclick="toggleLang()"
-id="langBtn">
-EN
-</button>
-
-<button
-class="icon-btn"
-onclick="toggleTheme()">
-☀️
-</button>
-
-<button
-class="icon-btn"
-onclick="openCart()">
-🛒
-<span id="cartCount">0</span>
-</button>
-
-<button
-class="icon-btn hidden"
-id="adminBtn"
-onclick="openAdmin()">
-🛠️
-</button>
-
-<button
-class="icon-btn"
-id="authBtn"
-onclick="openAuthOrProfile()">
-🔑
-</button>
-
-</div>
-
-</div>
-
-</header>
-
-<!-- =========================
-     STORE
-========================= -->
-
-<main id="storeView">
-
-<section class="hero" id="home">
-
-<div class="container hero-grid">
-
-<div>
-
-<span class="eyebrow">
-فروشگاه گیمینگ GameShop
-</span>
-
-<h1>
-اکانت گیمینگ،
-<br>
-<span>ساده و مطمئن</span>
-</h1>
-
-<p>
-اکانت‌های موجود را ببین، جست‌وجو کن و سفارش خودت را ثبت کن.
-برای خرید و فروش اکانت با پشتیبانی در ارتباط باش.
-</p>
-
-<div class="hero-actions">
-
-<a
-class="btn"
-href="#accounts">
-مشاهده اکانت‌ها
-</a>
-
-<button
-class="btn secondary"
-onclick="openSupport()">
-تماس با پشتیبانی
-</button>
-
-</div>
-
-</div>
-
-<div class="hero-card">
-
-<div class="big">
-🎮
-</div>
-
-<h3>
-فروشگاه GameShop
-</h3>
-
-<p class="muted">
-مدیریت سفارش، علاقه‌مندی و حساب کاربری در یکجا.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ACCOUNTS -->
-
-<section
-class="section"
-id="accounts">
-
-<div class="container">
-
-<div class="section-head">
-
-<div>
-
-<h2 class="section-title">
-اکانت‌ها
-</h2>
-
-<div
-class="muted"
-id="accountCountText">
-در حال دریافت...
-</div>
-
-</div>
-
-</div>
-
-<div class="toolbar">
-
-<input
-id="searchInput"
-class="field"
-placeholder="جست‌وجوی اکانت..."
-oninput="renderAccounts()">
-
-<select
-id="gameFilter"
-class="field"
-onchange="renderAccounts()">
-
-<option value="">
-همه بازی‌ها
-</option>
-
-</select>
-
-<select
-id="sortFilter"
-class="field"
-onchange="renderAccounts()">
-
-<option value="new">
-جدیدترین
-</option>
-
-<option value="low">
-ارزان‌ترین
-</option>
-
-<option value="high">
-گران‌ترین
-</option>
-
-<option value="name">
-نام
-</option>
-
-</select>
-
-</div>
-
-<div
-id="accountGrid"
-class="cards">
-
-<div class="empty">
-در حال دریافت اکانت‌ها...
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ABOUT -->
-
-<section
-class="section"
-id="about">
-
-<div class="container">
-
-<h2 class="section-title">
-چرا GameShop؟
-</h2>
-
-<div class="about">
-
-<div class="feature">
-🔐
-<b>
-حساب کاربری
-</b>
-<span class="muted">
-سفارش‌ها و علاقه‌مندی‌های خودت را مدیریت کن.
-</span>
-</div>
-
-<div class="feature">
-⚡
-<b>
-مدیریت سریع
-</b>
-<span class="muted">
-ادمین می‌تواند اکانت‌ها و سفارش‌ها را مدیریت کند.
-</span>
-</div>
-
-<div class="feature">
-💬
-<b>
-پشتیبانی
-</b>
-<span class="muted">
-برای خرید یا فروش اکانت با پشتیبانی تماس بگیر.
-</span>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FAQ -->
-
-<section
-class="section"
-id="faq">
-
-<div class="container">
-
-<h2 class="section-title">
-سؤالات متداول
-</h2>
-
-<div class="faq">
-
-<details>
-<summary>
-چطور اکانت بخرم؟
-</summary>
-
-<p>
-اکانت را به سبد اضافه کن و سفارش را ثبت کن؛
-سپس پشتیبانی سفارش را بررسی می‌کند.
-</p>
-
-</details>
-
-<details>
-
-<summary>
-چطور اکانت بفروشم؟
-</summary>
-
-<p>
-برای فروش اکانت با پشتیبانی تماس بگیر.
-</p>
-
-</details>
-
-<details>
-
-<summary>
-آیا رمز بازی را داخل سایت وارد کنم؟
-</summary>
-
-<p>
-خیر. اطلاعات حساس حساب بازی را داخل این سایت ذخیره نکن.
-</p>
-
-</details>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- SUPPORT -->
-
-<section
-class="section"
-id="support">
-
-<div class="container">
-
-<div class="admin-card">
-
-<h2>
-پشتیبانی
-</h2>
-
-<p class="muted">
-برای خرید یا فروش اکانت با پشتیبانی تماس بگیر.
-</p>
-
-<a
-class="btn"
-href="tel:09339232786">
-📞 09339232786
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-<!-- =========================
-     ADMIN PANEL
-========================= -->
-
-<section
-id="adminView"
-class="admin hidden">
-
-<div class="admin-layout">
-
-<aside class="admin-sidebar">
-
-<div class="admin-brand">
-🛠️ GameShop Admin
-</div>
-
-<div class="admin-menu">
-
-<button
-class="active"
-data-page="dashboard"
-onclick="showAdminPage('dashboard',this)">
-📊 داشبورد
-</button>
-
-<button
-data-page="users"
-onclick="showAdminPage('users',this)">
-👥 کاربران
-</button>
-
-<button
-data-page="orders"
-onclick="showAdminPage('orders',this)">
-🛒 سفارش‌ها
-</button>
-
-<button
-data-page="accounts"
-onclick="showAdminPage('accounts',this)">
-🎮 اکانت‌ها
-</button>
-
-<button
-data-page="coupons"
-onclick="showAdminPage('coupons',this)">
-🎟️ کوپن‌ها
-</button>
-
-<button
-data-page="settings"
-onclick="showAdminPage('settings',this)">
-⚙️ تنظیمات
-</button>
-
-<button onclick="closeAdmin()">
-🏪 بازگشت به فروشگاه
-</button>
-
-</div>
-
-</aside>
-
-<div class="admin-main">
-
-<div class="admin-top">
-
-<div>
-
-<div
-class="admin-title"
-id="adminPageTitle">
-داشبورد
-</div>
-
-<div class="muted">
-مدیریت GameShop
-</div>
-
-</div>
-
-<button
-class="btn secondary"
-onclick="loadAdminData()">
-↻ بروزرسانی
-</button>
-
-</div>
-
-<!-- DASHBOARD -->
-
-<div
-class="admin-page active"
-id="page-dashboard">
-
-<div class="admin-grid">
-
-<div class="stat">
-
-<div class="stat-icon">
-💰
-</div>
-
-<div class="stat-label">
-درآمد تأییدشده
-</div>
-
-<div
-class="stat-value"
-id="statRevenue">
-0
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="stat-icon">
-🛒
-</div>
-
-<div class="stat-label">
-کل سفارش‌ها
-</div>
-
-<div
-class="stat-value"
-id="statOrders">
-0
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="stat-icon">
-👥
-</div>
-
-<div class="stat-label">
-کاربران
-</div>
-
-<div
-class="stat-value"
-id="statUsers">
-0
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="stat-icon">
-🎮
-</div>
-
-<div class="stat-label">
-اکانت‌ها
-</div>
-
-<div
-class="stat-value"
-id="statAccounts">
-0
-</div>
-
-</div>
-
-</div>
-
-<div class="admin-card">
-
-<h3>
-📈 سفارش‌های اخیر
-</h3>
-
-<div id="dashboardOrders">
-</div>
-
-</div>
-
-<div class="admin-card">
-
-<h3>
-📊 وضعیت سفارش‌ها
-</h3>
-
-<div
-id="orderChart"
-class="chart">
-</div>
-
-</div>
-
-</div>
-
-<!-- USERS -->
-
-<div
-class="admin-page"
-id="page-users">
-
-<div class="admin-card">
-
-<div class="admin-toolbar">
-
-<input
-class="field"
-id="userSearch"
-placeholder="جست‌وجوی کاربر..."
-oninput="renderAdminUsers()">
-
-</div>
-
-<div class="admin-table-wrap">
-
-<table class="admin-table">
-
-<thead>
-
-<tr>
-<th>ID</th>
-<th>نام کاربری</th>
-<th>نقش</th>
-<th>تاریخ</th>
-</tr>
-
-</thead>
-
-<tbody id="usersTable">
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ORDERS -->
-
-<div
-class="admin-page"
-id="page-orders">
-
-<div class="admin-card">
-
-<div class="admin-toolbar">
-
-<input
-class="field"
-id="orderSearch"
-placeholder="جست‌وجوی سفارش..."
-oninput="renderAdminOrders()">
-
-<select
-class="field"
-id="orderStatusFilter"
-onchange="renderAdminOrders()">
-
-<option value="">
-همه وضعیت‌ها
-</option>
-
-<option value="pending">
-در انتظار بررسی
-</option>
-
-<option value="approved">
-تأیید شده
-</option>
-
-<option value="cancelled">
-لغو شده
-</option>
-
-</select>
-
-</div>
-
-<div class="admin-table-wrap">
-
-<table class="admin-table">
-
-<thead>
-
-<tr>
-<th>#</th>
-<th>کاربر</th>
-<th>مبلغ</th>
-<th>وضعیت</th>
-<th>تاریخ</th>
-<th>عملیات</th>
-</tr>
-
-</thead>
-
-<tbody id="ordersTable">
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ACCOUNTS -->
-
-<div
-class="admin-page"
-id="page-accounts">
-
-<div class="admin-card">
-
-<div class="admin-toolbar">
-
-<input
-class="field"
-id="adminAccountSearch"
-placeholder="جست‌وجوی اکانت..."
-oninput="renderAdminAccounts()">
-
-<button
-class="btn"
-onclick="openAccountForm()">
-+ افزودن اکانت
-</button>
-
-</div>
-
-<div class="admin-table-wrap">
-
-<table class="admin-table">
-
-<thead>
-
-<tr>
-<th>ID</th>
-<th>عنوان</th>
-<th>بازی</th>
-<th>قیمت</th>
-<th>وضعیت</th>
-<th>عملیات</th>
-</tr>
-
-</thead>
-
-<tbody id="accountsTable">
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- COUPONS -->
-
-<div
-class="admin-page"
-id="page-coupons">
-
-<div class="admin-card">
-
-<div class="admin-toolbar">
-
-<button
-class="btn"
-onclick="openCouponForm()">
-+ افزودن کوپن
-</button>
-
-</div>
-
-<div class="admin-table-wrap">
-
-<table class="admin-table">
-
-<thead>
-
-<tr>
-<th>کد</th>
-<th>درصد</th>
-<th>استفاده</th>
-<th>وضعیت</th>
-<th>انقضا</th>
-<th>عملیات</th>
-</tr>
-
-</thead>
-
-<tbody id="couponsTable">
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- SETTINGS -->
-
-<div
-class="admin-page"
-id="page-settings">
-
-<div class="admin-card">
-
-<h3>
-⚙️ تنظیمات
-</h3>
-
-<p class="muted">
-مدیریت تنظیمات ظاهری سایت.
-</p>
-
-<button
-class="btn secondary"
-onclick="toggleTheme()">
-تغییر حالت روشن / تاریک
-</button>
-
-</div>
-
-<div class="admin-card">
-
-<h3>
-🔐 امنیت
-</h3>
-
-<p class="muted">
-هرگز service-role key یا رمزهای حساس را داخل GitHub قرار نده.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- =========================
-     AUTH MODAL
-========================= -->
-
-<div
-id="authModal"
-class="modal hidden">
-
-<div class="modal-box">
-
-<div class="modal-head">
-
-<h2 id="authTitle">
-ورود
-</h2>
-
-<button
-class="close"
-onclick="closeModal('authModal')">
-×
-</button>
-
-</div>
-
-<div class="tabs">
-
-<button
-class="btn"
-id="loginTab"
-onclick="setAuthMode('login')">
-ورود
-</button>
-
-<button
-class="btn secondary"
-id="registerTab"
-onclick="setAuthMode('register')">
-ثبت‌نام
-</button>
-
-</div>
-
-<form
-class="form"
-onsubmit="submitAuth(event)">
-
-<div class="form-group">
-
-<label>
-ایمیل
-</label>
-
-<input
-id="authEmail"
-class="field"
-type="email"
-required>
-
-</div>
-
-<div class="form-group">
-
-<label>
-رمز عبور
-</label>
-
-<input
-id="authPassword"
-class="field"
-type="password"
-minlength="6"
-required>
-
-</div>
-
-<div
-id="usernameGroup"
-class="form-group hidden">
-
-<label>
-نام کاربری
-</label>
-
-<input
-id="authUsername"
-class="field">
-
-</div>
-
-<button
-class="btn"
-id="authSubmit">
-ورود
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-<!-- =========================
-     PROFILE
-========================= -->
-
-<div
-id="profileModal"
-class="modal hidden">
-
-<div class="modal-box">
-
-<div class="modal-head">
-
-<h2>
-👤 حساب من
-</h2>
-
-<button
-class="close"
-onclick="closeModal('profileModal')">
-×
-</button>
-
-</div>
-
-<div
-id="profileInfo"
-class="list">
-</div>
-
-<br>
-
-<button
-class="btn secondary"
-onclick="showMyOrders()">
-🛒 سفارش‌های من
-</button>
-
-<br><br>
-
-<button
-class="btn secondary"
-onclick="showFavorites()">
-❤️ علاقه‌مندی‌ها
-</button>
-
-<br><br>
-
-<button
-class="btn danger"
-onclick="logout()">
-خروج
-</button>
-
-</div>
-
-</div>
-
-<!-- =========================
-     CART
-========================= -->
-
-<div
-id="cartModal"
-class="modal hidden">
-
-<div class="modal-box">
-
-<div class="modal-head">
-
-<h2>
-🛒 سبد خرید
-</h2>
-
-<button
-class="close"
-onclick="closeModal('cartModal')">
-×
-</button>
-
-</div>
-
-<div id="cartList">
-</div>
-
-<div
-style="
-margin-top:15px;
-display:flex;
-justify-content:space-between;
-">
-
-<b>
-جمع:
-</b>
-
-<b id="cartTotal">
-0 تومان
-</b>
-
-</div>
-
-<br>
-
-<button
-class="btn"
-style="width:100%"
-onclick="checkout()">
-ثبت سفارش
-</button>
-
-</div>
-
-</div>
-
-<!-- ACCOUNT FORM -->
-
-<div
-id="accountModal"
-class="modal hidden">
-
-<div class="modal-box">
-
-<div class="modal-head">
-
-<h2 id="accountFormTitle">
-افزودن اکانت
-</h2>
-
-<button
-class="close"
-onclick="closeModal('accountModal')">
-×
-</button>
-
-</div>
-
-<form
-class="form"
-onsubmit="saveAccount(event)">
-
-<input
-type="hidden"
-id="accountId">
-
-<div class="form-group">
-<label>عنوان</label>
-<input id="aTitle" class="field" required>
-</div>
-
-<div class="form-group">
-<label>بازی</label>
-<input id="aGame" class="field" required>
-</div>
-
-<div class="form-group">
-<label>توضیحات</label>
-<textarea
-id="aDescription"
-class="field"></textarea>
-</div>
-
-<div class="form-group">
-<label>قیمت</label>
-<input
-id="aPrice"
-class="field"
-type="number"
-min="0"
-required>
-</div>
-
-<div class="form-group">
-<label>لول</label>
-<input
-id="aLevel"
-class="field"
-value="نامعلوم">
-</div>
-
-<div class="form-group">
-<label>اسکین</label>
-<input
-id="aSkins"
-class="field"
-value="نامعلوم">
-</div>
-
-<div class="form-group">
-<label>وضعیت</label>
-
-<select
-id="aStatus"
-class="field">
-
-<option value="available">
-موجود
-</option>
-
-<option value="unavailable">
-ناموجود
-</option>
-
-</select>
-
-</div>
-
-<div class="form-group">
-<label>لینک تصویر</label>
-
-<input
-id="aImage"
-class="field">
-
-</div>
-
-<button class="btn">
-ذخیره
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-<!-- COUPON -->
-
-<div
-id="couponModal"
-class="modal hidden">
-
-<div class="modal-box">
-
-<div class="modal-head">
-
-<h2>
-🎟️ افزودن کوپن
-</h2>
-
-<button
-class="close"
-onclick="closeModal('couponModal')">
-×
-</button>
-
-</div>
-
-<form
-class="form"
-onsubmit="saveCoupon(event)">
-
-<div class="form-group">
-<label>کد</label>
-<input id="cCode" class="field" required>
-</div>
-
-<div class="form-group">
-<label>درصد تخفیف</label>
-
-<input
-id="cPercent"
-class="field"
-type="number"
-min="1"
-max="100"
-required>
-
-</div>
-
-<div class="form-group">
-<label>حداکثر استفاده</label>
-
-<input
-id="cMax"
-class="field"
-type="number"
-min="1">
-
-</div>
-
-<div class="form-group">
-<label>تاریخ انقضا</label>
-
-<input
-id="cExpires"
-class="field"
-type="datetime-local">
-
-</div>
-
-<button class="btn">
-ذخیره
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-<!-- ORDERS -->
-
-<div
-id="ordersModal"
-class="modal hidden">
-
-<div class="modal-box">
-
-<div class="modal-head">
-
-<h2>
-🛒 سفارش‌های من
-</h2>
-
-<button
-class="close"
-onclick="closeModal('ordersModal')">
-×
-</button>
-
-</div>
-
-<div id="myOrders">
-</div>
-
-</div>
-
-</div>
-
-<!-- FAVORITES -->
-
-<div
-id="favoritesModal"
-class="modal hidden">
-
-<div class="modal-box">
-
-<div class="modal-head">
-
-<h2>
-❤️ علاقه‌مندی‌ها
-</h2>
-
-<button
-class="close"
-onclick="closeModal('favoritesModal')">
-×
-</button>
-
-</div>
-
-<div id="myFavorites">
-</div>
-
-</div>
-
-</div>
-
-<div
-id="toast"
-class="toast">
-</div>
-
-<script>
-
-/* =========================================
-   SUPABASE
-========================================= */
-
-const SUPABASE_URL =
-"https://gwxurhfiyrefsatyxwpr.supabase.co";
-
-const SUPABASE_KEY =
-"sb_publishable_kWYNV4OA3Tt2VN4szEKSYg_axVAPagA";
-
-const supabaseClient =
-supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
-
-const ADMIN_EMAIL =
-"mehrshadmlk57@gmail.com";
-
-/* =========================================
-   STATE
-========================================= */
-
-let currentUser = null;
-let currentProfile = null;
-
-let accounts = [];
-let favorites = [];
-
-let adminUsers = [];
-let adminOrders = [];
-let coupons = [];
-
-let authMode = "login";
-
-let lang =
-localStorage.getItem("gs_lang") || "fa";
-
-let cart =
-JSON.parse(
-    localStorage.getItem("gs_cart") || "[]"
-);
-
-/* =========================================
-   HELPERS
-========================================= */
-
-function $(id){
-    return document.getElementById(id);
-}
-
-function money(value){
-
-    return Number(value || 0)
-        .toLocaleString("fa-IR")
-        + " تومان";
-
-}
-
-function esc(value){
-
-    return String(value ?? "")
-        .replace(/[&<>"']/g,function(c){
-
-            return {
-                "&":"&amp;",
-                "<":"&lt;",
-                ">":"&gt;",
-                '"':"&quot;",
-                "'":"&#039;"
-            }[c];
-
-        });
-
-}
-
-function formatDate(value){
-
-    return new Date(value)
-        .toLocaleString("fa-IR");
-
-}
-
-function toast(message){
-
-    const el = $("toast");
-
-    el.textContent = message;
-
-    el.classList.add("show");
-
-    setTimeout(function(){
-
-        el.classList.remove("show");
-
-    },2500);
-
-}
-
-function openModal(id){
-
-    $(id).classList.remove("hidden");
-
-}
-
-function closeModal(id){
-
-    $(id).classList.add("hidden");
-
-}
-
-/* =========================================
-   THEME
-========================================= */
-
-function toggleTheme(){
-
-    document.body.classList.toggle("light");
-
-    localStorage.setItem(
-        "gs_theme",
-        document.body.classList.contains("light")
-            ? "light"
-            : "dark"
-    );
-
-}
-
-if(
-    localStorage.getItem("gs_theme")
-    === "light"
-){
-
-    document.body.classList.add("light");
-
-}
-
-/* =========================================
-   LANGUAGE
-========================================= */
-
-function toggleLang(){
-
-    lang =
-        lang === "fa"
-        ? "en"
-        : "fa";
-
-    localStorage.setItem(
-        "gs_lang",
-        lang
-    );
-
-    applyLanguage();
-
-}
-
-function applyLanguage(){
-
-    document.documentElement.lang =
-        lang;
-
-    document.documentElement.dir =
-        lang === "fa"
-        ? "rtl"
-        : "ltr";
-
-    $("langBtn").textContent =
-        lang === "fa"
-        ? "EN"
-        : "FA";
-
-}
-
-/* =========================================
-   MOBILE NAV
-========================================= */
-
-function toggleMobileNav(){
-
-    const nav =
-        $("mainNav");
-
-    nav.style.display =
-        nav.style.display === "flex"
-        ? ""
-        : "flex";
-
-}
-
-/* =========================================
-   AUTH
-========================================= */
-
-function openAuthOrProfile(){
-
-    if(currentUser){
-
-        openProfile();
-
-    }else{
-
-        openAuth();
-
-    }
-
-}
-
-function openAuth(){
-
-    setAuthMode("login");
-
-    openModal("authModal");
-
-}
-
-function setAuthMode(mode){
-
-    authMode = mode;
-
-    $("authTitle").textContent =
-        mode === "login"
-        ? "ورود"
-        : "ثبت‌نام";
-
-    $("authSubmit").textContent =
-        mode === "login"
-        ? "ورود"
-        : "ثبت‌نام";
-
-    $("usernameGroup")
-        .classList
-        .toggle(
-            "hidden",
-            mode !== "register"
-        );
-
-}
-
-async function submitAuth(event){
-
-    event.preventDefault();
-
-    const email =
-        $("authEmail")
-        .value
-        .trim();
-
-    const password =
-        $("authPassword")
-        .value;
-
-    const username =
-        $("authUsername")
-        .value
-        .trim();
-
-    let result;
-
-    if(authMode === "login"){
-
-        result =
-            await supabaseClient.auth.signInWithPassword({
-                email:email,
-                password:password
-            });
-
-    }else{
-
-        result =
-            await supabaseClient.auth.signUp({
-                email:email,
-                password:password
-            });
-
-    }
-
-    if(result.error){
-
-        toast(result.error.message);
-
-        return;
-
-    }
-
-    if(
-        authMode === "register"
-        &&
-        result.data.user
-    ){
-
-        await supabaseClient
-            .from("profiles")
-            .upsert({
-                id:result.data.user.id,
-                username:
-                    username ||
-                    email.split("@")[0],
-                role:"user"
-            });
-
-    }
-
-    closeModal("authModal");
-
-    await loadUser();
-
-    toast("عملیات با موفقیت انجام شد.");
-
-}
-
-/* =========================================
-   USER
-========================================= */
-
-async function loadUser(){
-
-    const {
-        data:{
-            user
-        }
-    } =
-        await supabaseClient
-            .auth
-            .getUser();
-
-    currentUser =
-        user || null;
-
-    currentProfile = null;
-
-    if(currentUser){
-
-        const result =
-            await supabaseClient
-                .from("profiles")
-                .select("*")
-                .eq(
-                    "id",
-                    currentUser.id
-                )
-                .maybeSingle();
-
-        currentProfile =
-            result.data || {
-                id:currentUser.id,
-                username:
-                    currentUser.email
-                    ?.split("@")[0],
-                role:"user"
-            };
-
-    }
-
-    updateUserUI();
-
-    if(currentUser){
-
-        await loadFavorites();
-
-    }
-
-}
-
-function updateUserUI(){
-
-    $("adminBtn")
-        .classList
-        .toggle(
-            "hidden",
-            !(
-                currentProfile &&
-                currentProfile.role === "admin"
-            )
-        );
-
-    $("authBtn").textContent =
-        currentUser
-        ? "👤"
-        : "🔑";
-
-}
-
-function openProfile(){
-
-    const username =
-        currentProfile?.username ||
-        currentUser?.email?.split("@")[0] ||
-        "User";
-
-    $("profileInfo").innerHTML = `
-
-        <div class="list-item">
-
-            <div>
-
-                <b>
-                    ${esc(username)}
-                </b>
-
-                <div class="muted">
-                    ${esc(currentUser.email)}
-                </div>
+  <!-- STORE -->
+
+  <div id="storeApp">
+
+    <header>
+      <div class="container nav">
+
+        <div class="logo">
+          🎮 <span>GameShop</span>
+        </div>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="#home" data-i18n="home">خانه</a>
+          <a href="#accounts" data-i18n="accounts">اکانت‌ها</a>
+          <a href="#about" data-i18n="about">درباره ما</a>
+          <a href="#faq" data-i18n="faq">سؤالات</a>
+          <a href="#support" data-i18n="support">پشتیبانی</a>
+        </nav>
+
+        <div class="nav-actions">
+
+          <button
+            class="menu-btn"
+            onclick="toggleMenu()"
+            title="Menu"
+          >
+            ☰
+          </button>
+
+          <button
+            class="icon-btn"
+            onclick="toggleTheme()"
+            title="Theme"
+          >
+            🌙
+          </button>
+
+          <button
+            class="icon-btn"
+            onclick="toggleLanguage()"
+            id="languageButton"
+            title="Language"
+          >
+            EN
+          </button>
+
+          <button
+            class="icon-btn"
+            onclick="openFavorites()"
+            title="Favorites"
+          >
+            ❤️
+          </button>
+
+          <button
+            class="icon-btn"
+            onclick="openAuthOrProfile()"
+            id="userButton"
+            title="Account"
+          >
+            👤
+          </button>
+
+          <button
+            class="icon-btn hidden"
+            id="adminButton"
+            onclick="openAdmin()"
+            title="Admin Panel"
+          >
+            🛠️
+          </button>
+
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- HERO -->
+
+      <section class="hero" id="home">
+        <div class="container">
+
+          <div class="hero-box">
+
+            <div class="hero-content">
+
+              <h1>
+                <span data-i18n="heroTitle1">فروشگاه حرفه‌ای</span>
+                <span class="gradient-text" data-i18n="heroTitle2">
+                  اکانت‌های گیم
+                </span>
+              </h1>
+
+              <p data-i18n="heroDescription">
+                اکانت‌های گیمینگ را مشاهده کنید و برای خرید با پشتیبانی تماس بگیرید.
+              </p>
+
+              <div class="hero-buttons">
+
+                <a
+                  href="#accounts"
+                  class="btn btn-primary"
+                  data-i18n="viewAccounts"
+                >
+                  مشاهده اکانت‌ها
+                </a>
+
+                <a
+                  href="https://t.me/hajimehrshad"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn btn-secondary"
+                >
+                  💬 <span data-i18n="telegram">تلگرام</span>
+                </a>
+
+              </div>
 
             </div>
 
-            <span class="badge ${
-                currentProfile?.role === "admin"
-                ? "approved"
-                : "available"
-            }">
+          </div>
 
-                ${
-                    currentProfile?.role === "admin"
-                    ? "Admin"
-                    : "User"
-                }
+        </div>
+      </section>
 
-            </span>
+      <!-- PROMO -->
+
+      <div class="container">
+
+        <div class="promo">
+          🎮
+          <span data-i18n="promo">
+            برای خرید هر اکانت با پشتیبانی تماس بگیرید یا در تلگرام پیام دهید.
+          </span>
+        </div>
+
+      </div>
+
+      <!-- ACCOUNTS -->
+
+      <section id="accounts">
+
+        <div class="container">
+
+          <div class="section-title">
+            <h2 data-i18n="accountsTitle">اکانت‌های فروشگاه</h2>
+            <p data-i18n="accountsSubtitle">
+              در حال حاضر ۱۰ اکانت در فروشگاه نمایش داده می‌شود.
+            </p>
+          </div>
+
+          <div class="filters">
+
+            <input
+              class="input"
+              id="searchInput"
+              type="search"
+              placeholder="جستجوی اکانت..."
+              oninput="renderAccounts()"
+            >
+
+            <select
+              class="select"
+              id="gameFilter"
+              onchange="renderAccounts()"
+            >
+              <option value="" data-i18n="allGames">همه بازی‌ها</option>
+            </select>
+
+            <select
+              class="select"
+              id="sortSelect"
+              onchange="renderAccounts()"
+            >
+              <option value="newest" data-i18n="newest">جدیدترین</option>
+              <option value="priceLow" data-i18n="priceLow">ارزان‌ترین</option>
+              <option value="priceHigh" data-i18n="priceHigh">گران‌ترین</option>
+              <option value="name" data-i18n="name">نام</option>
+            </select>
+
+          </div>
+
+          <div
+            class="accounts-grid"
+            id="accountsGrid"
+          ></div>
 
         </div>
 
-    `;
+      </section>
 
-    openModal("profileModal");
+      <!-- FEATURES -->
 
-}
+      <section>
 
-async function logout(){
+        <div class="container">
 
-    await supabaseClient
-        .auth
-        .signOut();
+          <div class="features-grid">
 
-    currentUser = null;
-    currentProfile = null;
+            <div class="feature">
+              <div class="feature-icon">🛡️</div>
+              <h3 data-i18n="feature1Title">خرید مطمئن</h3>
+              <p data-i18n="feature1Text">
+                سفارش‌ها توسط پشتیبانی بررسی می‌شوند.
+              </p>
+            </div>
 
-    closeModal("profileModal");
+            <div class="feature">
+              <div class="feature-icon">⚡</div>
+              <h3 data-i18n="feature2Title">پاسخ‌گویی سریع</h3>
+              <p data-i18n="feature2Text">
+                برای خرید و پشتیبانی می‌توانید در تلگرام پیام دهید.
+              </p>
+            </div>
 
-    closeAdmin();
+            <div class="feature">
+              <div class="feature-icon">🎮</div>
+              <h3 data-i18n="feature3Title">اکانت‌های گیمینگ</h3>
+              <p data-i18n="feature3Text">
+                اکانت‌های موجود در فروشگاه از طریق پنل مدیریت کنترل می‌شوند.
+              </p>
+            </div>
 
-    updateUserUI();
+          </div>
 
-    toast("از حساب خارج شدی.");
+        </div>
 
-}
+      </section>
 
-/* =========================================
-   FAVORITES
-========================================= */
+      <!-- ABOUT -->
 
-async function loadFavorites(){
+      <section id="about">
 
-    const result =
-        await supabaseClient
-            .from("favorites")
-            .select("account_id");
+        <div class="container">
 
-    favorites =
-        (result.data || [])
-        .map(function(item){
+          <div class="section-title">
+            <h2 data-i18n="aboutTitle">درباره GameShop</h2>
+          </div>
 
-            return Number(
-                item.account_id
-            );
+          <div class="admin-card">
+
+            <p
+              style="color:var(--muted);line-height:2"
+              data-i18n="aboutText"
+            >
+              این سایت برای خرید اکانت‌ها یا فروش اکانت شما ساخته شده است.
+              اگر می‌خواهید اکانتی بخرید یا بفروشید می‌توانید با پشتیبانی تماس بگیرید.
+              پشتیبانی در اولین فرصت پاسخ شما را خواهد داد.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- FAQ -->
+
+      <section id="faq">
+
+        <div class="container">
+
+          <div class="section-title">
+            <h2 data-i18n="faqTitle">سؤالات متداول</h2>
+          </div>
+
+          <div class="faq">
+
+            <details>
+              <summary data-i18n="faq1Q">
+                چطور اکانت بخرم؟
+              </summary>
+
+              <p data-i18n="faq1A">
+                روی دکمه خرید بزنید و با پشتیبانی در تلگرام ارتباط بگیرید.
+              </p>
+            </details>
+
+            <details>
+              <summary data-i18n="faq2Q">
+                پرداخت آنلاین فعال است؟
+              </summary>
+
+              <p data-i18n="faq2A">
+                فعلاً خرید از طریق پشتیبانی انجام می‌شود و پرداخت آنلاین بعداً اضافه خواهد شد.
+              </p>
+            </details>
+
+            <details>
+              <summary data-i18n="faq3Q">
+                آیا می‌توانم اکانت خودم را بفروشم؟
+              </summary>
+
+              <p data-i18n="faq3A">
+                برای فروش اکانت با پشتیبانی تماس بگیرید.
+              </p>
+            </details>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer id="support">
+
+      <div class="container">
+
+        <div class="footer-grid">
+
+          <div>
+            <div class="footer-title">
+              🎮 GameShop
+            </div>
+
+            <p data-i18n="footerText">
+              فروشگاه اکانت‌های گیمینگ با پشتیبانی آنلاین.
+            </p>
+          </div>
+
+          <div>
+            <div class="footer-title" data-i18n="support">
+              پشتیبانی
+            </div>
+
+            <p>
+              📞 09339232786
+            </p>
+
+            <p>
+              💬
+              <a
+                href="https://t.me/hajimehrshad"
+                target="_blank"
+                rel="noopener"
+                class="telegram-link"
+              >
+                @hajimehrshad
+              </a>
+            </p>
+          </div>
+
+          <div>
+            <div class="footer-title" data-i18n="rules">
+              قوانین
+            </div>
+
+            <p data-i18n="rulesText">
+              خرید و فروش اکانت‌های دزدی، هکی یا غیرقانونی مجاز نیست.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+  <!-- AUTH MODAL -->
+
+  <div
+    class="modal hidden"
+    id="authModal"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <h2 id="authTitle">
+          ورود
+        </h2>
+
+        <button
+          class="close-btn"
+          onclick="closeModal('authModal')"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div class="form-group">
+        <label>ایمیل</label>
+
+        <input
+          class="input"
+          id="authEmail"
+          type="email"
+          autocomplete="email"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>رمز عبور</label>
+
+        <input
+          class="input"
+          id="authPassword"
+          type="password"
+          autocomplete="current-password"
+        >
+      </div>
+
+      <div class="form-group hidden" id="usernameGroup">
+
+        <label>نام کاربری</label>
+
+        <input
+          class="input"
+          id="authUsername"
+          type="text"
+        >
+
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          class="btn btn-primary"
+          id="authSubmitButton"
+          onclick="submitAuth()"
+        >
+          ورود
+        </button>
+
+        <button
+          class="btn btn-secondary"
+          onclick="toggleAuthMode()"
+          id="authSwitchButton"
+        >
+          ثبت‌نام
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PROFILE MODAL -->
+
+  <div
+    class="modal hidden"
+    id="profileModal"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <h2 data-i18n="profile">
+          پروفایل
+        </h2>
+
+        <button
+          class="close-btn"
+          onclick="closeModal('profileModal')"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div
+        class="profile-box"
+        id="profileContent"
+      ></div>
+
+      <div class="form-actions">
+
+        <button
+          class="btn btn-secondary"
+          onclick="openOrders()"
+          data-i18n="myOrders"
+        >
+          سفارش‌های من
+        </button>
+
+        <button
+          class="btn btn-danger"
+          onclick="logout()"
+          data-i18n="logout"
+        >
+          خروج
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FAVORITES MODAL -->
+
+  <div
+    class="modal hidden"
+    id="favoritesModal"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <h2 data-i18n="favorites">
+          علاقه‌مندی‌ها
+        </h2>
+
+        <button
+          class="close-btn"
+          onclick="closeModal('favoritesModal')"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div id="favoritesContent"></div>
+
+    </div>
+
+  </div>
+
+  <!-- ORDERS MODAL -->
+
+  <div
+    class="modal hidden"
+    id="ordersModal"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <h2 data-i18n="myOrders">
+          سفارش‌های من
+        </h2>
+
+        <button
+          class="close-btn"
+          onclick="closeModal('ordersModal')"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div id="ordersContent"></div>
+
+    </div>
+
+  </div>
+
+  <!-- SUPPORT PURCHASE MODAL -->
+
+  <div
+    class="modal hidden"
+    id="purchaseModal"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <h2 data-i18n="purchaseTitle">
+          خرید اکانت
+        </h2>
+
+        <button
+          class="close-btn"
+          onclick="closeModal('purchaseModal')"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div id="purchaseContent"></div>
+
+      <div class="form-actions">
+
+        <a
+          href="https://t.me/hajimehrshad"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary"
+        >
+          💬 @hajimehrshad
+        </a>
+
+        <a
+          href="tel:09339232786"
+          class="btn btn-success"
+        >
+          📞 09339232786
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ADMIN DASHBOARD -->
+
+  <section
+    id="adminDashboard"
+    class="admin-dashboard hidden"
+  >
+
+    <div class="admin-layout">
+
+      <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+          🛠️ GameShop Admin
+        </div>
+
+        <div class="admin-menu">
+
+          <button
+            class="admin-menu-item active"
+            onclick="showAdminPage('dashboard', this)"
+          >
+            📊 <span data-i18n="dashboard">داشبورد</span>
+          </button>
+
+          <button
+            class="admin-menu-item"
+            onclick="showAdminPage('users', this)"
+          >
+            👥 <span data-i18n="users">کاربران</span>
+          </button>
+
+          <button
+            class="admin-menu-item"
+            onclick="showAdminPage('orders', this)"
+          >
+            📦 <span data-i18n="orders">سفارش‌ها</span>
+          </button>
+
+          <button
+            class="admin-menu-item"
+            onclick="showAdminPage('accounts', this)"
+          >
+            🎮 <span data-i18n="accounts">اکانت‌ها</span>
+          </button>
+
+          <button
+            class="admin-menu-item"
+            onclick="showAdminPage('coupons', this)"
+          >
+            🎟️ <span data-i18n="coupons">کوپن‌ها</span>
+          </button>
+
+          <button
+            class="admin-menu-item"
+            onclick="showAdminPage('settings', this)"
+          >
+            ⚙️ <span data-i18n="settings">تنظیمات</span>
+          </button>
+
+          <button
+            class="admin-menu-item"
+            onclick="closeAdmin()"
+          >
+            🏠 <span data-i18n="backToStore">بازگشت به فروشگاه</span>
+          </button>
+
+        </div>
+
+      </aside>
+
+      <main class="admin-main">
+
+        <div class="admin-topbar">
+
+          <h1 id="adminPageTitle">
+            داشبورد
+          </h1>
+
+          <button
+            class="btn btn-secondary"
+            onclick="closeAdmin()"
+          >
+            ← فروشگاه
+          </button>
+
+        </div>
+
+        <!-- ADMIN DASHBOARD PAGE -->
+
+        <div id="adminPageDashboard">
+
+          <div class="admin-stat-grid">
+
+            <div class="dashboard-stat">
+              <small>تعداد اکانت‌ها</small>
+              <strong id="statAccounts">0</strong>
+            </div>
+
+            <div class="dashboard-stat">
+              <small>تعداد کاربران</small>
+              <strong id="statUsers">0</strong>
+            </div>
+
+            <div class="dashboard-stat">
+              <small>تعداد سفارش‌ها</small>
+              <strong id="statOrders">0</strong>
+            </div>
+
+            <div class="dashboard-stat">
+              <small>فروش تأییدشده</small>
+              <strong id="statRevenue">0</strong>
+            </div>
+
+          </div>
+
+          <div class="admin-card">
+
+            <h3 data-i18n="recentOrders">
+              سفارش‌های اخیر
+            </h3>
+
+            <div
+              class="admin-table-wrap"
+              id="recentOrders"
+            ></div>
+
+          </div>
+
+        </div>
+
+        <!-- USERS -->
+
+        <div
+          id="adminPageUsers"
+          class="hidden"
+        >
+
+          <div class="admin-card">
+
+            <h3>کاربران</h3>
+
+            <input
+              class="input admin-filter"
+              id="adminUserSearch"
+              placeholder="جستجوی کاربر..."
+              oninput="filterAdminUsers()"
+            >
+
+            <div
+              class="admin-table-wrap"
+              id="adminUsersTable"
+            ></div>
+
+          </div>
+
+        </div>
+
+        <!-- ORDERS -->
+
+        <div
+          id="adminPageOrders"
+          class="hidden"
+        >
+
+          <div class="admin-card">
+
+            <h3>سفارش‌ها</h3>
+
+            <input
+              class="input admin-filter"
+              id="adminOrderSearch"
+              placeholder="جستجوی سفارش..."
+              oninput="filterAdminOrders()"
+            >
+
+            <div
+              class="admin-table-wrap"
+              id="adminOrdersTable"
+            ></div>
+
+          </div>
+
+        </div>
+
+        <!-- ACCOUNTS -->
+
+        <div
+          id="adminPageAccounts"
+          class="hidden"
+        >
+
+          <div class="admin-card">
+
+            <div
+              style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                gap:10px;
+                margin-bottom:15px;
+              "
+            >
+
+              <h3>اکانت‌ها</h3>
+
+              <button
+                class="btn btn-primary"
+                onclick="openAccountForm()"
+              >
+                + افزودن اکانت
+              </button>
+
+            </div>
+
+            <div
+              class="admin-table-wrap"
+              id="adminAccountsTable"
+            ></div>
+
+          </div>
+
+        </div>
+
+        <!-- COUPONS -->
+
+        <div
+          id="adminPageCoupons"
+          class="hidden"
+        >
+
+          <div class="admin-card">
+
+            <div
+              style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                gap:10px;
+                margin-bottom:15px;
+              "
+            >
+
+              <h3>کوپن‌ها</h3>
+
+              <button
+                class="btn btn-primary"
+                onclick="openCouponForm()"
+              >
+                + افزودن کوپن
+              </button>
+
+            </div>
+
+            <div
+              class="admin-table-wrap"
+              id="adminCouponsTable"
+            ></div>
+
+          </div>
+
+        </div>
+
+        <!-- SETTINGS -->
+
+        <div
+          id="adminPageSettings"
+          class="hidden"
+        >
+
+          <div class="admin-card">
+
+            <h3>تنظیمات</h3>
+
+            <p style="color:var(--muted);line-height:2">
+              برای خرید فعلی، کاربران از طریق پشتیبانی و تلگرام
+              <b>@hajimehrshad</b>
+              با فروشگاه ارتباط می‌گیرند.
+            </p>
+
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+
+  </section>
+
+  <!-- ACCOUNT FORM -->
+
+  <div
+    class="modal hidden"
+    id="accountFormModal"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <h2>اکانت جدید</h2>
+
+        <button
+          class="close-btn"
+          onclick="closeModal('accountFormModal')"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <input
+        type="hidden"
+        id="accountId"
+      >
+
+      <div class="form-group">
+        <label>عنوان</label>
+        <input class="input" id="accountTitle">
+      </div>
+
+      <div class="form-group">
+        <label>بازی</label>
+        <input class="input" id="accountGame">
+      </div>
+
+      <div class="form-group">
+        <label>توضیحات</label>
+        <textarea
+          class="input"
+          id="accountDescription"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>قیمت</label>
+        <input
+          class="input"
+          id="accountPrice"
+          type="number"
+          min="0"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>لول</label>
+        <input class="input" id="accountLevel">
+      </div>
+
+      <div class="form-group">
+        <label>اسکین</label>
+        <input class="input" id="accountSkins">
+      </div>
+
+      <div class="form-group">
+        <label>وضعیت</label>
+
+        <select
+          class="select"
+          id="accountStatus"
+        >
+          <option value="available">موجود</option>
+          <option value="unavailable">ناموجود</option>
+        </select>
+
+      </div>
+
+      <div class="form-group">
+        <label>لینک تصویر</label>
+        <input class="input" id="accountImage">
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          class="btn btn-primary"
+          onclick="saveAccount()"
+        >
+          ذخیره
+        </button>
+
+        <button
+          class="btn btn-secondary"
+          onclick="closeModal('accountFormModal')"
+        >
+          لغو
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script>
+
+    /* =========================
+       SUPABASE
+    ========================= */
+
+    const SUPABASE_URL =
+      "https://gwxurhfiyrefsatyxwpr.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_kWYNV4OA3Tt2VN4szEKSYg_axVAPagA";
+
+    const supabaseClient =
+      supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+    /* =========================
+       STATE
+    ========================= */
+
+    let currentUser = null;
+    let currentProfile = null;
+
+    let accounts = [];
+    let favorites = [];
+    let adminUsers = [];
+    let adminOrders = [];
+    let adminCoupons = [];
+
+    let authMode = "login";
+    let currentLanguage =
+      localStorage.getItem("gameshop_language") || "fa";
+
+    let currentTheme =
+      localStorage.getItem("gameshop_theme") || "dark";
+
+    /* =========================
+       TRANSLATIONS
+    ========================= */
+
+    const translations = {
+
+      fa: {
+        home: "خانه",
+        accounts: "اکانت‌ها",
+        about: "درباره ما",
+        faq: "سؤالات",
+        support: "پشتیبانی",
+
+        heroTitle1: "فروشگاه حرفه‌ای",
+        heroTitle2: "اکانت‌های گیم",
+
+        heroDescription:
+          "اکانت‌های گیمینگ را مشاهده کنید و برای خرید با پشتیبانی تماس بگیرید.",
+
+        viewAccounts: "مشاهده اکانت‌ها",
+        telegram: "تلگرام",
+
+        promo:
+          "برای خرید هر اکانت با پشتیبانی تماس بگیرید یا در تلگرام پیام دهید.",
+
+        accountsTitle:
+          "اکانت‌های فروشگاه",
+
+        accountsSubtitle:
+          "در حال حاضر ۱۰ اکانت در فروشگاه نمایش داده می‌شود.",
+
+        allGames: "همه بازی‌ها",
+        newest: "جدیدترین",
+        priceLow: "ارزان‌ترین",
+        priceHigh: "گران‌ترین",
+        name: "نام",
+
+        feature1Title: "خرید مطمئن",
+        feature1Text:
+          "سفارش‌ها توسط پشتیبانی بررسی می‌شوند.",
+
+        feature2Title: "پاسخ‌گویی سریع",
+        feature2Text:
+          "برای خرید و پشتیبانی می‌توانید در تلگرام پیام دهید.",
+
+        feature3Title: "اکانت‌های گیمینگ",
+        feature3Text:
+          "اکانت‌های موجود در فروشگاه از طریق پنل مدیریت کنترل می‌شوند.",
+
+        aboutTitle: "درباره GameShop",
+
+        aboutText:
+          "این سایت برای خرید اکانت‌ها یا فروش اکانت شما ساخته شده است. اگر می‌خواهید اکانتی بخرید یا بفروشید می‌توانید با پشتیبانی تماس بگیرید. پشتیبانی در اولین فرصت پاسخ شما را خواهد داد.",
+
+        faqTitle: "سؤالات متداول",
+
+        faq1Q: "چطور اکانت بخرم؟",
+        faq1A:
+          "روی دکمه خرید بزنید و با پشتیبانی در تلگرام ارتباط بگیرید.",
+
+        faq2Q: "پرداخت آنلاین فعال است؟",
+        faq2A:
+          "فعلاً خرید از طریق پشتیبانی انجام می‌شود و پرداخت آنلاین بعداً اضافه خواهد شد.",
+
+        faq3Q: "آیا می‌توانم اکانت خودم را بفروشم؟",
+        faq3A:
+          "برای فروش اکانت با پشتیبانی تماس بگیرید.",
+
+        footerText:
+          "فروشگاه اکانت‌های گیمینگ با پشتیبانی آنلاین.",
+
+        rules: "قوانین",
+
+        rulesText:
+          "خرید و فروش اکانت‌های دزدی، هکی یا غیرقانونی مجاز نیست.",
+
+        profile: "پروفایل",
+        myOrders: "سفارش‌های من",
+        logout: "خروج",
+        favorites: "علاقه‌مندی‌ها",
+
+        dashboard: "داشبورد",
+        users: "کاربران",
+        orders: "سفارش‌ها",
+        coupons: "کوپن‌ها",
+        settings: "تنظیمات",
+
+        backToStore: "بازگشت به فروشگاه",
+        recentOrders: "سفارش‌های اخیر",
+
+        purchaseTitle: "خرید اکانت"
+      },
+
+      en: {
+        home: "Home",
+        accounts: "Accounts",
+        about: "About",
+        faq: "FAQ",
+        support: "Support",
+
+        heroTitle1: "Professional",
+        heroTitle2: "Gaming Account Store",
+
+        heroDescription:
+          "Browse gaming accounts and contact support to purchase.",
+
+        viewAccounts: "View Accounts",
+        telegram: "Telegram",
+
+        promo:
+          "Contact support or message us on Telegram to purchase an account.",
+
+        accountsTitle: "Store Accounts",
+
+        accountsSubtitle:
+          "Currently only 10 accounts are displayed in the store.",
+
+        allGames: "All Games",
+        newest: "Newest",
+        priceLow: "Lowest Price",
+        priceHigh: "Highest Price",
+        name: "Name",
+
+        feature1Title: "Secure Purchase",
+        feature1Text:
+          "Orders are reviewed by our support team.",
+
+        feature2Title: "Fast Support",
+        feature2Text:
+          "Contact us on Telegram for purchases and support.",
+
+        feature3Title: "Gaming Accounts",
+        feature3Text:
+          "Store accounts are managed through the admin panel.",
+
+        aboutTitle: "About GameShop",
+
+        aboutText:
+          "This website is made for buying or selling gaming accounts. Contact support if you want to buy or sell an account.",
+
+        faqTitle: "Frequently Asked Questions",
+
+        faq1Q: "How can I buy an account?",
+        faq1A:
+          "Click the purchase button and contact us on Telegram.",
+
+        faq2Q: "Is online payment available?",
+        faq2A:
+          "Purchases are currently handled through support. Online payment will be added later.",
+
+        faq3Q: "Can I sell my account?",
+        faq3A:
+          "Contact support if you want to sell an account.",
+
+        footerText:
+          "Gaming account store with online support.",
+
+        rules: "Rules",
+
+        rulesText:
+          "Stolen, hacked or illegal accounts are not allowed.",
+
+        profile: "Profile",
+        myOrders: "My Orders",
+        logout: "Logout",
+        favorites: "Favorites",
+
+        dashboard: "Dashboard",
+        users: "Users",
+        orders: "Orders",
+        coupons: "Coupons",
+        settings: "Settings",
+
+        backToStore: "Back to Store",
+        recentOrders: "Recent Orders",
+
+        purchaseTitle: "Purchase Account"
+      }
+
+    };
+
+    /* =========================
+       HELPERS
+    ========================= */
+
+    function t(key) {
+      return translations[currentLanguage]?.[key] || key;
+    }
+
+    function escapeHtml(value) {
+
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function formatPrice(value) {
+
+      return Number(value || 0)
+        .toLocaleString("fa-IR") + " تومان";
+    }
+
+    function formatDate(value) {
+
+      if (!value) return "-";
+
+      try {
+        return new Date(value).toLocaleDateString(
+          currentLanguage === "fa" ? "fa-IR" : "en-US"
+        );
+      } catch {
+        return "-";
+      }
+    }
+
+    function showToast(message, type = "success") {
+
+      const container =
+        document.getElementById("toastContainer");
+
+      const toast =
+        document.createElement("div");
+
+      toast.className =
+        `toast ${type}`;
+
+      toast.textContent = message;
+
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.remove();
+      }, 3500);
+    }
+
+    function openModal(id) {
+      document.getElementById(id)?.classList.remove("hidden");
+    }
+
+    function closeModal(id) {
+      document.getElementById(id)?.classList.add("hidden");
+    }
+
+    /* =========================
+       THEME
+    ========================= */
+
+    function applyTheme() {
+
+      document.body.classList.toggle(
+        "light",
+        currentTheme === "light"
+      );
+    }
+
+    function toggleTheme() {
+
+      currentTheme =
+        currentTheme === "dark"
+          ? "light"
+          : "dark";
+
+      localStorage.setItem(
+        "gameshop_theme",
+        currentTheme
+      );
+
+      applyTheme();
+    }
+
+    /* =========================
+       LANGUAGE
+    ========================= */
+
+    function applyLanguage() {
+
+      document.documentElement.lang =
+        currentLanguage;
+
+      document.documentElement.dir =
+        currentLanguage === "fa"
+          ? "rtl"
+          : "ltr";
+
+      document
+        .querySelectorAll("[data-i18n]")
+        .forEach(element => {
+
+          const key =
+            element.getAttribute("data-i18n");
+
+          if (translations[currentLanguage][key]) {
+            element.textContent =
+              translations[currentLanguage][key];
+          }
 
         });
 
-}
+      const languageButton =
+        document.getElementById("languageButton");
 
-function isFavorite(id){
+      if (languageButton) {
+        languageButton.textContent =
+          currentLanguage === "fa"
+            ? "EN"
+            : "FA";
+      }
 
-    return favorites.includes(
-        Number(id)
-    );
-
-}
-
-async function toggleFavorite(id){
-
-    if(!currentUser){
-
-        openAuth();
-
-        return;
-
+      renderAccounts();
     }
 
-    if(isFavorite(id)){
+    function toggleLanguage() {
 
-        const result =
+      currentLanguage =
+        currentLanguage === "fa"
+          ? "en"
+          : "fa";
+
+      localStorage.setItem(
+        "gameshop_language",
+        currentLanguage
+      );
+
+      applyLanguage();
+    }
+
+    /* =========================
+       MENU
+    ========================= */
+
+    function toggleMenu() {
+
+      document
+        .getElementById("navLinks")
+        ?.classList.toggle("open");
+    }
+
+    /* =========================
+       AUTH
+    ========================= */
+
+    function openAuthOrProfile() {
+
+      if (currentUser) {
+        renderProfile();
+        openModal("profileModal");
+      } else {
+        authMode = "login";
+        updateAuthModal();
+        openModal("authModal");
+      }
+    }
+
+    function toggleAuthMode() {
+
+      authMode =
+        authMode === "login"
+          ? "register"
+          : "login";
+
+      updateAuthModal();
+    }
+
+    function updateAuthModal() {
+
+      const title =
+        document.getElementById("authTitle");
+
+      const submit =
+        document.getElementById("authSubmitButton");
+
+      const switchButton =
+        document.getElementById("authSwitchButton");
+
+      const usernameGroup =
+        document.getElementById("usernameGroup");
+
+      if (authMode === "login") {
+
+        title.textContent =
+          currentLanguage === "fa"
+            ? "ورود"
+            : "Login";
+
+        submit.textContent =
+          currentLanguage === "fa"
+            ? "ورود"
+            : "Login";
+
+        switchButton.textContent =
+          currentLanguage === "fa"
+            ? "ثبت‌نام"
+            : "Register";
+
+        usernameGroup.classList.add("hidden");
+
+      } else {
+
+        title.textContent =
+          currentLanguage === "fa"
+            ? "ثبت‌نام"
+            : "Register";
+
+        submit.textContent =
+          currentLanguage === "fa"
+            ? "ثبت‌نام"
+            : "Register";
+
+        switchButton.textContent =
+          currentLanguage === "fa"
+            ? "ورود"
+            : "Login";
+
+        usernameGroup.classList.remove("hidden");
+      }
+    }
+
+    async function submitAuth() {
+
+      const email =
+        document.getElementById("authEmail")
+          .value.trim();
+
+      const password =
+        document.getElementById("authPassword")
+          .value;
+
+      const username =
+        document.getElementById("authUsername")
+          .value.trim();
+
+      if (!email || !password) {
+        showToast(
+          "ایمیل و رمز عبور را وارد کنید.",
+          "error"
+        );
+        return;
+      }
+
+      try {
+
+        if (authMode === "login") {
+
+          const {
+            error
+          } =
+            await supabaseClient.auth
+              .signInWithPassword({
+                email,
+                password
+              });
+
+          if (error) throw error;
+
+          closeModal("authModal");
+
+          showToast("ورود موفق بود.");
+
+        } else {
+
+          const {
+            data,
+            error
+          } =
+            await supabaseClient.auth
+              .signUp({
+                email,
+                password
+              });
+
+          if (error) throw error;
+
+          if (data.user) {
+
             await supabaseClient
-                .from("favorites")
-                .delete()
-                .eq(
-                    "user_id",
-                    currentUser.id
-                )
-                .eq(
-                    "account_id",
-                    id
-                );
+              .from("profiles")
+              .upsert({
+                id: data.user.id,
+                username:
+                  username ||
+                  email.split("@")[0],
+                role: "user"
+              });
 
-        if(result.error){
+          }
 
-            toast(result.error.message);
+          closeModal("authModal");
 
-            return;
-
+          showToast(
+            "ثبت‌نام انجام شد. در صورت نیاز ایمیل خود را تأیید کنید."
+          );
         }
 
-        favorites =
-            favorites.filter(
-                function(item){
-                    return item !== Number(id);
-                }
-            );
+      } catch (error) {
 
-    }else{
+        console.error(error);
 
-        const result =
-            await supabaseClient
-                .from("favorites")
-                .insert({
-                    user_id:currentUser.id,
-                    account_id:Number(id)
-                });
+        showToast(
+          error.message ||
+          "خطایی رخ داد.",
+          "error"
+        );
+      }
+    }
 
-        if(result.error){
+    async function logout() {
 
-            toast(result.error.message);
+      await supabaseClient.auth.signOut();
 
-            return;
+      currentUser = null;
+      currentProfile = null;
+      favorites = [];
 
-        }
+      closeModal("profileModal");
 
-        favorites.push(
-            Number(id)
+      document
+        .getElementById("adminButton")
+        ?.classList.add("hidden");
+
+      showToast("از حساب خارج شدید.");
+
+      renderAccounts();
+    }
+
+    /* =========================
+       USER
+    ========================= */
+
+    async function loadUser() {
+
+      const {
+        data
+      } =
+        await supabaseClient.auth
+          .getUser();
+
+      currentUser =
+        data?.user || null;
+
+      currentProfile = null;
+
+      if (!currentUser) {
+
+        document
+          .getElementById("adminButton")
+          ?.classList.add("hidden");
+
+        return;
+      }
+
+      const {
+        data: profile
+      } =
+        await supabaseClient
+          .from("profiles")
+          .select("*")
+          .eq("id", currentUser.id)
+          .maybeSingle();
+
+      currentProfile =
+        profile || null;
+
+      const adminButton =
+        document.getElementById("adminButton");
+
+      if (
+        currentProfile &&
+        currentProfile.role === "admin"
+      ) {
+
+        adminButton?.classList.remove("hidden");
+
+      } else {
+
+        adminButton?.classList.add("hidden");
+      }
+
+      await loadFavorites();
+    }
+
+    function renderProfile() {
+
+      const box =
+        document.getElementById("profileContent");
+
+      if (!currentUser) return;
+
+      const email =
+        currentUser.email || "";
+
+      const masked =
+        email.length > 5
+          ? email.slice(0,3) +
+            "********" +
+            email.slice(email.indexOf("@"))
+          : "********";
+
+      box.innerHTML = `
+
+        <div class="profile-item">
+          <small>ایمیل</small>
+          <strong>${escapeHtml(masked)}</strong>
+        </div>
+
+        <div class="profile-item">
+          <small>نام کاربری</small>
+          <strong>
+            ${escapeHtml(
+              currentProfile?.username ||
+              email.split("@")[0]
+            )}
+          </strong>
+        </div>
+
+        <div class="profile-item">
+          <small>نقش</small>
+          <strong>
+            ${
+              currentProfile?.role === "admin"
+                ? "مدیر"
+                : "کاربر"
+            }
+          </strong>
+        </div>
+
+      `;
+    }
+
+    /* =========================
+       ACCOUNTS
+    ========================= */
+
+    async function loadAccounts() {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from("accounts")
+          .select("*")
+          .order("created_at", {
+            ascending: false
+          });
+
+      if (error) {
+
+        console.error(error);
+
+        showToast(
+          "خطا در دریافت اکانت‌ها.",
+          "error"
         );
 
-    }
-
-    renderAccounts();
-
-}
-
-/* =========================================
-   ACCOUNTS
-========================================= */
-
-async function loadAccounts(){
-
-    const result =
-        await supabaseClient
-            .from("accounts")
-            .select("*")
-            .order(
-                "created_at",
-                {
-                    ascending:false
-                }
-            );
-
-    if(result.error){
-
-        $("accountGrid").innerHTML = `
-            <div class="empty">
-                خطا در دریافت اکانت‌ها:
-                ${esc(result.error.message)}
-            </div>
-        `;
-
         return;
+      }
 
+      accounts = data || [];
+
+      buildGameFilter();
+
+      renderAccounts();
     }
 
-    accounts =
-        result.data || [];
+    function buildGameFilter() {
 
-    fillGameFilter();
+      const select =
+        document.getElementById("gameFilter");
 
-    renderAccounts();
+      if (!select) return;
 
-}
+      const current =
+        select.value;
 
-function fillGameFilter(){
-
-    const select =
-        $("gameFilter");
-
-    const games =
+      const games =
         [
-            ...new Set(
-                accounts
-                    .map(function(a){
-                        return a.game;
-                    })
-                    .filter(Boolean)
-            )
-        ];
+          ...new Set(
+            accounts
+              .map(a => a.game)
+              .filter(Boolean)
+          )
+        ]
+        .sort();
 
-    select.innerHTML =
-        `
-        <option value="">
-            همه بازی‌ها
-        </option>
-        `;
+      select.innerHTML =
+        `<option value="">${t("allGames")}</option>`;
 
-    games.forEach(function(game){
+      games.forEach(game => {
 
         const option =
-            document.createElement("option");
+          document.createElement("option");
 
         option.value = game;
-
         option.textContent = game;
 
         select.appendChild(option);
+      });
 
-    });
-
-}
-
-function renderAccounts(){
-
-    const query =
-        $("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
-
-    const game =
-        $("gameFilter")
-        .value;
-
-    const sort =
-        $("sortFilter")
-        .value;
-
-    let list =
-        accounts.filter(function(account){
-
-            const text =
-                (
-                    account.title +
-                    " " +
-                    account.game +
-                    " " +
-                    (account.description || "")
-                )
-                .toLowerCase();
-
-            return (
-                (!query || text.includes(query))
-                &&
-                (!game || account.game === game)
-            );
-
-        });
-
-    if(sort === "low"){
-
-        list.sort(
-            (a,b) =>
-                Number(a.price)
-                -
-                Number(b.price)
-        );
-
+      select.value = current;
     }
 
-    if(sort === "high"){
+    function renderAccounts() {
 
-        list.sort(
-            (a,b) =>
-                Number(b.price)
-                -
-                Number(a.price)
-        );
+      const grid =
+        document.getElementById("accountsGrid");
 
-    }
+      if (!grid) return;
 
-    if(sort === "name"){
-
-        list.sort(
-            (a,b) =>
-                String(a.title)
-                .localeCompare(
-                    String(b.title)
-                )
-        );
-
-    }
-
-    if(sort === "new"){
-
-        list.sort(
-            (a,b) =>
-                new Date(b.created_at)
-                -
-                new Date(a.created_at)
-        );
-
-    }
-
-    $("accountCountText").textContent =
-        list.length +
-        " اکانت";
-
-    if(!list.length){
-
-        $("accountGrid").innerHTML = `
-            <div class="empty">
-                اکانتی پیدا نشد.
-            </div>
-        `;
-
-        return;
-
-    }
-
-    $("accountGrid").innerHTML =
-        list.map(function(account){
-
-            const available =
-                account.status === "available";
-
-            return `
-
-            <article class="card">
-
-                <div class="card-img">
-
-                    ${
-                        account.image_url
-                        ?
-                        `<img
-                            src="${esc(account.image_url)}"
-                            alt="${esc(account.title)}"
-                        >`
-                        :
-                        "🎮"
-                    }
-
-                </div>
-
-                <div class="card-body">
-
-                    <div class="card-top">
-
-                        <div>
-
-                            <h3>
-                                ${esc(account.title)}
-                            </h3>
-
-                            <div class="muted">
-                                ${esc(account.game)}
-                            </div>
-
-                        </div>
-
-                        <span class="badge ${
-                            available
-                            ? "available"
-                            : "unavailable"
-                        }">
-
-                            ${
-                                available
-                                ? "موجود"
-                                : "ناموجود"
-                            }
-
-                        </span>
-
-                    </div>
-
-                    <p class="card-desc">
-
-                        ${esc(
-                            account.description ||
-                            "بدون توضیحات"
-                        )}
-
-                    </p>
-
-                    <div class="meta">
-
-                        <div>
-                            ⭐ لول:
-                            ${esc(
-                                account.level ||
-                                "نامعلوم"
-                            )}
-                        </div>
-
-                        <div>
-                            🎨 اسکین:
-                            ${esc(
-                                account.skins ||
-                                "نامعلوم"
-                            )}
-                        </div>
-
-                    </div>
-
-                    <div class="card-top">
-
-                        <div class="price">
-
-                            ${money(account.price)}
-
-                        </div>
-
-                        <button
-                            class="icon-btn"
-                            onclick="toggleFavorite(${account.id})">
-
-                            ${
-                                isFavorite(account.id)
-                                ? "❤️"
-                                : "🤍"
-                            }
-
-                        </button>
-
-                    </div>
-
-                    <div class="card-actions">
-
-                        <button
-                            class="btn"
-                            ${
-                                !available
-                                ? "disabled"
-                                : ""
-                            }
-                            onclick="addCart(${account.id})">
-
-                            🛒 افزودن
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            `;
-
-        }).join("");
-
-}
-
-/* =========================================
-   CART
-========================================= */
-
-function updateCartCount(){
-
-    $("cartCount")
-        .textContent =
-        cart.length;
-
-}
-
-function addCart(id){
-
-    if(!currentUser){
-
-        openAuth();
-
-        return;
-
-    }
-
-    if(!cart.includes(Number(id))){
-
-        cart.push(
-            Number(id)
-        );
-
-    }
-
-    localStorage.setItem(
-        "gs_cart",
-        JSON.stringify(cart)
-    );
-
-    updateCartCount();
-
-    toast("به سبد خرید اضافه شد.");
-
-}
-
-function removeCart(id){
-
-    cart =
-        cart.filter(
-            function(item){
-                return item !== Number(id);
-            }
-        );
-
-    localStorage.setItem(
-        "gs_cart",
-        JSON.stringify(cart)
-    );
-
-    updateCartCount();
-
-    renderCart();
-
-}
-
-function openCart(){
-
-    renderCart();
-
-    openModal("cartModal");
-
-}
-
-function renderCart(){
-
-    const items =
-        accounts.filter(
-            function(account){
-
-                return cart.includes(
-                    Number(account.id)
-                );
-
-            }
-        );
-
-    if(!items.length){
-
-        $("cartList").innerHTML = `
-            <div class="empty">
-                سبد خرید خالی است.
-            </div>
-        `;
-
-        $("cartTotal").textContent =
-            money(0);
-
-        return;
-
-    }
-
-    $("cartList").innerHTML =
-        items.map(function(account){
-
-            return `
-
-            <div class="list-item">
-
-                <div>
-
-                    <b>
-                        ${esc(account.title)}
-                    </b>
-
-                    <div class="muted">
-                        ${money(account.price)}
-                    </div>
-
-                </div>
-
-                <button
-                    class="btn danger"
-                    onclick="removeCart(${account.id})">
-
-                    حذف
-
-                </button>
-
-            </div>
-
-            `;
-
-        }).join("");
-
-    const total =
-        items.reduce(
-            function(sum,account){
-
-                return sum +
-                    Number(
-                        account.price || 0
-                    );
-
-            },
-            0
-        );
-
-    $("cartTotal").textContent =
-        money(total);
-
-}
-
-async function checkout(){
-
-    if(!currentUser){
-
-        openAuth();
-
-        return;
-
-    }
-
-    const items =
-        accounts.filter(function(account){
-
-            return (
-                cart.includes(
-                    Number(account.id)
-                )
-                &&
-                account.status ===
-                "available"
-            );
-
-        });
-
-    if(!items.length){
-
-        toast(
-            "اکانت موجودی برای سفارش وجود ندارد."
-        );
-
-        return;
-
-    }
-
-    /*
-      توجه:
-      این محاسبه فعلاً سمت کلاینت است.
-      برای پرداخت واقعی باید به Edge Function منتقل شود.
-    */
-
-    const total =
-        items.reduce(
-            function(sum,account){
-
-                return sum +
-                    Number(
-                        account.price || 0
-                    );
-
-            },
-            0
-        );
-
-    const orderResult =
-        await supabaseClient
-            .from("orders")
-            .insert({
-
-                user_id:
-                    currentUser.id,
-
-                total_price:
-                    total,
-
-                status:
-                    "pending"
-
-            })
-            .select()
-            .single();
-
-    if(orderResult.error){
-
-        toast(
-            orderResult.error.message
-        );
-
-        return;
-
-    }
-
-    const rows =
-        items.map(function(account){
-
-            return {
-
-                order_id:
-                    orderResult.data.id,
-
-                account_id:
-                    account.id,
-
-                price:
-                    Number(
-                        account.price || 0
-                    )
-
-            };
-
-        });
-
-    const itemResult =
-        await supabaseClient
-            .from("order_items")
-            .insert(rows);
-
-    if(itemResult.error){
-
-        await supabaseClient
-            .from("orders")
-            .delete()
-            .eq(
-                "id",
-                orderResult.data.id
-            );
-
-        toast(
-            itemResult.error.message
-        );
-
-        return;
-
-    }
-
-    cart = [];
-
-    localStorage.setItem(
-        "gs_cart",
-        "[]"
-    );
-
-    updateCartCount();
-
-    closeModal("cartModal");
-
-    toast(
-        "سفارش با موفقیت ثبت شد."
-    );
-
-}
-
-/* =========================================
-   USER ORDERS
-========================================= */
-
-function statusText(status){
-
-    return {
-
-        pending:
-            "در انتظار بررسی",
-
-        approved:
-            "تأیید شده",
-
-        cancelled:
-            "لغو شده"
-
-    }[status] || status;
-
-}
-
-async function showMyOrders(){
-
-    closeModal(
-        "profileModal"
-    );
-
-    if(!currentUser){
-
-        return;
-
-    }
-
-    const result =
-        await supabaseClient
-            .from("orders")
-            .select("*")
-            .eq(
-                "user_id",
-                currentUser.id
-            )
-            .order(
-                "created_at",
-                {
-                    ascending:false
-                }
-            );
-
-    if(result.error){
-
-        toast(
-            result.error.message
-        );
-
-        return;
-
-    }
-
-    const orders =
-        result.data || [];
-
-    $("myOrders").innerHTML =
-        orders.length
-        ?
-        orders.map(function(order){
-
-            return `
-
-            <div class="list-item">
-
-                <div>
-
-                    <b>
-                        #${order.id}
-                    </b>
-
-                    <div class="muted">
-                        ${formatDate(
-                            order.created_at
-                        )}
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <b>
-                        ${money(
-                            order.total_price
-                        )}
-                    </b>
-
-                    <br>
-
-                    <span class="badge ${
-                        order.status
-                    }">
-
-                        ${statusText(
-                            order.status
-                        )}
-
-                    </span>
-
-                </div>
-
-            </div>
-
-            `;
-
-        }).join("")
-        :
-        `
-        <div class="empty">
-            سفارشی ندارید.
-        </div>
-        `;
-
-    openModal(
-        "ordersModal"
-    );
-
-}
-
-/* =========================================
-   FAVORITES MODAL
-========================================= */
-
-async function showFavorites(){
-
-    closeModal(
-        "profileModal"
-    );
-
-    if(!currentUser){
-
-        return;
-
-    }
-
-    await loadFavorites();
-
-    const items =
-        accounts.filter(function(account){
-
-            return isFavorite(
-                account.id
-            );
-
-        });
-
-    $("myFavorites").innerHTML =
-        items.length
-        ?
-        items.map(function(account){
-
-            return `
-
-            <div class="list-item">
-
-                <b>
-                    ${esc(account.title)}
-                </b>
-
-                <button
-                    class="btn"
-                    onclick="addCart(${account.id})">
-
-                    افزودن به سبد
-
-                </button>
-
-            </div>
-
-            `;
-
-        }).join("")
-        :
-        `
-        <div class="empty">
-            علاقه‌مندی خالی است.
-        </div>
-        `;
-
-    openModal(
-        "favoritesModal"
-    );
-
-}
-
-/* =========================================
-   SUPPORT
-========================================= */
-
-function openSupport(){
-
-    $("support")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-}
-
-/* =========================================
-   ADMIN
-========================================= */
-
-function openAdmin(){
-
-    if(!currentUser){
-
-        openAuth();
-
-        return;
-
-    }
-
-    if(
-        !currentProfile ||
-        currentProfile.role !== "admin"
-    ){
-
-        toast(
-            "دسترسی ادمین ندارید."
-        );
-
-        return;
-
-    }
-
-    $("storeView")
-        .classList
-        .add("hidden");
-
-    $("adminView")
-        .classList
-        .remove("hidden");
-
-    loadAdminData();
-
-}
-
-function closeAdmin(){
-
-    $("adminView")
-        .classList
-        .add("hidden");
-
-    $("storeView")
-        .classList
-        .remove("hidden");
-
-}
-
-function showAdminPage(
-    page,
-    button
-){
-
-    document
-        .querySelectorAll(".admin-page")
-        .forEach(function(el){
-
-            el.classList.remove(
-                "active"
-            );
-
-        });
-
-    const pageElement =
-        $("page-" + page);
-
-    if(pageElement){
-
-        pageElement
-            .classList
-            .add("active");
-
-    }
-
-    document
-        .querySelectorAll(
-            ".admin-menu button[data-page]"
+      const search =
+        (
+          document.getElementById("searchInput")
+            ?.value || ""
         )
-        .forEach(function(el){
+        .trim()
+        .toLowerCase();
 
-            el.classList.remove(
-                "active"
-            );
+      const game =
+        document.getElementById("gameFilter")
+          ?.value || "";
 
+      const sort =
+        document.getElementById("sortSelect")
+          ?.value || "newest";
+
+      let filtered =
+        accounts.filter(account => {
+
+          const matchesSearch =
+            !search ||
+            String(account.title || "")
+              .toLowerCase()
+              .includes(search) ||
+            String(account.game || "")
+              .toLowerCase()
+              .includes(search) ||
+            String(account.description || "")
+              .toLowerCase()
+              .includes(search);
+
+          const matchesGame =
+            !game ||
+            account.game === game;
+
+          return (
+            matchesSearch &&
+            matchesGame
+          );
         });
 
-    if(button){
+      if (sort === "priceLow") {
 
-        button.classList.add(
-            "active"
+        filtered.sort(
+          (a,b) =>
+            Number(a.price || 0) -
+            Number(b.price || 0)
         );
 
-    }
+      } else if (sort === "priceHigh") {
 
-    const titles = {
-
-        dashboard:
-            "داشبورد",
-
-        users:
-            "کاربران",
-
-        orders:
-            "سفارش‌ها",
-
-        accounts:
-            "اکانت‌ها",
-
-        coupons:
-            "کوپن‌ها",
-
-        settings:
-            "تنظیمات"
-
-    };
-
-    $("adminPageTitle")
-        .textContent =
-        titles[page] || page;
-
-}
-
-async function loadAdminData(){
-
-    if(
-        !currentProfile ||
-        currentProfile.role !== "admin"
-    ){
-
-        return;
-
-    }
-
-    const [
-        usersResult,
-        ordersResult,
-        couponsResult,
-        accountsResult
-    ] =
-        await Promise.all([
-
-            supabaseClient
-                .from("profiles")
-                .select("*")
-                .order(
-                    "created_at",
-                    {
-                        ascending:false
-                    }
-                ),
-
-            supabaseClient
-                .from("orders")
-                .select("*")
-                .order(
-                    "created_at",
-                    {
-                        ascending:false
-                    }
-                ),
-
-            supabaseClient
-                .from("coupons")
-                .select("*")
-                .order(
-                    "created_at",
-                    {
-                        ascending:false
-                    }
-                ),
-
-            supabaseClient
-                .from("accounts")
-                .select("*")
-                .order(
-                    "created_at",
-                    {
-                        ascending:false
-                    }
-                )
-
-        ]);
-
-    adminUsers =
-        usersResult.data || [];
-
-    adminOrders =
-        ordersResult.data || [];
-
-    coupons =
-        couponsResult.data || [];
-
-    accounts =
-        accountsResult.data || accounts;
-
-    const revenue =
-        adminOrders
-            .filter(function(order){
-
-                return order.status ===
-                    "approved";
-
-            })
-            .reduce(
-                function(sum,order){
-
-                    return sum +
-                        Number(
-                            order.total_price ||
-                            0
-                        );
-
-                },
-                0
-            );
-
-    $("statRevenue")
-        .textContent =
-        money(revenue);
-
-    $("statOrders")
-        .textContent =
-        adminOrders.length;
-
-    $("statUsers")
-        .textContent =
-        adminUsers.length;
-
-    $("statAccounts")
-        .textContent =
-        accounts.length;
-
-    renderDashboardOrders();
-
-    renderChart();
-
-    renderAdminUsers();
-
-    renderAdminOrders();
-
-    renderAdminAccounts();
-
-    renderCoupons();
-
-}
-
-/* =========================================
-   ADMIN DASHBOARD
-========================================= */
-
-function renderDashboardOrders(){
-
-    const orders =
-        adminOrders.slice(
-            0,
-            7
+        filtered.sort(
+          (a,b) =>
+            Number(b.price || 0) -
+            Number(a.price || 0)
         );
 
-    if(!orders.length){
+      } else if (sort === "name") {
 
-        $("dashboardOrders").innerHTML = `
-            <div class="empty">
-                سفارشی ثبت نشده.
-            </div>
+        filtered.sort(
+          (a,b) =>
+            String(a.title || "")
+              .localeCompare(
+                String(b.title || ""),
+                "fa"
+              )
+        );
+
+      } else {
+
+        filtered.sort(
+          (a,b) =>
+            new Date(b.created_at || 0) -
+            new Date(a.created_at || 0)
+        );
+      }
+
+      /*
+        مهم:
+        دیتابیس دست‌نخورده می‌ماند.
+        فقط حداکثر ۱۰ اکانت در فروشگاه نمایش داده می‌شود.
+      */
+
+      const visibleAccounts =
+        filtered.slice(0, 10);
+
+      if (!visibleAccounts.length) {
+
+        grid.innerHTML = `
+          <div class="admin-card">
+            اکانتی پیدا نشد.
+          </div>
         `;
 
         return;
+      }
 
+      grid.innerHTML =
+        visibleAccounts
+          .map(renderAccountCard)
+          .join("");
     }
 
-    $("dashboardOrders").innerHTML =
-        orders.map(function(order){
+    function renderAccountCard(account) {
 
-            return `
+      const isFavorite =
+        favorites.includes(
+          Number(account.id)
+        );
 
-            <div class="list-item">
+      const available =
+        account.status === "available";
 
-                <div>
+      const image =
+        account.image_url;
 
-                    <b>
-                        #${order.id}
-                    </b>
+      return `
 
-                    <div class="muted">
-                        ${formatDate(
-                            order.created_at
-                        )}
-                    </div>
+        <article class="account-card">
 
+          <div class="account-image">
+
+            ${
+              image
+                ? `<img
+                    src="${escapeHtml(image)}"
+                    alt="${escapeHtml(account.title)}"
+                    loading="lazy"
+                  >`
+                : "🎮"
+            }
+
+          </div>
+
+          <div class="account-body">
+
+            <div class="account-top">
+
+              <div>
+
+                <div class="account-title">
+                  ${escapeHtml(account.title)}
                 </div>
 
-                <div>
-
-                    <b>
-                        ${money(
-                            order.total_price
-                        )}
-                    </b>
-
-                    <span class="badge ${
-                        order.status
-                    }">
-
-                        ${statusText(
-                            order.status
-                        )}
-
-                    </span>
-
+                <div class="account-game">
+                  ${escapeHtml(account.game || "Game")}
                 </div>
+
+              </div>
+
+              <button
+                class="favorite-btn ${isFavorite ? "active" : ""}"
+                onclick="toggleFavorite(${Number(account.id)})"
+              >
+                ${isFavorite ? "♥" : "♡"}
+              </button>
 
             </div>
 
-            `;
+            <div class="account-description">
+              ${escapeHtml(
+                account.description ||
+                "توضیحات این اکانت ثبت نشده است."
+              )}
+            </div>
 
-        }).join("");
+            <div class="account-meta">
 
-}
+              <div class="meta-item">
+                لول
+                <strong>
+                  ${escapeHtml(account.level || "نامعلوم")}
+                </strong>
+              </div>
 
-function renderChart(){
+              <div class="meta-item">
+                اسکین
+                <strong>
+                  ${escapeHtml(account.skins || "نامعلوم")}
+                </strong>
+              </div>
 
-    const counts = {
+            </div>
 
-        pending:0,
-        approved:0,
-        cancelled:0
+            <div class="price">
+              ${formatPrice(account.price)}
+            </div>
 
-    };
+            <div>
 
-    adminOrders.forEach(
-        function(order){
+              <span
+                class="status ${
+                  available
+                    ? "available"
+                    : "unavailable"
+                }"
+              >
+                ${
+                  available
+                    ? "✅ موجود"
+                    : "❌ ناموجود"
+                }
+              </span>
 
-            if(
-                counts[
-                    order.status
-                ] !== undefined
-            ){
+            </div>
 
-                counts[
-                    order.status
-                ]++;
+            <br>
 
-            }
+            <button
+              class="btn ${
+                available
+                  ? "btn-primary"
+                  : "btn-secondary"
+              }"
+              style="width:100%"
+              onclick="openPurchase(${Number(account.id)})"
+              ${
+                available
+                  ? ""
+                  : "disabled"
+              }
+            >
+              🛒
+              ${
+                available
+                  ? "خرید با پشتیبانی"
+                  : "ناموجود"
+              }
+            </button>
 
-        }
-    );
+          </div>
 
-    const max =
-        Math.max(
-            1,
-            ...Object.values(counts)
+        </article>
+      `;
+    }
+
+    /* =========================
+       PURCHASE
+    ========================= */
+
+    function openPurchase(accountId) {
+
+      const account =
+        accounts.find(
+          a => Number(a.id) === Number(accountId)
         );
 
-    $("orderChart").innerHTML =
-        Object.entries(counts)
-        .map(function(entry){
+      if (!account) return;
 
-            const status =
-                entry[0];
+      if (account.status !== "available") {
 
-            const count =
-                entry[1];
+        showToast(
+          "این اکانت در حال حاضر ناموجود است.",
+          "error"
+        );
 
-            const height =
-                Math.max(
-                    8,
-                    count / max * 150
-                );
+        return;
+      }
 
-            return `
+      const content =
+        document.getElementById("purchaseContent");
+
+      content.innerHTML = `
+
+        <div class="profile-item">
+
+          <small>اکانت</small>
+
+          <strong>
+            ${escapeHtml(account.title)}
+          </strong>
+
+        </div>
+
+        <div class="profile-item">
+
+          <small>بازی</small>
+
+          <strong>
+            ${escapeHtml(account.game || "-")}
+          </strong>
+
+        </div>
+
+        <div class="profile-item">
+
+          <small>قیمت</small>
+
+          <strong>
+            ${formatPrice(account.price)}
+          </strong>
+
+        </div>
+
+        <p
+          style="
+            color:var(--muted);
+            line-height:2;
+            margin-top:15px;
+          "
+        >
+          برای تکمیل خرید، از طریق تلگرام یا شماره پشتیبانی
+          با ما ارتباط بگیرید.
+        </p>
+
+      `;
+
+      openModal("purchaseModal");
+    }
+
+    /* =========================
+       FAVORITES
+    ========================= */
+
+    async function loadFavorites() {
+
+      favorites = [];
+
+      if (!currentUser) return;
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from("favorites")
+          .select("account_id")
+          .eq("user_id", currentUser.id);
+
+      if (error) {
+
+        console.error(error);
+        return;
+      }
+
+      favorites =
+        (data || [])
+          .map(row => Number(row.account_id));
+    }
+
+    async function toggleFavorite(accountId) {
+
+      if (!currentUser) {
+
+        showToast(
+          "ابتدا وارد حساب شوید.",
+          "error"
+        );
+
+        openAuthOrProfile();
+
+        return;
+      }
+
+      const exists =
+        favorites.includes(
+          Number(accountId)
+        );
+
+      try {
+
+        if (exists) {
+
+          const {
+            error
+          } =
+            await supabaseClient
+              .from("favorites")
+              .delete()
+              .eq("user_id", currentUser.id)
+              .eq("account_id", accountId);
+
+          if (error) throw error;
+
+        } else {
+
+          const {
+            error
+          } =
+            await supabaseClient
+              .from("favorites")
+              .insert({
+                user_id: currentUser.id,
+                account_id: accountId
+              });
+
+          if (error) throw error;
+        }
+
+        await loadFavorites();
+
+        renderAccounts();
+
+      } catch (error) {
+
+        console.error(error);
+
+        showToast(
+          "خطا در علاقه‌مندی.",
+          "error"
+        );
+      }
+    }
+
+    async function openFavorites() {
+
+      if (!currentUser) {
+
+        showToast(
+          "برای مشاهده علاقه‌مندی‌ها وارد شوید.",
+          "error"
+        );
+
+        openAuthOrProfile();
+
+        return;
+      }
+
+      await loadFavorites();
+
+      const box =
+        document.getElementById("favoritesContent");
+
+      const list =
+        accounts.filter(
+          account =>
+            favorites.includes(
+              Number(account.id)
+            )
+        );
+
+      if (!list.length) {
+
+        box.innerHTML =
+          `<p style="color:var(--muted)">
+             هنوز اکانتی به علاقه‌مندی‌ها اضافه نشده است.
+           </p>`;
+
+      } else {
+
+        box.innerHTML =
+          list.map(account => `
 
             <div
-                class="bar"
-                style="height:${height}px">
+              class="profile-item"
+              style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                gap:10px;
+                margin-bottom:10px;
+              "
+            >
 
-                <span>
-                    ${statusText(status)}
-                </span>
+              <strong>
+                ${escapeHtml(account.title)}
+              </strong>
+
+              <button
+                class="btn btn-primary"
+                onclick="closeModal('favoritesModal');openPurchase(${Number(account.id)})"
+              >
+                خرید
+              </button>
 
             </div>
 
-            `;
+          `).join("");
+      }
 
-        })
-        .join("");
+      openModal("favoritesModal");
+    }
 
-}
+    /* =========================
+       ORDERS
+    ========================= */
 
-/* =========================================
-   ADMIN USERS
-========================================= */
+    async function openOrders() {
 
-function renderAdminUsers(){
+      if (!currentUser) return;
 
-    const query =
-        (
-            $("userSearch")?.value ||
-            ""
-        )
-        .toLowerCase();
-
-    const users =
-        adminUsers.filter(
-            function(user){
-
-                return (
-                    user.username ||
-                    ""
-                )
-                .toLowerCase()
-                .includes(query);
-
-            }
-        );
-
-    $("usersTable").innerHTML =
-        users.length
-        ?
-        users.map(function(user){
-
-            return `
-
-            <tr>
-
-                <td>
-                    ${esc(
-                        user.id.slice(
-                            0,
-                            8
-                        )
-                    )}
-                </td>
-
-                <td>
-                    ${esc(
-                        user.username ||
-                        "-"
-                    )}
-                </td>
-
-                <td>
-                    ${esc(
-                        user.role ||
-                        "user"
-                    )}
-                </td>
-
-                <td>
-                    ${formatDate(
-                        user.created_at
-                    )}
-                </td>
-
-            </tr>
-
-            `;
-
-        }).join("")
-        :
-        `
-        <tr>
-            <td colspan="4">
-                کاربری پیدا نشد.
-            </td>
-        </tr>
-        `;
-
-}
-
-/* =========================================
-   ADMIN ORDERS
-========================================= */
-
-function renderAdminOrders(){
-
-    const query =
-        (
-            $("orderSearch")?.value ||
-            ""
-        )
-        .toLowerCase();
-
-    const status =
-        $("orderStatusFilter")?.value ||
-        "";
-
-    const orders =
-        adminOrders.filter(
-            function(order){
-
-                const matchSearch =
-                    !query ||
-                    String(order.id)
-                        .includes(query) ||
-                    String(order.user_id)
-                        .includes(query);
-
-                const matchStatus =
-                    !status ||
-                    order.status === status;
-
-                return (
-                    matchSearch &&
-                    matchStatus
-                );
-
-            }
-        );
-
-    $("ordersTable").innerHTML =
-        orders.length
-        ?
-        orders.map(function(order){
-
-            const user =
-                adminUsers.find(
-                    function(item){
-
-                        return item.id ===
-                            order.user_id;
-
-                    }
-                );
-
-            return `
-
-            <tr>
-
-                <td>
-                    #${order.id}
-                </td>
-
-                <td>
-                    ${esc(
-                        user?.username ||
-                        order.user_id.slice(
-                            0,
-                            8
-                        )
-                    )}
-                </td>
-
-                <td>
-                    ${money(
-                        order.total_price
-                    )}
-                </td>
-
-                <td>
-
-                    <span class="badge ${
-                        order.status
-                    }">
-
-                        ${statusText(
-                            order.status
-                        )}
-
-                    </span>
-
-                </td>
-
-                <td>
-                    ${formatDate(
-                        order.created_at
-                    )}
-                </td>
-
-                <td>
-
-                    <select
-                        class="field"
-                        onchange="
-                            updateOrderStatus(
-                                ${order.id},
-                                this.value
-                            )
-                        ">
-
-                        <option
-                            value="pending"
-                            ${
-                                order.status ===
-                                "pending"
-                                ? "selected"
-                                : ""
-                            }>
-
-                            در انتظار
-
-                        </option>
-
-                        <option
-                            value="approved"
-                            ${
-                                order.status ===
-                                "approved"
-                                ? "selected"
-                                : ""
-                            }>
-
-                            تأیید
-
-                        </option>
-
-                        <option
-                            value="cancelled"
-                            ${
-                                order.status ===
-                                "cancelled"
-                                ? "selected"
-                                : ""
-                            }>
-
-                            لغو
-
-                        </option>
-
-                    </select>
-
-                </td>
-
-            </tr>
-
-            `;
-
-        }).join("")
-        :
-        `
-        <tr>
-            <td colspan="6">
-                سفارشی پیدا نشد.
-            </td>
-        </tr>
-        `;
-
-}
-
-async function updateOrderStatus(
-    id,
-    status
-){
-
-    const result =
+      const {
+        data,
+        error
+      } =
         await supabaseClient
-            .from("orders")
-            .update({
-                status:status
-            })
-            .eq(
-                "id",
-                id
-            );
+          .from("orders")
+          .select("*")
+          .eq("user_id", currentUser.id)
+          .order("created_at", {
+            ascending: false
+          });
 
-    if(result.error){
+      if (error) {
 
-        toast(
-            result.error.message
+        console.error(error);
+
+        showToast(
+          "خطا در دریافت سفارش‌ها.",
+          "error"
         );
 
         return;
+      }
 
+      const box =
+        document.getElementById("ordersContent");
+
+      if (!data?.length) {
+
+        box.innerHTML =
+          `<p style="color:var(--muted)">
+             هنوز سفارشی ثبت نشده است.
+           </p>`;
+
+      } else {
+
+        box.innerHTML =
+          data.map(order => `
+
+            <div
+              class="profile-item"
+              style="margin-bottom:10px"
+            >
+
+              <strong>
+                سفارش #${order.id}
+              </strong>
+
+              <div style="color:var(--muted);margin-top:5px">
+                مبلغ:
+                ${formatPrice(order.total_price)}
+              </div>
+
+              <div style="color:var(--muted)">
+                وضعیت:
+                ${getOrderStatusText(order.status)}
+              </div>
+
+              <div style="color:var(--muted)">
+                ${formatDate(order.created_at)}
+              </div>
+
+            </div>
+
+          `).join("");
+      }
+
+      closeModal("profileModal");
+      openModal("ordersModal");
     }
 
-    toast(
-        "وضعیت سفارش تغییر کرد."
-    );
+    function getOrderStatusText(status) {
 
-    await loadAdminData();
+      const map = {
+        pending: "در انتظار بررسی",
+        approved: "تأیید شده",
+        cancelled: "لغو شده"
+      };
 
-}
+      return map[status] || status || "نامشخص";
+    }
 
-/* =========================================
-   ADMIN ACCOUNTS
-========================================= */
+    /* =========================
+       ADMIN
+    ========================= */
 
-function renderAdminAccounts(){
+    async function openAdmin() {
 
-    const query =
+      await loadUser();
+
+      if (
+        !currentUser ||
+        currentProfile?.role !== "admin"
+      ) {
+
+        showToast(
+          "دسترسی مدیر ندارید.",
+          "error"
+        );
+
+        return;
+      }
+
+      document
+        .getElementById("storeApp")
+        .classList.add("hidden");
+
+      document
+        .getElementById("adminDashboard")
+        .classList.remove("hidden");
+
+      await loadAdminData();
+    }
+
+    function closeAdmin() {
+
+      document
+        .getElementById("adminDashboard")
+        .classList.add("hidden");
+
+      document
+        .getElementById("storeApp")
+        .classList.remove("hidden");
+    }
+
+    async function loadAdminData() {
+
+      await Promise.all([
+        loadAdminUsers(),
+        loadAdminOrders(),
+        loadAdminCoupons(),
+        loadAccounts()
+      ]);
+
+      updateAdminStats();
+
+      renderDashboardOrders();
+      renderAdminUsers();
+      renderAdminOrdersTable();
+      renderAdminAccountsTable();
+      renderCoupons();
+    }
+
+    function showAdminPage(page, button) {
+
+      const pages = [
+        "dashboard",
+        "users",
+        "orders",
+        "accounts",
+        "coupons",
+        "settings"
+      ];
+
+      pages.forEach(name => {
+
+        const element =
+          document.getElementById(
+            "adminPage" +
+            name.charAt(0).toUpperCase() +
+            name.slice(1)
+          );
+
+        element?.classList.add("hidden");
+      });
+
+      const target =
+        document.getElementById(
+          "adminPage" +
+          page.charAt(0).toUpperCase() +
+          page.slice(1)
+        );
+
+      target?.classList.remove("hidden");
+
+      document
+        .querySelectorAll(".admin-menu-item")
+        .forEach(item =>
+          item.classList.remove("active")
+        );
+
+      button?.classList.add("active");
+
+      const titles = {
+        dashboard: "داشبورد",
+        users: "کاربران",
+        orders: "سفارش‌ها",
+        accounts: "اکانت‌ها",
+        coupons: "کوپن‌ها",
+        settings: "تنظیمات"
+      };
+
+      document.getElementById("adminPageTitle")
+        .textContent =
+          currentLanguage === "fa"
+            ? titles[page]
+            : page.charAt(0).toUpperCase() + page.slice(1);
+    }
+
+    function updateAdminStats() {
+
+      document.getElementById("statAccounts")
+        .textContent =
+          accounts.length;
+
+      document.getElementById("statUsers")
+        .textContent =
+          adminUsers.length;
+
+      document.getElementById("statOrders")
+        .textContent =
+          adminOrders.length;
+
+      const revenue =
+        adminOrders
+          .filter(
+            order =>
+              order.status === "approved"
+          )
+          .reduce(
+            (sum, order) =>
+              sum +
+              Number(order.total_price || 0),
+            0
+          );
+
+      document.getElementById("statRevenue")
+        .textContent =
+          formatPrice(revenue);
+    }
+
+    /* =========================
+       ADMIN USERS
+    ========================= */
+
+    async function loadAdminUsers() {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from("profiles")
+          .select("*")
+          .order("created_at", {
+            ascending: false
+          });
+
+      if (error) {
+
+        console.error(error);
+        adminUsers = [];
+
+        return;
+      }
+
+      adminUsers =
+        data || [];
+    }
+
+    function filterAdminUsers() {
+
+      renderAdminUsers();
+    }
+
+    function renderAdminUsers() {
+
+      const search =
         (
-            $("adminAccountSearch")
-                ?.value ||
-            ""
+          document.getElementById("adminUserSearch")
+            ?.value || ""
         )
         .toLowerCase();
 
-    const list =
-        accounts.filter(
-            function(account){
+      const filtered =
+        adminUsers.filter(user => {
 
-                const text =
-                    (
-                        account.title +
-                        " " +
-                        account.game
-                    )
-                    .toLowerCase();
+          const text =
+            `${user.username || ""} ${user.id || ""}`
+              .toLowerCase();
 
-                return text.includes(
-                    query
-                );
+          return text.includes(search);
+        });
 
-            }
-        );
+      const container =
+        document.getElementById("adminUsersTable");
 
-    $("accountsTable").innerHTML =
-        list.length
-        ?
-        list.map(function(account){
+      if (!container) return;
 
-            return `
+      container.innerHTML = `
+
+        <table class="admin-table">
+
+          <thead>
 
             <tr>
-
-                <td>
-                    ${account.id}
-                </td>
-
-                <td>
-                    ${esc(
-                        account.title
-                    )}
-                </td>
-
-                <td>
-                    ${esc(
-                        account.game
-                    )}
-                </td>
-
-                <td>
-                    ${money(
-                        account.price
-                    )}
-                </td>
-
-                <td>
-
-                    <span class="badge ${
-                        account.status ===
-                        "available"
-                        ? "available"
-                        : "unavailable"
-                    }">
-
-                        ${
-                            account.status ===
-                            "available"
-                            ? "موجود"
-                            : "ناموجود"
-                        }
-
-                    </span>
-
-                </td>
-
-                <td>
-
-                    <div class="admin-actions">
-
-                        <button
-                            class="admin-action"
-                            onclick="
-                                openAccountForm(
-                                    ${account.id}
-                                )
-                            ">
-
-                            ویرایش
-
-                        </button>
-
-                        <button
-                            class="admin-action"
-                            onclick="
-                                toggleAccountStatus(
-                                    ${account.id}
-                                )
-                            ">
-
-                            وضعیت
-
-                        </button>
-
-                    </div>
-
-                </td>
-
+              <th>ID</th>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Created</th>
             </tr>
 
-            `;
+          </thead>
 
-        }).join("")
-        :
-        `
-        <tr>
-            <td colspan="6">
-                اکانتی پیدا نشد.
-            </td>
-        </tr>
-        `;
+          <tbody>
 
-}
-
-/* =========================================
-   ACCOUNT FORM
-========================================= */
-
-function openAccountForm(
-    id = null
-){
-
-    [
-        "aTitle",
-        "aGame",
-        "aDescription",
-        "aPrice",
-        "aLevel",
-        "aSkins",
-        "aImage"
-    ].forEach(
-        function(id){
-
-            $(id).value = "";
-
-        }
-    );
-
-    $("accountId").value = "";
-
-    $("aLevel").value =
-        "نامعلوم";
-
-    $("aSkins").value =
-        "نامعلوم";
-
-    $("aStatus").value =
-        "available";
-
-    if(id){
-
-        const account =
-            accounts.find(
-                function(item){
-
-                    return Number(item.id) ===
-                        Number(id);
-
-                }
-            );
-
-        if(!account){
-
-            return;
-
-        }
-
-        $("accountId").value =
-            account.id;
-
-        $("aTitle").value =
-            account.title;
-
-        $("aGame").value =
-            account.game;
-
-        $("aDescription").value =
-            account.description ||
-            "";
-
-        $("aPrice").value =
-            account.price;
-
-        $("aLevel").value =
-            account.level ||
-            "نامعلوم";
-
-        $("aSkins").value =
-            account.skins ||
-            "نامعلوم";
-
-        $("aStatus").value =
-            account.status ||
-            "unavailable";
-
-        $("aImage").value =
-            account.image_url ||
-            "";
-
-        $("accountFormTitle")
-            .textContent =
-            "ویرایش اکانت";
-
-    }else{
-
-        $("accountFormTitle")
-            .textContent =
-            "افزودن اکانت";
-
-    }
-
-    openModal(
-        "accountModal"
-    );
-
-}
-
-async function saveAccount(event){
-
-    event.preventDefault();
-
-    const id =
-        $("accountId").value;
-
-    const row = {
-
-        title:
-            $("aTitle")
-            .value
-            .trim(),
-
-        game:
-            $("aGame")
-            .value
-            .trim(),
-
-        description:
-            $("aDescription")
-            .value
-            .trim(),
-
-        price:
-            Number(
-                $("aPrice").value ||
-                0
-            ),
-
-        level:
-            $("aLevel")
-            .value
-            .trim(),
-
-        skins:
-            $("aSkins")
-            .value
-            .trim(),
-
-        status:
-            $("aStatus").value,
-
-        image_url:
-            $("aImage")
-            .value
-            .trim() ||
-            null
-
-    };
-
-    let result;
-
-    if(id){
-
-        result =
-            await supabaseClient
-                .from("accounts")
-                .update(row)
-                .eq(
-                    "id",
-                    id
-                );
-
-    }else{
-
-        result =
-            await supabaseClient
-                .from("accounts")
-                .insert(row);
-
-    }
-
-    if(result.error){
-
-        toast(
-            result.error.message
-        );
-
-        return;
-
-    }
-
-    closeModal(
-        "accountModal"
-    );
-
-    toast(
-        "اکانت ذخیره شد."
-    );
-
-    await loadAdminData();
-
-}
-
-async function toggleAccountStatus(
-    id
-){
-
-    const account =
-        accounts.find(
-            function(item){
-
-                return Number(item.id) ===
-                    Number(id);
-
-            }
-        );
-
-    if(!account){
-
-        return;
-
-    }
-
-    const newStatus =
-        account.status ===
-        "available"
-        ? "unavailable"
-        : "available";
-
-    const result =
-        await supabaseClient
-            .from("accounts")
-            .update({
-                status:newStatus
-            })
-            .eq(
-                "id",
-                id
-            );
-
-    if(result.error){
-
-        toast(
-            result.error.message
-        );
-
-        return;
-
-    }
-
-    await loadAdminData();
-
-}
-
-/* =========================================
-   COUPONS
-========================================= */
-
-function renderCoupons(){
-
-    $("couponsTable").innerHTML =
-        coupons.length
-        ?
-        coupons.map(
-            function(coupon){
-
-                return `
+            ${
+              filtered.map(user => `
 
                 <tr>
 
-                    <td>
-                        <b>
-                            ${esc(
-                                coupon.code
-                            )}
-                        </b>
-                    </td>
+                  <td>
+                    ${escapeHtml(
+                      String(user.id).slice(0,8)
+                    )}...
+                  </td>
 
-                    <td>
-                        ${
-                            coupon.discount_percent
-                        }%
-                    </td>
+                  <td>
+                    ${escapeHtml(user.username || "-")}
+                  </td>
 
-                    <td>
-                        ${
-                            coupon.used_count || 0
-                        }
-                        /
-                        ${
-                            coupon.max_uses ??
-                            "∞"
-                        }
-                    </td>
+                  <td>
+                    ${escapeHtml(user.role || "user")}
+                  </td>
 
-                    <td>
-
-                        <span class="badge ${
-                            coupon.active
-                            ? "available"
-                            : "unavailable"
-                        }">
-
-                            ${
-                                coupon.active
-                                ? "فعال"
-                                : "غیرفعال"
-                            }
-
-                        </span>
-
-                    </td>
-
-                    <td>
-
-                        ${
-                            coupon.expires_at
-                            ? formatDate(
-                                coupon.expires_at
-                            )
-                            : "بدون انقضا"
-                        }
-
-                    </td>
-
-                    <td>
-
-                        <div
-                            class="admin-actions">
-
-                            <button
-                                class="admin-action"
-                                onclick="
-                                    toggleCoupon(
-                                        ${coupon.id},
-                                        ${!coupon.active}
-                                    )
-                                ">
-
-                                ${
-                                    coupon.active
-                                    ? "غیرفعال"
-                                    : "فعال"
-                                }
-
-                            </button>
-
-                            <button
-                                class="admin-action"
-                                onclick="
-                                    deleteCoupon(
-                                        ${coupon.id}
-                                    )
-                                ">
-
-                                حذف
-
-                            </button>
-
-                        </div>
-
-                    </td>
+                  <td>
+                    ${formatDate(user.created_at)}
+                  </td>
 
                 </tr>
 
-                `;
-
+              `).join("")
             }
-        ).join("")
-        :
-        `
-        <tr>
-            <td colspan="6">
-                کوپنی وجود ندارد.
-            </td>
-        </tr>
-        `;
 
-}
+          </tbody>
 
-function openCouponForm(){
+        </table>
+      `;
+    }
 
-    $("cCode").value = "";
+    /* =========================
+       ADMIN ORDERS
+    ========================= */
 
-    $("cPercent").value = "";
+    async function loadAdminOrders() {
 
-    $("cMax").value = "";
-
-    $("cExpires").value = "";
-
-    openModal(
-        "couponModal"
-    );
-
-}
-
-async function saveCoupon(event){
-
-    event.preventDefault();
-
-    const row = {
-
-        code:
-            $("cCode")
-            .value
-            .trim()
-            .toUpperCase(),
-
-        discount_percent:
-            Number(
-                $("cPercent").value
-            ),
-
-        max_uses:
-            $("cMax").value
-            ?
-            Number(
-                $("cMax").value
-            )
-            :
-            null,
-
-        expires_at:
-            $("cExpires").value
-            ?
-            new Date(
-                $("cExpires").value
-            ).toISOString()
-            :
-            null,
-
-        active:true
-
-    };
-
-    const result =
+      const {
+        data,
+        error
+      } =
         await supabaseClient
-            .from("coupons")
-            .insert(row);
+          .from("orders")
+          .select("*")
+          .order("created_at", {
+            ascending: false
+          });
 
-    if(result.error){
+      if (error) {
 
-        toast(
-            result.error.message
+        console.error(error);
+        adminOrders = [];
+
+        return;
+      }
+
+      adminOrders =
+        data || [];
+    }
+
+    function filterAdminOrders() {
+
+      renderAdminOrdersTable();
+    }
+
+    function renderDashboardOrders() {
+
+      const container =
+        document.getElementById("recentOrders");
+
+      if (!container) return;
+
+      const list =
+        adminOrders.slice(0, 5);
+
+      if (!list.length) {
+
+        container.innerHTML =
+          `<p style="color:var(--muted)">
+             هنوز سفارشی وجود ندارد.
+           </p>`;
+
+        return;
+      }
+
+      container.innerHTML = `
+
+        <table class="admin-table">
+
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>مبلغ</th>
+              <th>وضعیت</th>
+              <th>تاریخ</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            ${
+              list.map(order => `
+
+                <tr>
+
+                  <td>
+                    #${order.id}
+                  </td>
+
+                  <td>
+                    ${formatPrice(order.total_price)}
+                  </td>
+
+                  <td>
+                    ${getOrderStatusText(order.status)}
+                  </td>
+
+                  <td>
+                    ${formatDate(order.created_at)}
+                  </td>
+
+                </tr>
+
+              `).join("")
+            }
+
+          </tbody>
+
+        </table>
+      `;
+    }
+
+    function renderAdminOrdersTable() {
+
+      const search =
+        (
+          document.getElementById("adminOrderSearch")
+            ?.value || ""
+        )
+        .toLowerCase();
+
+      const filtered =
+        adminOrders.filter(order =>
+          String(order.id)
+            .includes(search) ||
+          String(order.status || "")
+            .toLowerCase()
+            .includes(search)
+        );
+
+      const container =
+        document.getElementById("adminOrdersTable");
+
+      if (!container) return;
+
+      container.innerHTML = `
+
+        <table class="admin-table">
+
+          <thead>
+
+            <tr>
+              <th>شماره</th>
+              <th>کاربر</th>
+              <th>مبلغ</th>
+              <th>وضعیت</th>
+              <th>تاریخ</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              filtered.map(order => `
+
+                <tr>
+
+                  <td>
+                    #${order.id}
+                  </td>
+
+                  <td>
+                    ${escapeHtml(
+                      String(order.user_id || "")
+                        .slice(0,8)
+                    )}...
+                  </td>
+
+                  <td>
+                    ${formatPrice(order.total_price)}
+                  </td>
+
+                  <td>
+
+                    <select
+                      class="select"
+                      onchange="updateOrderStatus(${Number(order.id)}, this.value)"
+                    >
+
+                      <option
+                        value="pending"
+                        ${order.status === "pending" ? "selected" : ""}
+                      >
+                        در انتظار بررسی
+                      </option>
+
+                      <option
+                        value="approved"
+                        ${order.status === "approved" ? "selected" : ""}
+                      >
+                        تأیید شده
+                      </option>
+
+                      <option
+                        value="cancelled"
+                        ${order.status === "cancelled" ? "selected" : ""}
+                      >
+                        لغو شده
+                      </option>
+
+                    </select>
+
+                  </td>
+
+                  <td>
+                    ${formatDate(order.created_at)}
+                  </td>
+
+                </tr>
+
+              `).join("")
+            }
+
+          </tbody>
+
+        </table>
+      `;
+    }
+
+    async function updateOrderStatus(
+      orderId,
+      newStatus
+    ) {
+
+      try {
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .from("orders")
+            .update({
+              status: newStatus
+            })
+            .eq("id", orderId);
+
+        if (error) throw error;
+
+        showToast(
+          "وضعیت سفارش تغییر کرد."
+        );
+
+        await loadAdminOrders();
+
+        updateAdminStats();
+
+        renderDashboardOrders();
+        renderAdminOrdersTable();
+
+      } catch (error) {
+
+        console.error(error);
+
+        showToast(
+          "خطا در تغییر وضعیت سفارش.",
+          "error"
+        );
+      }
+    }
+
+    /* =========================
+       ADMIN ACCOUNTS
+    ========================= */
+
+    function renderAdminAccountsTable() {
+
+      const container =
+        document.getElementById("adminAccountsTable");
+
+      if (!container) return;
+
+      container.innerHTML = `
+
+        <table class="admin-table">
+
+          <thead>
+
+            <tr>
+              <th>ID</th>
+              <th>عنوان</th>
+              <th>بازی</th>
+              <th>قیمت</th>
+              <th>وضعیت</th>
+              <th>عملیات</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              accounts.map(account => `
+
+                <tr>
+
+                  <td>
+                    ${account.id}
+                  </td>
+
+                  <td>
+                    ${escapeHtml(account.title)}
+                  </td>
+
+                  <td>
+                    ${escapeHtml(account.game || "-")}
+                  </td>
+
+                  <td>
+                    ${formatPrice(account.price)}
+                  </td>
+
+                  <td>
+                    ${
+                      account.status === "available"
+                        ? "موجود"
+                        : "ناموجود"
+                    }
+                  </td>
+
+                  <td>
+
+                    <button
+                      class="btn btn-secondary"
+                      onclick="openAccountForm(${Number(account.id)})"
+                    >
+                      ویرایش
+                    </button>
+
+                    <button
+                      class="btn ${
+                        account.status === "available"
+                          ? "btn-danger"
+                          : "btn-success"
+                      }"
+                      onclick="toggleAccountStatus(${Number(account.id)})"
+                    >
+                      ${
+                        account.status === "available"
+                          ? "ناموجود"
+                          : "موجود"
+                      }
+                    </button>
+
+                  </td>
+
+                </tr>
+
+              `).join("")
+            }
+
+          </tbody>
+
+        </table>
+      `;
+    }
+
+    function openAccountForm(accountId = null) {
+
+      const account =
+        accountId
+          ? accounts.find(
+              a => Number(a.id) === Number(accountId)
+            )
+          : null;
+
+      document.getElementById("accountId")
+        .value =
+          account?.id || "";
+
+      document.getElementById("accountTitle")
+        .value =
+          account?.title || "";
+
+      document.getElementById("accountGame")
+        .value =
+          account?.game || "";
+
+      document.getElementById("accountDescription")
+        .value =
+          account?.description || "";
+
+      document.getElementById("accountPrice")
+        .value =
+          account?.price || 0;
+
+      document.getElementById("accountLevel")
+        .value =
+          account?.level || "نامعلوم";
+
+      document.getElementById("accountSkins")
+        .value =
+          account?.skins || "نامعلوم";
+
+      document.getElementById("accountStatus")
+        .value =
+          account?.status || "unavailable";
+
+      document.getElementById("accountImage")
+        .value =
+          account?.image_url || "";
+
+      openModal("accountFormModal");
+    }
+
+    async function saveAccount() {
+
+      const id =
+        document.getElementById("accountId")
+          .value;
+
+      const payload = {
+
+        title:
+          document.getElementById("accountTitle")
+            .value.trim(),
+
+        game:
+          document.getElementById("accountGame")
+            .value.trim(),
+
+        description:
+          document.getElementById("accountDescription")
+            .value.trim(),
+
+        price:
+          Number(
+            document.getElementById("accountPrice")
+              .value || 0
+          ),
+
+        level:
+          document.getElementById("accountLevel")
+            .value.trim(),
+
+        skins:
+          document.getElementById("accountSkins")
+            .value.trim(),
+
+        status:
+          document.getElementById("accountStatus")
+            .value,
+
+        image_url:
+          document.getElementById("accountImage")
+            .value.trim()
+      };
+
+      if (!payload.title) {
+
+        showToast(
+          "عنوان اکانت را وارد کنید.",
+          "error"
         );
 
         return;
+      }
 
+      try {
+
+        let error;
+
+        if (id) {
+
+          ({
+            error
+          } =
+            await supabaseClient
+              .from("accounts")
+              .update(payload)
+              .eq("id", id));
+
+        } else {
+
+          ({
+            error
+          } =
+            await supabaseClient
+              .from("accounts")
+              .insert(payload));
+        }
+
+        if (error) throw error;
+
+        closeModal("accountFormModal");
+
+        showToast(
+          "اکانت ذخیره شد."
+        );
+
+        await loadAccounts();
+
+        renderAdminAccountsTable();
+
+        updateAdminStats();
+
+      } catch (error) {
+
+        console.error(error);
+
+        showToast(
+          "خطا در ذخیره اکانت.",
+          "error"
+        );
+      }
     }
 
-    closeModal(
-        "couponModal"
-    );
+    async function toggleAccountStatus(accountId) {
 
-    toast(
-        "کوپن ساخته شد."
-    );
+      const account =
+        accounts.find(
+          a => Number(a.id) === Number(accountId)
+        );
 
-    await loadAdminData();
+      if (!account) return;
 
-}
+      const newStatus =
+        account.status === "available"
+          ? "unavailable"
+          : "available";
 
-async function toggleCoupon(
-    id,
-    active
-){
+      try {
 
-    const result =
+        const {
+          error
+        } =
+          await supabaseClient
+            .from("accounts")
+            .update({
+              status: newStatus
+            })
+            .eq("id", accountId);
+
+        if (error) throw error;
+
+        showToast(
+          "وضعیت اکانت تغییر کرد."
+        );
+
+        await loadAccounts();
+
+        renderAdminAccountsTable();
+
+      } catch (error) {
+
+        console.error(error);
+
+        showToast(
+          "خطا در تغییر وضعیت.",
+          "error"
+        );
+      }
+    }
+
+    /* =========================
+       COUPONS
+    ========================= */
+
+    async function loadAdminCoupons() {
+
+      const {
+        data,
+        error
+      } =
         await supabaseClient
+          .from("coupons")
+          .select("*")
+          .order("created_at", {
+            ascending: false
+          });
+
+      if (error) {
+
+        console.warn(
+          "Coupons table may not exist yet.",
+          error
+        );
+
+        adminCoupons = [];
+
+        return;
+      }
+
+      adminCoupons =
+        data || [];
+    }
+
+    function renderCoupons() {
+
+      const container =
+        document.getElementById("adminCouponsTable");
+
+      if (!container) return;
+
+      if (!adminCoupons.length) {
+
+        container.innerHTML =
+          `<p style="color:var(--muted)">
+             هنوز کوپنی ساخته نشده است.
+           </p>`;
+
+        return;
+      }
+
+      container.innerHTML = `
+
+        <table class="admin-table">
+
+          <thead>
+
+            <tr>
+              <th>کد</th>
+              <th>تخفیف</th>
+              <th>فعال</th>
+              <th>عملیات</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              adminCoupons.map(coupon => `
+
+                <tr>
+
+                  <td>
+                    ${escapeHtml(coupon.code)}
+                  </td>
+
+                  <td>
+                    ${coupon.discount_percent || 0}%
+                  </td>
+
+                  <td>
+                    ${coupon.is_active ? "بله" : "خیر"}
+                  </td>
+
+                  <td>
+
+                    <button
+                      class="btn btn-secondary"
+                      onclick="toggleCoupon('${escapeHtml(coupon.id)}', ${!coupon.is_active})"
+                    >
+                      تغییر وضعیت
+                    </button>
+
+                    <button
+                      class="btn btn-danger"
+                      onclick="deleteCoupon('${escapeHtml(coupon.id)}')"
+                    >
+                      حذف
+                    </button>
+
+                  </td>
+
+                </tr>
+
+              `).join("")
+            }
+
+          </tbody>
+
+        </table>
+      `;
+    }
+
+    async function openCouponForm() {
+
+      const code =
+        prompt("کد کوپن را وارد کنید:");
+
+      if (!code) return;
+
+      const discount =
+        prompt(
+          "درصد تخفیف را وارد کنید:"
+        );
+
+      const discountNumber =
+        Number(discount);
+
+      if (
+        !discountNumber ||
+        discountNumber < 1 ||
+        discountNumber > 100
+      ) {
+
+        showToast(
+          "درصد تخفیف نامعتبر است.",
+          "error"
+        );
+
+        return;
+      }
+
+      try {
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .from("coupons")
+            .insert({
+              code:
+                code.trim().toUpperCase(),
+              discount_percent:
+                discountNumber,
+              is_active:
+                true
+            });
+
+        if (error) throw error;
+
+        showToast(
+          "کوپن ساخته شد."
+        );
+
+        await loadAdminCoupons();
+
+        renderCoupons();
+
+      } catch (error) {
+
+        console.error(error);
+
+        showToast(
+          "خطا در ساخت کوپن.",
+          "error"
+        );
+      }
+    }
+
+    async function toggleCoupon(
+      id,
+      active
+    ) {
+
+      try {
+
+        const {
+          error
+        } =
+          await supabaseClient
             .from("coupons")
             .update({
-                active:active
+              is_active: active
             })
-            .eq(
-                "id",
-                id
-            );
+            .eq("id", id);
 
-    if(result.error){
+        if (error) throw error;
 
-        toast(
-            result.error.message
+        await loadAdminCoupons();
+
+        renderCoupons();
+
+      } catch (error) {
+
+        console.error(error);
+
+        showToast(
+          "خطا در تغییر کوپن.",
+          "error"
         );
-
-        return;
-
+      }
     }
 
-    await loadAdminData();
+    async function deleteCoupon(id) {
 
-}
-
-async function deleteCoupon(id){
-
-    if(
+      if (
         !confirm(
-            "این کوپن حذف شود؟"
+          "آیا از حذف این کوپن مطمئن هستید؟"
         )
-    ){
-
+      ) {
         return;
+      }
 
-    }
+      try {
 
-    const result =
-        await supabaseClient
+        const {
+          error
+        } =
+          await supabaseClient
             .from("coupons")
             .delete()
-            .eq(
-                "id",
-                id
-            );
+            .eq("id", id);
 
-    if(result.error){
+        if (error) throw error;
 
-        toast(
-            result.error.message
+        showToast(
+          "کوپن حذف شد."
         );
 
-        return;
+        await loadAdminCoupons();
 
-    }
+        renderCoupons();
 
-    await loadAdminData();
+      } catch (error) {
 
-}
+        console.error(error);
 
-/* =========================================
-   AUTH STATE
-========================================= */
-
-supabaseClient.auth
-.onAuthStateChange(
-    function(){
-
-        setTimeout(
-            async function(){
-
-                await loadUser();
-
-            },
-            0
+        showToast(
+          "خطا در حذف کوپن.",
+          "error"
         );
-
+      }
     }
-);
 
-/* =========================================
-   INIT
-========================================= */
+    /* =========================
+       AUTH STATE
+    ========================= */
 
-(async function(){
+    supabaseClient.auth
+      .onAuthStateChange(
+        async () => {
 
-    applyLanguage();
+          await loadUser();
 
-    updateCartCount();
+        }
+      );
 
-    await loadUser();
+    /* =========================
+       INIT
+    ========================= */
 
-    await loadAccounts();
+    async function init() {
 
-})();
+      applyTheme();
+      applyLanguage();
 
-</script>
+      await loadUser();
+      await loadAccounts();
+
+      updateAuthModal();
+    }
+
+    init();
+
+  </script>
 
 </body>
 </html>
