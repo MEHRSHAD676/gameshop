@@ -1,78 +1,42 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
+
   <meta charset="UTF-8">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-  <meta name="theme-color" content="#0b1020">
-
-  <meta name="description"
-        content="GameShop - فروشگاه حرفه‌ای اکانت‌های گیمینگ">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>GameShop | فروشگاه اکانت گیم</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta
+    name="description"
+    content="GameShop - فروشگاه اکانت گیمینگ"
+  >
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
 
-  <!-- Supabase -->
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
   <style>
-
-    /* =========================================================
-       ROOT
-    ========================================================= */
-
-    :root {
-      --bg: #070b14;
-      --bg2: #0c1220;
-      --card: rgba(18, 25, 40, .82);
-      --card2: #111827;
-
-      --text: #f8fafc;
-      --muted: #94a3b8;
-
-      --primary: #7c3aed;
-      --primary2: #9333ea;
-
-      --green: #22c55e;
-      --red: #ef4444;
-      --yellow: #f59e0b;
-      --blue: #3b82f6;
-
-      --border: rgba(255,255,255,.09);
-
-      --shadow:
-        0 20px 60px rgba(0,0,0,.35);
-
-      --radius: 20px;
-    }
-
-    body.light {
-      --bg: #f4f7fb;
-      --bg2: #ffffff;
-      --card: rgba(255,255,255,.92);
-      --card2: #ffffff;
-
-      --text: #111827;
-      --muted: #64748b;
-
-      --border: rgba(15,23,42,.10);
-
-      --shadow:
-        0 15px 40px rgba(15,23,42,.10);
-    }
-
-
-    /* =========================================================
-       RESET
-    ========================================================= */
 
     * {
       box-sizing: border-box;
@@ -80,133 +44,284 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
+
+    :root {
+
+      --bg: #080b12;
+
+      --card: #10151f;
+
+      --card2: #151c29;
+
+      --text: #f4f7fb;
+
+      --muted: #8993a4;
+
+      --border: rgba(255,255,255,.08);
+
+      --primary: #7c3aed;
+
+      --primary2: #9333ea;
+
+      --green: #22c55e;
+
+      --red: #ef4444;
+
+      --yellow: #f59e0b;
+
+      --shadow:
+        0 15px 50px rgba(0,0,0,.25);
     }
 
+
+    body.light {
+
+      --bg: #f4f6fb;
+
+      --card: #ffffff;
+
+      --card2: #f1f3f8;
+
+      --text: #151923;
+
+      --muted: #657083;
+
+      --border: rgba(0,0,0,.08);
+
+      --shadow:
+        0 15px 40px rgba(0,0,0,.08);
+    }
+
+
     body {
-      min-height: 100vh;
-
-      background:
-        radial-gradient(
-          circle at 10% 10%,
-          rgba(124,58,237,.15),
-          transparent 30%
-        ),
-        radial-gradient(
-          circle at 90% 20%,
-          rgba(59,130,246,.10),
-          transparent 30%
-        ),
-        var(--bg);
-
-      color: var(--text);
 
       font-family:
         "Vazirmatn",
         "Inter",
         sans-serif;
 
-      transition:
-        background .25s ease,
-        color .25s ease;
-    }
-
-    body::before {
-      content: "";
-
-      position: fixed;
-
-      inset: 0;
-
-      pointer-events: none;
-
-      background-image:
-        linear-gradient(
-          rgba(255,255,255,.02) 1px,
-          transparent 1px
+      background:
+        radial-gradient(
+          circle at 20% 0%,
+          rgba(124,58,237,.12),
+          transparent 30%
         ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.02) 1px,
-          transparent 1px
-        );
+        var(--bg);
 
-      background-size: 40px 40px;
+      color: var(--text);
 
-      mask-image:
-        linear-gradient(
-          to bottom,
-          black,
-          transparent
-        );
+      min-height: 100vh;
 
-      z-index: -1;
+      transition:
+        background .25s,
+        color .25s;
     }
 
-    body.light::before {
-      opacity: .35;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
 
     button,
     input,
     select,
     textarea {
+
       font-family: inherit;
     }
 
+
     button {
+
       cursor: pointer;
     }
 
 
-    /* =========================================================
-       GLOBAL
-    ========================================================= */
+    a {
 
-    .container {
-      width: min(1180px, 92%);
-      margin: auto;
+      color: inherit;
+
+      text-decoration: none;
     }
 
-    .section {
-      padding: 80px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .section-title h2 {
-      font-size: 34px;
-      margin-bottom: 10px;
-    }
-
-    .section-title p {
-      color: var(--muted);
-    }
 
     .hidden {
+
       display: none !important;
     }
 
 
-    /* =========================================================
-       BUTTONS
-    ========================================================= */
+    .container {
 
-    .btn {
-      border: none;
+      width:
+        min(
+          1200px,
+          calc(100% - 30px)
+        );
 
-      padding: 12px 18px;
+      margin: auto;
+    }
+
+
+    /* HEADER */
+
+    header {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 100;
+
+      backdrop-filter:
+        blur(18px);
+
+      background:
+        color-mix(
+          in srgb,
+          var(--bg) 85%,
+          transparent
+        );
+
+      border-bottom:
+        1px solid var(--border);
+    }
+
+
+    .header-inner {
+
+      min-height: 70px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+    }
+
+
+    .logo {
+
+      font-size: 21px;
+
+      font-weight: 800;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+    }
+
+
+    nav {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 7px;
+    }
+
+
+    nav a {
+
+      color: var(--muted);
+
+      padding: 9px 12px;
+
+      border-radius: 10px;
+
+      font-size: 14px;
+
+      transition: .2s;
+    }
+
+
+    nav a:hover {
+
+      background:
+        rgba(124,58,237,.12);
+
+      color: var(--text);
+    }
+
+
+    .nav-actions {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 7px;
+    }
+
+
+    .icon-btn {
+
+      width: 42px;
+
+      height: 42px;
+
+      border:
+        1px solid var(--border);
+
+      background: var(--card);
+
+      color: var(--text);
 
       border-radius: 12px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+    }
+
+
+    .icon-btn:hover {
+
+      border-color:
+        rgba(124,58,237,.5);
+    }
+
+
+    .cart-count {
+
+      position: absolute;
+
+      margin-top: -27px;
+
+      margin-right: -27px;
+
+      min-width: 17px;
+
+      height: 17px;
+
+      border-radius: 50%;
+
+      background: var(--red);
+
+      color: white;
+
+      font-size: 10px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+    }
+
+
+    /* BUTTONS */
+
+    .btn {
+
+      border: none;
+
+      border-radius: 11px;
+
+      padding: 11px 16px;
 
       font-weight: 700;
 
@@ -216,23 +331,21 @@
 
       justify-content: center;
 
-      gap: 8px;
+      gap: 7px;
 
-      transition:
-        transform .2s,
-        box-shadow .2s,
-        opacity .2s;
+      transition: .2s;
     }
+
 
     .btn:hover {
-      transform: translateY(-2px);
+
+      transform:
+        translateY(-1px);
     }
 
-    .btn:active {
-      transform: translateY(0);
-    }
 
     .btn-primary {
+
       background:
         linear-gradient(
           135deg,
@@ -241,114 +354,272 @@
         );
 
       color: white;
-
-      box-shadow:
-        0 10px 30px rgba(124,58,237,.25);
     }
 
-    .btn-success {
-      background: var(--green);
-      color: white;
-    }
-
-    .btn-danger {
-      background: var(--red);
-      color: white;
-    }
 
     .btn-secondary {
+
       background: var(--card2);
+
       color: var(--text);
-      border: 1px solid var(--border);
+
+      border:
+        1px solid var(--border);
     }
 
+
+    .btn-danger {
+
+      background:
+        rgba(239,68,68,.12);
+
+      color:
+        #f87171;
+
+      border:
+        1px solid rgba(239,68,68,.2);
+    }
+
+
     .btn-small {
-      padding: 8px 12px;
+
+      padding: 7px 10px;
+
+      font-size: 12px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+
+      padding:
+        90px 0 65px;
+
+      text-align: center;
+    }
+
+
+    .hero-badge {
+
+      display: inline-block;
+
+      padding: 7px 13px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(124,58,237,.12);
+
+      border:
+        1px solid rgba(124,58,237,.2);
+
+      color:
+        #c4b5fd;
+
+      font-size: 13px;
+
+      margin-bottom: 18px;
+    }
+
+
+    .hero h1 {
+
+      font-size:
+        clamp(34px, 6vw, 65px);
+
+      line-height: 1.15;
+
+      margin-bottom: 20px;
+    }
+
+
+    .gradient {
+
+      background:
+        linear-gradient(
+          135deg,
+          #a78bfa,
+          #c084fc,
+          #f0abfc
+        );
+
+      -webkit-background-clip: text;
+
+      background-clip: text;
+
+      color: transparent;
+    }
+
+
+    .hero p {
+
+      max-width: 700px;
+
+      margin: auto;
+
+      color: var(--muted);
+
+      line-height: 2;
+
+      font-size: 16px;
+    }
+
+
+    .hero-actions {
+
+      margin-top: 28px;
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+    }
+
+
+    /* SECTIONS */
+
+    section {
+
+      scroll-margin-top: 90px;
+    }
+
+
+    .section {
+
+      padding:
+        55px 0;
+    }
+
+
+    .section-head {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: end;
+
+      gap: 15px;
+
+      margin-bottom: 22px;
+    }
+
+
+    .section-head h2 {
+
+      font-size: 27px;
+    }
+
+
+    .section-head p {
+
+      color: var(--muted);
+
+      margin-top: 5px;
+
       font-size: 13px;
     }
 
 
-    /* =========================================================
-       HEADER
-    ========================================================= */
+    /* FILTERS */
 
-    header {
-      position: sticky;
+    .filters {
 
-      top: 0;
+      display: grid;
 
-      z-index: 1000;
-
-      backdrop-filter: blur(18px);
-
-      background:
-        color-mix(
-          in srgb,
-          var(--bg) 80%,
-          transparent
-        );
-
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav {
-      height: 72px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 20px;
-    }
-
-    .logo {
-      display: flex;
-
-      align-items: center;
+      grid-template-columns:
+        2fr 1fr 1fr;
 
       gap: 10px;
 
-      font-size: 22px;
-
-      font-weight: 800;
+      margin-bottom: 25px;
     }
 
-    .logo span {
-      color: var(--primary2);
-    }
 
-    .nav-links {
-      display: flex;
-      gap: 24px;
+    .input,
+    .select,
+    textarea {
 
-      color: var(--muted);
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-actions {
-      display: flex;
-
-      align-items: center;
-
-      gap: 8px;
-    }
-
-    .icon-btn {
-      width: 42px;
-      height: 42px;
-
-      border-radius: 12px;
-
-      border: 1px solid var(--border);
+      width: 100%;
 
       background: var(--card);
 
       color: var(--text);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 11px;
+
+      padding: 12px 13px;
+
+      outline: none;
+    }
+
+
+    .input:focus,
+    .select:focus,
+    textarea:focus {
+
+      border-color:
+        rgba(124,58,237,.7);
+    }
+
+
+    /* ACCOUNTS */
+
+    .accounts-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 16px;
+    }
+
+
+    .account-card {
+
+      background: var(--card);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 19px;
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow);
+
+      transition: .25s;
+    }
+
+
+    .account-card:hover {
+
+      transform:
+        translateY(-4px);
+
+      border-color:
+        rgba(124,58,237,.35);
+    }
+
+
+    .account-image {
+
+      height: 175px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #1e293b,
+          #312e81
+        );
 
       display: flex;
 
@@ -356,586 +627,243 @@
 
       justify-content: center;
 
-      font-size: 18px;
-    }
-
-    .hamburger {
-      display: none;
+      font-size: 55px;
     }
 
 
-    /* =========================================================
-       HERO
-    ========================================================= */
+    .account-content {
 
-    .hero {
-      min-height: 620px;
+      padding: 17px;
+    }
+
+
+    .account-title-row {
 
       display: flex;
 
-      align-items: center;
+      justify-content: space-between;
 
-      position: relative;
-
-      overflow: hidden;
+      gap: 10px;
     }
 
-    .hero::before {
-      content: "";
 
-      position: absolute;
+    .account-title {
 
-      width: 550px;
-      height: 550px;
+      font-size: 17px;
 
-      background:
-        radial-gradient(
-          circle,
-          rgba(124,58,237,.30),
-          transparent 70%
-        );
-
-      top: -200px;
-      right: -100px;
-
-      pointer-events: none;
+      font-weight: 800;
     }
 
-    .hero-content {
-      max-width: 720px;
+
+    .favorite {
+
+      background: none;
+
+      border: none;
+
+      color: var(--muted);
+
+      font-size: 21px;
     }
 
-    .badge {
-      display: inline-flex;
+
+    .favorite.active {
+
+      color: #ef4444;
+    }
+
+
+    .account-meta {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 8px;
+
+      margin: 15px 0;
+    }
+
+
+    .meta {
+
+      padding: 9px;
+
+      border-radius: 10px;
+
+      background: var(--card2);
+
+      color: var(--muted);
+
+      font-size: 12px;
+    }
+
+
+    .account-description {
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.8;
+
+      min-height: 47px;
+    }
+
+
+    .account-bottom {
+
+      display: flex;
+
+      justify-content: space-between;
 
       align-items: center;
 
       gap: 8px;
 
-      padding: 8px 12px;
-
-      border-radius: 999px;
-
-      background: rgba(124,58,237,.12);
-
-      border: 1px solid rgba(124,58,237,.25);
-
-      color: #c4b5fd;
-
-      margin-bottom: 20px;
-
-      font-size: 14px;
+      margin-top: 16px;
     }
 
-    .hero h1 {
-      font-size: clamp(42px, 6vw, 76px);
 
-      line-height: 1.05;
-
-      margin-bottom: 20px;
-    }
-
-    .hero h1 span {
-      background:
-        linear-gradient(
-          135deg,
-          #a78bfa,
-          #38bdf8
-        );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-
-      color: transparent;
-    }
-
-    .hero p {
-      color: var(--muted);
+    .price {
 
       font-size: 18px;
 
-      line-height: 1.9;
-
-      max-width: 680px;
-
-      margin-bottom: 30px;
+      font-weight: 800;
     }
 
-    .hero-buttons {
-      display: flex;
 
-      gap: 12px;
+    .unavailable {
 
-      flex-wrap: wrap;
+      color:
+        #f87171;
+
+      font-size: 12px;
     }
 
-    .hero-stats {
+
+    /* INFO */
+
+    .info-grid {
+
       display: grid;
 
       grid-template-columns:
         repeat(3, 1fr);
 
       gap: 15px;
-
-      margin-top: 45px;
-
-      max-width: 650px;
-    }
-
-    .stat-box {
-      background: var(--card);
-
-      border: 1px solid var(--border);
-
-      border-radius: 16px;
-
-      padding: 18px;
-
-      backdrop-filter: blur(12px);
-    }
-
-    .stat-box strong {
-      display: block;
-
-      font-size: 24px;
-
-      margin-bottom: 5px;
-    }
-
-    .stat-box span {
-      color: var(--muted);
-
-      font-size: 13px;
     }
 
 
-    /* =========================================================
-       PROMO
-    ========================================================= */
-
-    .promo {
-      margin-top: -40px;
-
-      position: relative;
-
-      z-index: 2;
-    }
-
-    .promo-box {
-      background:
-        linear-gradient(
-          135deg,
-          rgba(124,58,237,.2),
-          rgba(59,130,246,.1)
-        );
-
-      border: 1px solid rgba(124,58,237,.25);
-
-      border-radius: 20px;
-
-      padding: 22px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 20px;
-    }
-
-    .promo-box strong {
-      font-size: 18px;
-    }
-
-    .promo-box p {
-      color: var(--muted);
-
-      margin-top: 5px;
-    }
-
-
-    /* =========================================================
-       FILTERS
-    ========================================================= */
-
-    .filters {
-      display: grid;
-
-      grid-template-columns:
-        2fr 1fr 1fr 1fr;
-
-      gap: 12px;
-
-      margin-bottom: 30px;
-    }
-
-    .input,
-    .select,
-    .textarea {
-      width: 100%;
-
-      border: 1px solid var(--border);
+    .info-card {
 
       background: var(--card);
 
-      color: var(--text);
-
-      border-radius: 12px;
-
-      padding: 12px 14px;
-
-      outline: none;
-
-      transition: border .2s;
-    }
-
-    .input:focus,
-    .select:focus,
-    .textarea:focus {
-      border-color: var(--primary);
-    }
-
-
-    /* =========================================================
-       ACCOUNT GRID
-    ========================================================= */
-
-    .account-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 20px;
-    }
-
-    .account-card {
-      background: var(--card);
-
-      border: 1px solid var(--border);
-
-      border-radius: var(--radius);
-
-      overflow: hidden;
-
-      box-shadow: var(--shadow);
-
-      transition:
-        transform .25s,
-        border .25s;
-    }
-
-    .account-card:hover {
-      transform: translateY(-6px);
-
-      border-color:
-        rgba(124,58,237,.45);
-    }
-
-    .account-image {
-      height: 180px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      font-size: 60px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(124,58,237,.25),
-          rgba(59,130,246,.12)
-        );
-    }
-
-    .account-content {
-      padding: 20px;
-    }
-
-    .account-top {
-      display: flex;
-
-      align-items: flex-start;
-
-      justify-content: space-between;
-
-      gap: 10px;
-
-      margin-bottom: 10px;
-    }
-
-    .account-title {
-      font-size: 18px;
-
-      font-weight: 800;
-    }
-
-    .game-name {
-      color: var(--muted);
-
-      font-size: 13px;
-
-      margin-top: 4px;
-    }
-
-    .heart {
-      width: 38px;
-      height: 38px;
-
-      border-radius: 10px;
-
-      border: 1px solid var(--border);
-
-      background: transparent;
-
-      color: var(--muted);
-
-      font-size: 18px;
-    }
-
-    .heart.active {
-      color: #ef4444;
-    }
-
-    .account-description {
-      color: var(--muted);
-
-      font-size: 14px;
-
-      line-height: 1.8;
-
-      min-height: 50px;
-
-      margin-bottom: 15px;
-    }
-
-    .account-meta {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 8px;
-
-      margin-bottom: 16px;
-    }
-
-    .meta-item {
-      background:
-        rgba(255,255,255,.03);
-
-      border: 1px solid var(--border);
-
-      border-radius: 10px;
-
-      padding: 9px;
-
-      font-size: 12px;
-
-      color: var(--muted);
-    }
-
-    .meta-item strong {
-      display: block;
-
-      color: var(--text);
-
-      margin-top: 3px;
-    }
-
-    .price {
-      font-size: 21px;
-
-      font-weight: 800;
-    }
-
-    .price small {
-      font-size: 12px;
-
-      color: var(--muted);
-    }
-
-    .card-footer {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 10px;
-    }
-
-
-    /* =========================================================
-       FEATURES
-    ========================================================= */
-
-    .features {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 18px;
-    }
-
-    .feature {
-      padding: 25px;
-
-      background: var(--card);
-
-      border: 1px solid var(--border);
+      border:
+        1px solid var(--border);
 
       border-radius: 18px;
 
-      text-align: center;
+      padding: 22px;
     }
 
-    .feature-icon {
-      font-size: 35px;
+
+    .info-card-icon {
+
+      font-size: 28px;
 
       margin-bottom: 12px;
     }
 
-    .feature h3 {
-      margin-bottom: 8px;
-    }
 
-    .feature p {
+    .info-card p {
+
       color: var(--muted);
 
-      font-size: 13px;
+      line-height: 1.9;
 
-      line-height: 1.8;
+      margin-top: 8px;
+
+      font-size: 13px;
     }
 
 
-    /* =========================================================
-       FAQ
-    ========================================================= */
+    /* FAQ */
 
     .faq {
-      max-width: 850px;
 
-      margin: auto;
+      display: grid;
+
+      gap: 10px;
     }
 
+
     .faq-item {
+
       background: var(--card);
 
-      border: 1px solid var(--border);
+      border:
+        1px solid var(--border);
 
       border-radius: 14px;
 
-      margin-bottom: 10px;
-
-      overflow: hidden;
+      padding: 16px;
     }
 
-    .faq-question {
-      width: 100%;
 
-      background: transparent;
+    .faq-item summary {
 
-      color: var(--text);
-
-      border: none;
-
-      padding: 18px;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      text-align: right;
+      cursor: pointer;
 
       font-weight: 700;
     }
 
-    .faq-answer {
-      display: none;
+
+    .faq-item p {
 
       color: var(--muted);
-
-      padding: 0 18px 18px;
 
       line-height: 1.9;
-    }
 
-    .faq-item.open .faq-answer {
-      display: block;
-    }
-
-
-    /* =========================================================
-       FOOTER
-    ========================================================= */
-
-    footer {
-      border-top: 1px solid var(--border);
-
-      padding: 50px 0 25px;
-
-      margin-top: 40px;
-    }
-
-    .footer-grid {
-      display: grid;
-
-      grid-template-columns:
-        2fr 1fr 1fr;
-
-      gap: 40px;
-    }
-
-    .footer-col h3 {
-      margin-bottom: 15px;
-    }
-
-    .footer-col p,
-    .footer-col a {
-      color: var(--muted);
-
-      line-height: 2;
-
-      font-size: 14px;
-    }
-
-    .footer-col a:hover {
-      color: var(--text);
-    }
-
-    .copyright {
-      text-align: center;
-
-      color: var(--muted);
-
-      margin-top: 40px;
-
-      padding-top: 20px;
-
-      border-top: 1px solid var(--border);
+      margin-top: 12px;
 
       font-size: 13px;
     }
 
 
-    /* =========================================================
-       MODAL
-    ========================================================= */
+    /* FOOTER */
+
+    footer {
+
+      border-top:
+        1px solid var(--border);
+
+      margin-top: 40px;
+
+      padding: 30px 0;
+
+      color: var(--muted);
+
+      text-align: center;
+    }
+
+
+    /* MODALS */
 
     .modal {
+
       position: fixed;
 
       inset: 0;
 
-      background: rgba(0,0,0,.65);
+      z-index: 500;
 
-      backdrop-filter: blur(8px);
+      background:
+        rgba(0,0,0,.7);
+
+      backdrop-filter:
+        blur(8px);
 
       display: flex;
 
@@ -943,166 +871,139 @@
 
       justify-content: center;
 
-      padding: 20px;
-
-      z-index: 3000;
+      padding: 15px;
     }
 
+
     .modal-box {
-      width: min(500px, 100%);
 
-      max-height: 90vh;
+      width:
+        min(
+          500px,
+          100%
+        );
 
-      overflow-y: auto;
+      max-height:
+        calc(100vh - 30px);
 
-      background: var(--bg2);
+      overflow: auto;
 
-      border: 1px solid var(--border);
+      background: var(--card);
+
+      border:
+        1px solid var(--border);
 
       border-radius: 22px;
 
-      padding: 25px;
+      padding: 22px;
 
-      box-shadow: var(--shadow);
+      box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.4);
     }
 
+
     .modal-head {
+
       display: flex;
 
-      justify-content: space-between;
-
       align-items: center;
+
+      justify-content: space-between;
 
       margin-bottom: 20px;
     }
 
+
     .close {
-      width: 38px;
-      height: 38px;
 
-      border: 1px solid var(--border);
+      width: 35px;
 
-      border-radius: 10px;
-
-      background: transparent;
-
-      color: var(--text);
-    }
-
-    .form-group {
-      margin-bottom: 14px;
-    }
-
-    .form-group label {
-      display: block;
-
-      margin-bottom: 7px;
-
-      font-size: 13px;
-
-      color: var(--muted);
-    }
-
-    .form-actions {
-      display: flex;
-
-      gap: 10px;
-
-      margin-top: 18px;
-    }
-
-
-    /* =========================================================
-       USER PANEL
-    ========================================================= */
-
-    .user-panel {
-      display: grid;
-
-      grid-template-columns:
-        220px 1fr;
-
-      gap: 20px;
-    }
-
-    .side-menu {
-      background: var(--card);
-
-      border: 1px solid var(--border);
-
-      border-radius: 18px;
-
-      padding: 12px;
-
-      height: fit-content;
-    }
-
-    .side-menu button {
-      width: 100%;
-
-      background: transparent;
+      height: 35px;
 
       border: none;
 
-      color: var(--muted);
+      border-radius: 9px;
 
-      text-align: right;
-
-      padding: 12px;
-
-      border-radius: 10px;
-
-      margin-bottom: 4px;
-    }
-
-    .side-menu button:hover,
-    .side-menu button.active {
-      background: rgba(124,58,237,.12);
+      background: var(--card2);
 
       color: var(--text);
     }
 
-    .panel-content {
-      background: var(--card);
 
-      border: 1px solid var(--border);
+    .form {
 
-      border-radius: 18px;
+      display: grid;
 
-      padding: 25px;
+      gap: 12px;
     }
 
 
-    /* =========================================================
-       ORDERS
-    ========================================================= */
+    .form label {
 
-    .order {
-      border: 1px solid var(--border);
+      font-size: 12px;
 
-      border-radius: 15px;
-
-      padding: 16px;
-
-      margin-bottom: 12px;
-
-      background:
-        rgba(255,255,255,.02);
+      color: var(--muted);
     }
 
-    .order-head {
+
+    .form-group {
+
+      display: grid;
+
+      gap: 6px;
+    }
+
+
+    .modal-actions {
+
       display: flex;
 
-      justify-content: space-between;
+      gap: 8px;
+
+      margin-top: 10px;
+    }
+
+
+    /* ORDERS */
+
+    .order-list {
+
+      display: grid;
+
+      gap: 10px;
+    }
+
+
+    .order-item {
+
+      background: var(--card2);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 14px;
+
+      padding: 15px;
+    }
+
+
+    .order-row {
+
+      display: flex;
 
       align-items: center;
 
+      justify-content: space-between;
+
       gap: 10px;
 
-      margin-bottom: 10px;
+      flex-wrap: wrap;
     }
 
+
     .status {
+
       display: inline-flex;
 
       padding: 5px 9px;
@@ -1114,66 +1015,337 @@
       font-weight: 700;
     }
 
+
     .status-pending {
-      background: rgba(245,158,11,.13);
+
+      background:
+        rgba(245,158,11,.12);
+
       color: #fbbf24;
     }
 
+
     .status-approved {
-      background: rgba(34,197,94,.13);
+
+      background:
+        rgba(34,197,94,.12);
+
       color: #4ade80;
     }
 
+
     .status-cancelled {
-      background: rgba(239,68,68,.13);
+
+      background:
+        rgba(239,68,68,.12);
+
       color: #f87171;
     }
 
 
-    /* =========================================================
-       ADMIN
-    ========================================================= */
+    /* ADMIN */
 
-    .admin-stats {
+    .admin-dashboard {
+
+      min-height:
+        calc(100vh - 70px);
+
+      padding: 25px 0;
+    }
+
+
+    .admin-layout {
+
+      display: grid;
+
+      grid-template-columns:
+        250px 1fr;
+
+      gap: 20px;
+
+      align-items: start;
+    }
+
+
+    .admin-sidebar {
+
+      background: var(--card);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 20px;
+
+      padding: 17px;
+
+      position: sticky;
+
+      top: 90px;
+
+      min-height:
+        calc(100vh - 120px);
+
+      display: flex;
+
+      flex-direction: column;
+    }
+
+
+    .admin-logo {
+
+      font-size: 20px;
+
+      font-weight: 800;
+
+      padding: 10px;
+
+      border-bottom:
+        1px solid var(--border);
+
+      margin-bottom: 18px;
+    }
+
+
+    .admin-logo small {
+
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      margin-top: 4px;
+    }
+
+
+    .admin-menu {
+
+      display: grid;
+
+      gap: 6px;
+    }
+
+
+    .admin-menu-item {
+
+      border: none;
+
+      background: transparent;
+
+      color: var(--muted);
+
+      border-radius: 11px;
+
+      padding: 12px;
+
+      display: flex;
+
+      gap: 9px;
+
+      align-items: center;
+
+      text-align: right;
+
+      width: 100%;
+
+      font-weight: 600;
+    }
+
+
+    .admin-menu-item:hover,
+    .admin-menu-item.active {
+
+      color: var(--text);
+
+      background:
+        rgba(124,58,237,.13);
+    }
+
+
+    .admin-sidebar-bottom {
+
+      margin-top: auto;
+
+      border-top:
+        1px solid var(--border);
+
+      padding-top: 12px;
+    }
+
+
+    .admin-back {
+
+      width: 100%;
+
+      border: none;
+
+      background: transparent;
+
+      color: var(--muted);
+
+      padding: 11px;
+
+      text-align: right;
+    }
+
+
+    .admin-topbar {
+
+      background: var(--card);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 20px;
+
+      padding: 20px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 15px;
+
+      margin-bottom: 18px;
+    }
+
+
+    .admin-topbar h1 {
+
+      font-size: 27px;
+    }
+
+
+    .admin-topbar p {
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      margin-top: 4px;
+    }
+
+
+    .admin-top-actions {
+
+      display: flex;
+
+      gap: 7px;
+    }
+
+
+    .admin-stat-grid {
+
       display: grid;
 
       grid-template-columns:
         repeat(4, 1fr);
 
-      gap: 15px;
+      gap: 12px;
 
-      margin-bottom: 25px;
+      margin-bottom: 18px;
     }
 
-    .admin-stat {
+
+    .dashboard-stat {
+
       background: var(--card);
 
-      border: 1px solid var(--border);
+      border:
+        1px solid var(--border);
 
-      border-radius: 16px;
+      border-radius: 17px;
 
-      padding: 20px;
+      padding: 18px;
+
+      display: flex;
+
+      gap: 12px;
+
+      align-items: center;
     }
 
-    .admin-stat strong {
+
+    .dashboard-stat-icon {
+
+      width: 48px;
+
+      height: 48px;
+
+      border-radius: 13px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background:
+        rgba(124,58,237,.12);
+
+      font-size: 23px;
+    }
+
+
+    .dashboard-stat span {
+
       display: block;
 
-      font-size: 26px;
-
-      margin-bottom: 5px;
-    }
-
-    .admin-stat span {
       color: var(--muted);
 
-      font-size: 13px;
+      font-size: 11px;
+
+      margin-bottom: 4px;
     }
 
+
+    .dashboard-stat strong {
+
+      font-size: 21px;
+    }
+
+
+    .admin-card {
+
+      background: var(--card);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 20px;
+
+      padding: 20px;
+
+      margin-bottom: 18px;
+    }
+
+
+    .admin-card-header {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      margin-bottom: 18px;
+    }
+
+
     .admin-table {
+
+      width: 100%;
+
       overflow-x: auto;
     }
 
-    table {
+
+    .admin-table table {
+
       width: 100%;
 
       border-collapse: collapse;
@@ -1181,256 +1353,213 @@
       min-width: 700px;
     }
 
-    th,
-    td {
+
+    .admin-table th,
+    .admin-table td {
+
+      padding: 12px;
+
       text-align: right;
 
-      padding: 13px;
+      border-bottom:
+        1px solid var(--border);
 
-      border-bottom: 1px solid var(--border);
-
-      font-size: 13px;
+      font-size: 12px;
     }
 
-    th {
+
+    .admin-table th {
+
       color: var(--muted);
+
+      font-weight: 600;
     }
 
 
-    /* =========================================================
-       TOAST
-    ========================================================= */
+    .admin-page {
 
-    #toast-container {
+      animation:
+        fadeIn .2s ease;
+    }
+
+
+    @keyframes fadeIn {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(5px);
+
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0);
+
+      }
+    }
+
+
+    /* TOAST */
+
+    #toastContainer {
+
       position: fixed;
 
       left: 20px;
 
       bottom: 20px;
 
-      z-index: 9999;
+      z-index: 1000;
 
-      display: flex;
+      display: grid;
 
-      flex-direction: column;
-
-      gap: 10px;
+      gap: 8px;
     }
 
+
     .toast {
-      background: #111827;
 
-      color: white;
+      background: var(--card);
 
-      border: 1px solid rgba(255,255,255,.1);
+      color: var(--text);
+
+      border:
+        1px solid var(--border);
 
       border-radius: 12px;
 
-      padding: 13px 16px;
-
-      min-width: 240px;
+      padding: 12px 15px;
 
       box-shadow: var(--shadow);
 
-      animation:
-        toastIn .25s ease;
-    }
-
-    .toast.success {
-      border-right: 4px solid var(--green);
-    }
-
-    .toast.error {
-      border-right: 4px solid var(--red);
-    }
-
-    @keyframes toastIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-
-    /* =========================================================
-       LOADER
-    ========================================================= */
-
-    .loader-wrap {
-      min-height: 180px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-    }
-
-    .loader {
-      width: 38px;
-      height: 38px;
-
-      border-radius: 50%;
-
-      border: 4px solid var(--border);
-
-      border-top-color: var(--primary);
+      font-size: 13px;
 
       animation:
-        spin .7s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+        fadeIn .2s ease;
     }
 
 
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
+    /* MOBILE */
 
-    @media (max-width: 1000px) {
+    @media(max-width: 900px) {
 
-      .account-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
+      nav {
 
-      .features {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-      .filters {
-        grid-template-columns:
-          1fr 1fr;
-      }
-
-      .admin-stats {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-    }
-
-
-    @media (max-width: 760px) {
-
-      .nav-links {
         display: none;
-
-        position: absolute;
-
-        top: 72px;
-
-        right: 4%;
-
-        left: 4%;
-
-        background: var(--bg2);
-
-        border: 1px solid var(--border);
-
-        border-radius: 16px;
-
-        padding: 15px;
-
-        flex-direction: column;
-
-        gap: 4px;
       }
 
-      .nav-links.open {
-        display: flex;
+
+      .accounts-grid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
-      .hamburger {
-        display: flex;
-      }
 
-      .hero {
-        min-height: 540px;
-      }
+      .info-grid {
 
-      .hero-stats {
         grid-template-columns:
           1fr;
       }
 
-      .promo-box {
-        flex-direction: column;
 
-        align-items: stretch;
-      }
-
-      .account-grid,
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-      .filters {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .user-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .side-menu {
-        display: grid;
+      .admin-layout {
 
         grid-template-columns:
-          repeat(2,1fr);
+          1fr;
       }
 
-      .admin-stats {
+
+      .admin-sidebar {
+
+        position: static;
+
+        min-height: auto;
+      }
+
+
+      .admin-menu {
+
         grid-template-columns:
-          1fr 1fr;
+          repeat(3, 1fr);
+      }
+
+
+      .admin-stat-grid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
     }
 
 
-    @media (max-width: 480px) {
+    @media(max-width: 600px) {
 
-      .hero h1 {
-        font-size: 42px;
+      .hero {
+
+        padding-top: 60px;
       }
 
-      .section {
-        padding: 60px 0;
+
+      .filters {
+
+        grid-template-columns:
+          1fr;
       }
 
-      .admin-stats {
-        grid-template-columns: 1fr;
+
+      .accounts-grid {
+
+        grid-template-columns:
+          1fr;
       }
 
-      .hero-buttons {
+
+      .admin-menu {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+
+      .admin-topbar {
+
+        align-items: flex-start;
+
         flex-direction: column;
       }
 
-      .hero-buttons .btn {
-        width: 100%;
+
+      .admin-stat-grid {
+
+        grid-template-columns:
+          1fr;
+      }
+
+
+      .admin-card-header {
+
+        align-items: stretch;
+
+        flex-direction: column;
       }
 
     }
 
   </style>
+
 </head>
 
 
 <body>
+
 
 <!-- =========================================================
      HEADER
@@ -1438,83 +1567,103 @@
 
 <header>
 
-  <div class="container nav">
+  <div class="container header-inner">
 
-    <a href="#home" class="logo">
-      🎮 <span>Game</span>Shop
+    <a
+      href="#home"
+      class="logo">
+
+      🎮 GameShop
+
     </a>
 
-    <nav class="nav-links" id="navLinks">
 
-      <a href="#home" data-i18n="home">
+    <nav>
+
+      <a href="#home">
         خانه
       </a>
 
-      <a href="#accounts" data-i18n="accounts">
+      <a href="#accounts">
         اکانت‌ها
       </a>
 
-      <a href="#features" data-i18n="features">
-        امکانات
+      <a href="#about">
+        درباره سایت
       </a>
 
-      <a href="#faq" data-i18n="faq">
+      <a href="#faq">
         سوالات
-      </a>
-
-      <a href="#support" data-i18n="support">
-        پشتیبانی
       </a>
 
     </nav>
 
+
     <div class="nav-actions">
+
+      <!-- ADMIN -->
+
+      <button
+        id="adminButton"
+        class="icon-btn hidden"
+        onclick="openAdmin()"
+        title="پنل مدیریت">
+
+        🛠️
+
+      </button>
+
+
+      <!-- LANGUAGE -->
 
       <button
         class="icon-btn"
         onclick="toggleLanguage()"
-        id="languageBtn"
-        title="Language">
+        id="languageButton">
 
         EN
 
       </button>
 
+
+      <!-- THEME -->
+
       <button
         class="icon-btn"
-        onclick="toggleTheme()"
-        id="themeBtn"
-        title="Theme">
+        onclick="toggleTheme()">
 
         🌙
 
       </button>
 
+
+      <!-- CART -->
+
       <button
         class="icon-btn"
-        onclick="openCart()">
+        onclick="openCart()"
+        style="position:relative">
 
         🛒
 
-        <span id="cartCount">
+        <span
+          id="cartCount"
+          class="cart-count hidden">
+
           0
+
         </span>
 
       </button>
+
+
+      <!-- PROFILE -->
 
       <button
         class="icon-btn"
         onclick="openAuthOrProfile()">
 
         👤
-
-      </button>
-
-      <button
-        class="icon-btn hamburger"
-        onclick="toggleMenu()">
-
-        ☰
 
       </button>
 
@@ -1526,130 +1675,63 @@
 
 
 <!-- =========================================================
-     HERO
+     STORE
 ========================================================= -->
 
-<main id="home">
+<main id="storeContent">
 
-  <section class="hero">
+
+  <!-- HERO -->
+
+  <section
+    id="home"
+    class="hero">
 
     <div class="container">
 
-      <div class="hero-content">
+      <div class="hero-badge">
 
-        <div class="badge">
-          ⚡ GameShop Gaming Store
-        </div>
-
-        <h1 data-i18n="heroTitle">
-          دنیای جدید
-          <span>گیمینگ</span>
-          تو از اینجا شروع میشه
-        </h1>
-
-        <p data-i18n="heroText">
-          خرید و فروش اکانت‌های گیمینگ با طراحی حرفه‌ای،
-          پنل کاربری، سفارش‌ها، علاقه‌مندی‌ها و پشتیبانی.
-        </p>
-
-        <div class="hero-buttons">
-
-          <a
-            href="#accounts"
-            class="btn btn-primary"
-            data-i18n="browseAccounts">
-
-            مشاهده اکانت‌ها
-
-          </a>
-
-          <button
-            class="btn btn-secondary"
-            onclick="openAuthOrProfile()"
-            data-i18n="myAccount">
-
-            حساب من
-
-          </button>
-
-        </div>
-
-
-        <div class="hero-stats">
-
-          <div class="stat-box">
-
-            <strong id="heroAccountCount">
-              0
-            </strong>
-
-            <span data-i18n="accountsAvailable">
-              اکانت ثبت شده
-            </span>
-
-          </div>
-
-          <div class="stat-box">
-
-            <strong>
-              24/7
-            </strong>
-
-            <span data-i18n="supportAvailable">
-              پشتیبانی
-            </span>
-
-          </div>
-
-          <div class="stat-box">
-
-            <strong>
-              🔒
-            </strong>
-
-            <span data-i18n="secure">
-              سیستم امن
-            </span>
-
-          </div>
-
-        </div>
+        🎮 Gaming Marketplace
 
       </div>
 
-    </div>
 
-  </section>
+      <h1>
+
+        فروشگاه حرفه‌ای
+
+        <span class="gradient">
+          اکانت گیم
+        </span>
+
+      </h1>
 
 
-  <!-- =======================================================
-       PROMO
-  ======================================================= -->
+      <p>
 
-  <section class="promo">
+        اکانت‌های گیمینگ را مشاهده کنید،
+        اکانت موردنظر خود را به سبد خرید
+        اضافه کنید و سفارش خود را ثبت کنید.
 
-    <div class="container">
+      </p>
 
-      <div class="promo-box">
 
-        <div>
-
-          <strong data-i18n="promoTitle">
-            🎁 اکانت خودت رو هم می‌خوای بفروشی؟
-          </strong>
-
-          <p data-i18n="promoText">
-            برای فروش اکانت با پشتیبانی تماس بگیر.
-          </p>
-
-        </div>
+      <div class="hero-actions">
 
         <a
-          href="tel:09339232786"
-          class="btn btn-success"
-          data-i18n="contactSupport">
+          href="#accounts"
+          class="btn btn-primary">
 
-          تماس با پشتیبانی
+          🎮 مشاهده اکانت‌ها
+
+        </a>
+
+
+        <a
+          href="#about"
+          class="btn btn-secondary">
+
+          درباره GameShop
 
         </a>
 
@@ -1660,25 +1742,27 @@
   </section>
 
 
-  <!-- =======================================================
-       ACCOUNTS
-  ======================================================= -->
+  <!-- ACCOUNTS -->
 
   <section
-    class="section"
-    id="accounts">
+    id="accounts"
+    class="section">
 
     <div class="container">
 
-      <div class="section-title">
+      <div class="section-head">
 
-        <h2 data-i18n="accountsTitle">
-          اکانت‌ها
-        </h2>
+        <div>
 
-        <p data-i18n="accountsSubtitle">
-          اکانت موردنظرت رو پیدا کن.
-        </p>
+          <h2>
+            🎮 اکانت‌ها
+          </h2>
+
+          <p>
+            اکانت‌های موجود فروشگاه
+          </p>
+
+        </div>
 
       </div>
 
@@ -1686,19 +1770,19 @@
       <div class="filters">
 
         <input
+          id="accountSearch"
           class="input"
-          id="searchInput"
-          oninput="applyFilters()"
-          data-i18n-placeholder="search"
-          placeholder="جستجوی اکانت یا بازی...">
+          placeholder="🔎 جستجوی اکانت..."
+          oninput="renderAccounts()"
+        >
 
 
         <select
-          class="select"
           id="gameFilter"
-          onchange="applyFilters()">
+          class="select"
+          onchange="renderAccounts()">
 
-          <option value="" data-i18n="allGames">
+          <option value="">
             همه بازی‌ها
           </option>
 
@@ -1706,52 +1790,20 @@
 
 
         <select
-          class="select"
-          id="statusFilter"
-          onchange="applyFilters()">
-
-          <option value="all" data-i18n="allStatus">
-            همه وضعیت‌ها
-          </option>
-
-          <option
-            value="available"
-            data-i18n="available">
-
-            موجود
-
-          </option>
-
-          <option
-            value="unavailable"
-            data-i18n="unavailable">
-
-            ناموجود
-
-          </option>
-
-        </select>
-
-
-        <select
-          class="select"
           id="sortFilter"
-          onchange="applyFilters()">
+          class="select"
+          onchange="renderAccounts()">
 
-          <option value="newest" data-i18n="newest">
+          <option value="newest">
             جدیدترین
           </option>
 
-          <option value="cheap" data-i18n="cheap">
+          <option value="priceLow">
             ارزان‌ترین
           </option>
 
-          <option value="expensive" data-i18n="expensive">
+          <option value="priceHigh">
             گران‌ترین
-          </option>
-
-          <option value="name" data-i18n="name">
-            نام
           </option>
 
         </select>
@@ -1759,13 +1811,9 @@
       </div>
 
 
-      <div id="accountsContainer">
-
-        <div class="loader-wrap">
-
-          <div class="loader"></div>
-
-        </div>
+      <div
+        id="accountsGrid"
+        class="accounts-grid">
 
       </div>
 
@@ -1774,94 +1822,88 @@
   </section>
 
 
-  <!-- =======================================================
-       FEATURES
-  ======================================================= -->
+  <!-- ABOUT -->
 
   <section
-    class="section"
-    id="features">
+    id="about"
+    class="section">
 
     <div class="container">
 
-      <div class="section-title">
+      <div class="section-head">
 
-        <h2 data-i18n="featuresTitle">
-          امکانات GameShop
-        </h2>
+        <div>
 
-        <p data-i18n="featuresSubtitle">
-          همه چیز برای یک فروشگاه گیمینگ حرفه‌ای
-        </p>
+          <h2>
+            درباره GameShop
+          </h2>
+
+        </div>
 
       </div>
 
 
-      <div class="features">
+      <div class="info-grid">
 
-        <div class="feature">
 
-          <div class="feature-icon">
-            🔐
+        <div class="info-card">
+
+          <div class="info-card-icon">
+            🎮
           </div>
 
-          <h3 data-i18n="feature1Title">
-            حساب کاربری
+          <h3>
+            خرید اکانت
           </h3>
 
-          <p data-i18n="feature1Text">
-            ثبت‌نام، ورود، سفارش‌ها و علاقه‌مندی‌ها.
+          <p>
+
+            اگر اکانتی برای خرید نیاز دارید،
+            محصولات موجود را مشاهده کنید
+            و در صورت موجود بودن سفارش دهید.
+
           </p>
 
         </div>
 
 
-        <div class="feature">
+        <div class="info-card">
 
-          <div class="feature-icon">
-            🛒
+          <div class="info-card-icon">
+            💰
           </div>
 
-          <h3 data-i18n="feature2Title">
-            سبد خرید
+          <h3>
+            فروش اکانت
           </h3>
 
-          <p data-i18n="feature2Text">
-            اکانت‌ها را ذخیره و یکجا سفارش بده.
+          <p>
+
+            برای فروش اکانت می‌توانید
+            با پشتیبانی GameShop تماس بگیرید.
+
           </p>
 
         </div>
 
 
-        <div class="feature">
+        <div class="info-card">
 
-          <div class="feature-icon">
-            ⚙️
+          <div class="info-card-icon">
+            🛡️
           </div>
 
-          <h3 data-i18n="feature3Title">
-            پنل مدیریت
+          <h3>
+            امنیت
           </h3>
 
-          <p data-i18n="feature3Text">
-            مدیریت اکانت‌ها و سفارش‌ها.
-          </p>
+          <p>
 
-        </div>
+            اطلاعات ورود بازی‌ها را
+            داخل این سایت ذخیره نکنید.
+            اکانت‌های سرقتی یا هکی نیز
+            نباید در فروشگاه قرار بگیرند.
 
-
-        <div class="feature">
-
-          <div class="feature-icon">
-            🌍
-          </div>
-
-          <h3 data-i18n="feature4Title">
-            دو زبانه
-          </h3>
-
-          <p data-i18n="feature4Text">
-            فارسی و انگلیسی.
           </p>
 
         </div>
@@ -1873,21 +1915,23 @@
   </section>
 
 
-  <!-- =======================================================
-       FAQ
-  ======================================================= -->
+  <!-- FAQ -->
 
   <section
-    class="section"
-    id="faq">
+    id="faq"
+    class="section">
 
     <div class="container">
 
-      <div class="section-title">
+      <div class="section-head">
 
-        <h2 data-i18n="faqTitle">
-          سوالات متداول
-        </h2>
+        <div>
+
+          <h2>
+            ❓ سوالات متداول
+          </h2>
+
+        </div>
 
       </div>
 
@@ -1895,110 +1939,51 @@
       <div class="faq">
 
 
-        <div class="faq-item">
+        <details class="faq-item">
 
-          <button
-            class="faq-question"
-            onclick="toggleFaq(this)">
+          <summary>
+            چطور اکانت بخرم؟
+          </summary>
 
-            <span data-i18n="faq1Q">
-              چطور اکانت بخرم؟
-            </span>
+          <p>
 
-            <span>
-              +
-            </span>
+            اکانت موردنظر را انتخاب کرده،
+            به سبد اضافه کنید و سفارش را ثبت کنید.
 
-          </button>
+          </p>
 
-          <div class="faq-answer"
-               data-i18n="faq1A">
-
-            اکانت موردنظر را انتخاب کنید و
-            مراحل سفارش را انجام دهید.
-
-          </div>
-
-        </div>
+        </details>
 
 
-        <div class="faq-item">
+        <details class="faq-item">
 
-          <button
-            class="faq-question"
-            onclick="toggleFaq(this)">
+          <summary>
+            چطور اکانت بفروشم؟
+          </summary>
 
-            <span data-i18n="faq2Q">
-              چطور اکانتم را بفروشم؟
-            </span>
-
-            <span>
-              +
-            </span>
-
-          </button>
-
-          <div class="faq-answer"
-               data-i18n="faq2A">
+          <p>
 
             برای فروش اکانت با پشتیبانی تماس بگیرید.
 
-          </div>
+          </p>
 
-        </div>
-
-
-        <div class="faq-item">
-
-          <button
-            class="faq-question"
-            onclick="toggleFaq(this)">
-
-            <span data-i18n="faq3Q">
-              آیا اطلاعات حساب من امن است؟
-            </span>
-
-            <span>
-              +
-            </span>
-
-          </button>
-
-          <div class="faq-answer"
-               data-i18n="faq3A">
-
-            سیستم احراز هویت با Supabase انجام می‌شود
-            و اطلاعات حساس نباید در سایت ذخیره شود.
-
-          </div>
-
-        </div>
+        </details>
 
 
-        <div class="faq-item">
+        <details class="faq-item">
 
-          <button
-            class="faq-question"
-            onclick="toggleFaq(this)">
+          <summary>
+            وضعیت سفارش از کجا مشخص می‌شود؟
+          </summary>
 
-            <span data-i18n="faq4Q">
-              پشتیبانی چه زمانی پاسخ می‌دهد؟
-            </span>
+          <p>
 
-            <span>
-              +
-            </span>
+            بعد از ورود به حساب کاربری،
+            سفارش‌های شما در قسمت سفارش‌ها نمایش داده می‌شوند.
 
-          </button>
+          </p>
 
-          <div class="faq-answer"
-               data-i18n="faq4A">
-
-            پشتیبانی معمولاً بین ۱ تا ۲۴ ساعت پاسخ می‌دهد.
-
-          </div>
-
-        </div>
+        </details>
 
       </div>
 
@@ -2010,94 +1995,438 @@
 
 
 <!-- =========================================================
-     FOOTER
+     ADMIN DASHBOARD
 ========================================================= -->
 
-<footer id="support">
+<section
+  id="adminDashboard"
+  class="admin-dashboard hidden">
 
   <div class="container">
 
-    <div class="footer-grid">
+    <div class="admin-layout">
 
-      <div class="footer-col">
 
-        <div class="logo">
-          🎮 <span>Game</span>Shop
+      <!-- SIDEBAR -->
+
+      <aside class="admin-sidebar">
+
+        <div class="admin-logo">
+
+          🎮 GameShop
+
+          <small>
+            Admin Panel
+          </small>
+
         </div>
 
-        <p
-          data-i18n="footerDescription"
-          style="margin-top:15px">
 
-          فروشگاه اکانت‌های گیمینگ
-          با امکانات حرفه‌ای.
+        <nav class="admin-menu">
 
-        </p>
+          <button
+            class="admin-menu-item active"
+            onclick="showAdminPage('dashboard', this)">
 
-      </div>
+            📊
+            داشبورد
 
-
-      <div class="footer-col">
-
-        <h3 data-i18n="quickLinks">
-          لینک سریع
-        </h3>
-
-        <a href="#home"
-           data-i18n="home">
-          خانه
-        </a>
-
-        <br>
-
-        <a href="#accounts"
-           data-i18n="accounts">
-          اکانت‌ها
-        </a>
-
-        <br>
-
-        <a href="#faq"
-           data-i18n="faq">
-          سوالات متداول
-        </a>
-
-      </div>
+          </button>
 
 
-      <div class="footer-col">
+          <button
+            class="admin-menu-item"
+            onclick="showAdminPage('users', this)">
 
-        <h3 data-i18n="support">
-          پشتیبانی
-        </h3>
+            👥
+            کاربران
 
-        <a href="tel:09339232786">
-          📞 09339232786
-        </a>
-
-        <br>
-
-        <span data-i18n="supportTime">
-          پاسخگویی ۱ تا ۲۴ ساعت
-        </span>
-
-      </div>
-
-    </div>
+          </button>
 
 
-    <div class="copyright">
+          <button
+            class="admin-menu-item"
+            onclick="showAdminPage('orders', this)">
 
-      © 2026 GameShop.
-      <span data-i18n="allRights">
-        تمام حقوق محفوظ است.
-      </span>
+            📦
+            سفارش‌ها
+
+          </button>
+
+
+          <button
+            class="admin-menu-item"
+            onclick="showAdminPage('accounts', this)">
+
+            🎮
+            اکانت‌ها
+
+          </button>
+
+
+          <button
+            class="admin-menu-item"
+            onclick="showAdminPage('coupons', this)">
+
+            🎟️
+            کوپن‌ها
+
+          </button>
+
+
+          <button
+            class="admin-menu-item"
+            onclick="showAdminPage('settings', this)">
+
+            ⚙️
+            تنظیمات
+
+          </button>
+
+        </nav>
+
+
+        <div class="admin-sidebar-bottom">
+
+          <button
+            class="admin-back"
+            onclick="closeAdminDashboard()">
+
+            ← بازگشت به فروشگاه
+
+          </button>
+
+        </div>
+
+      </aside>
+
+
+      <!-- ADMIN MAIN -->
+
+      <main class="admin-main">
+
+
+        <div class="admin-topbar">
+
+          <div>
+
+            <h1 id="adminPageTitle">
+              داشبورد
+            </h1>
+
+            <p>
+              GameShop Management
+            </p>
+
+          </div>
+
+
+          <div class="admin-top-actions">
+
+            <button
+              class="btn btn-secondary"
+              onclick="loadAdminData()">
+
+              🔄 بروزرسانی
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- DASHBOARD -->
+
+        <section
+          id="adminPageDashboard"
+          class="admin-page">
+
+
+          <div class="admin-stat-grid">
+
+
+            <div class="dashboard-stat">
+
+              <div class="dashboard-stat-icon">
+                🎮
+              </div>
+
+              <div>
+
+                <span>
+                  اکانت‌ها
+                </span>
+
+                <strong id="dashboardAccounts">
+                  0
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="dashboard-stat">
+
+              <div class="dashboard-stat-icon">
+                👥
+              </div>
+
+              <div>
+
+                <span>
+                  کاربران
+                </span>
+
+                <strong id="dashboardUsers">
+                  0
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="dashboard-stat">
+
+              <div class="dashboard-stat-icon">
+                📦
+              </div>
+
+              <div>
+
+                <span>
+                  سفارش‌ها
+                </span>
+
+                <strong id="dashboardOrders">
+                  0
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="dashboard-stat">
+
+              <div class="dashboard-stat-icon">
+                💰
+              </div>
+
+              <div>
+
+                <span>
+                  درآمد
+                </span>
+
+                <strong id="dashboardRevenue">
+                  0
+                </strong>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="admin-card">
+
+            <div class="admin-card-header">
+
+              <h2>
+                📈 سفارش‌های اخیر
+              </h2>
+
+            </div>
+
+
+            <div
+              id="dashboardRecentOrders"
+              class="admin-table">
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- USERS -->
+
+        <section
+          id="adminPageUsers"
+          class="admin-page hidden">
+
+          <div class="admin-card">
+
+            <div class="admin-card-header">
+
+              <h2>
+                👥 کاربران
+              </h2>
+
+              <input
+                id="userSearch"
+                class="input"
+                placeholder="جستجوی کاربر..."
+                oninput="filterAdminUsers()">
+
+            </div>
+
+
+            <div
+              id="adminUsersTable"
+              class="admin-table">
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ORDERS -->
+
+        <section
+          id="adminPageOrders"
+          class="admin-page hidden">
+
+          <div class="admin-card">
+
+            <div class="admin-card-header">
+
+              <h2>
+                📦 سفارش‌ها
+              </h2>
+
+              <input
+                id="orderSearch"
+                class="input"
+                placeholder="جستجوی سفارش..."
+                oninput="filterAdminOrders()">
+
+            </div>
+
+
+            <div
+              id="adminOrdersTable"
+              class="admin-table">
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ACCOUNTS -->
+
+        <section
+          id="adminPageAccounts"
+          class="admin-page hidden">
+
+          <div class="admin-card">
+
+            <div class="admin-card-header">
+
+              <h2>
+                🎮 مدیریت اکانت‌ها
+              </h2>
+
+              <button
+                class="btn btn-primary"
+                onclick="openAddAccount()">
+
+                + افزودن اکانت
+
+              </button>
+
+            </div>
+
+
+            <div
+              id="adminAccountsTable"
+              class="admin-table">
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- COUPONS -->
+
+        <section
+          id="adminPageCoupons"
+          class="admin-page hidden">
+
+          <div class="admin-card">
+
+            <div class="admin-card-header">
+
+              <h2>
+                🎟️ کوپن‌ها
+              </h2>
+
+              <button
+                class="btn btn-primary"
+                onclick="createCoupon()">
+
+                + ایجاد کوپن
+
+              </button>
+
+            </div>
+
+
+            <div
+              id="adminCouponsTable"
+              class="admin-table">
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- SETTINGS -->
+
+        <section
+          id="adminPageSettings"
+          class="admin-page hidden">
+
+          <div class="admin-card">
+
+            <h2>
+              ⚙️ تنظیمات
+            </h2>
+
+            <br>
+
+            <button
+              class="btn btn-secondary"
+              onclick="toggleTheme()">
+
+              🌙 تغییر حالت نمایش
+
+            </button>
+
+          </div>
+
+        </section>
+
+      </main>
 
     </div>
 
   </div>
 
-</footer>
+</section>
 
 
 <!-- =========================================================
@@ -2105,15 +2434,14 @@
 ========================================================= -->
 
 <div
-  class="modal hidden"
-  id="authModal">
+  id="authModal"
+  class="modal hidden">
 
   <div class="modal-box">
 
     <div class="modal-head">
 
-      <h2 id="authTitle"
-          data-i18n="login">
+      <h2 id="authTitle">
         ورود
       </h2>
 
@@ -2121,86 +2449,86 @@
         class="close"
         onclick="closeModal('authModal')">
 
-        ×
+        ✕
 
       </button>
 
     </div>
 
 
-    <div id="authError"
-         class="hidden"
-         style="
-           color:#f87171;
-           margin-bottom:12px;
-         ">
-    </div>
+    <form
+      id="authForm"
+      class="form"
+      onsubmit="submitAuth(event)">
 
 
-    <div id="registerUsernameGroup"
-         class="form-group hidden">
+      <div
+        id="usernameGroup"
+        class="form-group hidden">
 
-      <label data-i18n="username">
-        نام کاربری
-      </label>
+        <label>
+          نام کاربری
+        </label>
 
-      <input
-        class="input"
-        id="authUsername"
-        type="text">
+        <input
+          id="authUsername"
+          class="input">
 
-    </div>
-
-
-    <div class="form-group">
-
-      <label data-i18n="email">
-        ایمیل
-      </label>
-
-      <input
-        class="input"
-        id="authEmail"
-        type="email">
-
-    </div>
+      </div>
 
 
-    <div class="form-group">
+      <div class="form-group">
 
-      <label data-i18n="password">
-        رمز عبور
-      </label>
+        <label>
+          ایمیل
+        </label>
 
-      <input
-        class="input"
-        id="authPassword"
-        type="password">
+        <input
+          id="authEmail"
+          type="email"
+          class="input"
+          required>
 
-    </div>
+      </div>
 
 
-    <div class="form-actions">
+      <div class="form-group">
+
+        <label>
+          رمز عبور
+        </label>
+
+        <input
+          id="authPassword"
+          type="password"
+          class="input"
+          required
+          minlength="6">
+
+      </div>
+
 
       <button
         class="btn btn-primary"
-        id="authSubmitBtn"
-        onclick="submitAuth()">
+        type="submit"
+        id="authSubmit">
 
         ورود
 
       </button>
 
+
       <button
+        type="button"
         class="btn btn-secondary"
         onclick="toggleAuthMode()"
-        id="authSwitchBtn">
+        id="authSwitch">
 
-        ثبت‌نام
+        ایجاد حساب
 
       </button>
 
-    </div>
+    </form>
 
   </div>
 
@@ -2212,176 +2540,29 @@
 ========================================================= -->
 
 <div
-  class="modal hidden"
-  id="profileModal">
+  id="profileModal"
+  class="modal hidden">
 
   <div class="modal-box">
 
     <div class="modal-head">
 
-      <h2 data-i18n="profile">
-        حساب کاربری
+      <h2>
+        👤 حساب کاربری
       </h2>
 
       <button
         class="close"
         onclick="closeModal('profileModal')">
 
-        ×
+        ✕
 
       </button>
 
     </div>
 
 
-    <div class="user-panel">
-
-      <div class="side-menu">
-
-        <button
-          class="active"
-          onclick="showProfileTab('profileTab',this)"
-          data-i18n="profile">
-
-          👤 حساب
-
-        </button>
-
-        <button
-          onclick="showProfileTab('ordersTab',this)"
-          data-i18n="orders">
-
-          📦 سفارش‌ها
-
-        </button>
-
-        <button
-          onclick="showProfileTab('favoritesTab',this)"
-          data-i18n="favorites">
-
-          ❤️ علاقه‌مندی‌ها
-
-        </button>
-
-        <button
-          onclick="showProfileTab('cartTab',this)"
-          data-i18n="cart">
-
-          🛒 سبد خرید
-
-        </button>
-
-        <button
-          onclick="logout()"
-          data-i18n="logout">
-
-          🚪 خروج
-
-        </button>
-
-      </div>
-
-
-      <div class="panel-content">
-
-        <!-- PROFILE -->
-
-        <div id="profileTab">
-
-          <h3 data-i18n="accountInfo">
-            اطلاعات حساب
-          </h3>
-
-          <br>
-
-          <p>
-            <span data-i18n="username">
-              نام کاربری
-            </span>:
-            <strong id="profileUsername">
-              -
-            </strong>
-          </p>
-
-          <br>
-
-          <p>
-            <span data-i18n="email">
-              ایمیل
-            </span>:
-            <strong id="profileEmail">
-              -
-            </strong>
-          </p>
-
-          <br>
-
-          <p>
-            <span data-i18n="role">
-              نقش
-            </span>:
-            <strong id="profileRole">
-              user
-            </strong>
-          </p>
-
-        </div>
-
-
-        <!-- ORDERS -->
-
-        <div
-          id="ordersTab"
-          class="hidden">
-
-          <h3 data-i18n="orders">
-            سفارش‌ها
-          </h3>
-
-          <br>
-
-          <div id="userOrders">
-          </div>
-
-        </div>
-
-
-        <!-- FAVORITES -->
-
-        <div
-          id="favoritesTab"
-          class="hidden">
-
-          <h3 data-i18n="favorites">
-            علاقه‌مندی‌ها
-          </h3>
-
-          <br>
-
-          <div id="favoriteAccounts">
-          </div>
-
-        </div>
-
-
-        <!-- CART -->
-
-        <div
-          id="cartTab"
-          class="hidden">
-
-          <h3 data-i18n="cart">
-            سبد خرید
-          </h3>
-
-          <br>
-
-          <div id="profileCart">
-          </div>
-
-        </div>
-
-      </div>
+    <div id="profileContent">
 
     </div>
 
@@ -2395,265 +2576,29 @@
 ========================================================= -->
 
 <div
-  class="modal hidden"
-  id="cartModal">
+  id="cartModal"
+  class="modal hidden">
 
   <div class="modal-box">
 
     <div class="modal-head">
 
-      <h2 data-i18n="cart">
-        سبد خرید
+      <h2>
+        🛒 سبد خرید
       </h2>
 
       <button
         class="close"
         onclick="closeModal('cartModal')">
 
-        ×
+        ✕
 
       </button>
 
     </div>
 
 
-    <div id="cartItems">
-    </div>
-
-
-    <div
-      id="cartTotal"
-      style="
-        margin-top:20px;
-        font-size:20px;
-        font-weight:800;
-      ">
-
-    </div>
-
-
-    <button
-      class="btn btn-primary"
-      style="width:100%;margin-top:15px"
-      onclick="checkout()"
-      data-i18n="checkout">
-
-      ثبت سفارش
-
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- =========================================================
-     ADMIN MODAL
-========================================================= -->
-
-<div
-  class="modal hidden"
-  id="adminModal">
-
-  <div
-    class="modal-box"
-    style="width:min(1100px,100%)">
-
-    <div class="modal-head">
-
-      <h2>
-        🛠️
-        <span data-i18n="adminPanel">
-          پنل مدیریت
-        </span>
-      </h2>
-
-      <button
-        class="close"
-        onclick="closeModal('adminModal')">
-
-        ×
-
-      </button>
-
-    </div>
-
-
-    <div class="admin-stats">
-
-      <div class="admin-stat">
-
-        <strong id="adminAccounts">
-          0
-        </strong>
-
-        <span data-i18n="accounts">
-          اکانت‌ها
-        </span>
-
-      </div>
-
-
-      <div class="admin-stat">
-
-        <strong id="adminUsers">
-          0
-        </strong>
-
-        <span data-i18n="users">
-          کاربران
-        </span>
-
-      </div>
-
-
-      <div class="admin-stat">
-
-        <strong id="adminOrders">
-          0
-        </strong>
-
-        <span data-i18n="orders">
-          سفارش‌ها
-        </span>
-
-      </div>
-
-
-      <div class="admin-stat">
-
-        <strong id="adminRevenue">
-          0
-        </strong>
-
-        <span data-i18n="revenue">
-          درآمد
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <div style="
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom:20px;
-    ">
-
-      <button
-        class="btn btn-primary"
-        onclick="openAddAccount()"
-        data-i18n="addAccount">
-
-        + افزودن اکانت
-
-      </button>
-
-      <button
-        class="btn btn-secondary"
-        onclick="loadAdminData()"
-        data-i18n="refresh">
-
-        🔄 بروزرسانی
-
-      </button>
-
-    </div>
-
-
-    <h3 data-i18n="manageAccounts">
-      مدیریت اکانت‌ها
-    </h3>
-
-    <br>
-
-    <div class="admin-table">
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th data-i18n="name">
-              نام
-            </th>
-
-            <th data-i18n="game">
-              بازی
-            </th>
-
-            <th data-i18n="price">
-              قیمت
-            </th>
-
-            <th data-i18n="status">
-              وضعیت
-            </th>
-
-            <th data-i18n="actions">
-              عملیات
-            </th>
-
-          </tr>
-
-        </thead>
-
-        <tbody id="adminAccountsTable">
-        </tbody>
-
-      </table>
-
-    </div>
-
-
-    <br><br>
-
-
-    <h3 data-i18n="manageOrders">
-      مدیریت سفارش‌ها
-    </h3>
-
-    <br>
-
-    <div class="admin-table">
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>
-              ID
-            </th>
-
-            <th data-i18n="user">
-              کاربر
-            </th>
-
-            <th data-i18n="price">
-              مبلغ
-            </th>
-
-            <th data-i18n="status">
-              وضعیت
-            </th>
-
-            <th data-i18n="actions">
-              عملیات
-            </th>
-
-          </tr>
-
-        </thead>
-
-        <tbody id="adminOrdersTable">
-        </tbody>
-
-      </table>
+    <div id="cartContent">
 
     </div>
 
@@ -2663,178 +2608,193 @@
 
 
 <!-- =========================================================
-     ACCOUNT FORM MODAL
+     ACCOUNT FORM
 ========================================================= -->
 
 <div
-  class="modal hidden"
-  id="accountFormModal">
+  id="accountModal"
+  class="modal hidden">
 
   <div class="modal-box">
 
     <div class="modal-head">
 
-      <h2 id="accountFormTitle">
+      <h2 id="accountModalTitle">
         افزودن اکانت
       </h2>
 
       <button
         class="close"
-        onclick="closeModal('accountFormModal')">
+        onclick="closeModal('accountModal')">
 
-        ×
+        ✕
 
       </button>
 
     </div>
 
 
-    <input
-      type="hidden"
-      id="accountId">
+    <form
+      class="form"
+      onsubmit="saveAccount(event)">
 
-
-    <div class="form-group">
-
-      <label data-i18n="name">
-        نام
-      </label>
 
       <input
-        class="input"
-        id="accountTitle">
-
-    </div>
+        id="accountId"
+        type="hidden">
 
 
-    <div class="form-group">
+      <div class="form-group">
 
-      <label data-i18n="game">
-        بازی
-      </label>
+        <label>
+          نام اکانت
+        </label>
 
-      <input
-        class="input"
-        id="accountGame">
+        <input
+          id="accountTitle"
+          class="input"
+          required>
 
-    </div>
-
-
-    <div class="form-group">
-
-      <label data-i18n="description">
-        توضیحات
-      </label>
-
-      <textarea
-        class="textarea"
-        id="accountDescription"
-        rows="4">
-      </textarea>
-
-    </div>
+      </div>
 
 
-    <div class="form-group">
+      <div class="form-group">
 
-      <label data-i18n="price">
-        قیمت
-      </label>
+        <label>
+          بازی
+        </label>
 
-      <input
-        class="input"
-        id="accountPrice"
-        type="number"
-        min="0">
+        <input
+          id="accountGame"
+          class="input"
+          required>
 
-    </div>
-
-
-    <div class="form-group">
-
-      <label data-i18n="level">
-        لول
-      </label>
-
-      <input
-        class="input"
-        id="accountLevel">
-
-    </div>
+      </div>
 
 
-    <div class="form-group">
+      <div class="form-group">
 
-      <label data-i18n="skins">
-        اسکین
-      </label>
+        <label>
+          توضیحات
+        </label>
 
-      <input
-        class="input"
-        id="accountSkins">
+        <textarea
+          id="accountDescription"
+          rows="3">
 
-    </div>
+        </textarea>
 
-
-    <div class="form-group">
-
-      <label data-i18n="status">
-        وضعیت
-      </label>
-
-      <select
-        class="select"
-        id="accountStatus">
-
-        <option value="available"
-                data-i18n="available">
-          موجود
-        </option>
-
-        <option value="unavailable"
-                data-i18n="unavailable">
-          ناموجود
-        </option>
-
-      </select>
-
-    </div>
+      </div>
 
 
-    <div class="form-group">
+      <div class="form-group">
 
-      <label data-i18n="image">
-        لینک تصویر
-      </label>
+        <label>
+          قیمت
+        </label>
 
-      <input
-        class="input"
-        id="accountImage">
+        <input
+          id="accountPrice"
+          type="number"
+          min="0"
+          class="input"
+          value="0">
 
-    </div>
+      </div>
 
 
-    <button
-      class="btn btn-primary"
-      style="width:100%"
-      onclick="saveAccount()"
-      data-i18n="save">
+      <div class="form-group">
 
-      ذخیره
+        <label>
+          لول
+        </label>
 
-    </button>
+        <input
+          id="accountLevel"
+          class="input"
+          value="نامعلوم">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          اسکین
+        </label>
+
+        <input
+          id="accountSkins"
+          class="input"
+          value="نامعلوم">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          وضعیت
+        </label>
+
+        <select
+          id="accountStatus"
+          class="select">
+
+          <option value="available">
+            موجود
+          </option>
+
+          <option value="unavailable">
+            ناموجود
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+        class="btn btn-primary"
+        type="submit">
+
+        💾 ذخیره
+
+      </button>
+
+    </form>
 
   </div>
 
 </div>
 
 
-<div id="toast-container"></div>
+<div id="toastContainer"></div>
 
 
-<script>
+<footer>
 
-/* ============================================================
+  <div class="container">
+
+    🎮 GameShop
+
+    <br>
+
+    <span>
+      پشتیبانی:
+      09339232786
+    </span>
+
+    <br><br>
+
+    © 2026 GameShop
+
+  </div>
+
+</footer>
+
+
+<script>/* ============================================================
    SUPABASE
 ============================================================ */
 
@@ -2856,758 +2816,74 @@ const supabaseClient =
 ============================================================ */
 
 let currentUser = null;
+
 let currentProfile = null;
 
 let accounts = [];
-let filteredAccounts = [];
 
 let favorites = [];
 
-let cart =
-  JSON.parse(
-    localStorage.getItem("gameshop_cart") || "[]"
-  );
-
-let currentLanguage =
-  localStorage.getItem("gameshop_language") || "fa";
-
-let currentTheme =
-  localStorage.getItem("gameshop_theme") || "dark";
+let cart = [];
 
 let authMode = "login";
 
+let currentLanguage =
+  localStorage.getItem("gameshop_language")
+  || "fa";
+
 
 /* ============================================================
-   TRANSLATIONS
+   HELPERS
 ============================================================ */
 
-const translations = {
-
-  fa: {
-
-    home: "خانه",
-    accounts: "اکانت‌ها",
-    features: "امکانات",
-    faq: "سوالات",
-    support: "پشتیبانی",
-
-    heroTitle:
-      "دنیای جدید گیمینگ تو از اینجا شروع میشه",
-
-    heroText:
-      "خرید و فروش اکانت‌های گیمینگ با طراحی حرفه‌ای، پنل کاربری، سفارش‌ها، علاقه‌مندی‌ها و پشتیبانی.",
-
-    browseAccounts:
-      "مشاهده اکانت‌ها",
-
-    myAccount:
-      "حساب من",
-
-    accountsAvailable:
-      "اکانت ثبت شده",
-
-    supportAvailable:
-      "پشتیبانی",
-
-    secure:
-      "سیستم امن",
-
-    promoTitle:
-      "🎁 اکانت خودت رو هم می‌خوای بفروشی؟",
-
-    promoText:
-      "برای فروش اکانت با پشتیبانی تماس بگیر.",
-
-    contactSupport:
-      "تماس با پشتیبانی",
-
-    accountsTitle:
-      "اکانت‌ها",
-
-    accountsSubtitle:
-      "اکانت موردنظرت رو پیدا کن.",
-
-    search:
-      "جستجوی اکانت یا بازی...",
-
-    allGames:
-      "همه بازی‌ها",
-
-    allStatus:
-      "همه وضعیت‌ها",
-
-    available:
-      "موجود",
-
-    unavailable:
-      "ناموجود",
-
-    newest:
-      "جدیدترین",
-
-    cheap:
-      "ارزان‌ترین",
-
-    expensive:
-      "گران‌ترین",
-
-    name:
-      "نام",
-
-    level:
-      "لول",
-
-    skins:
-      "اسکین",
-
-    game:
-      "بازی",
-
-    price:
-      "قیمت",
-
-    status:
-      "وضعیت",
-
-    actions:
-      "عملیات",
-
-    addToCart:
-      "افزودن به سبد",
-
-    unavailableButton:
-      "ناموجود",
-
-    details:
-      "جزئیات",
-
-    login:
-      "ورود",
-
-    register:
-      "ثبت‌نام",
-
-    username:
-      "نام کاربری",
-
-    email:
-      "ایمیل",
-
-    password:
-      "رمز عبور",
-
-    profile:
-      "حساب کاربری",
-
-    orders:
-      "سفارش‌ها",
-
-    favorites:
-      "علاقه‌مندی‌ها",
-
-    cart:
-      "سبد خرید",
-
-    logout:
-      "خروج",
-
-    accountInfo:
-      "اطلاعات حساب",
-
-    role:
-      "نقش",
-
-    checkout:
-      "ثبت سفارش",
-
-    adminPanel:
-      "پنل مدیریت",
-
-    users:
-      "کاربران",
-
-    revenue:
-      "درآمد",
-
-    addAccount:
-      "افزودن اکانت",
-
-    refresh:
-      "بروزرسانی",
-
-    manageAccounts:
-      "مدیریت اکانت‌ها",
-
-    manageOrders:
-      "مدیریت سفارش‌ها",
-
-    description:
-      "توضیحات",
-
-    image:
-      "لینک تصویر",
-
-    save:
-      "ذخیره",
-
-    user:
-      "کاربر",
-
-    footerDescription:
-      "فروشگاه اکانت‌های گیمینگ با امکانات حرفه‌ای.",
-
-    quickLinks:
-      "لینک سریع",
-
-    supportTime:
-      "پاسخگویی ۱ تا ۲۴ ساعت",
-
-    allRights:
-      "تمام حقوق محفوظ است.",
-
-    featuresTitle:
-      "امکانات GameShop",
-
-    featuresSubtitle:
-      "همه چیز برای یک فروشگاه گیمینگ حرفه‌ای",
-
-    feature1Title:
-      "حساب کاربری",
-
-    feature1Text:
-      "ثبت‌نام، ورود، سفارش‌ها و علاقه‌مندی‌ها.",
-
-    feature2Title:
-      "سبد خرید",
-
-    feature2Text:
-      "اکانت‌ها را ذخیره و یکجا سفارش بده.",
-
-    feature3Title:
-      "پنل مدیریت",
-
-    feature3Text:
-      "مدیریت اکانت‌ها و سفارش‌ها.",
-
-    feature4Title:
-      "دو زبانه",
-
-    feature4Text:
-      "فارسی و انگلیسی.",
-
-    faqTitle:
-      "سوالات متداول",
-
-    faq1Q:
-      "چطور اکانت بخرم؟",
-
-    faq1A:
-      "اکانت موردنظر را انتخاب کنید و مراحل سفارش را انجام دهید.",
-
-    faq2Q:
-      "چطور اکانتم را بفروشم؟",
-
-    faq2A:
-      "برای فروش اکانت با پشتیبانی تماس بگیرید.",
-
-    faq3Q:
-      "آیا اطلاعات حساب من امن است؟",
-
-    faq3A:
-      "سیستم احراز هویت با Supabase انجام می‌شود و اطلاعات حساس نباید در سایت ذخیره شود.",
-
-    faq4Q:
-      "پشتیبانی چه زمانی پاسخ می‌دهد؟",
-
-    faq4A:
-      "پشتیبانی معمولاً بین ۱ تا ۲۴ ساعت پاسخ می‌دهد.",
-
-    added:
-      "به سبد خرید اضافه شد.",
-
-    removed:
-      "از سبد حذف شد.",
-
-    loginRequired:
-      "ابتدا وارد حساب خود شوید.",
-
-    orderCreated:
-      "سفارش با موفقیت ثبت شد.",
-
-    loginSuccess:
-      "ورود موفق بود.",
-
-    registerSuccess:
-      "ثبت‌نام انجام شد.",
-
-    saved:
-      "ذخیره شد.",
-
-    deleted:
-      "حذف شد.",
-
-    error:
-      "خطایی رخ داد.",
-
-    emptyCart:
-      "سبد خرید خالی است.",
-
-    emptyOrders:
-      "هنوز سفارشی ندارید.",
-
-    emptyFavorites:
-      "هنوز موردی به علاقه‌مندی‌ها اضافه نکرده‌اید."
-
-  },
-
-
-  en: {
-
-    home: "Home",
-    accounts: "Accounts",
-    features: "Features",
-    faq: "FAQ",
-    support: "Support",
-
-    heroTitle:
-      "Your new gaming world starts here",
-
-    heroText:
-      "A professional gaming account store with user accounts, orders, favorites and support.",
-
-    browseAccounts:
-      "Browse Accounts",
-
-    myAccount:
-      "My Account",
-
-    accountsAvailable:
-      "Accounts",
-
-    supportAvailable:
-      "Support",
-
-    secure:
-      "Secure System",
-
-    promoTitle:
-      "🎁 Want to sell your account?",
-
-    promoText:
-      "Contact support to list your account.",
-
-    contactSupport:
-      "Contact Support",
-
-    accountsTitle:
-      "Accounts",
-
-    accountsSubtitle:
-      "Find the account you want.",
-
-    search:
-      "Search account or game...",
-
-    allGames:
-      "All Games",
-
-    allStatus:
-      "All Status",
-
-    available:
-      "Available",
-
-    unavailable:
-      "Unavailable",
-
-    newest:
-      "Newest",
-
-    cheap:
-      "Cheapest",
-
-    expensive:
-      "Most Expensive",
-
-    name:
-      "Name",
-
-    level:
-      "Level",
-
-    skins:
-      "Skins",
-
-    game:
-      "Game",
-
-    price:
-      "Price",
-
-    status:
-      "Status",
-
-    actions:
-      "Actions",
-
-    addToCart:
-      "Add to Cart",
-
-    unavailableButton:
-      "Unavailable",
-
-    details:
-      "Details",
-
-    login:
-      "Login",
-
-    register:
-      "Register",
-
-    username:
-      "Username",
-
-    email:
-      "Email",
-
-    password:
-      "Password",
-
-    profile:
-      "Profile",
-
-    orders:
-      "Orders",
-
-    favorites:
-      "Favorites",
-
-    cart:
-      "Cart",
-
-    logout:
-      "Logout",
-
-    accountInfo:
-      "Account Information",
-
-    role:
-      "Role",
-
-    checkout:
-      "Checkout",
-
-    adminPanel:
-      "Admin Panel",
-
-    users:
-      "Users",
-
-    revenue:
-      "Revenue",
-
-    addAccount:
-      "Add Account",
-
-    refresh:
-      "Refresh",
-
-    manageAccounts:
-      "Manage Accounts",
-
-    manageOrders:
-      "Manage Orders",
-
-    description:
-      "Description",
-
-    image:
-      "Image URL",
-
-    save:
-      "Save",
-
-    user:
-      "User",
-
-    footerDescription:
-      "Professional gaming account store.",
-
-    quickLinks:
-      "Quick Links",
-
-    supportTime:
-      "Support response: 1–24 hours",
-
-    allRights:
-      "All rights reserved.",
-
-    featuresTitle:
-      "GameShop Features",
-
-    featuresSubtitle:
-      "Everything you need for a professional gaming store",
-
-    feature1Title:
-      "User Accounts",
-
-    feature1Text:
-      "Registration, login, orders and favorites.",
-
-    feature2Title:
-      "Shopping Cart",
-
-    feature2Text:
-      "Save accounts and order them together.",
-
-    feature3Title:
-      "Admin Panel",
-
-    feature3Text:
-      "Manage accounts and orders.",
-
-    feature4Title:
-      "Bilingual",
-
-    feature4Text:
-      "Persian and English.",
-
-    faqTitle:
-      "Frequently Asked Questions",
-
-    faq1Q:
-      "How do I buy an account?",
-
-    faq1A:
-      "Choose an account and continue with the order process.",
-
-    faq2Q:
-      "How can I sell my account?",
-
-    faq2A:
-      "Contact support to list your account.",
-
-    faq3Q:
-      "Is my account information secure?",
-
-    faq3A:
-      "Authentication is handled by Supabase. Sensitive game credentials should never be stored here.",
-
-    faq4Q:
-      "When does support respond?",
-
-    faq4A:
-      "Support usually responds within 1–24 hours.",
-
-    added:
-      "Added to cart.",
-
-    removed:
-      "Removed from cart.",
-
-    loginRequired:
-      "Please login first.",
-
-    orderCreated:
-      "Order created successfully.",
-
-    loginSuccess:
-      "Login successful.",
-
-    registerSuccess:
-      "Registration successful.",
-
-    saved:
-      "Saved.",
-
-    deleted:
-      "Deleted.",
-
-    error:
-      "Something went wrong.",
-
-    emptyCart:
-      "Your cart is empty.",
-
-    emptyOrders:
-      "You don't have any orders yet.",
-
-    emptyFavorites:
-      "You don't have any favorites yet."
-
-  }
-
-};
-
-
-/* ============================================================
-   TRANSLATION
-============================================================ */
-
-function t(key) {
-
-  return (
-    translations[currentLanguage]?.[key] ||
-    translations.fa[key] ||
-    key
-  );
+function escapeHtml(value) {
+
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 
 }
 
 
-/* ============================================================
-   APPLY LANGUAGE
-============================================================ */
+function formatPrice(price) {
 
-function applyLanguage() {
-
-  document.documentElement.lang =
-    currentLanguage;
-
-  document.documentElement.dir =
-    currentLanguage === "fa"
-      ? "rtl"
-      : "ltr";
-
-
-  document
-    .querySelectorAll("[data-i18n]")
-    .forEach(el => {
-
-      const key =
-        el.getAttribute("data-i18n");
-
-      el.textContent =
-        t(key);
-
-    });
-
-
-  document
-    .querySelectorAll("[data-i18n-placeholder]")
-    .forEach(el => {
-
-      const key =
-        el.getAttribute(
-          "data-i18n-placeholder"
-        );
-
-      el.placeholder =
-        t(key);
-
-    });
-
-
-  document.getElementById("languageBtn")
-    .textContent =
-      currentLanguage === "fa"
-        ? "EN"
-        : "FA";
-
-
-  renderAccounts();
+  return Number(price || 0)
+    .toLocaleString("fa-IR");
 
 }
 
 
-/* ============================================================
-   LANGUAGE
-============================================================ */
+function formatDate(date) {
 
-function toggleLanguage() {
+  if (!date)
+    return "-";
 
-  currentLanguage =
-    currentLanguage === "fa"
-      ? "en"
-      : "fa";
-
-  localStorage.setItem(
-    "gameshop_language",
-    currentLanguage
-  );
-
-  applyLanguage();
-
-  if (currentUser) {
-
-    renderOrders();
-
-    renderFavorites();
-
-    renderCart();
-
-  }
+  return new Date(date)
+    .toLocaleDateString(
+      "fa-IR"
+    );
 
 }
 
 
-/* ============================================================
-   THEME
-============================================================ */
-
-function applyTheme() {
-
-  document.body.classList.toggle(
-    "light",
-    currentTheme === "light"
-  );
-
-  document.getElementById("themeBtn")
-    .textContent =
-      currentTheme === "light"
-        ? "☀️"
-        : "🌙";
-
-}
-
-
-function toggleTheme() {
-
-  currentTheme =
-    currentTheme === "dark"
-      ? "light"
-      : "dark";
-
-  localStorage.setItem(
-    "gameshop_theme",
-    currentTheme
-  );
-
-  applyTheme();
-
-}
-
-
-/* ============================================================
-   NAV
-============================================================ */
-
-function toggleMenu() {
-
-  document
-    .getElementById("navLinks")
-    .classList.toggle("open");
-
-}
-
-
-/* ============================================================
-   TOAST
-============================================================ */
-
-function toast(message, type = "success") {
+function toast(
+  message,
+  type = "success"
+) {
 
   const container =
     document.getElementById(
-      "toast-container"
+      "toastContainer"
     );
 
   const item =
     document.createElement("div");
 
   item.className =
-    `toast ${type}`;
+    "toast";
 
   item.textContent =
     message;
@@ -3618,20 +2894,7 @@ function toast(message, type = "success") {
 
     item.remove();
 
-  }, 3500);
-
-}
-
-
-/* ============================================================
-   MODAL
-============================================================ */
-
-function openModal(id) {
-
-  document
-    .getElementById(id)
-    .classList.remove("hidden");
+  }, 3000);
 
 }
 
@@ -3640,7 +2903,51 @@ function closeModal(id) {
 
   document
     .getElementById(id)
-    .classList.add("hidden");
+    ?.classList.add("hidden");
+
+}
+
+
+function openModal(id) {
+
+  document
+    .getElementById(id)
+    ?.classList.remove("hidden");
+
+}
+
+
+/* ============================================================
+   THEME
+============================================================ */
+
+function toggleTheme() {
+
+  document.body
+    .classList.toggle("light");
+
+  localStorage.setItem(
+    "gameshop_theme",
+    document.body.classList.contains("light")
+      ? "light"
+      : "dark"
+  );
+
+}
+
+
+function loadTheme() {
+
+  if (
+    localStorage.getItem(
+      "gameshop_theme"
+    ) === "light"
+  ) {
+
+    document.body
+      .classList.add("light");
+
+  }
 
 }
 
@@ -3648,6 +2955,214 @@ function closeModal(id) {
 /* ============================================================
    AUTH
 ============================================================ */
+
+function toggleAuthMode() {
+
+  authMode =
+    authMode === "login"
+      ? "register"
+      : "login";
+
+
+  document.getElementById(
+    "authTitle"
+  ).textContent =
+    authMode === "login"
+      ? "ورود"
+      : "ثبت‌نام";
+
+
+  document.getElementById(
+    "authSubmit"
+  ).textContent =
+    authMode === "login"
+      ? "ورود"
+      : "ثبت‌نام";
+
+
+  document.getElementById(
+    "authSwitch"
+  ).textContent =
+    authMode === "login"
+      ? "ایجاد حساب"
+      : "قبلاً حساب دارم";
+
+
+  document.getElementById(
+    "usernameGroup"
+  ).classList.toggle(
+    "hidden",
+    authMode === "login"
+  );
+
+}
+
+
+async function submitAuth(event) {
+
+  event.preventDefault();
+
+
+  const email =
+    document.getElementById(
+      "authEmail"
+    ).value.trim();
+
+
+  const password =
+    document.getElementById(
+      "authPassword"
+    ).value;
+
+
+  if (authMode === "login") {
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth
+        .signInWithPassword({
+
+          email,
+
+          password
+
+        });
+
+
+    if (error) {
+
+      toast(
+        error.message,
+        "error"
+      );
+
+      return;
+    }
+
+
+    currentUser =
+      data.user;
+
+
+    toast(
+      "ورود موفق بود."
+    );
+
+
+  } else {
+
+
+    const username =
+      document.getElementById(
+        "authUsername"
+      ).value.trim();
+
+
+    if (!username) {
+
+      toast(
+        "نام کاربری را وارد کنید.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth
+        .signUp({
+
+          email,
+
+          password
+
+        });
+
+
+    if (error) {
+
+      toast(
+        error.message,
+        "error"
+      );
+
+      return;
+    }
+
+
+    if (data.user) {
+
+      await supabaseClient
+        .from("profiles")
+        .upsert({
+
+          id:
+            data.user.id,
+
+          username,
+
+          role:
+            "user"
+
+        });
+
+    }
+
+
+    toast(
+      "ثبت‌نام انجام شد."
+    );
+
+  }
+
+
+  closeModal(
+    "authModal"
+  );
+
+
+  await loadUser();
+
+}
+
+
+async function logout() {
+
+  await supabaseClient.auth
+    .signOut();
+
+
+  currentUser = null;
+
+  currentProfile = null;
+
+  favorites = [];
+
+  closeModal(
+    "profileModal"
+  );
+
+  document
+    .getElementById(
+      "adminButton"
+    )
+    ?.classList.add("hidden");
+
+
+  updateCartCount();
+
+  toast(
+    "از حساب خارج شدید."
+  );
+
+}
+
 
 function openAuthOrProfile() {
 
@@ -3659,233 +3174,58 @@ function openAuthOrProfile() {
 
     authMode = "login";
 
-    updateAuthModal();
+    toggleAuthMode();
 
-    openModal("authModal");
+    toggleAuthMode();
 
-  }
-
-}
-
-
-function toggleAuthMode() {
-
-  authMode =
-    authMode === "login"
-      ? "register"
-      : "login";
-
-  updateAuthModal();
-
-}
-
-
-function updateAuthModal() {
-
-  const register =
-    authMode === "register";
-
-
-  document.getElementById("authTitle")
-    .textContent =
-      register
-        ? t("register")
-        : t("login");
-
-
-  document.getElementById("authSubmitBtn")
-    .textContent =
-      register
-        ? t("register")
-        : t("login");
-
-
-  document.getElementById("authSwitchBtn")
-    .textContent =
-      register
-        ? t("login")
-        : t("register");
-
-
-  document
-    .getElementById(
-      "registerUsernameGroup"
-    )
-    .classList.toggle(
-      "hidden",
-      !register
-    );
-
-}
-
-
-async function submitAuth() {
-
-  const email =
-    document
-      .getElementById("authEmail")
-      .value
-      .trim();
-
-  const password =
-    document
-      .getElementById("authPassword")
-      .value;
-
-
-  if (!email || !password) {
-
-    showAuthError(
-      t("error")
-    );
-
-    return;
-
-  }
-
-
-  try {
-
-    if (authMode === "login") {
-
-      const {
-        data,
-        error
-      } =
-        await supabaseClient.auth.signInWithPassword({
-          email,
-          password
-        });
-
-
-      if (error)
-        throw error;
-
-
-      currentUser =
-        data.user;
-
-      toast(
-        t("loginSuccess")
-      );
-
-      closeModal("authModal");
-
-      await loadUser();
-
-    } else {
-
-      const username =
-        document
-          .getElementById("authUsername")
-          .value
-          .trim();
-
-
-      const {
-        data,
-        error
-      } =
-        await supabaseClient.auth.signUp({
-
-          email,
-
-          password,
-
-          options: {
-
-            data: {
-              username
-            }
-
-          }
-
-        });
-
-
-      if (error)
-        throw error;
-
-
-      if (data.user) {
-
-        try {
-
-          await supabaseClient
-            .from("profiles")
-            .upsert({
-
-              id: data.user.id,
-
-              username:
-                username ||
-                email.split("@")[0]
-
-            });
-
-        } catch(e) {}
-
-      }
-
-
-      toast(
-        t("registerSuccess")
-      );
-
-    }
-
-  } catch(error) {
-
-    showAuthError(
-      error.message ||
-      t("error")
+    openModal(
+      "authModal"
     );
 
   }
 
 }
 
-
-function showAuthError(message) {
-
-  const el =
-    document.getElementById(
-      "authError"
-    );
-
-  el.textContent =
-    message;
-
-  el.classList.remove(
-    "hidden"
-  );
-
-}
-
-
-/* ============================================================
-   USER
-============================================================ */
 
 async function loadUser() {
 
-  if (!currentUser)
+  const {
+    data
+  } =
+    await supabaseClient.auth
+      .getUser();
+
+
+  currentUser =
+    data.user || null;
+
+
+  currentProfile = null;
+
+
+  if (!currentUser) {
+
+    updateUserUI();
+
     return;
+  }
 
 
   const {
-    data,
-    error
+    data: profile
   } =
     await supabaseClient
       .from("profiles")
       .select("*")
-      .eq("id", currentUser.id)
+      .eq(
+        "id",
+        currentUser.id
+      )
       .maybeSingle();
 
 
-  if (!error)
-    currentProfile = data;
+  currentProfile =
+    profile || null;
 
 
   updateUserUI();
@@ -3895,117 +3235,152 @@ async function loadUser() {
 }
 
 
+function isAdmin() {
+
+  return (
+    currentProfile?.role ===
+    "admin"
+  );
+
+}
+
+
 function updateUserUI() {
 
-  if (!currentUser)
+  const adminButton =
+    document.getElementById(
+      "adminButton"
+    );
+
+
+  if (adminButton) {
+
+    adminButton.classList.toggle(
+      "hidden",
+      !isAdmin()
+    );
+
+  }
+
+}
+
+
+/* ============================================================
+   PROFILE
+============================================================ */
+
+async function openProfile() {
+
+  if (!currentUser) {
+
+    openModal(
+      "authModal"
+    );
+
     return;
+  }
+
+
+  const username =
+    currentProfile?.username
+    || currentUser.email
+    || "User";
 
 
   const email =
-    currentUser.email || "";
+    currentUser.email
+    || "";
 
 
-  const masked =
-    email.length > 3
-      ? email.slice(0,3) +
-        "********" +
-        email.slice(
-          email.indexOf("@")
-        )
+  const maskedEmail =
+    email.length > 5
+      ? email.slice(0,3)
+        + "********"
+        + email.slice(
+            email.indexOf("@")
+          )
       : email;
 
 
   document.getElementById(
-    "profileUsername"
-  ).textContent =
-    currentProfile?.username ||
-    email.split("@")[0];
+    "profileContent"
+  ).innerHTML = `
+
+    <div class="info-card">
+
+      <h3>
+        👤 ${escapeHtml(username)}
+      </h3>
+
+      <p>
+        ${escapeHtml(maskedEmail)}
+      </p>
+
+      <br>
+
+      <button
+        class="btn btn-secondary"
+        onclick="showMyOrders()">
+
+        📦 سفارش‌های من
+
+      </button>
+
+      <br><br>
+
+      <button
+        class="btn btn-secondary"
+        onclick="showMyFavorites()">
+
+        ❤️ علاقه‌مندی‌ها
+
+      </button>
+
+      ${
+        isAdmin()
+          ? `
+
+            <br><br>
+
+            <button
+              class="btn btn-primary"
+              onclick="
+                closeModal('profileModal');
+                openAdmin();
+              ">
+
+              🛠️ پنل مدیریت
+
+            </button>
+
+          `
+          : ""
+      }
+
+      <br><br>
+
+      <button
+        class="btn btn-danger"
+        onclick="logout()">
+
+        خروج از حساب
+
+      </button>
+
+    </div>
+
+  `;
 
 
-  document.getElementById(
-    "profileEmail"
-  ).textContent =
-    masked;
-
-
-  document.getElementById(
-    "profileRole"
-  ).textContent =
-    currentProfile?.role ||
-    "user";
-
-}
-
-
-function openProfile() {
-
-  if (!currentUser) {
-
-    openModal("authModal");
-
-    return;
-
-  }
-
-
-  updateUserUI();
-
-  renderOrders();
-
-  renderFavorites();
-
-  renderCart();
-
-  openModal("profileModal");
-
-}
-
-
-async function logout() {
-
-  await supabaseClient.auth.signOut();
-
-  currentUser = null;
-
-  currentProfile = null;
-
-  favorites = [];
-
-  closeModal("profileModal");
-
-  closeModal("adminModal");
-
-  toast(
-    currentLanguage === "fa"
-      ? "با موفقیت خارج شدید."
-      : "Logged out."
+  openModal(
+    "profileModal"
   );
 
 }
 
 
 /* ============================================================
-   SUPABASE AUTH LISTENER
-============================================================ */
-
-supabaseClient.auth.onAuthStateChange(
-  async (event, session) => {
-
-    currentUser =
-      session?.user || null;
-
-    if (currentUser) {
-
-      await loadUser();
-
-    }
-
-  }
-);
-
-
-/* ============================================================
-   LOAD ACCOUNTS
+   ACCOUNTS
 ============================================================ */
 
 async function loadAccounts() {
@@ -4017,31 +3392,22 @@ async function loadAccounts() {
     await supabaseClient
       .from("accounts")
       .select("*")
-      .order("created_at", {
-        ascending: false
-      });
+      .order(
+        "created_at",
+        {
+          ascending: false
+        }
+      );
 
 
   if (error) {
 
-    console.error(error);
-
-    document.getElementById(
-      "accountsContainer"
-    ).innerHTML = `
-
-      <div style="
-        text-align:center;
-        padding:40px;
-        color:#f87171;
-      ">
-        ${t("error")}
-      </div>
-
-    `;
+    toast(
+      error.message,
+      "error"
+    );
 
     return;
-
   }
 
 
@@ -4049,24 +3415,14 @@ async function loadAccounts() {
     data || [];
 
 
-  document.getElementById(
-    "heroAccountCount"
-  ).textContent =
-    accounts.length;
+  fillGameFilter();
 
-
-  populateGameFilter();
-
-  applyFilters();
+  renderAccounts();
 
 }
 
 
-/* ============================================================
-   GAME FILTER
-============================================================ */
-
-function populateGameFilter() {
+function fillGameFilter() {
 
   const select =
     document.getElementById(
@@ -4074,15 +3430,14 @@ function populateGameFilter() {
     );
 
 
-  const current =
-    select.value;
-
-
   const games =
     [
       ...new Set(
         accounts
-          .map(a => a.game)
+          .map(
+            account =>
+              account.game
+          )
           .filter(Boolean)
       )
     ];
@@ -4091,181 +3446,136 @@ function populateGameFilter() {
   select.innerHTML = `
 
     <option value="">
-      ${t("allGames")}
+      همه بازی‌ها
     </option>
 
     ${
-      games
-        .map(game => `
-          <option value="${escapeHtml(game)}">
-            ${escapeHtml(game)}
-          </option>
-        `)
-        .join("")
+      games.map(game => `
+
+        <option value="${escapeHtml(game)}">
+
+          ${escapeHtml(game)}
+
+        </option>
+
+      `).join("")
     }
 
   `;
 
-
-  select.value =
-    current;
-
 }
 
-
-/* ============================================================
-   FILTER
-============================================================ */
-
-function applyFilters() {
-
-  const search =
-    document
-      .getElementById("searchInput")
-      .value
-      .trim()
-      .toLowerCase();
-
-
-  const game =
-    document
-      .getElementById("gameFilter")
-      .value;
-
-
-  const status =
-    document
-      .getElementById("statusFilter")
-      .value;
-
-
-  const sort =
-    document
-      .getElementById("sortFilter")
-      .value;
-
-
-  filteredAccounts =
-    accounts.filter(account => {
-
-      const text =
-        `${account.title || ""} ${account.game || ""} ${account.description || ""}`
-          .toLowerCase();
-
-
-      if (
-        search &&
-        !text.includes(search)
-      )
-        return false;
-
-
-      if (
-        game &&
-        account.game !== game
-      )
-        return false;
-
-
-      if (
-        status !== "all" &&
-        account.status !== status
-      )
-        return false;
-
-
-      return true;
-
-    });
-
-
-  filteredAccounts.sort(
-    (a,b) => {
-
-      if (sort === "cheap")
-        return Number(a.price || 0) -
-               Number(b.price || 0);
-
-
-      if (sort === "expensive")
-        return Number(b.price || 0) -
-               Number(a.price || 0);
-
-
-      if (sort === "name")
-        return String(a.title)
-          .localeCompare(
-            String(b.title)
-          );
-
-
-      return new Date(b.created_at) -
-             new Date(a.created_at);
-
-    }
-  );
-
-
-  renderAccounts();
-
-}
-
-
-/* ============================================================
-   RENDER ACCOUNTS
-============================================================ */
 
 function renderAccounts() {
 
   const container =
     document.getElementById(
-      "accountsContainer"
+      "accountsGrid"
     );
 
 
-  if (!filteredAccounts.length) {
+  if (!container)
+    return;
+
+
+  const search =
+    document.getElementById(
+      "accountSearch"
+    )
+      ?.value
+      .toLowerCase()
+      .trim()
+      || "";
+
+
+  const game =
+    document.getElementById(
+      "gameFilter"
+    )?.value
+    || "";
+
+
+  const sort =
+    document.getElementById(
+      "sortFilter"
+    )?.value
+    || "newest";
+
+
+  let list =
+    accounts.filter(account => {
+
+      const text =
+        `${account.title || ""}
+         ${account.game || ""}
+         ${account.description || ""}`
+          .toLowerCase();
+
+
+      return (
+        text.includes(search)
+        &&
+        (
+          !game
+          ||
+          account.game === game
+        )
+      );
+
+    });
+
+
+  if (sort === "priceLow") {
+
+    list.sort(
+      (a,b) =>
+        Number(a.price || 0)
+        -
+        Number(b.price || 0)
+    );
+
+  }
+
+
+  if (sort === "priceHigh") {
+
+    list.sort(
+      (a,b) =>
+        Number(b.price || 0)
+        -
+        Number(a.price || 0)
+    );
+
+  }
+
+
+  if (!list.length) {
 
     container.innerHTML = `
 
-      <div style="
-        text-align:center;
-        padding:50px;
-        color:var(--muted);
-      ">
-        ${t("unavailable")}
+      <div class="admin-card">
+
+        اکانتی پیدا نشد.
+
       </div>
 
     `;
 
     return;
-
   }
 
 
-  container.innerHTML = `
-
-    <div class="account-grid">
-
-      ${
-        filteredAccounts
-          .map(accountCard)
-          .join("")
-      }
-
-    </div>
-
-  `;
+  container.innerHTML =
+    list.map(
+      accountCard
+    ).join("");
 
 }
 
 
-/* ============================================================
-   ACCOUNT CARD
-============================================================ */
-
 function accountCard(account) {
 
-  const isFav =
+  const liked =
     favorites.includes(
       account.id
     );
@@ -4276,72 +3586,92 @@ function accountCard(account) {
     "available";
 
 
-  const image =
-    account.image_url;
-
-
   return `
 
     <article class="account-card">
 
+
       <div class="account-image">
 
-        ${
-          image
-            ? `
-              <img
-                src="${escapeHtml(image)}"
-                alt="${escapeHtml(account.title || "")}"
-                style="
-                  width:100%;
-                  height:100%;
-                  object-fit:cover;
-                ">
-              `
-            : "🎮"
-        }
+        🎮
 
       </div>
 
 
       <div class="account-content">
 
-        <div class="account-top">
 
-          <div>
+        <div class="account-title-row">
 
-            <div class="account-title">
+          <div class="account-title">
 
-              ${escapeHtml(
-                account.title ||
-                "Game Account"
-              )}
-
-            </div>
-
-            <div class="game-name">
-
-              ${escapeHtml(
-                account.game ||
-                "Game"
-              )}
-
-            </div>
+            ${escapeHtml(
+              account.title
+            )}
 
           </div>
 
 
           <button
-            class="heart ${
-              isFav
-                ? "active"
-                : ""
+            class="favorite ${
+              liked ? "active" : ""
             }"
-            onclick="toggleFavorite(${account.id})">
+            onclick="
+              toggleFavorite(
+                ${account.id}
+              )
+            ">
 
-            ${isFav ? "❤️" : "♡"}
+            ${liked ? "♥" : "♡"}
 
           </button>
+
+        </div>
+
+
+        <div class="account-meta">
+
+          <div class="meta">
+
+            🎮
+            ${escapeHtml(
+              account.game
+            )}
+
+          </div>
+
+
+          <div class="meta">
+
+            ⭐
+            ${escapeHtml(
+              account.level
+              || "نامعلوم"
+            )}
+
+          </div>
+
+
+          <div class="meta">
+
+            🎨
+            ${escapeHtml(
+              account.skins
+              || "نامعلوم"
+            )}
+
+          </div>
+
+
+          <div class="meta">
+
+            ${
+              available
+                ? "✅ موجود"
+                : "❌ ناموجود"
+            }
+
+          </div>
 
         </div>
 
@@ -4349,56 +3679,22 @@ function accountCard(account) {
         <div class="account-description">
 
           ${escapeHtml(
-            account.description ||
-            ""
+            account.description
+            || "بدون توضیحات"
           )}
 
         </div>
 
 
-        <div class="account-meta">
-
-          <div class="meta-item">
-
-            ${t("level")}
-
-            <strong>
-              ${escapeHtml(
-                account.level ||
-                "نامعلوم"
-              )}
-            </strong>
-
-          </div>
-
-
-          <div class="meta-item">
-
-            ${t("skins")}
-
-            <strong>
-              ${escapeHtml(
-                account.skins ||
-                "نامعلوم"
-              )}
-            </strong>
-
-          </div>
-
-        </div>
-
-
-        <div class="card-footer">
+        <div class="account-bottom">
 
           <div class="price">
 
             ${formatPrice(
-              account.price || 0
+              account.price
             )}
 
-            <small>
-              تومان
-            </small>
+            تومان
 
           </div>
 
@@ -4406,31 +3702,31 @@ function accountCard(account) {
           ${
             available
 
-            ?
+              ? `
 
-            `
-              <button
-                class="btn btn-primary btn-small"
-                onclick="addToCart(${account.id})">
+                <button
+                  class="btn btn-primary btn-small"
+                  onclick="
+                    addToCart(
+                      ${account.id}
+                    )
+                  ">
 
-                🛒
-                ${t("addToCart")}
+                  🛒 افزودن
 
-              </button>
-            `
+                </button>
 
-            :
+              `
 
-            `
-              <button
-                class="btn btn-secondary btn-small"
-                disabled>
+              : `
 
-                ❌
-                ${t("unavailableButton")}
+                <span class="unavailable">
 
-              </button>
-            `
+                  ❌ ناموجود
+
+                </span>
+
+              `
           }
 
         </div>
@@ -4454,10 +3750,7 @@ async function loadFavorites() {
 
     favorites = [];
 
-    renderAccounts();
-
     return;
-
   }
 
 
@@ -4474,38 +3767,37 @@ async function loadFavorites() {
       );
 
 
-  if (error) {
+  if (!error) {
 
-    console.error(error);
-
-    return;
+    favorites =
+      (data || [])
+        .map(
+          item =>
+            Number(
+              item.account_id
+            )
+        );
 
   }
-
-
-  favorites =
-    (data || [])
-      .map(x => x.account_id);
-
-
-  renderAccounts();
 
 }
 
 
-async function toggleFavorite(accountId) {
+async function toggleFavorite(
+  accountId
+) {
 
   if (!currentUser) {
 
-    toast(
-      t("loginRequired"),
-      "error"
+    openModal(
+      "authModal"
     );
 
-    openModal("authModal");
+    toast(
+      "برای علاقه‌مندی باید وارد شوید."
+    );
 
     return;
-
   }
 
 
@@ -4517,32 +3809,17 @@ async function toggleFavorite(accountId) {
 
   if (exists) {
 
-    const {
-      error
-    } =
-      await supabaseClient
-        .from("favorites")
-        .delete()
-        .eq(
-          "user_id",
-          currentUser.id
-        )
-        .eq(
-          "account_id",
-          accountId
-        );
-
-
-    if (error) {
-
-      toast(
-        error.message,
-        "error"
+    await supabaseClient
+      .from("favorites")
+      .delete()
+      .eq(
+        "user_id",
+        currentUser.id
+      )
+      .eq(
+        "account_id",
+        accountId
       );
-
-      return;
-
-    }
 
   } else {
 
@@ -4570,7 +3847,6 @@ async function toggleFavorite(accountId) {
       );
 
       return;
-
     }
 
   }
@@ -4578,57 +3854,7 @@ async function toggleFavorite(accountId) {
 
   await loadFavorites();
 
-}
-
-
-/* ============================================================
-   FAVORITES RENDER
-============================================================ */
-
-function renderFavorites() {
-
-  const container =
-    document.getElementById(
-      "favoriteAccounts"
-    );
-
-
-  if (!container)
-    return;
-
-
-  const list =
-    accounts.filter(
-      a => favorites.includes(a.id)
-    );
-
-
-  if (!list.length) {
-
-    container.innerHTML = `
-
-      <p style="color:var(--muted)">
-        ${t("emptyFavorites")}
-      </p>
-
-    `;
-
-    return;
-
-  }
-
-
-  container.innerHTML = `
-
-    <div class="account-grid">
-
-      ${
-        list.map(accountCard).join("")
-      }
-
-    </div>
-
-  `;
+  renderAccounts();
 
 }
 
@@ -4636,6 +3862,35 @@ function renderFavorites() {
 /* ============================================================
    CART
 ============================================================ */
+
+function loadCart() {
+
+  try {
+
+    cart =
+      JSON.parse(
+        localStorage.getItem(
+          "gameshop_cart"
+        )
+      ) || [];
+
+  } catch {
+
+    cart = [];
+
+  }
+
+
+  cart =
+    cart.map(
+      Number
+    );
+
+
+  updateCartCount();
+
+}
+
 
 function saveCart() {
 
@@ -4651,47 +3906,35 @@ function saveCart() {
 
 function updateCartCount() {
 
-  document.getElementById(
-    "cartCount"
-  ).textContent =
+  const element =
+    document.getElementById(
+      "cartCount"
+    );
+
+
+  if (!element)
+    return;
+
+
+  element.textContent =
     cart.length;
+
+
+  element.classList.toggle(
+    "hidden",
+    cart.length === 0
+  );
 
 }
 
 
-function addToCart(accountId) {
+function addToCart(
+  accountId
+) {
 
-  const account =
-    accounts.find(
-      a => Number(a.id) ===
-           Number(accountId)
-    );
-
-
-  if (!account)
-    return;
-
-
-  if (
-    account.status !==
-    "available"
-  ) {
-
-    toast(
-      t("unavailableButton"),
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  if (
-    !cart.includes(
-      Number(accountId)
-    )
-  ) {
+  if (!cart.includes(
+    Number(accountId)
+  )) {
 
     cart.push(
       Number(accountId)
@@ -4700,15 +3943,13 @@ function addToCart(accountId) {
     saveCart();
 
     toast(
-      t("added")
+      "به سبد خرید اضافه شد."
     );
 
   } else {
 
     toast(
-      currentLanguage === "fa"
-        ? "این اکانت قبلاً در سبد است."
-        : "Already in cart."
+      "این اکانت قبلاً در سبد خرید است."
     );
 
   }
@@ -4716,7 +3957,9 @@ function addToCart(accountId) {
 }
 
 
-function removeFromCart(accountId) {
+function removeFromCart(
+  accountId
+) {
 
   cart =
     cart.filter(
@@ -4730,10 +3973,6 @@ function removeFromCart(accountId) {
 
   renderCart();
 
-  toast(
-    t("removed")
-  );
-
 }
 
 
@@ -4741,7 +3980,9 @@ function openCart() {
 
   renderCart();
 
-  openModal("cartModal");
+  openModal(
+    "cartModal"
+  );
 
 }
 
@@ -4750,26 +3991,17 @@ function renderCart() {
 
   const container =
     document.getElementById(
-      "cartItems"
+      "cartContent"
     );
-
-
-  const totalEl =
-    document.getElementById(
-      "cartTotal"
-    );
-
-
-  if (!container)
-    return;
 
 
   const items =
     cart
       .map(id =>
         accounts.find(
-          a =>
-            Number(a.id) ===
+          account =>
+            Number(account.id)
+            ===
             Number(id)
         )
       )
@@ -4781,116 +4013,135 @@ function renderCart() {
     container.innerHTML = `
 
       <p style="color:var(--muted)">
-        ${t("emptyCart")}
+
+        سبد خرید خالی است.
+
       </p>
 
     `;
-
-    totalEl.textContent =
-      formatPrice(0) +
-      " تومان";
 
     return;
 
   }
 
 
-  let total = 0;
+  const total =
+    items.reduce(
+      (sum, item) =>
+        sum +
+        Number(
+          item.price || 0
+        ),
+      0
+    );
 
 
-  container.innerHTML =
-    items.map(account => {
+  container.innerHTML = `
 
-      total +=
-        Number(account.price || 0);
+    <div class="order-list">
 
+      ${
+        items.map(item => `
 
-      return `
+          <div class="order-item">
 
-        <div style="
-          display:flex;
-          justify-content:space-between;
-          align-items:center;
-          gap:10px;
-          padding:13px 0;
-          border-bottom:1px solid var(--border);
-        ">
+            <div class="order-row">
 
-          <div>
+              <strong>
+                ${escapeHtml(
+                  item.title
+                )}
+              </strong>
 
-            <strong>
-              ${escapeHtml(
-                account.title
-              )}
-            </strong>
-
-            <div style="
-              color:var(--muted);
-              font-size:12px;
-            ">
-
-              ${formatPrice(
-                account.price || 0
-              )}
-              تومان
+              <span>
+                ${formatPrice(
+                  item.price
+                )}
+                تومان
+              </span>
 
             </div>
 
+
+            <br>
+
+
+            <button
+              class="btn btn-danger btn-small"
+              onclick="
+                removeFromCart(
+                  ${item.id}
+                )
+              ">
+
+              حذف
+
+            </button>
+
           </div>
 
+        `).join("")
+      }
 
-          <button
-            class="btn btn-danger btn-small"
-            onclick="removeFromCart(${account.id})">
-
-            ×
-
-          </button>
-
-        </div>
-
-      `;
-
-    }).join("");
+    </div>
 
 
-  totalEl.textContent =
-    `${formatPrice(total)} تومان`;
+    <br>
+
+
+    <div class="order-row">
+
+      <strong>
+        مجموع
+      </strong>
+
+      <strong>
+        ${formatPrice(total)}
+        تومان
+      </strong>
+
+    </div>
+
+
+    <br>
+
+
+    <button
+      class="btn btn-primary"
+      onclick="checkout()">
+
+      📦 ثبت سفارش
+
+    </button>
+
+  `;
 
 }
 
-
-/* ============================================================
-   CHECKOUT
-============================================================ */
 
 async function checkout() {
 
   if (!currentUser) {
 
-    closeModal("cartModal");
+    closeModal(
+      "cartModal"
+    );
 
-    openModal("authModal");
+    openModal(
+      "authModal"
+    );
 
     toast(
-      t("loginRequired"),
-      "error"
+      "برای ثبت سفارش ابتدا وارد شوید."
     );
 
     return;
-
   }
 
 
   if (!cart.length) {
 
-    toast(
-      t("emptyCart"),
-      "error"
-    );
-
     return;
-
   }
 
 
@@ -4898,43 +4149,29 @@ async function checkout() {
     cart
       .map(id =>
         accounts.find(
-          a =>
-            Number(a.id) ===
+          account =>
+            Number(account.id)
+            ===
             Number(id)
         )
       )
       .filter(Boolean);
 
 
-  if (!items.length)
-    return;
-
-
-  /*
-    IMPORTANT:
-
-    This is a demo checkout flow.
-
-    For REAL payments:
-    - do NOT trust this total
-    - calculate price on server
-    - create payment session using Edge Function
-    - verify payment server-side
-  */
-
-
   const total =
     items.reduce(
       (sum, item) =>
         sum +
-        Number(item.price || 0),
+        Number(
+          item.price || 0
+        ),
       0
     );
 
 
   const {
     data: order,
-    error: orderError
+    error
   } =
     await supabaseClient
       .from("orders")
@@ -4954,19 +4191,18 @@ async function checkout() {
       .single();
 
 
-  if (orderError) {
+  if (error) {
 
     toast(
-      orderError.message,
+      error.message,
       "error"
     );
 
     return;
-
   }
 
 
-  const orderItems =
+  const rows =
     items.map(item => ({
 
       order_id:
@@ -4976,17 +4212,18 @@ async function checkout() {
         item.id,
 
       price:
-        Number(item.price || 0)
+        item.price
 
     }));
 
 
   const {
-    error: itemError
+    error:
+      itemError
   } =
     await supabaseClient
       .from("order_items")
-      .insert(orderItems);
+      .insert(rows);
 
 
   if (itemError) {
@@ -4997,7 +4234,6 @@ async function checkout() {
     );
 
     return;
-
   }
 
 
@@ -5007,29 +4243,25 @@ async function checkout() {
 
   renderCart();
 
-  closeModal("cartModal");
+  closeModal(
+    "cartModal"
+  );
+
 
   toast(
-    t("orderCreated")
+    "سفارش با موفقیت ثبت شد."
   );
 
 }
 
 
 /* ============================================================
-   ORDERS
+   MY ORDERS
 ============================================================ */
 
-async function renderOrders() {
+async function showMyOrders() {
 
-  const container =
-    document.getElementById(
-      "userOrders"
-    );
-
-
-  if (!container ||
-      !currentUser)
+  if (!currentUser)
     return;
 
 
@@ -5039,14 +4271,7 @@ async function renderOrders() {
   } =
     await supabaseClient
       .from("orders")
-      .select(`
-        *,
-        order_items (
-          id,
-          price,
-          account_id
-        )
-      `)
+      .select("*")
       .eq(
         "user_id",
         currentUser.id
@@ -5054,249 +4279,183 @@ async function renderOrders() {
       .order(
         "created_at",
         {
-          ascending:false
+          ascending: false
         }
       );
 
 
   if (error) {
 
-    container.innerHTML =
-      `<p>${escapeHtml(
-        error.message
-      )}</p>`;
-
-    return;
-
-  }
-
-
-  if (!data?.length) {
-
-    container.innerHTML = `
-
-      <p style="color:var(--muted)">
-        ${t("emptyOrders")}
-      </p>
-
-    `;
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    data.map(order => {
-
-      return `
-
-        <div class="order">
-
-          <div class="order-head">
-
-            <strong>
-              #${order.id}
-            </strong>
-
-            <span class="status ${statusClass(order.status)}">
-
-              ${statusText(
-                order.status
-              )}
-
-            </span>
-
-          </div>
-
-
-          <div style="
-            color:var(--muted);
-            font-size:13px;
-          ">
-
-            ${formatDate(
-              order.created_at
-            )}
-
-          </div>
-
-
-          <div style="
-            margin-top:10px;
-            font-weight:700;
-          ">
-
-            ${formatPrice(
-              order.total_price || 0
-            )}
-            تومان
-
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
-
-}
-
-
-/* ============================================================
-   PROFILE TABS
-============================================================ */
-
-function showProfileTab(
-  id,
-  button
-) {
-
-  document
-    .querySelectorAll(
-      "#profileModal .panel-content > div"
-    )
-    .forEach(el =>
-      el.classList.add("hidden")
-    );
-
-
-  document
-    .querySelectorAll(
-      "#profileModal .side-menu button"
-    )
-    .forEach(el =>
-      el.classList.remove("active")
-    );
-
-
-  document
-    .getElementById(id)
-    .classList.remove("hidden");
-
-
-  button.classList.add(
-    "active"
-  );
-
-
-  if (id === "ordersTab")
-    renderOrders();
-
-
-  if (id === "favoritesTab")
-    renderFavorites();
-
-
-  if (id === "cartTab")
-    renderProfileCart();
-
-}
-
-
-function renderProfileCart() {
-
-  const container =
-    document.getElementById(
-      "profileCart"
-    );
-
-
-  if (!container)
-    return;
-
-
-  const items =
-    cart
-      .map(id =>
-        accounts.find(
-          a =>
-            Number(a.id) ===
-            Number(id)
-        )
-      )
-      .filter(Boolean);
-
-
-  if (!items.length) {
-
-    container.innerHTML = `
-
-      <p style="color:var(--muted)">
-        ${t("emptyCart")}
-      </p>
-
-    `;
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    items.map(item => `
-
-      <div class="order">
-
-        <div class="order-head">
-
-          <strong>
-            ${escapeHtml(
-              item.title
-            )}
-          </strong>
-
-          <button
-            class="btn btn-danger btn-small"
-            onclick="removeFromCart(${item.id});renderProfileCart()">
-
-            ×
-
-          </button>
-
-        </div>
-
-        ${formatPrice(
-          item.price || 0
-        )}
-        تومان
-
-      </div>
-
-    `).join("");
-
-}
-
-
-/* ============================================================
-   ADMIN CHECK
-============================================================ */
-
-function isAdmin() {
-
-  return (
-    currentProfile?.role ===
-    "admin"
-  );
-
-}
-
-
-async function openAdmin() {
-
-  if (!currentUser) {
-
     toast(
-      t("loginRequired"),
+      error.message,
       "error"
     );
 
-    openModal("authModal");
-
     return;
-
   }
 
+
+  const orders =
+    data || [];
+
+
+  document.getElementById(
+    "profileContent"
+  ).innerHTML = `
+
+    <div class="modal-head">
+
+      <h2>
+        📦 سفارش‌های من
+      </h2>
+
+      <button
+        class="close"
+        onclick="openProfile()">
+
+        ←
+
+      </button>
+
+    </div>
+
+
+    <div class="order-list">
+
+      ${
+        orders.length
+
+          ? orders.map(order => `
+
+              <div class="order-item">
+
+                <div class="order-row">
+
+                  <strong>
+                    #${order.id}
+                  </strong>
+
+                  <span class="status ${
+                    statusClass(
+                      order.status
+                    )
+                  }">
+
+                    ${statusText(
+                      order.status
+                    )}
+
+                  </span>
+
+                </div>
+
+
+                <br>
+
+
+                <div class="order-row">
+
+                  <span>
+                    مبلغ
+                  </span>
+
+                  <strong>
+                    ${formatPrice(
+                      order.total_price
+                    )}
+                    تومان
+                  </strong>
+
+                </div>
+
+
+                <small
+                  style="color:var(--muted)">
+
+                  ${formatDate(
+                    order.created_at
+                  )}
+
+                </small>
+
+              </div>
+
+            `).join("")
+
+          : `
+
+            <p style="color:var(--muted)">
+              سفارشی ندارید.
+            </p>
+
+          `
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+async function showMyFavorites() {
+
+  const items =
+    accounts.filter(
+      account =>
+        favorites.includes(
+          Number(account.id)
+        )
+    );
+
+
+  document.getElementById(
+    "profileContent"
+  ).innerHTML = `
+
+    <div class="modal-head">
+
+      <h2>
+        ❤️ علاقه‌مندی‌ها
+      </h2>
+
+      <button
+        class="close"
+        onclick="openProfile()">
+
+        ←
+
+      </button>
+
+    </div>
+
+
+    ${
+      items.length
+
+        ? items.map(
+            accountCard
+          ).join("")
+
+        : `
+
+          <p style="color:var(--muted)">
+            هنوز اکانتی به علاقه‌مندی‌ها اضافه نکرده‌اید.
+          </p>
+
+        `
+    }
+
+  `;
+
+}
+
+
+/* ============================================================
+   ADMIN
+============================================================ */
+
+async function openAdmin() {
 
   await loadUser();
 
@@ -5304,27 +4463,154 @@ async function openAdmin() {
   if (!isAdmin()) {
 
     toast(
-      currentLanguage === "fa"
-        ? "دسترسی ندارید."
-        : "Access denied.",
+      "دسترسی به پنل مدیریت ندارید.",
       "error"
     );
 
     return;
-
   }
+
+
+  document
+    .getElementById(
+      "storeContent"
+    )
+    .classList.add(
+      "hidden"
+    );
+
+
+  document
+    .getElementById(
+      "adminDashboard"
+    )
+    .classList.remove(
+      "hidden"
+    );
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
 
   await loadAdminData();
 
-  openModal("adminModal");
+}
+
+
+function closeAdminDashboard() {
+
+  document
+    .getElementById(
+      "adminDashboard"
+    )
+    .classList.add(
+      "hidden"
+    );
+
+
+  document
+    .getElementById(
+      "storeContent"
+    )
+    .classList.remove(
+      "hidden"
+    );
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
 }
 
 
-/* ============================================================
-   ADMIN DATA
-============================================================ */
+function showAdminPage(
+  page,
+  button
+) {
+
+  document
+    .querySelectorAll(
+      ".admin-page"
+    )
+    .forEach(
+      element =>
+        element.classList.add(
+          "hidden"
+        )
+    );
+
+
+  const pageElement =
+    document.getElementById(
+      "adminPage" +
+      page.charAt(0)
+        .toUpperCase() +
+      page.slice(1)
+    );
+
+
+  pageElement
+    ?.classList.remove(
+      "hidden"
+    );
+
+
+  document
+    .querySelectorAll(
+      ".admin-menu-item"
+    )
+    .forEach(
+      element =>
+        element.classList.remove(
+          "active"
+        )
+    );
+
+
+  button?.classList.add(
+    "active"
+  );
+
+
+  const titles = {
+
+    dashboard:
+      "داشبورد",
+
+    users:
+      "کاربران",
+
+    orders:
+      "سفارش‌ها",
+
+    accounts:
+      "اکانت‌ها",
+
+    coupons:
+      "کوپن‌ها",
+
+    settings:
+      "تنظیمات"
+
+  };
+
+
+  document.getElementById(
+    "adminPageTitle"
+  ).textContent =
+    titles[page];
+
+
+  if (page === "coupons")
+    loadCoupons();
+
+}
+
 
 async function loadAdminData() {
 
@@ -5332,83 +4618,603 @@ async function loadAdminData() {
     return;
 
 
-  const {
-    data: allAccounts
-  } =
-    await supabaseClient
-      .from("accounts")
-      .select("*")
-      .order("created_at", {
-        ascending:false
-      });
+  const [
+    accountsResult,
+    ordersResult,
+    usersResult
+  ] =
+    await Promise.all([
 
+      supabaseClient
+        .from("accounts")
+        .select("*")
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        ),
 
-  const {
-    data: allOrders
-  } =
-    await supabaseClient
-      .from("orders")
-      .select("*")
-      .order("created_at", {
-        ascending:false
-      });
+      supabaseClient
+        .from("orders")
+        .select("*")
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        ),
+
+      supabaseClient
+        .from("profiles")
+        .select("*")
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        )
+
+    ]);
 
 
   accounts =
-    allAccounts || accounts;
+    accountsResult.data || [];
+
+
+  adminOrdersData =
+    ordersResult.data || [];
+
+
+  adminUsersData =
+    usersResult.data || [];
 
 
   document.getElementById(
-    "adminAccounts"
+    "dashboardAccounts"
   ).textContent =
-    allAccounts?.length || 0;
+    accounts.length;
 
 
   document.getElementById(
-    "adminOrders"
+    "dashboardUsers"
   ).textContent =
-    allOrders?.length || 0;
+    adminUsersData.length;
 
 
   document.getElementById(
-    "adminRevenue"
+    "dashboardOrders"
   ).textContent =
-    formatPrice(
-      (allOrders || [])
-        .filter(o =>
-          o.status === "approved"
-        )
-        .reduce(
-          (sum,o) =>
-            sum +
-            Number(o.total_price || 0),
-          0
-        )
+    adminOrdersData.length;
+
+
+  const revenue =
+    adminOrdersData
+      .filter(
+        order =>
+          order.status ===
+          "approved"
+      )
+      .reduce(
+        (sum, order) =>
+          sum +
+          Number(
+            order.total_price || 0
+          ),
+        0
+      );
+
+
+  document.getElementById(
+    "dashboardRevenue"
+  ).textContent =
+    formatPrice(revenue);
+
+
+  renderDashboardOrders();
+
+  renderAdminUsers();
+
+  renderAdminOrdersTable();
+
+  renderAdminAccountsTable();
+
+  renderAccounts();
+
+}
+
+
+/* ============================================================
+   ADMIN ORDERS
+============================================================ */
+
+let adminOrdersData = [];
+
+let adminUsersData = [];
+
+let adminCouponsData = [];
+
+
+function statusText(status) {
+
+  const map = {
+
+    pending:
+      "در انتظار بررسی",
+
+    approved:
+      "تأیید شده",
+
+    cancelled:
+      "لغو شده"
+
+  };
+
+
+  return map[status] || status;
+
+}
+
+
+function statusClass(status) {
+
+  return {
+
+    pending:
+      "status-pending",
+
+    approved:
+      "status-approved",
+
+    cancelled:
+      "status-cancelled"
+
+  }[status] || "status-pending";
+
+}
+
+
+function renderDashboardOrders() {
+
+  const container =
+    document.getElementById(
+      "dashboardRecentOrders"
     );
 
 
-  renderAdminAccounts(
-    allAccounts || []
+  const list =
+    adminOrdersData.slice(
+      0,
+      5
+    );
+
+
+  if (!list.length) {
+
+    container.innerHTML =
+      "هنوز سفارشی وجود ندارد.";
+
+    return;
+  }
+
+
+  container.innerHTML = `
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>
+            سفارش
+          </th>
+
+          <th>
+            مبلغ
+          </th>
+
+          <th>
+            وضعیت
+          </th>
+
+          <th>
+            تاریخ
+          </th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        ${
+          list.map(order => `
+
+            <tr>
+
+              <td>
+                #${order.id}
+              </td>
+
+              <td>
+                ${formatPrice(
+                  order.total_price
+                )}
+                تومان
+              </td>
+
+              <td>
+
+                <span class="status ${
+                  statusClass(
+                    order.status
+                  )
+                }">
+
+                  ${statusText(
+                    order.status
+                  )}
+
+                </span>
+
+              </td>
+
+              <td>
+                ${formatDate(
+                  order.created_at
+                )}
+              </td>
+
+            </tr>
+
+          `).join("")
+        }
+
+      </tbody>
+
+    </table>
+
+  `;
+
+}
+
+
+function renderAdminOrdersTable(
+  list = adminOrdersData
+) {
+
+  const container =
+    document.getElementById(
+      "adminOrdersTable"
+    );
+
+
+  if (!container)
+    return;
+
+
+  container.innerHTML = `
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>
+            ID
+          </th>
+
+          <th>
+            کاربر
+          </th>
+
+          <th>
+            مبلغ
+          </th>
+
+          <th>
+            وضعیت
+          </th>
+
+          <th>
+            عملیات
+          </th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody>
+
+        ${
+          list.map(order => `
+
+            <tr>
+
+              <td>
+                #${order.id}
+              </td>
+
+              <td>
+                ${String(
+                  order.user_id
+                ).slice(0,8)}...
+              </td>
+
+              <td>
+                ${formatPrice(
+                  order.total_price
+                )}
+                تومان
+              </td>
+
+              <td>
+
+                <span class="status ${
+                  statusClass(
+                    order.status
+                  )
+                }">
+
+                  ${statusText(
+                    order.status
+                  )}
+
+                </span>
+
+              </td>
+
+              <td>
+
+                <select
+                  class="select"
+                  onchange="
+                    updateOrderStatus(
+                      ${order.id},
+                      this.value
+                    )
+                  "
+                  style="width:auto">
+
+                  <option
+                    value="pending"
+                    ${
+                      order.status ===
+                      "pending"
+                        ? "selected"
+                        : ""
+                    }>
+
+                    در انتظار
+
+                  </option>
+
+                  <option
+                    value="approved"
+                    ${
+                      order.status ===
+                      "approved"
+                        ? "selected"
+                        : ""
+                    }>
+
+                    تأیید
+
+                  </option>
+
+                  <option
+                    value="cancelled"
+                    ${
+                      order.status ===
+                      "cancelled"
+                        ? "selected"
+                        : ""
+                    }>
+
+                    لغو
+
+                  </option>
+
+                </select>
+
+              </td>
+
+            </tr>
+
+          `).join("")
+        }
+
+      </tbody>
+
+    </table>
+
+  `;
+
+}
+
+
+async function updateOrderStatus(
+  orderId,
+  newStatus
+) {
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("orders")
+      .update({
+
+        status:
+          newStatus
+
+      })
+      .eq(
+        "id",
+        orderId
+      );
+
+
+  if (error) {
+
+    toast(
+      error.message,
+      "error"
+    );
+
+    return;
+  }
+
+
+  toast(
+    "وضعیت سفارش تغییر کرد."
   );
 
 
-  renderAdminOrders(
-    allOrders || []
+  await loadAdminData();
+
+}
+
+
+function filterAdminOrders() {
+
+  const query =
+    document.getElementById(
+      "orderSearch"
+    ).value
+      .toLowerCase()
+      .trim();
+
+
+  renderAdminOrdersTable(
+    adminOrdersData.filter(
+      order =>
+        String(order.id)
+          .includes(query)
+        ||
+        String(order.user_id)
+          .toLowerCase()
+          .includes(query)
+    )
   );
 
+}
 
-  /*
-    Supabase Auth users cannot be safely
-    counted from the browser.
 
-    A future Edge Function can provide
-    admin-only user statistics.
-  */
+/* ============================================================
+   ADMIN USERS
+============================================================ */
 
-  document.getElementById(
-    "adminUsers"
-  ).textContent =
-    "—";
+function renderAdminUsers(
+  list = adminUsersData
+) {
+
+  const container =
+    document.getElementById(
+      "adminUsersTable"
+    );
+
+
+  if (!container)
+    return;
+
+
+  container.innerHTML = `
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>
+            کاربر
+          </th>
+
+          <th>
+            نقش
+          </th>
+
+          <th>
+            عضویت
+          </th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody>
+
+        ${
+          list.map(user => `
+
+            <tr>
+
+              <td>
+
+                ${escapeHtml(
+                  user.username
+                  || "-"
+                )}
+
+              </td>
+
+              <td>
+
+                ${
+                  user.role === "admin"
+                    ? "🛠️ مدیر"
+                    : "👤 کاربر"
+                }
+
+              </td>
+
+              <td>
+
+                ${formatDate(
+                  user.created_at
+                )}
+
+              </td>
+
+            </tr>
+
+          `).join("")
+        }
+
+      </tbody>
+
+    </table>
+
+  `;
+
+}
+
+
+function filterAdminUsers() {
+
+  const query =
+    document.getElementById(
+      "userSearch"
+    ).value
+      .toLowerCase()
+      .trim();
+
+
+  renderAdminUsers(
+    adminUsersData.filter(
+      user =>
+        String(
+          user.username || ""
+        )
+          .toLowerCase()
+          .includes(query)
+    )
+  );
 
 }
 
@@ -5417,95 +5223,139 @@ async function loadAdminData() {
    ADMIN ACCOUNTS
 ============================================================ */
 
-function renderAdminAccounts(list) {
+function renderAdminAccountsTable() {
 
-  const tbody =
+  const container =
     document.getElementById(
       "adminAccountsTable"
     );
 
 
-  tbody.innerHTML =
-    list.map(account => `
-
-      <tr>
-
-        <td>
-          ${escapeHtml(
-            account.title || ""
-          )}
-        </td>
-
-        <td>
-          ${escapeHtml(
-            account.game || ""
-          )}
-        </td>
-
-        <td>
-          ${formatPrice(
-            account.price || 0
-          )}
-        </td>
-
-        <td>
-
-          <span class="status ${
-            account.status === "available"
-              ? "status-approved"
-              : "status-cancelled"
-          }">
-
-            ${
-              account.status === "available"
-                ? t("available")
-                : t("unavailable")
-            }
-
-          </span>
-
-        </td>
-
-        <td>
-
-          <button
-            class="btn btn-secondary btn-small"
-            onclick="editAccount(${account.id})">
-
-            ✏️
-
-          </button>
+  if (!container)
+    return;
 
 
-          <button
-            class="btn btn-danger btn-small"
-            onclick="deleteAccount(${account.id})">
+  container.innerHTML = `
 
-            🗑️
+    <table>
 
-          </button>
+      <thead>
 
-        </td>
+        <tr>
 
-      </tr>
+          <th>
+            نام
+          </th>
 
-    `).join("");
+          <th>
+            بازی
+          </th>
+
+          <th>
+            قیمت
+          </th>
+
+          <th>
+            وضعیت
+          </th>
+
+          <th>
+            عملیات
+          </th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody>
+
+        ${
+          accounts.map(account => `
+
+            <tr>
+
+              <td>
+                ${escapeHtml(
+                  account.title
+                )}
+              </td>
+
+              <td>
+                ${escapeHtml(
+                  account.game
+                )}
+              </td>
+
+              <td>
+
+                ${formatPrice(
+                  account.price
+                )}
+                تومان
+
+              </td>
+
+              <td>
+
+                ${
+                  account.status ===
+                  "available"
+                    ? "🟢 موجود"
+                    : "🔴 ناموجود"
+                }
+
+              </td>
+
+              <td>
+
+                <button
+                  class="btn btn-secondary btn-small"
+                  onclick="
+                    editAccount(
+                      ${account.id}
+                    )
+                  ">
+
+                  ✏️
+
+                </button>
+
+
+                <button
+                  class="btn btn-danger btn-small"
+                  onclick="
+                    deleteAccount(
+                      ${account.id}
+                    )
+                  ">
+
+                  🗑️
+
+                </button>
+
+              </td>
+
+            </tr>
+
+          `).join("")
+        }
+
+      </tbody>
+
+    </table>
+
+  `;
 
 }
 
 
-/* ============================================================
-   ADD ACCOUNT
-============================================================ */
-
 function openAddAccount() {
 
   document.getElementById(
-    "accountFormTitle"
+    "accountModalTitle"
   ).textContent =
-    currentLanguage === "fa"
-      ? "افزودن اکانت"
-      : "Add Account";
+    "افزودن اکانت";
 
 
   document.getElementById(
@@ -5545,31 +5395,23 @@ function openAddAccount() {
 
   document.getElementById(
     "accountStatus"
-  ).value = "unavailable";
-
-
-  document.getElementById(
-    "accountImage"
-  ).value = "";
+  ).value = "available";
 
 
   openModal(
-    "accountFormModal"
+    "accountModal"
   );
 
 }
 
 
-/* ============================================================
-   EDIT ACCOUNT
-============================================================ */
-
 function editAccount(id) {
 
   const account =
     accounts.find(
-      a =>
-        Number(a.id) ===
+      item =>
+        Number(item.id)
+        ===
         Number(id)
     );
 
@@ -5579,11 +5421,9 @@ function editAccount(id) {
 
 
   document.getElementById(
-    "accountFormTitle"
+    "accountModalTitle"
   ).textContent =
-    currentLanguage === "fa"
-      ? "ویرایش اکانت"
-      : "Edit Account";
+    "ویرایش اکانت";
 
 
   document.getElementById(
@@ -5619,13 +5459,13 @@ function editAccount(id) {
   document.getElementById(
     "accountLevel"
   ).value =
-    account.level || "";
+    account.level || "نامعلوم";
 
 
   document.getElementById(
     "accountSkins"
   ).value =
-    account.skins || "";
+    account.skins || "نامعلوم";
 
 
   document.getElementById(
@@ -5634,35 +5474,20 @@ function editAccount(id) {
     account.status || "unavailable";
 
 
-  document.getElementById(
-    "accountImage"
-  ).value =
-    account.image_url || "";
-
-
   openModal(
-    "accountFormModal"
+    "accountModal"
   );
 
 }
 
 
-/* ============================================================
-   SAVE ACCOUNT
-============================================================ */
+async function saveAccount(event) {
 
-async function saveAccount() {
+  event.preventDefault();
 
-  if (!isAdmin()) {
 
-    toast(
-      "Access denied.",
-      "error"
-    );
-
+  if (!isAdmin())
     return;
-
-  }
 
 
   const id =
@@ -5692,8 +5517,8 @@ async function saveAccount() {
       Number(
         document.getElementById(
           "accountPrice"
-        ).value || 0
-      ),
+        ).value
+      ) || 0,
 
     level:
       document.getElementById(
@@ -5708,92 +5533,68 @@ async function saveAccount() {
     status:
       document.getElementById(
         "accountStatus"
-      ).value,
-
-    image_url:
-      document.getElementById(
-        "accountImage"
-      ).value.trim()
+      ).value
 
   };
 
 
-  let error;
+  let result;
 
 
   if (id) {
 
-    ({
-      error
-    } =
+    result =
       await supabaseClient
         .from("accounts")
         .update(payload)
         .eq(
           "id",
           id
-        ));
+        );
 
   } else {
 
-    ({
-      error
-    } =
+    result =
       await supabaseClient
         .from("accounts")
-        .insert(payload));
+        .insert(payload);
 
   }
 
 
-  if (error) {
+  if (result.error) {
 
     toast(
-      error.message,
+      result.error.message,
       "error"
     );
 
     return;
-
   }
 
 
   closeModal(
-    "accountFormModal"
+    "accountModal"
   );
 
 
   toast(
-    t("saved")
+    "اکانت ذخیره شد."
   );
 
-
-  await loadAccounts();
 
   await loadAdminData();
 
 }
 
 
-/* ============================================================
-   DELETE ACCOUNT
-============================================================ */
-
 async function deleteAccount(id) {
 
-  if (!isAdmin())
-    return;
-
-
-  const confirmed =
-    confirm(
-      currentLanguage === "fa"
-        ? "آیا مطمئن هستید؟"
-        : "Are you sure?"
-    );
-
-
-  if (!confirmed)
+  if (
+    !confirm(
+      "این اکانت حذف شود؟"
+    )
+  )
     return;
 
 
@@ -5812,23 +5613,18 @@ async function deleteAccount(id) {
   if (error) {
 
     toast(
-      currentLanguage === "fa"
-        ? "اگر این اکانت در سفارشی استفاده شده باشد، حذف آن ممکن نیست. بهتر است وضعیت را ناموجود کنید."
-        : "This account may be referenced by an order. Mark it unavailable instead.",
+      "اگر این اکانت داخل سفارش استفاده شده، آن را حذف نکنید؛ وضعیتش را ناموجود کنید.",
       "error"
     );
 
     return;
-
   }
 
 
   toast(
-    t("deleted")
+    "اکانت حذف شد."
   );
 
-
-  await loadAccounts();
 
   await loadAdminData();
 
@@ -5836,138 +5632,23 @@ async function deleteAccount(id) {
 
 
 /* ============================================================
-   ADMIN ORDERS
+   COUPONS
 ============================================================ */
 
-function renderAdminOrders(list) {
-
-  const tbody =
-    document.getElementById(
-      "adminOrdersTable"
-    );
-
-
-  tbody.innerHTML =
-    list.map(order => `
-
-      <tr>
-
-        <td>
-          #${order.id}
-        </td>
-
-        <td>
-          ${escapeHtml(
-            order.user_id
-          )}
-        </td>
-
-        <td>
-          ${formatPrice(
-            order.total_price || 0
-          )}
-        </td>
-
-        <td>
-
-          <span class="status ${statusClass(order.status)}">
-
-            ${statusText(
-              order.status
-            )}
-
-          </span>
-
-        </td>
-
-        <td>
-
-          <select
-            class="select"
-            style="width:auto"
-            onchange="
-              updateOrderStatus(
-                ${order.id},
-                this.value
-              )
-            ">
-
-            <option
-              value="pending"
-              ${
-                order.status ===
-                "pending"
-                  ? "selected"
-                  : ""
-              }>
-
-              ${currentLanguage === "fa"
-                ? "در انتظار بررسی"
-                : "Pending"}
-
-            </option>
-
-            <option
-              value="approved"
-              ${
-                order.status ===
-                "approved"
-                  ? "selected"
-                  : ""
-              }>
-
-              ${currentLanguage === "fa"
-                ? "تأیید شده"
-                : "Approved"}
-
-            </option>
-
-            <option
-              value="cancelled"
-              ${
-                order.status ===
-                "cancelled"
-                  ? "selected"
-                  : ""
-              }>
-
-              ${currentLanguage === "fa"
-                ? "لغو شده"
-                : "Cancelled"}
-
-            </option>
-
-          </select>
-
-        </td>
-
-      </tr>
-
-    `).join("");
-
-}
-
-
-async function updateOrderStatus(
-  orderId,
-  newStatus
-) {
-
-  if (!isAdmin())
-    return;
-
+async function loadCoupons() {
 
   const {
+    data,
     error
   } =
     await supabaseClient
-      .from("orders")
-      .update({
-        status: newStatus
-      })
-      .eq(
-        "id",
-        orderId
+      .from("coupons")
+      .select("*")
+      .order(
+        "created_at",
+        {
+          ascending: false
+        }
       );
 
 
@@ -5979,198 +5660,388 @@ async function updateOrderStatus(
     );
 
     return;
+  }
 
+
+  adminCouponsData =
+    data || [];
+
+
+  renderCoupons();
+
+}
+
+
+function renderCoupons() {
+
+  const container =
+    document.getElementById(
+      "adminCouponsTable"
+    );
+
+
+  if (!container)
+    return;
+
+
+  if (!adminCouponsData.length) {
+
+    container.innerHTML =
+      "هنوز کوپنی ایجاد نشده است.";
+
+    return;
+
+  }
+
+
+  container.innerHTML = `
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>
+            کد
+          </th>
+
+          <th>
+            تخفیف
+          </th>
+
+          <th>
+            استفاده
+          </th>
+
+          <th>
+            وضعیت
+          </th>
+
+          <th>
+            عملیات
+          </th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody>
+
+        ${
+          adminCouponsData.map(coupon => `
+
+            <tr>
+
+              <td>
+                <strong>
+                  ${escapeHtml(
+                    coupon.code
+                  )}
+                </strong>
+              </td>
+
+              <td>
+                ${coupon.discount_percent}%
+              </td>
+
+              <td>
+
+                ${coupon.used_count || 0}
+                /
+                ${coupon.max_uses ?? "∞"}
+
+              </td>
+
+              <td>
+
+                ${
+                  coupon.active
+                    ? "🟢 فعال"
+                    : "🔴 غیرفعال"
+                }
+
+              </td>
+
+              <td>
+
+                <button
+                  class="btn btn-secondary btn-small"
+                  onclick="
+                    toggleCoupon(
+                      ${coupon.id},
+                      ${coupon.active}
+                    )
+                  ">
+
+                  ${
+                    coupon.active
+                      ? "غیرفعال"
+                      : "فعال"
+                  }
+
+                </button>
+
+
+                <button
+                  class="btn btn-danger btn-small"
+                  onclick="
+                    deleteCoupon(
+                      ${coupon.id}
+                    )
+                  ">
+
+                  🗑️
+
+                </button>
+
+              </td>
+
+            </tr>
+
+          `).join("")
+        }
+
+      </tbody>
+
+    </table>
+
+  `;
+
+}
+
+
+async function createCoupon() {
+
+  if (!isAdmin())
+    return;
+
+
+  const code =
+    prompt(
+      "کد کوپن:"
+    );
+
+
+  if (!code)
+    return;
+
+
+  const discount =
+    Number(
+      prompt(
+        "درصد تخفیف:"
+      )
+    );
+
+
+  if (
+    !discount ||
+    discount < 1 ||
+    discount > 100
+  ) {
+
+    toast(
+      "درصد تخفیف باید بین 1 تا 100 باشد.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("coupons")
+      .insert({
+
+        code:
+          code
+            .trim()
+            .toUpperCase(),
+
+        discount_percent:
+          discount,
+
+        active:
+          true
+
+      });
+
+
+  if (error) {
+
+    toast(
+      error.message,
+      "error"
+    );
+
+    return;
   }
 
 
   toast(
-    t("saved")
+    "کوپن ساخته شد."
   );
 
 
-  await loadAdminData();
+  await loadCoupons();
 
 }
 
 
-/* ============================================================
-   FAQ
-============================================================ */
+async function toggleCoupon(
+  id,
+  active
+) {
 
-function toggleFaq(button) {
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("coupons")
+      .update({
 
-  const item =
-    button.closest(
-      ".faq-item"
+        active:
+          !active
+
+      })
+      .eq(
+        "id",
+        id
+      );
+
+
+  if (error) {
+
+    toast(
+      error.message,
+      "error"
     );
 
-
-  item.classList.toggle(
-    "open"
-  );
-
-
-  const icon =
-    button.querySelector(
-      "span:last-child"
-    );
-
-
-  icon.textContent =
-    item.classList.contains("open")
-      ? "−"
-      : "+";
-
-}
-
-
-/* ============================================================
-   STATUS
-============================================================ */
-
-function statusClass(status) {
-
-  if (status === "approved")
-    return "status-approved";
-
-  if (status === "cancelled")
-    return "status-cancelled";
-
-  return "status-pending";
-
-}
-
-
-function statusText(status) {
-
-  if (
-    currentLanguage === "en"
-  ) {
-
-    if (status === "approved")
-      return "Approved";
-
-    if (status === "cancelled")
-      return "Cancelled";
-
-    return "Pending";
-
+    return;
   }
 
 
-  if (status === "approved")
-    return "تأیید شده";
-
-  if (status === "cancelled")
-    return "لغو شده";
-
-  return "در انتظار بررسی";
+  await loadCoupons();
 
 }
 
 
-/* ============================================================
-   HELPERS
-============================================================ */
+async function deleteCoupon(
+  id
+) {
 
-function formatPrice(value) {
-
-  return Number(
-    value || 0
-  ).toLocaleString(
-    currentLanguage === "fa"
-      ? "fa-IR"
-      : "en-US"
-  );
-
-}
-
-
-function formatDate(value) {
-
-  if (!value)
-    return "-";
-
-
-  return new Date(value)
-    .toLocaleString(
-      currentLanguage === "fa"
-        ? "fa-IR"
-        : "en-US",
-      {
-        dateStyle: "medium",
-        timeStyle: "short"
-      }
-    );
-
-}
-
-
-function escapeHtml(value) {
-
-  return String(
-    value ?? ""
+  if (
+    !confirm(
+      "این کوپن حذف شود؟"
+    )
   )
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-
-}
-
-
-/* ============================================================
-   INITIALIZE
-============================================================ */
-
-async function init() {
-
-  applyTheme();
-
-  applyLanguage();
-
-  updateCartCount();
-
-  await loadAccounts();
+    return;
 
 
   const {
-    data
+    error
   } =
-    await supabaseClient.auth
-      .getSession();
+    await supabaseClient
+      .from("coupons")
+      .delete()
+      .eq(
+        "id",
+        id
+      );
 
 
-  currentUser =
-    data.session?.user ||
-    null;
+  if (error) {
 
+    toast(
+      error.message,
+      "error"
+    );
 
-  if (currentUser) {
-
-    await loadUser();
-
+    return;
   }
+
+
+  await loadCoupons();
+
+}
+
+
+/* ============================================================
+   LANGUAGE
+============================================================ */
+
+function toggleLanguage() {
+
+  currentLanguage =
+    currentLanguage === "fa"
+      ? "en"
+      : "fa";
+
+
+  localStorage.setItem(
+    "gameshop_language",
+    currentLanguage
+  );
+
+
+  document.documentElement
+    .lang =
+    currentLanguage;
+
+
+  document.documentElement
+    .dir =
+    currentLanguage === "fa"
+      ? "rtl"
+      : "ltr";
+
+
+  document.getElementById(
+    "languageButton"
+  ).textContent =
+    currentLanguage === "fa"
+      ? "EN"
+      : "FA";
+
+}
+
+
+/* ============================================================
+   INIT
+============================================================ */
+
+supabaseClient.auth
+  .onAuthStateChange(
+    async () => {
+
+      await loadUser();
+
+    }
+  );
+
+
+async function init() {
+
+  loadTheme();
+
+  loadCart();
+
+  await loadUser();
+
+  await loadAccounts();
 
 }
 
 
 init();
 
-
-/* ============================================================
-   ADMIN ACCESS
-============================================================
-
-   برای باز کردن پنل مدیریت از Console:
-
-   openAdmin()
-
-   بعداً دکمه مخصوص Admin را هم اضافه می‌کنیم.
-============================================================ */
-
 </script>
 
 </body>
+
 </html>
