@@ -2,28 +2,30 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>Tournament CS 1.6 IR</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 :root{
-  --bg:#05080a;
-  --bg2:#081015;
-  --panel:#0b1318;
-  --panel2:#101a20;
-  --green:#8cff00;
-  --green2:#48ff00;
-  --red:#ff3b3b;
-  --yellow:#ffd21f;
-  --blue:#31a8ff;
-  --text:#f2f5f6;
-  --muted:#89969d;
-  --border:rgba(140,255,0,.16);
-  --shadow:0 0 35px rgba(0,0,0,.45);
+  --bg:#030705;
+  --panel:#08100c;
+  --panel2:#0b1710;
+  --green:#39ff88;
+  --green2:#13d965;
+  --red:#ff4141;
+  --yellow:#ffd84a;
+  --text:#effff5;
+  --muted:#8da398;
+  --border:rgba(57,255,136,.18);
+  --shadow:0 0 35px rgba(57,255,136,.10);
 }
 
 *{
@@ -37,36 +39,36 @@ html{
 }
 
 body{
-  font-family:"Vazirmatn",sans-serif;
-  background:
-    linear-gradient(rgba(2,5,7,.88),rgba(2,5,7,.96)),
-    url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=2000&q=90")
-    center/cover fixed;
-  color:var(--text);
   min-height:100vh;
+  color:var(--text);
+  font-family:Vazirmatn,Arial,sans-serif;
+  background:
+    linear-gradient(rgba(1,5,3,.78),rgba(1,5,3,.97)),
+    url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=2200&q=90")
+    center/cover fixed;
 }
 
 body::before{
   content:"";
   position:fixed;
   inset:0;
+  z-index:-1;
   pointer-events:none;
   background:
-    linear-gradient(rgba(140,255,0,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(140,255,0,.025) 1px,transparent 1px);
+    linear-gradient(rgba(57,255,136,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(57,255,136,.025) 1px,transparent 1px);
   background-size:45px 45px;
-  z-index:-1;
 }
 
 a{
-  color:inherit;
   text-decoration:none;
+  color:inherit;
 }
 
 button,
 input,
-select,
-textarea{
+textarea,
+select{
   font-family:inherit;
 }
 
@@ -84,14 +86,14 @@ button{
 header{
   position:sticky;
   top:0;
-  z-index:100;
-  backdrop-filter:blur(15px);
-  background:rgba(4,8,10,.86);
+  z-index:50;
+  backdrop-filter:blur(18px);
+  background:rgba(2,7,4,.88);
   border-bottom:1px solid var(--border);
 }
 
 .nav{
-  min-height:74px;
+  min-height:76px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -99,149 +101,124 @@ header{
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logo-mark{
-  width:43px;
-  height:43px;
-  border:2px solid var(--green);
-  display:grid;
-  place-items:center;
-  color:var(--green);
   font-family:Orbitron,sans-serif;
   font-weight:900;
-  box-shadow:0 0 20px rgba(140,255,0,.18);
-}
-
-.logo-text strong{
-  display:block;
-  font-family:Orbitron,sans-serif;
-  font-size:16px;
+  color:var(--green);
+  white-space:nowrap;
   letter-spacing:1px;
 }
 
-.logo-text span{
-  color:var(--green);
-  font-size:11px;
+.logo span{
+  color:#fff;
 }
 
-.nav-links{
+nav{
   display:flex;
-  gap:5px;
-  align-items:center;
-  flex-wrap:wrap;
+  gap:20px;
 }
 
-.nav-links a{
-  padding:9px 12px;
-  color:#adb8bd;
+nav a{
+  color:#aebdb4;
   font-size:13px;
-  border-radius:7px;
   transition:.2s;
 }
 
-.nav-links a:hover{
-  background:rgba(140,255,0,.07);
+nav a:hover{
   color:var(--green);
 }
 
 .nav-actions{
   display:flex;
-  gap:8px;
+  gap:7px;
 }
 
+/* BUTTONS */
+
 .btn{
-  border:1px solid var(--green);
-  background:var(--green);
-  color:#071000;
+  border:0;
+  border-radius:9px;
+  padding:11px 18px;
+  color:#021008;
   font-weight:900;
-  padding:10px 17px;
-  border-radius:7px;
+  background:linear-gradient(135deg,var(--green),var(--green2));
   transition:.2s;
 }
 
 .btn:hover{
   transform:translateY(-2px);
-  box-shadow:0 8px 25px rgba(140,255,0,.2);
+  box-shadow:0 0 25px rgba(57,255,136,.25);
 }
 
 .btn-outline{
-  background:transparent;
   color:var(--green);
+  background:transparent;
+  border:1px solid var(--green);
 }
 
 .btn-danger{
-  background:transparent;
-  border-color:var(--red);
-  color:var(--red);
-}
-
-.btn-blue{
-  background:var(--blue);
-  border-color:var(--blue);
-  color:#00111d;
+  color:#fff;
+  background:linear-gradient(135deg,#ff5656,#b81717);
 }
 
 .btn-small{
-  padding:7px 11px;
+  padding:8px 12px;
   font-size:12px;
 }
 
 /* HERO */
 
 .hero{
-  padding:85px 0 55px;
+  min-height:650px;
+  padding:80px 0;
+  display:grid;
+  place-items:center;
 }
 
 .hero-grid{
   display:grid;
-  grid-template-columns:1.35fr .65fr;
-  gap:25px;
+  grid-template-columns:1.25fr .75fr;
+  gap:40px;
   align-items:center;
 }
 
 .badge{
   display:inline-flex;
-  gap:8px;
   align-items:center;
+  gap:8px;
   color:var(--green);
+  background:rgba(57,255,136,.06);
   border:1px solid var(--border);
-  background:rgba(140,255,0,.05);
-  padding:7px 12px;
-  border-radius:30px;
+  border-radius:100px;
+  padding:7px 13px;
   font-size:12px;
   margin-bottom:20px;
 }
 
-.dot{
+.badge i{
   width:7px;
   height:7px;
-  background:var(--green);
   border-radius:50%;
-  box-shadow:0 0 10px var(--green);
+  background:var(--green);
+  box-shadow:0 0 12px var(--green);
 }
 
 .hero h1{
-  font-family:Orbitron,"Vazirmatn",sans-serif;
-  font-size:clamp(38px,6vw,76px);
+  font-family:Orbitron,Vazirmatn,sans-serif;
+  font-size:clamp(43px,7vw,82px);
   line-height:1;
-  margin-bottom:20px;
-  letter-spacing:-2px;
+  margin-bottom:25px;
 }
 
 .hero h1 span{
   color:var(--green);
-  text-shadow:0 0 30px rgba(140,255,0,.2);
+  text-shadow:0 0 35px rgba(57,255,136,.3);
 }
 
 .hero p{
   max-width:650px;
-  color:#9da9ae;
+  color:#aab9b0;
   line-height:2;
-  margin-bottom:25px;
+  margin-bottom:28px;
 }
 
 .hero-buttons{
@@ -250,92 +227,111 @@ header{
   flex-wrap:wrap;
 }
 
-.hero-card{
-  background:linear-gradient(145deg,rgba(16,27,33,.96),rgba(6,12,15,.96));
+/* CARDS */
+
+.hero-card,
+.stat,
+.news,
+.rule,
+.admin-card,
+.match,
+.time-box,
+.bracket-card{
+  background:linear-gradient(145deg,rgba(11,24,16,.95),rgba(4,10,7,.95));
   border:1px solid var(--border);
-  padding:25px;
   box-shadow:var(--shadow);
-  position:relative;
-  overflow:hidden;
 }
 
-.hero-card::before{
-  content:"";
-  position:absolute;
-  top:-100px;
-  left:-100px;
-  width:220px;
-  height:220px;
-  background:rgba(140,255,0,.07);
-  filter:blur(50px);
-  border-radius:50%;
+.hero-card{
+  position:relative;
+  overflow:hidden;
+  padding:27px;
+  border-radius:22px;
 }
 
 .card-title{
   color:var(--muted);
-  font-size:12px;
+  font-size:13px;
   margin-bottom:8px;
 }
 
-.big-prize{
-  font-family:Orbitron,sans-serif;
+.prize{
   color:var(--green);
+  font-family:Orbitron;
   font-size:30px;
   margin-bottom:25px;
 }
 
-.hero-mini-grid{
+.info-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:10px;
 }
 
-.mini{
-  border:1px solid rgba(255,255,255,.07);
+.info{
+  padding:14px;
+  border-radius:12px;
   background:rgba(255,255,255,.025);
-  padding:13px;
+  border:1px solid rgba(255,255,255,.05);
 }
 
-.mini span{
-  color:var(--muted);
+.info small{
   display:block;
-  font-size:11px;
-  margin-bottom:4px;
+  color:var(--muted);
+  margin-bottom:5px;
 }
 
-.mini strong{
-  font-size:14px;
+.info strong{
+  font-size:16px;
 }
 
 /* SECTIONS */
 
 section{
-  padding:65px 0;
+  padding:70px 0;
 }
 
 .section-head{
   display:flex;
-  align-items:end;
   justify-content:space-between;
-  gap:20px;
+  align-items:end;
   margin-bottom:25px;
 }
 
 .section-head h2{
-  font-family:Orbitron,"Vazirmatn",sans-serif;
-  font-size:24px;
+  font-family:Orbitron,Vazirmatn;
+  font-size:27px;
 }
 
 .section-head p{
   color:var(--muted);
-  font-size:12px;
-  margin-top:6px;
+  font-size:13px;
+  margin-top:7px;
 }
 
-.section-line{
-  height:1px;
-  background:linear-gradient(90deg,var(--green),transparent);
-  margin-top:12px;
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.stat{
+  padding:22px;
+  border-radius:16px;
+}
+
+.stat strong{
+  display:block;
+  color:var(--green);
+  font-family:Orbitron;
+  font-size:30px;
+}
+
+.stat span{
+  color:var(--muted);
+  font-size:13px;
 }
 
 /* COUNTDOWN */
@@ -344,170 +340,103 @@ section{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:12px;
+  margin-top:20px;
 }
 
 .time-box{
-  background:rgba(10,18,22,.9);
-  border:1px solid var(--border);
   padding:20px;
+  border-radius:15px;
   text-align:center;
 }
 
 .time-box strong{
   display:block;
-  font-family:Orbitron,sans-serif;
-  font-size:34px;
   color:var(--green);
+  font-family:Orbitron;
+  font-size:30px;
 }
 
 .time-box span{
   color:var(--muted);
-  font-size:11px;
-}
-
-/* STATS */
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-
-.stat{
-  padding:22px;
-  background:rgba(10,18,22,.9);
-  border:1px solid rgba(255,255,255,.06);
-}
-
-.stat span{
-  display:block;
-  color:var(--muted);
   font-size:12px;
-  margin-bottom:7px;
 }
 
-.stat strong{
-  font-family:Orbitron,sans-serif;
-  font-size:25px;
-  color:#fff;
-}
+/* MATCHES */
 
-/* MATCH */
-
-.match-grid{
+.match-list{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
   gap:14px;
 }
 
-.match-card{
-  background:linear-gradient(145deg,#0d171c,#071014);
-  border:1px solid rgba(255,255,255,.07);
+.match{
   padding:20px;
-  position:relative;
-}
-
-.match-card.live{
-  border-color:rgba(255,59,59,.4);
-}
-
-.match-top{
-  display:flex;
-  justify-content:space-between;
-  color:var(--muted);
-  font-size:11px;
-  margin-bottom:20px;
-}
-
-.status{
-  padding:4px 8px;
-  border-radius:4px;
-  background:rgba(140,255,0,.08);
-  color:var(--green);
-}
-
-.status.live{
-  color:#fff;
-  background:rgba(255,59,59,.16);
-}
-
-.teams{
+  border-radius:17px;
   display:grid;
-  grid-template-columns:1fr auto 1fr;
+  grid-template-columns:90px 1fr 190px;
   align-items:center;
-  gap:12px;
+  gap:20px;
+}
+
+.match-number{
+  color:var(--green);
+  font-family:Orbitron;
+  font-weight:900;
+}
+
+.teams-vs{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:25px;
 }
 
 .team-name{
+  min-width:110px;
+  text-align:center;
   font-weight:800;
 }
 
-.team-name:last-child{
-  text-align:left;
-}
-
 .vs{
-  color:var(--muted);
-  font-family:Orbitron,sans-serif;
-  font-size:11px;
-}
-
-.score{
-  font-family:Orbitron,sans-serif;
   color:var(--green);
-  font-size:26px;
-  text-align:center;
-  margin-top:10px;
+  font-family:Orbitron;
 }
 
-.match-bottom{
-  margin-top:20px;
-  padding-top:12px;
-  border-top:1px solid rgba(255,255,255,.06);
-  display:flex;
-  justify-content:space-between;
+.match-meta{
   color:var(--muted);
-  font-size:11px;
+  font-size:12px;
+  line-height:2;
 }
 
 /* TABLE */
 
 .table-wrap{
   overflow:auto;
-  border:1px solid rgba(255,255,255,.07);
+  border:1px solid var(--border);
+  border-radius:16px;
 }
 
 table{
   width:100%;
+  min-width:680px;
   border-collapse:collapse;
-  min-width:700px;
-  background:rgba(7,13,16,.9);
+  background:rgba(5,12,8,.9);
 }
 
-th,td{
-  padding:14px 16px;
+th,
+td{
+  padding:15px;
   text-align:right;
-  border-bottom:1px solid rgba(255,255,255,.055);
-  font-size:13px;
+  border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 th{
   color:var(--green);
-  font-size:11px;
-  background:rgba(140,255,0,.035);
+  font-size:12px;
 }
 
 td{
-  color:#d7dddf;
-}
-
-tr:hover td{
-  background:rgba(255,255,255,.02);
-}
-
-.rank{
-  color:var(--green);
-  font-family:Orbitron,sans-serif;
+  color:#d8e4dc;
+  font-size:13px;
 }
 
 .team-cell{
@@ -517,93 +446,43 @@ tr:hover td{
 }
 
 .team-logo{
-  width:34px;
-  height:34px;
-  border:1px solid var(--border);
+  width:38px;
+  height:38px;
   display:grid;
   place-items:center;
-  background:#071014;
-  color:var(--green);
-  font-family:Orbitron,sans-serif;
-  font-size:11px;
-}
-
-/* CARDS */
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-
-.info-card{
-  padding:22px;
-  background:rgba(9,16,20,.9);
-  border:1px solid rgba(255,255,255,.06);
-}
-
-.icon{
-  width:43px;
-  height:43px;
-  display:grid;
-  place-items:center;
+  border-radius:10px;
   border:1px solid var(--border);
+  background:rgba(57,255,136,.07);
+}
+
+.rank{
   color:var(--green);
-  margin-bottom:14px;
-  font-weight:900;
-}
-
-.info-card h3{
-  margin-bottom:8px;
-}
-
-.info-card p{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.9;
+  font-family:Orbitron;
 }
 
 /* BRACKET */
 
 .bracket{
-  overflow:auto;
-  padding-bottom:10px;
-}
-
-.bracket-inner{
-  min-width:850px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:35px;
-  align-items:center;
+  gap:25px;
 }
 
-.round h3{
+.bracket-col h3{
   color:var(--green);
-  font-size:13px;
   margin-bottom:15px;
 }
 
-.bracket-match{
-  background:#0b1419;
-  border:1px solid rgba(255,255,255,.08);
-  margin-bottom:25px;
+.bracket-card{
+  padding:16px;
+  border-radius:12px;
+  margin-bottom:12px;
 }
 
-.bracket-team{
-  padding:12px;
+.bracket-card div{
   display:flex;
   justify-content:space-between;
-  border-bottom:1px solid rgba(255,255,255,.06);
-  font-size:12px;
-}
-
-.bracket-team:last-child{
-  border-bottom:0;
-}
-
-.bracket-team span{
-  color:var(--muted);
+  padding:6px 0;
 }
 
 /* NEWS */
@@ -611,114 +490,98 @@ tr:hover td{
 .news-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:14px;
+  gap:15px;
 }
 
 .news{
-  background:rgba(9,16,20,.92);
-  border:1px solid rgba(255,255,255,.07);
-  overflow:hidden;
-}
-
-.news-img{
-  height:145px;
-  background:
-    linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.65)),
-    url("https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=900&q=80")
-    center/cover;
-}
-
-.news-body{
-  padding:18px;
-}
-
-.news-date{
-  color:var(--green);
-  font-size:10px;
+  padding:21px;
+  border-radius:16px;
 }
 
 .news h3{
-  margin:7px 0;
-  font-size:15px;
+  margin-bottom:10px;
 }
 
 .news p{
   color:var(--muted);
-  font-size:11px;
-  line-height:1.8;
+  font-size:13px;
+  line-height:1.9;
 }
 
-/* HALL */
+/* RULES */
 
-.hall{
+.rules{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:14px;
+  gap:15px;
 }
 
-.hall-card{
-  min-height:180px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(145deg,#111a1f,#080e11);
-  border:1px solid rgba(255,255,255,.08);
-  text-align:center;
+.rule{
+  padding:22px;
+  border-radius:15px;
 }
 
-.hall-icon{
-  font-size:40px;
-  margin-bottom:12px;
-}
-
-.hall-card strong{
-  color:var(--yellow);
-  font-family:Orbitron,sans-serif;
-}
-
-.hall-card span{
-  color:var(--muted);
-  font-size:11px;
-  margin-top:5px;
-}
-
-/* REGISTER */
-
-.cta{
-  background:
-    linear-gradient(100deg,rgba(140,255,0,.09),rgba(140,255,0,.015)),
-    #0a1216;
-  border:1px solid var(--border);
-  padding:35px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.cta h2{
+.rule strong{
+  display:block;
+  color:var(--green);
   margin-bottom:8px;
 }
 
-.cta p{
-  color:var(--muted);
-  font-size:12px;
+/* ADMIN */
+
+.admin{
+  display:none;
+  padding:70px 0;
+  border-top:1px solid var(--green);
+  background:rgba(2,8,4,.96);
 }
 
-/* FOOTER */
-
-footer{
-  border-top:1px solid rgba(255,255,255,.07);
-  padding:35px 0;
-  color:var(--muted);
-  font-size:11px;
+.admin.active{
+  display:block;
 }
 
-.footer-flex{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
+.admin-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.admin-card{
+  padding:20px;
+  border-radius:15px;
+}
+
+.admin-card h3{
+  color:var(--green);
+  margin-bottom:15px;
+}
+
+.form{
+  display:grid;
+  gap:11px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  color:#fff;
+  background:#020604;
+  border:1px solid rgba(57,255,136,.2);
+  border-radius:10px;
+  outline:0;
+  padding:13px;
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:var(--green);
 }
 
 /* MODAL */
@@ -726,1678 +589,1030 @@ footer{
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.75);
-  backdrop-filter:blur(8px);
+  z-index:100;
   display:none;
-  align-items:center;
-  justify-content:center;
+  place-items:center;
   padding:20px;
-  z-index:500;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(8px);
 }
 
 .modal.active{
-  display:flex;
+  display:grid;
 }
 
 .modal-box{
-  width:min(650px,100%);
+  width:min(600px,100%);
   max-height:90vh;
   overflow:auto;
-  background:#091116;
-  border:1px solid var(--border);
-  box-shadow:0 20px 70px #000;
   padding:25px;
+  border-radius:20px;
+  background:#07100b;
+  border:1px solid var(--green);
+  box-shadow:0 0 50px rgba(57,255,136,.15);
 }
 
 .modal-head{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   margin-bottom:20px;
 }
 
 .close{
   border:0;
   background:transparent;
-  color:#aaa;
-  font-size:25px;
-}
-
-.close:hover{
-  color:var(--red);
-}
-
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-.field.full{
-  grid-column:1/-1;
-}
-
-.field label{
-  color:#aeb9bd;
-  font-size:11px;
-}
-
-.field input,
-.field select,
-.field textarea{
-  width:100%;
-  padding:11px 12px;
-  border-radius:6px;
-  border:1px solid rgba(255,255,255,.09);
-  background:#050b0e;
   color:#fff;
-  outline:none;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-  border-color:var(--green);
-}
-
-.modal-actions{
-  display:flex;
-  justify-content:flex-end;
-  gap:8px;
-  margin-top:18px;
-}
-
-.message{
-  padding:10px 12px;
-  margin-top:12px;
-  display:none;
-  background:rgba(140,255,0,.07);
-  border:1px solid var(--border);
-  color:var(--green);
-  font-size:12px;
-}
-
-.message.show{
-  display:block;
-}
-
-/* ADMIN */
-
-.admin-panel{
-  display:none;
-}
-
-.admin-panel.active{
-  display:block;
-}
-
-.admin-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin-bottom:20px;
-}
-
-.admin-stat{
-  background:#091217;
-  border:1px solid rgba(255,255,255,.07);
-  padding:18px;
-}
-
-.admin-stat span{
-  display:block;
-  color:var(--muted);
-  font-size:11px;
-}
-
-.admin-stat strong{
-  display:block;
-  color:var(--green);
-  font-family:Orbitron,sans-serif;
-  font-size:24px;
-  margin-top:7px;
-}
-
-.admin-tools{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.admin-box{
-  padding:20px;
-  background:#091217;
-  border:1px solid rgba(255,255,255,.07);
-}
-
-.admin-box h3{
-  margin-bottom:15px;
-}
-
-.tool-row{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
+  font-size:27px;
 }
 
 /* TOAST */
 
 .toast{
   position:fixed;
-  bottom:25px;
-  left:25px;
-  background:#0b161b;
+  left:20px;
+  bottom:20px;
+  z-index:300;
+  display:none;
+  padding:14px 18px;
+  border-radius:10px;
+  color:#fff;
+  background:#07100b;
   border:1px solid var(--green);
-  color:var(--green);
-  padding:13px 18px;
-  border-radius:6px;
-  transform:translateY(120px);
-  opacity:0;
-  transition:.3s;
-  z-index:1000;
-  font-size:12px;
 }
 
 .toast.show{
-  transform:translateY(0);
-  opacity:1;
+  display:block;
+}
+
+/* FOOTER */
+
+footer{
+  padding:35px 0;
+  text-align:center;
+  color:var(--muted);
+  border-top:1px solid var(--border);
 }
 
 /* MOBILE */
 
 @media(max-width:900px){
+
+  nav{
+    display:none;
+  }
+
   .hero-grid{
     grid-template-columns:1fr;
   }
 
-  .nav-links{
-    display:none;
-  }
-
-  .stats,
-  .countdown{
+  .stats{
     grid-template-columns:1fr 1fr;
   }
 
-  .match-grid,
-  .cards,
   .news-grid,
-  .hall{
-    grid-template-columns:1fr 1fr;
+  .rules{
+    grid-template-columns:1fr;
+  }
+
+  .match{
+    grid-template-columns:1fr;
+  }
+
+  .match-meta{
+    text-align:center;
+  }
+
+  .bracket{
+    grid-template-columns:1fr;
   }
 
   .admin-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .admin-tools{
     grid-template-columns:1fr;
   }
 }
 
-@media(max-width:600px){
-  .hero{
-    padding-top:55px;
+@media(max-width:550px){
+
+  .logo{
+    font-size:12px;
   }
 
-  .hero h1{
-    font-size:40px;
+  .nav-actions .btn-outline{
+    display:none;
   }
 
-  .stats,
-  .countdown,
-  .match-grid,
-  .cards,
-  .news-grid,
-  .hall,
-  .form-grid,
-  .admin-grid{
-    grid-template-columns:1fr;
+  .stats{
+    grid-template-columns:1fr 1fr;
   }
 
-  .field.full{
-    grid-column:auto;
+  .countdown{
+    grid-template-columns:1fr 1fr;
   }
 
-  .cta,
-  .footer-flex{
-    flex-direction:column;
-    align-items:flex-start;
+  .teams-vs{
+    gap:8px;
   }
 
-  .nav-actions .btn{
-    padding:8px 10px;
-    font-size:11px;
+  .team-name{
+    min-width:70px;
+    font-size:12px;
   }
 
-  section{
-    padding:45px 0;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
-  <div class="container nav">
 
-    <a href="#home" class="logo">
-      <div class="logo-mark">CS</div>
-      <div class="logo-text">
-        <strong>TOURNAMENT</strong>
-        <span>CS 1.6 IR</span>
-      </div>
-    </a>
+<div class="container nav">
 
-    <nav class="nav-links">
-      <a href="#home">خانه</a>
-      <a href="#matches">مسابقات</a>
-      <a href="#teams">تیم‌ها</a>
-      <a href="#ranking">رنکینگ</a>
-      <a href="#bracket">براکت</a>
-      <a href="#rules">قوانین</a>
-      <a href="#news">اخبار</a>
-      <a href="#hall">Hall of Fame</a>
-    </nav>
+<div class="logo">
+TOURNAMENT <span>CS 1.6 IR</span>
+</div>
 
-    <div class="nav-actions">
-      <button class="btn btn-outline btn-small" onclick="openModal('loginModal')">
-        ورود
-      </button>
-      <button class="btn btn-small" onclick="openModal('registerModal')">
-        ثبت تیم
-      </button>
-    </div>
+<nav>
+<a href="#home">خانه</a>
+<a href="#matches">مسابقات</a>
+<a href="#teams">تیم‌ها</a>
+<a href="#ranking">رنکینگ</a>
+<a href="#bracket">براکت</a>
+<a href="#news">اخبار</a>
+</nav>
 
-  </div>
+<div class="nav-actions">
+
+<button class="btn btn-outline btn-small"
+onclick="openModal('loginModal')">
+ورود
+</button>
+
+<button class="btn btn-small"
+onclick="openModal('registerModal')">
+ثبت تیم
+</button>
+
+<button class="btn btn-danger btn-small"
+onclick="showAdminLogin()">
+ADMIN
+</button>
+
+</div>
+
+</div>
 </header>
 
 
+<main>
+
 <!-- HERO -->
-<main id="home">
 
-<section class="hero">
-  <div class="container hero-grid">
+<section class="hero" id="home">
 
-    <div>
-      <div class="badge">
-        <span class="dot"></span>
-        TOURNAMENT STATUS — SOON
-      </div>
+<div class="container hero-grid">
 
-      <h1>
-        وقتشه<br>
-        <span>قهرمان</span> بشی.
-      </h1>
+<div>
 
-      <p>
-        مسابقات رسمی Counter-Strike 1.6 ایران.
-        تیم خودت رو بساز، ثبت‌نام کن، بجنگ و اسم تیمت رو
-        در تاریخ مسابقات ثبت کن.
-      </p>
+<div class="badge">
+<i></i>
+TOURNAMENT CS 1.6 IR
+</div>
 
-      <div class="hero-buttons">
-        <button class="btn" onclick="openModal('registerModal')">
-          ثبت تیم
-        </button>
+<h1>
+وقتشه<br>
+<span>قهرمان بشی.</span>
+</h1>
 
-        <a href="#matches" class="btn btn-outline">
-          مشاهده مسابقات
-        </a>
-      </div>
-    </div>
+<p>
+تورنمنت حرفه‌ای Counter-Strike 1.6 با مسابقات 5V5،
+رنکینگ، براکت، آمار بازیکنان، مسابقات و مدیریت آنلاین.
+</p>
 
+<div class="hero-buttons">
 
-    <div class="hero-card">
+<button class="btn"
+onclick="openModal('registerModal')">
+ثبت تیم
+</button>
 
-      <div class="card-title">پول جمع شده تا الان</div>
+<a class="btn btn-outline"
+href="#matches">
+مشاهده مسابقات
+</a>
 
-      <div class="big-prize" id="heroPrize">
-        ۰ تومان
-      </div>
+</div>
 
-      <div class="hero-mini-grid">
-
-        <div class="mini">
-          <span>تیم‌ها</span>
-          <strong id="heroTeams">۰</strong>
-        </div>
-
-        <div class="mini">
-          <span>بازیکنان</span>
-          <strong id="heroPlayers">نامعلوم</strong>
-        </div>
-
-        <div class="mini">
-          <span>اولین مچ</span>
-          <strong>۲۰ مهر</strong>
-        </div>
-
-        <div class="mini">
-          <span>Map</span>
-          <strong>DUST 2</strong>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
+</div>
 
 
-<!-- COUNTDOWN -->
+<div class="hero-card">
 
-<section>
-  <div class="container">
+<div class="card-title">
+پول جمع شده تا الان
+</div>
 
-    <div class="section-head">
-      <div>
-        <h2>COUNTDOWN</h2>
-        <p>تا شروع اولین مسابقه</p>
-      </div>
-    </div>
+<div class="prize" id="prize">
+۰ تومان
+</div>
 
-    <div class="countdown">
+<div class="info-grid">
 
-      <div class="time-box">
-        <strong id="days">00</strong>
-        <span>روز</span>
-      </div>
+<div class="info">
+<small>تیم‌ها</small>
+<strong id="teamCount">۰</strong>
+</div>
 
-      <div class="time-box">
-        <strong id="hours">00</strong>
-        <span>ساعت</span>
-      </div>
+<div class="info">
+<small>بازیکنان</small>
+<strong id="playerCount">۰</strong>
+</div>
 
-      <div class="time-box">
-        <strong id="minutes">00</strong>
-        <span>دقیقه</span>
-      </div>
+<div class="info">
+<small>اولین مچ</small>
+<strong>۲۰ مهر</strong>
+</div>
 
-      <div class="time-box">
-        <strong id="seconds">00</strong>
-        <span>ثانیه</span>
-      </div>
+<div class="info">
+<small>Map</small>
+<strong>Dust 2</strong>
+</div>
 
-    </div>
+</div>
 
-  </div>
+</div>
+
+</div>
 </section>
 
 
 <!-- STATS -->
 
 <section>
-  <div class="container">
 
-    <div class="section-head">
-      <div>
-        <h2>TOURNAMENT STATS</h2>
-        <p>آمار فعلی تورنومنت</p>
-      </div>
-    </div>
+<div class="container">
 
-    <div class="stats">
+<div class="section-head">
 
-      <div class="stat">
-        <span>تعداد تیم‌ها</span>
-        <strong id="statTeams">۰</strong>
-      </div>
+<div>
+<h2>TOURNAMENT STATUS</h2>
+<p>وضعیت فعلی تورنمنت</p>
+</div>
 
-      <div class="stat">
-        <span>تعداد بازیکنان</span>
-        <strong id="statPlayers">۰</strong>
-      </div>
+</div>
 
-      <div class="stat">
-        <span>تعداد مسابقات</span>
-        <strong id="statMatches">۳</strong>
-      </div>
+<div class="stats">
 
-      <div class="stat">
-        <span>Prize Pool</span>
-        <strong id="statPrize">۰</strong>
-      </div>
+<div class="stat">
+<strong id="statTeams">۰</strong>
+<span>تیم ثبت‌شده</span>
+</div>
 
-    </div>
+<div class="stat">
+<strong id="statPlayers">۰</strong>
+<span>بازیکن</span>
+</div>
 
-  </div>
+<div class="stat">
+<strong id="statMatches">۰</strong>
+<span>مسابقه</span>
+</div>
+
+<div class="stat">
+<strong id="statPrize">۰</strong>
+<span>تومان جایزه</span>
+</div>
+
+</div>
+
+
+<div class="countdown">
+
+<div class="time-box">
+<strong id="days">00</strong>
+<span>روز</span>
+</div>
+
+<div class="time-box">
+<strong id="hours">00</strong>
+<span>ساعت</span>
+</div>
+
+<div class="time-box">
+<strong id="minutes">00</strong>
+<span>دقیقه</span>
+</div>
+
+<div class="time-box">
+<strong id="seconds">00</strong>
+<span>ثانیه</span>
+</div>
+
+</div>
+
+</div>
+
 </section>
 
 
 <!-- MATCH CENTER -->
 
 <section id="matches">
-  <div class="container">
 
-    <div class="section-head">
-      <div>
-        <h2>MATCH CENTER</h2>
-        <p>مسابقات برگزار شده و پیش‌رو</p>
-      </div>
-    </div>
+<div class="container">
 
-    <div class="match-grid" id="matchList">
+<div class="section-head">
 
-      <div class="match-card">
+<div>
+<h2>MATCH CENTER</h2>
+<p>مسابقات تورنمنت</p>
+</div>
 
-        <div class="match-top">
-          <span>#MATCH 01</span>
-          <span class="status">به‌زودی</span>
-        </div>
+</div>
 
-        <div class="teams">
-          <div class="team-name">UNKNOWN</div>
-          <div class="vs">VS</div>
-          <div class="team-name">UNKNOWN</div>
-        </div>
+<div id="matchesList"
+class="match-list"></div>
 
-        <div class="score">- : -</div>
+</div>
 
-        <div class="match-bottom">
-          <span>۲۰ مهر</span>
-          <span>DUST 2</span>
-          <span>۲۰:۰۰</span>
-        </div>
-
-      </div>
-
-
-      <div class="match-card">
-
-        <div class="match-top">
-          <span>#MATCH 02</span>
-          <span class="status">به‌زودی</span>
-        </div>
-
-        <div class="teams">
-          <div class="team-name">UNKNOWN</div>
-          <div class="vs">VS</div>
-          <div class="team-name">UNKNOWN</div>
-        </div>
-
-        <div class="score">- : -</div>
-
-        <div class="match-bottom">
-          <span>متعاقباً</span>
-          <span>DUST 2</span>
-          <span>نامعلوم</span>
-        </div>
-
-      </div>
-
-
-      <div class="match-card">
-
-        <div class="match-top">
-          <span>#MATCH 03</span>
-          <span class="status">به‌زودی</span>
-        </div>
-
-        <div class="teams">
-          <div class="team-name">UNKNOWN</div>
-          <div class="vs">VS</div>
-          <div class="team-name">UNKNOWN</div>
-        </div>
-
-        <div class="score">- : -</div>
-
-        <div class="match-bottom">
-          <span>متعاقباً</span>
-          <span>DUST 2</span>
-          <span>نامعلوم</span>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
 </section>
 
 
 <!-- TEAMS -->
 
 <section id="teams">
-  <div class="container">
 
-    <div class="section-head">
-      <div>
-        <h2>TEAMS</h2>
-        <p>تیم‌های ثبت‌نام شده</p>
-      </div>
+<div class="container">
 
-      <button class="btn btn-small" onclick="openModal('registerModal')">
-        + ثبت تیم
-      </button>
-    </div>
+<div class="section-head">
 
-    <div class="table-wrap">
+<div>
+<h2>TEAMS</h2>
+<p>تیم‌های ثبت‌شده</p>
+</div>
 
-      <table>
+</div>
 
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>تیم</th>
-            <th>کاپیتان</th>
-            <th>بازیکنان</th>
-            <th>W</th>
-            <th>L</th>
-            <th>PTS</th>
-          </tr>
-        </thead>
+<div class="table-wrap">
 
-        <tbody id="teamsTable">
+<table>
 
-          <tr>
-            <td class="rank">01</td>
-            <td>
-              <div class="team-cell">
-                <div class="team-logo">?</div>
-                UNKNOWN
-              </div>
-            </td>
-            <td>UNKNOWN</td>
-            <td>۰ / ۵</td>
-            <td>۰</td>
-            <td>۰</td>
-            <td>۰</td>
-          </tr>
+<thead>
 
-          <tr>
-            <td class="rank">02</td>
-            <td>
-              <div class="team-cell">
-                <div class="team-logo">?</div>
-                UNKNOWN
-              </div>
-            </td>
-            <td>UNKNOWN</td>
-            <td>۰ / ۵</td>
-            <td>۰</td>
-            <td>۰</td>
-            <td>۰</td>
-          </tr>
+<tr>
+<th>#</th>
+<th>تیم</th>
+<th>TAG</th>
+<th>کاپیتان</th>
+<th>برد</th>
+<th>باخت</th>
+<th>امتیاز</th>
+</tr>
 
-        </tbody>
+</thead>
 
-      </table>
+<tbody id="teamsTable"></tbody>
 
-    </div>
+</table>
 
-  </div>
+</div>
+
+</div>
+
 </section>
 
 
-<!-- RANKING -->
+<!-- PLAYERS -->
 
 <section id="ranking">
-  <div class="container">
 
-    <div class="section-head">
-      <div>
-        <h2>RANKING</h2>
-        <p>رده‌بندی تیم‌ها و بازیکنان</p>
-      </div>
-    </div>
+<div class="container">
 
-    <div class="cards">
+<div class="section-head">
 
-      <div class="info-card">
+<div>
+<h2>PLAYER RANKING</h2>
+<p>برترین بازیکنان</p>
+</div>
 
-        <div class="icon">01</div>
+</div>
 
-        <h3>TEAM RANKING</h3>
+<div class="table-wrap">
 
-        <p>
-          رتبه‌بندی تیم‌ها براساس برد، باخت و امتیاز مسابقات.
-        </p>
+<table>
 
-        <br>
+<thead>
 
-        <div id="teamRankingMini">
-          هنوز تیمی ثبت نشده.
-        </div>
+<tr>
+<th>#</th>
+<th>بازیکن</th>
+<th>تیم</th>
+<th>Kills</th>
+<th>Deaths</th>
+<th>K/D</th>
+<th>MVP</th>
+</tr>
 
-      </div>
+</thead>
 
+<tbody id="playersTable"></tbody>
 
-      <div class="info-card">
+</table>
 
-        <div class="icon">02</div>
+</div>
 
-        <h3>PLAYER RANKING</h3>
+</div>
 
-        <p>
-          بهترین بازیکنان براساس Kills، Deaths، K/D و MVP.
-        </p>
-
-        <br>
-
-        <div id="playerRankingMini">
-          هنوز بازیکنی ثبت نشده.
-        </div>
-
-      </div>
-
-
-      <div class="info-card">
-
-        <div class="icon">03</div>
-
-        <h3>MVP</h3>
-
-        <p>
-          بازیکن برتر هر مسابقه می‌تواند عنوان MVP را دریافت کند.
-        </p>
-
-        <br>
-
-        <strong style="color:var(--yellow)">
-          هنوز MVP مشخص نشده
-        </strong>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- PLAYER TABLE -->
-
-<section>
-  <div class="container">
-
-    <div class="section-head">
-      <div>
-        <h2>PLAYER RANKING</h2>
-        <p>برترین بازیکنان</p>
-      </div>
-    </div>
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>بازیکن</th>
-            <th>تیم</th>
-            <th>Kills</th>
-            <th>Deaths</th>
-            <th>K/D</th>
-            <th>MVP</th>
-          </tr>
-        </thead>
-
-        <tbody id="playersTable">
-
-          <tr>
-            <td class="rank">01</td>
-            <td>UNKNOWN</td>
-            <td>UNKNOWN</td>
-            <td>۰</td>
-            <td>۰</td>
-            <td>۰.۰۰</td>
-            <td>۰</td>
-          </tr>
-
-          <tr>
-            <td class="rank">02</td>
-            <td>UNKNOWN</td>
-            <td>UNKNOWN</td>
-            <td>۰</td>
-            <td>۰</td>
-            <td>۰.۰۰</td>
-            <td>۰</td>
-          </tr>
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  </div>
 </section>
 
 
 <!-- BRACKET -->
 
 <section id="bracket">
-  <div class="container">
 
-    <div class="section-head">
-      <div>
-        <h2>TOURNAMENT BRACKET</h2>
-        <p>مسیر رسیدن به فینال</p>
-      </div>
-    </div>
+<div class="container">
 
-    <div class="bracket">
+<div class="section-head">
 
-      <div class="bracket-inner">
+<div>
+<h2>TOURNAMENT BRACKET</h2>
+<p>مسیر قهرمانی</p>
+</div>
 
-        <div class="round">
+</div>
 
-          <h3>STAGE 01</h3>
+<div class="bracket">
 
-          <div class="bracket-match">
-            <div class="bracket-team">
-              UNKNOWN
-              <span>-</span>
-            </div>
-            <div class="bracket-team">
-              UNKNOWN
-              <span>-</span>
-            </div>
-          </div>
+<div class="bracket-col">
 
-          <div class="bracket-match">
-            <div class="bracket-team">
-              UNKNOWN
-              <span>-</span>
-            </div>
-            <div class="bracket-team">
-              UNKNOWN
-              <span>-</span>
-            </div>
-          </div>
+<h3>STAGE 01</h3>
 
-        </div>
+<div class="bracket-card">
 
+<div>
+<span>Team 01</span>
+<strong>0</strong>
+</div>
 
-        <div class="round">
+<div>
+<span>Team 02</span>
+<strong>0</strong>
+</div>
 
-          <h3>SEMIFINAL</h3>
+</div>
 
-          <div class="bracket-match">
-            <div class="bracket-team">
-              TBD
-              <span>-</span>
-            </div>
-            <div class="bracket-team">
-              TBD
-              <span>-</span>
-            </div>
-          </div>
+<div class="bracket-card">
 
-          <div class="bracket-match">
-            <div class="bracket-team">
-              TBD
-              <span>-</span>
-            </div>
-            <div class="bracket-team">
-              TBD
-              <span>-</span>
-            </div>
-          </div>
+<div>
+<span>Team 03</span>
+<strong>0</strong>
+</div>
 
-        </div>
+<div>
+<span>Team 04</span>
+<strong>0</strong>
+</div>
+
+</div>
+
+</div>
 
 
-        <div class="round">
+<div class="bracket-col">
 
-          <h3>FINAL</h3>
+<h3>FINAL</h3>
 
-          <div class="bracket-match">
+<div class="bracket-card">
 
-            <div class="bracket-team">
-              TBD
-              <span>-</span>
-            </div>
+<div>
+<span>---</span>
+<strong>0</strong>
+</div>
 
-            <div class="bracket-team">
-              TBD
-              <span>-</span>
-            </div>
+<div>
+<span>---</span>
+<strong>0</strong>
+</div>
 
-          </div>
+</div>
 
-          <div style="text-align:center;margin-top:40px">
-
-            <div style="color:var(--yellow);font-size:35px">
-              🏆
-            </div>
-
-            <strong style="font-family:Orbitron;color:var(--yellow)">
-              CHAMPION
-            </strong>
-
-            <p style="color:var(--muted);font-size:11px;margin-top:5px">
-              هنوز مشخص نشده
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
+</div>
 
 
-<!-- RULES -->
+<div class="bracket-col">
 
-<section id="rules">
-  <div class="container">
+<h3>CHAMPION</h3>
 
-    <div class="section-head">
-      <div>
-        <h2>RULES</h2>
-        <p>قوانین اصلی تورنومنت</p>
-      </div>
-    </div>
+<div class="bracket-card"
+style="text-align:center">
 
-    <div class="cards">
+🏆
 
-      <div class="info-card">
-        <div class="icon">5V5</div>
-        <h3>فرمت مسابقه</h3>
-        <p>
-          مسابقات به صورت ۵ در مقابل ۵ برگزار می‌شوند.
-        </p>
-      </div>
+<br><br>
 
-      <div class="info-card">
-        <div class="icon">D2</div>
-        <h3>Map Pool</h3>
-        <p>
-          اولین مسابقه روی نقشه Dust 2 برگزار خواهد شد.
-        </p>
-      </div>
+هنوز مشخص نشده
 
-      <div class="info-card">
-        <div class="icon">GG</div>
-        <h3>Fair Play</h3>
-        <p>
-          استفاده از Cheat، Script و هرگونه تقلب ممنوع است.
-        </p>
-      </div>
+</div>
 
-      <div class="info-card">
-        <div class="icon">01</div>
-        <h3>ثبت تیم</h3>
-        <p>
-          هر تیم باید ۵ بازیکن اصلی و یک کاپیتان معرفی کند.
-        </p>
-      </div>
+</div>
 
-      <div class="info-card">
-        <div class="icon">02</div>
-        <h3>نتیجه</h3>
-        <p>
-          نتیجه مسابقات توسط ادمین ثبت و در Match Center نمایش داده می‌شود.
-        </p>
-      </div>
+</div>
 
-      <div class="info-card">
-        <div class="icon">03</div>
-        <h3>MVP</h3>
-        <p>
-          بازیکن برتر هر مسابقه می‌تواند به عنوان MVP انتخاب شود.
-        </p>
-      </div>
+</div>
 
-    </div>
-
-  </div>
 </section>
 
 
 <!-- NEWS -->
 
 <section id="news">
-  <div class="container">
 
-    <div class="section-head">
-      <div>
-        <h2>LATEST NEWS</h2>
-        <p>آخرین اخبار مسابقات</p>
-      </div>
-    </div>
+<div class="container">
 
-    <div class="news-grid">
+<div class="section-head">
 
-      <article class="news">
+<div>
+<h2>NEWS</h2>
+<p>آخرین اخبار تورنمنت</p>
+</div>
 
-        <div class="news-img"></div>
+</div>
 
-        <div class="news-body">
+<div id="newsGrid"
+class="news-grid"></div>
 
-          <div class="news-date">
-            TOURNAMENT
-          </div>
-
-          <h3>
-            اولین مسابقه ۲۰ مهر برگزار می‌شود
-          </h3>
-
-          <p>
-            اولین Match تورنومنت روی Dust 2 برگزار خواهد شد.
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <article class="news">
-
-        <div class="news-img"></div>
-
-        <div class="news-body">
-
-          <div class="news-date">
-            REGISTRATION
-          </div>
-
-          <h3>
-            ثبت‌نام تیم‌ها شروع شد
-          </h3>
-
-          <p>
-            تیم خودت رو آماده کن و از طریق فرم ثبت تیم وارد مسابقات شو.
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <article class="news">
-
-        <div class="news-img"></div>
-
-        <div class="news-body">
-
-          <div class="news-date">
-            PRIZE POOL
-          </div>
-
-          <h3>
-            Prize Pool در حال افزایش است
-          </h3>
-
-          <p>
-            مبلغ جایزه با مشارکت مسابقات و حمایت‌ها افزایش پیدا خواهد کرد.
-          </p>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- HALL OF FAME -->
-
-<section id="hall">
-  <div class="container">
-
-    <div class="section-head">
-      <div>
-        <h2>HALL OF FAME</h2>
-        <p>قهرمانان تاریخ تورنومنت</p>
-      </div>
-    </div>
-
-    <div class="hall">
-
-      <div class="hall-card">
-        <div class="hall-icon">🏆</div>
-        <strong>UNKNOWN</strong>
-        <span>Season 01 Champion</span>
-      </div>
-
-      <div class="hall-card">
-        <div class="hall-icon">🥇</div>
-        <strong>UNKNOWN</strong>
-        <span>Season 02 Champion</span>
-      </div>
-
-      <div class="hall-card">
-        <div class="hall-icon">⭐</div>
-        <strong>UNKNOWN</strong>
-        <span>Legendary Player</span>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ADMIN -->
-
-<section id="adminSection" class="admin-panel">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <div>
-        <h2>ADMIN PANEL</h2>
-        <p>مدیریت تورنومنت</p>
-      </div>
-
-      <button class="btn btn-danger btn-small" onclick="logoutAdmin()">
-        خروج
-      </button>
-
-    </div>
-
-
-    <div class="admin-grid">
-
-      <div class="admin-stat">
-        <span>تیم‌ها</span>
-        <strong id="adminTeams">۰</strong>
-      </div>
-
-      <div class="admin-stat">
-        <span>بازیکنان</span>
-        <strong id="adminPlayers">۰</strong>
-      </div>
-
-      <div class="admin-stat">
-        <span>Prize Pool</span>
-        <strong id="adminPrize">۰</strong>
-      </div>
-
-      <div class="admin-stat">
-        <span>Matches</span>
-        <strong>۳</strong>
-      </div>
-
-    </div>
-
-
-    <div class="admin-tools">
-
-      <div class="admin-box">
-
-        <h3>ابزار سریع</h3>
-
-        <div class="tool-row">
-
-          <button class="btn btn-small" onclick="openModal('adminTeamModal')">
-            + افزودن تیم
-          </button>
-
-          <button class="btn btn-outline btn-small" onclick="openModal('resultModal')">
-            ثبت نتیجه
-          </button>
-
-          <button class="btn btn-outline btn-small" onclick="openModal('prizeModal')">
-            تغییر جایزه
-          </button>
-
-          <button class="btn btn-outline btn-small" onclick="openModal('newsModal')">
-            افزودن خبر
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="admin-box">
-
-        <h3>اطلاعات مسابقه اول</h3>
-
-        <p style="color:var(--muted);font-size:12px;line-height:2">
-          تاریخ: ۲۰ مهر ۱۴۰۵<br>
-          نقشه: Dust 2<br>
-          ساعت فعلی: ۲۰:۰۰<br>
-          وضعیت: به‌زودی
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- CTA -->
+<!-- RULES -->
 
 <section>
-  <div class="container">
 
-    <div class="cta">
+<div class="container">
 
-      <div>
-        <h2>تیمت آماده‌ست؟</h2>
+<div class="section-head">
 
-        <p>
-          همین الان تیم خودت رو ثبت کن و وارد تورنومنت شو.
-        </p>
-      </div>
+<div>
+<h2>RULES</h2>
+<p>قوانین اصلی</p>
+</div>
 
-      <button class="btn" onclick="openModal('registerModal')">
-        ثبت تیم
-      </button>
+</div>
 
-    </div>
+<div class="rules">
 
-  </div>
+<div class="rule">
+<strong>5V5</strong>
+مسابقات به صورت پنج در مقابل پنج برگزار می‌شوند.
+</div>
+
+<div class="rule">
+<strong>DUST 2</strong>
+اولین مسابقه روی نقشه Dust 2 برگزار خواهد شد.
+</div>
+
+<div class="rule">
+<strong>FAIR PLAY</strong>
+رعایت قوانین و رفتار مناسب برای تمام تیم‌ها الزامی است.
+</div>
+
+</div>
+
+</div>
+
 </section>
 
 </main>
 
 
-<!-- FOOTER -->
+<!-- ADMIN -->
+
+<section class="admin"
+id="adminSection">
+
+<div class="container">
+
+<div class="section-head">
+
+<div>
+<h2>ADMIN PANEL</h2>
+<p>مدیریت تورنمنت</p>
+</div>
+
+<button class="btn btn-danger btn-small"
+onclick="logoutAdmin()">
+خروج
+</button>
+
+</div>
+
+
+<div class="admin-grid">
+
+
+<!-- PRIZE -->
+
+<div class="admin-card">
+
+<h3>💰 مدیریت جایزه</h3>
+
+<div class="form">
+
+<input
+id="adminPrize"
+type="number"
+placeholder="مبلغ جایزه">
+
+<button class="btn"
+onclick="updatePrize()">
+ذخیره جایزه
+</button>
+
+</div>
+
+</div>
+
+
+<!-- NEWS -->
+
+<div class="admin-card">
+
+<h3>📰 انتشار خبر</h3>
+
+<div class="form">
+
+<input
+id="newsTitle"
+placeholder="عنوان خبر">
+
+<textarea
+id="newsBody"
+placeholder="متن خبر"></textarea>
+
+<button class="btn"
+onclick="addNews()">
+انتشار خبر
+</button>
+
+</div>
+
+</div>
+
+
+<!-- TEAM -->
+
+<div class="admin-card">
+
+<h3>➕ افزودن تیم</h3>
+
+<div class="form">
+
+<input
+id="adminTeamName"
+placeholder="نام تیم">
+
+<input
+id="adminTeamTag"
+placeholder="TAG">
+
+<input
+id="adminCaptain"
+placeholder="کاپیتان">
+
+<button class="btn"
+onclick="adminAddTeam()">
+افزودن تیم
+</button>
+
+</div>
+
+</div>
+
+
+<!-- MATCH -->
+
+<div class="admin-card">
+
+<h3>⚔️ ثبت مسابقه</h3>
+
+<div class="form">
+
+<select id="matchTeam1"></select>
+
+<select id="matchTeam2"></select>
+
+<input
+id="matchScore1"
+type="number"
+min="0"
+placeholder="امتیاز تیم اول">
+
+<input
+id="matchScore2"
+type="number"
+min="0"
+placeholder="امتیاز تیم دوم">
+
+<input
+id="matchDate"
+type="datetime-local">
+
+<button class="btn"
+onclick="addMatch()">
+ثبت مسابقه
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PLAYER -->
+
+<div class="admin-card">
+
+<h3>📊 ثبت آمار بازیکن</h3>
+
+<div class="form">
+
+<select id="playerSelect"></select>
+
+<input
+id="playerKills"
+type="number"
+min="0"
+placeholder="Kills">
+
+<input
+id="playerDeaths"
+type="number"
+min="0"
+placeholder="Deaths">
+
+<input
+id="playerMvp"
+type="number"
+min="0"
+placeholder="MVP">
+
+<button class="btn"
+onclick="updatePlayerStats()">
+ذخیره آمار
+</button>
+
+</div>
+
+</div>
+
+
+<!-- DELETE -->
+
+<div class="admin-card">
+
+<h3>⚠️ مدیریت تیم</h3>
+
+<div class="form">
+
+<select id="deleteTeamSelect"></select>
+
+<button class="btn btn-danger"
+onclick="deleteTeam()">
+حذف تیم
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
 
 <footer>
 
-  <div class="container footer-flex">
+<div class="container">
 
-    <div>
-      © 2026 Tournament CS 1.6 IR
-    </div>
+Tournament CS 1.6 IR © 2026
 
-    <div>
-      Built for CS 1.6 Community
-    </div>
-
-  </div>
+</div>
 
 </footer>
 
 
-<!-- LOGIN MODAL -->
+<!-- USER LOGIN -->
 
-<div class="modal" id="loginModal">
+<div class="modal"
+id="loginModal">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <div class="modal-head">
-      <h3>ورود</h3>
+<div class="modal-head">
 
-      <button class="close" onclick="closeModal('loginModal')">
-        ×
-      </button>
-    </div>
+<h2>ورود</h2>
 
-    <form id="loginForm">
+<button class="close"
+onclick="closeModal('loginModal')">
+×
+</button>
 
-      <div class="field">
-        <label>نام کاربری</label>
-        <input id="loginUsername" required placeholder="مثلاً Mehrshad">
-      </div>
+</div>
 
-      <div class="field" style="margin-top:12px">
-        <label>رمز عبور</label>
-        <input type="password" required placeholder="رمز عبور">
-      </div>
+<div class="form">
 
-      <div class="modal-actions">
-        <button type="button" class="btn btn-outline" onclick="closeModal('loginModal')">
-          لغو
-        </button>
+<input
+id="loginUsername"
+placeholder="نام کاربری">
 
-        <button class="btn">
-          ورود
-        </button>
-      </div>
+<input
+id="loginPassword"
+type="password"
+placeholder="رمز عبور">
 
-      <div class="message" id="loginMessage">
-        ورود با موفقیت انجام شد.
-      </div>
+<button class="btn"
+onclick="loginUser()">
+ورود
+</button>
 
-    </form>
+</div>
 
-  </div>
+</div>
 
 </div>
 
 
-<!-- TEAM REGISTER MODAL -->
+<!-- REGISTER -->
 
-<div class="modal" id="registerModal">
+<div class="modal"
+id="registerModal">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <div class="modal-head">
-      <h3>ثبت تیم</h3>
+<div class="modal-head">
 
-      <button class="close" onclick="closeModal('registerModal')">
-        ×
-      </button>
-    </div>
+<h2>ثبت تیم</h2>
 
+<button class="close"
+onclick="closeModal('registerModal')">
+×
+</button>
 
-    <form id="teamForm">
+</div>
 
-      <div class="form-grid">
+<div class="form">
 
-        <div class="field">
-          <label>نام تیم</label>
-          <input id="teamName" required placeholder="مثلاً IRON WOLVES">
-        </div>
+<input
+id="regTeamName"
+placeholder="نام تیم">
 
-        <div class="field">
-          <label>Tag</label>
-          <input id="teamTag" required maxlength="5" placeholder="IW">
-        </div>
+<input
+id="regTeamTag"
+placeholder="TAG">
 
-        <div class="field full">
-          <label>کاپیتان</label>
-          <input id="captain" required placeholder="نام یا Nickname کاپیتان">
-        </div>
+<input
+id="regCaptain"
+placeholder="نام کاپیتان">
 
-        <div class="field">
-          <label>Player 1</label>
-          <input id="player1" required>
-        </div>
+<input id="player1" placeholder="Player 1">
+<input id="player2" placeholder="Player 2">
+<input id="player3" placeholder="Player 3">
+<input id="player4" placeholder="Player 4">
+<input id="player5" placeholder="Player 5">
 
-        <div class="field">
-          <label>Player 2</label>
-          <input id="player2" required>
-        </div>
+<button class="btn"
+onclick="registerTeam()">
+ثبت تیم
+</button>
 
-        <div class="field">
-          <label>Player 3</label>
-          <input id="player3" required>
-        </div>
+</div>
 
-        <div class="field">
-          <label>Player 4</label>
-          <input id="player4" required>
-        </div>
-
-        <div class="field">
-          <label>Player 5</label>
-          <input id="player5" required>
-        </div>
-
-      </div>
-
-
-      <div class="modal-actions">
-
-        <button type="button"
-                class="btn btn-outline"
-                onclick="closeModal('registerModal')">
-          لغو
-        </button>
-
-        <button class="btn">
-          ثبت تیم
-        </button>
-
-      </div>
-
-
-      <div class="message" id="teamMessage">
-        درخواست ثبت تیم ذخیره شد.
-      </div>
-
-    </form>
-
-  </div>
+</div>
 
 </div>
 
 
-<!-- ADMIN LOGIN MODAL -->
+<!-- ADMIN LOGIN -->
 
-<div class="modal" id="adminLoginModal">
+<div class="modal"
+id="adminLoginModal">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <div class="modal-head">
+<div class="modal-head">
 
-      <h3>Admin Login</h3>
+<h2>ADMIN LOGIN</h2>
 
-      <button class="close" onclick="closeModal('adminLoginModal')">
-        ×
-      </button>
+<button class="close"
+onclick="closeModal('adminLoginModal')">
+×
+</button>
 
-    </div>
+</div>
 
+<div class="form">
 
-    <form id="adminLoginForm">
+<input
+id="adminUsername"
+placeholder="Username">
 
-      <div class="field">
+<input
+id="adminPassword"
+type="password"
+placeholder="Password">
 
-        <label>Username</label>
+<button class="btn btn-danger"
+onclick="adminLogin()">
+ورود به پنل
+</button>
 
-        <input id="adminUser"
-               required
-               placeholder="admin">
+</div>
 
-      </div>
-
-
-      <div class="field" style="margin-top:12px">
-
-        <label>Password</label>
-
-        <input id="adminPass"
-               type="password"
-               required
-               placeholder="admin123">
-
-      </div>
-
-
-      <div class="modal-actions">
-
-        <button class="btn">
-          ورود به پنل
-        </button>
-
-      </div>
-
-
-      <div class="message" id="adminMessage">
-        ورود موفق بود.
-      </div>
-
-    </form>
-
-  </div>
+</div>
 
 </div>
 
 
-<!-- ADD TEAM ADMIN -->
-
-<div class="modal" id="adminTeamModal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h3>افزودن تیم</h3>
-
-      <button class="close" onclick="closeModal('adminTeamModal')">
-        ×
-      </button>
-
-    </div>
-
-
-    <form id="adminTeamForm">
-
-      <div class="form-grid">
-
-        <div class="field">
-          <label>نام تیم</label>
-          <input id="aTeamName" required>
-        </div>
-
-        <div class="field">
-          <label>Tag</label>
-          <input id="aTeamTag" required>
-        </div>
-
-        <div class="field">
-          <label>کاپیتان</label>
-          <input id="aCaptain" required>
-        </div>
-
-        <div class="field">
-          <label>بازیکنان</label>
-          <input id="aPlayers" value="5" type="number" min="1" max="5">
-        </div>
-
-      </div>
-
-
-      <div class="modal-actions">
-
-        <button class="btn">
-          افزودن
-        </button>
-
-      </div>
-
-    </form>
-
-  </div>
-
-</div>
-
-
-<!-- RESULT MODAL -->
-
-<div class="modal" id="resultModal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h3>ثبت نتیجه مسابقه</h3>
-
-      <button class="close" onclick="closeModal('resultModal')">
-        ×
-      </button>
-
-    </div>
-
-
-    <form id="resultForm">
-
-      <div class="form-grid">
-
-        <div class="field">
-          <label>تیم اول</label>
-          <input id="resultTeam1" required>
-        </div>
-
-        <div class="field">
-          <label>تیم دوم</label>
-          <input id="resultTeam2" required>
-        </div>
-
-        <div class="field">
-          <label>Score تیم اول</label>
-          <input id="score1" type="number" min="0" required>
-        </div>
-
-        <div class="field">
-          <label>Score تیم دوم</label>
-          <input id="score2" type="number" min="0" required>
-        </div>
-
-        <div class="field full">
-          <label>MVP</label>
-          <input id="matchMvp" placeholder="نام بازیکن MVP">
-        </div>
-
-      </div>
-
-
-      <div class="modal-actions">
-
-        <button class="btn">
-          ثبت نتیجه
-        </button>
-
-      </div>
-
-    </form>
-
-  </div>
-
-</div>
-
-
-<!-- PRIZE MODAL -->
-
-<div class="modal" id="prizeModal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h3>Prize Pool</h3>
-
-      <button class="close" onclick="closeModal('prizeModal')">
-        ×
-      </button>
-
-    </div>
-
-
-    <form id="prizeForm">
-
-      <div class="field">
-
-        <label>مبلغ جایزه به تومان</label>
-
-        <input id="prizeInput"
-               type="number"
-               min="0"
-               required>
-
-      </div>
-
-
-      <div class="modal-actions">
-
-        <button class="btn">
-          ذخیره
-        </button>
-
-      </div>
-
-    </form>
-
-  </div>
-
-</div>
-
-
-<!-- NEWS MODAL -->
-
-<div class="modal" id="newsModal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h3>افزودن خبر</h3>
-
-      <button class="close" onclick="closeModal('newsModal')">
-        ×
-      </button>
-
-    </div>
-
-
-    <form id="newsForm">
-
-      <div class="field">
-
-        <label>عنوان خبر</label>
-
-        <input id="newsTitle" required>
-
-      </div>
-
-
-      <div class="field" style="margin-top:12px">
-
-        <label>متن خبر</label>
-
-        <textarea id="newsText"
-                  rows="5"
-                  required></textarea>
-
-      </div>
-
-
-      <div class="modal-actions">
-
-        <button class="btn">
-          انتشار خبر
-        </button>
-
-      </div>
-
-    </form>
-
-  </div>
-
-</div>
-
-
-<!-- TOAST -->
-
-<div class="toast" id="toast">
-  انجام شد.
-</div>
+<div class="toast"
+id="toast"></div>
 
 
 <script>
 
-/* =====================================================
-   DATA
-===================================================== */
+/* =========================================================
+   SUPABASE
+========================================================= */
 
-const defaultData = {
-  teams: [],
-  players: [],
-  matches: [],
-  prize: 0,
-  news: []
-};
+const SUPABASE_URL =
+"https://gwxurhfiyrefsatyxwpr.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_kWYNV4OA3Tt2VN4szEKSYg_axVAPagA";
+
+const db =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
 
-let data =
-  JSON.parse(localStorage.getItem("cs16_data")) ||
-  defaultData;
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+const MATCH_DATE =
+new Date("2026-10-12T20:00:00+03:30").getTime();
 
 
-/* =====================================================
-   SAVE
-===================================================== */
+/* =========================================================
+   HELPERS
+========================================================= */
 
-function saveData(){
+function faNumber(value){
 
-  localStorage.setItem(
-    "cs16_data",
-    JSON.stringify(data)
-  );
+  return String(value ?? 0)
+  .replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[d]);
 
 }
 
 
-/* =====================================================
-   MODALS
-===================================================== */
+function escapeHtml(value){
+
+  return String(value ?? "")
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;")
+  .replaceAll("'","&#039;");
+
+}
+
+
+function toast(message){
+
+  const element =
+  document.getElementById("toast");
+
+  element.textContent = message;
+
+  element.classList.add("show");
+
+  setTimeout(()=>{
+    element.classList.remove("show");
+  },3000);
+
+}
+
 
 function openModal(id){
 
   document
-    .getElementById(id)
-    .classList
-    .add("active");
+  .getElementById(id)
+  .classList.add("active");
 
 }
 
@@ -2405,208 +1620,45 @@ function openModal(id){
 function closeModal(id){
 
   document
-    .getElementById(id)
-    .classList
-    .remove("active");
+  .getElementById(id)
+  .classList.remove("active");
 
 }
 
 
-document
-  .querySelectorAll(".modal")
-  .forEach(modal => {
+/* =========================================================
+   USER LOGIN
+========================================================= */
 
-    modal.addEventListener("click", function(e){
+function loginUser(){
 
-      if(e.target === modal){
+  const username =
+  document
+  .getElementById("loginUsername")
+  .value.trim();
 
-        modal.classList.remove("active");
+  if(!username){
 
-      }
+    toast("نام کاربری را وارد کنید");
+    return;
 
-    });
+  }
 
-  });
+  localStorage.setItem(
+    "cs16_username",
+    username
+  );
 
+  closeModal("loginModal");
 
-/* =====================================================
-   TOAST
-===================================================== */
-
-let toastTimer;
-
-function toast(message){
-
-  const el =
-    document.getElementById("toast");
-
-  el.textContent = message;
-
-  el.classList.add("show");
-
-  clearTimeout(toastTimer);
-
-  toastTimer =
-    setTimeout(() => {
-
-      el.classList.remove("show");
-
-    },3000);
+  toast("خوش آمدی "+username);
 
 }
 
 
-/* =====================================================
-   NUMBER FORMAT
-===================================================== */
-
-function faNumber(value){
-
-  return Number(value)
-    .toLocaleString("fa-IR");
-
-}
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
-document
-  .getElementById("loginForm")
-  .addEventListener("submit", function(e){
-
-    e.preventDefault();
-
-    const username =
-      document
-        .getElementById("loginUsername")
-        .value
-        .trim();
-
-    localStorage.setItem(
-      "cs16_username",
-      username
-    );
-
-    const message =
-      document.getElementById("loginMessage");
-
-    message.classList.add("show");
-
-    setTimeout(() => {
-
-      closeModal("loginModal");
-
-      toast(
-        "خوش آمدی " + username
-      );
-
-    },700);
-
-  });
-
-
-/* =====================================================
-   TEAM REGISTRATION
-===================================================== */
-
-document
-  .getElementById("teamForm")
-  .addEventListener("submit", function(e){
-
-    e.preventDefault();
-
-
-    const team = {
-
-      id:Date.now(),
-
-      name:
-        document.getElementById("teamName").value.trim(),
-
-      tag:
-        document.getElementById("teamTag").value.trim(),
-
-      captain:
-        document.getElementById("captain").value.trim(),
-
-      players:[
-
-        document.getElementById("player1").value.trim(),
-
-        document.getElementById("player2").value.trim(),
-
-        document.getElementById("player3").value.trim(),
-
-        document.getElementById("player4").value.trim(),
-
-        document.getElementById("player5").value.trim()
-
-      ],
-
-      wins:0,
-      losses:0,
-      points:0
-
-    };
-
-
-    data.teams.push(team);
-
-
-    team.players.forEach(player => {
-
-      data.players.push({
-
-        name:player,
-        team:team.name,
-        kills:0,
-        deaths:0,
-        mvp:0
-
-      });
-
-    });
-
-
-    saveData();
-
-    render();
-
-
-    document
-      .getElementById("teamMessage")
-      .classList
-      .add("show");
-
-
-    toast(
-      "تیم " + team.name + " ثبت شد."
-    );
-
-
-    setTimeout(() => {
-
-      closeModal("registerModal");
-
-      document
-        .getElementById("teamForm")
-        .reset();
-
-      document
-        .getElementById("teamMessage")
-        .classList
-        .remove("show");
-
-    },900);
-
-  });
-
-
-/* =====================================================
-   ADMIN LOGIN
-===================================================== */
+/* =========================================================
+   ADMIN
+========================================================= */
 
 function showAdminLogin(){
 
@@ -2615,912 +1667,48 @@ function showAdminLogin(){
 }
 
 
-document
-  .getElementById("adminLoginForm")
-  .addEventListener("submit",function(e){
+function adminLogin(){
 
-    e.preventDefault();
-
-    const username =
-      document
-        .getElementById("adminUser")
-        .value;
-
-    const password =
-      document
-        .getElementById("adminPass")
-        .value;
-
-
-    /*
-      DEMO ADMIN
-
-      username: admin
-      password: admin123
-
-      این فقط برای دمو است.
-      برای سایت واقعی نباید رمز را
-      داخل JavaScript قرار داد.
-    */
-
-    if(
-      username === "admin" &&
-      password === "admin123"
-    ){
-
-      localStorage.setItem(
-        "cs16_admin",
-        "true"
-      );
-
-      closeModal("adminLoginModal");
-
-      document
-        .getElementById("adminSection")
-        .classList
-        .add("active");
-
-      toast("ورود به پنل ادمین موفق بود.");
-
-      document
-        .getElementById("adminSection")
-        .scrollIntoView({
-          behavior:"smooth"
-        });
-
-    }else{
-
-      const msg =
-        document.getElementById("adminMessage");
-
-      msg.textContent =
-        "نام کاربری یا رمز عبور اشتباه است.";
-
-      msg.style.color =
-        "var(--red)";
-
-      msg.style.borderColor =
-        "rgba(255,59,59,.4)";
-
-      msg.classList.add("show");
-
-    }
-
-  });
-
-
-/* =====================================================
-   ADMIN TEAM
-===================================================== */
-
-document
-  .getElementById("adminTeamForm")
-  .addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-
-    const team = {
-
-      id:Date.now(),
-
-      name:
-        document.getElementById("aTeamName").value.trim(),
-
-      tag:
-        document.getElementById("aTeamTag").value.trim(),
-
-      captain:
-        document.getElementById("aCaptain").value.trim(),
-
-      players:[],
-
-      wins:0,
-      losses:0,
-      points:0
-
-    };
-
-
-    const count =
-      Number(
-        document.getElementById("aPlayers").value
-      );
-
-
-    for(let i=1;i<=count;i++){
-
-      const player =
-        team.name + " Player " + i;
-
-      team.players.push(player);
-
-      data.players.push({
-
-        name:player,
-
-        team:team.name,
-
-        kills:0,
-
-        deaths:0,
-
-        mvp:0
-
-      });
-
-    }
-
-
-    data.teams.push(team);
-
-    saveData();
-
-    render();
-
-    closeModal("adminTeamModal");
-
-    this.reset();
-
-    toast("تیم اضافه شد.");
-
-  });
-
-
-/* =====================================================
-   RESULT
-===================================================== */
-
-document
-  .getElementById("resultForm")
-  .addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-
-    const team1 =
-      document
-        .getElementById("resultTeam1")
-        .value.trim();
-
-    const team2 =
-      document
-        .getElementById("resultTeam2")
-        .value.trim();
-
-    const score1 =
-      Number(
-        document.getElementById("score1").value
-      );
-
-    const score2 =
-      Number(
-        document.getElementById("score2").value
-      );
-
-    const mvp =
-      document
-        .getElementById("matchMvp")
-        .value.trim();
-
-
-    data.matches.push({
-
-      id:Date.now(),
-
-      team1,
-      team2,
-
-      score1,
-      score2,
-
-      mvp,
-
-      map:"Dust 2",
-
-      date:"۲۰ مهر",
-
-      status:"finished"
-
-    });
-
-
-    const t1 =
-      data.teams.find(
-        t => t.name === team1
-      );
-
-    const t2 =
-      data.teams.find(
-        t => t.name === team2
-      );
-
-
-    if(t1 && t2){
-
-      if(score1 > score2){
-
-        t1.wins++;
-        t1.points += 3;
-
-        t2.losses++;
-
-      }else if(score2 > score1){
-
-        t2.wins++;
-        t2.points += 3;
-
-        t1.losses++;
-
-      }
-
-    }
-
-
-    if(mvp){
-
-      const player =
-        data.players.find(
-          p => p.name === mvp
-        );
-
-      if(player){
-
-        player.mvp++;
-
-      }
-
-    }
-
-
-    saveData();
-
-    render();
-
-    closeModal("resultModal");
-
-    this.reset();
-
-    toast("نتیجه مسابقه ثبت شد.");
-
-  });
-
-
-/* =====================================================
-   PRIZE
-===================================================== */
-
-document
-  .getElementById("prizeForm")
-  .addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-
-    data.prize =
-      Number(
-        document.getElementById("prizeInput").value
-      );
-
-
-    saveData();
-
-    render();
-
-    closeModal("prizeModal");
-
-    toast("Prize Pool بروزرسانی شد.");
-
-  });
-
-
-/* =====================================================
-   NEWS
-===================================================== */
-
-document
-  .getElementById("newsForm")
-  .addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-
-    const title =
-      document.getElementById("newsTitle").value.trim();
-
-    const text =
-      document.getElementById("newsText").value.trim();
-
-
-    data.news.unshift({
-
-      id:Date.now(),
-
-      title,
-
-      text,
-
-      date:new Date()
-        .toLocaleDateString("fa-IR")
-
-    });
-
-
-    saveData();
-
-    renderNews();
-
-    closeModal("newsModal");
-
-    this.reset();
-
-    toast("خبر منتشر شد.");
-
-  });
-
-
-/* =====================================================
-   RENDER
-===================================================== */
-
-function render(){
-
-  renderStats();
-
-  renderTeams();
-
-  renderPlayers();
-
-  renderAdmin();
-
-  renderNews();
-
-}
-
-
-/* =====================================================
-   STATS
-===================================================== */
-
-function renderStats(){
-
-  const teamCount =
-    data.teams.length;
-
-  const playerCount =
-    data.players.length;
-
-
+  const username =
   document
-    .getElementById("heroTeams")
-    .textContent =
-    faNumber(teamCount);
+  .getElementById("adminUsername")
+  .value.trim();
 
-
+  const password =
   document
-    .getElementById("heroPlayers")
-    .textContent =
-    playerCount
-      ? faNumber(playerCount)
-      : "نامعلوم";
-
-
-  document
-    .getElementById("statTeams")
-    .textContent =
-    faNumber(teamCount);
-
-
-  document
-    .getElementById("statPlayers")
-    .textContent =
-    faNumber(playerCount);
-
-
-  document
-    .getElementById("statPrize")
-    .textContent =
-    faNumber(data.prize);
-
-
-  document
-    .getElementById("heroPrize")
-    .textContent =
-    faNumber(data.prize) + " تومان";
-
-}
-
-
-/* =====================================================
-   TEAMS
-===================================================== */
-
-function renderTeams(){
-
-  const table =
-    document.getElementById("teamsTable");
-
-
-  if(!data.teams.length){
-
-    table.innerHTML = `
-
-      <tr>
-
-        <td colspan="7"
-            style="text-align:center;color:#68757b;padding:30px">
-
-          هنوز تیمی ثبت نشده است.
-
-        </td>
-
-      </tr>
-
-    `;
-
-    return;
-
-  }
-
-
-  table.innerHTML =
-    data.teams
-      .sort(
-        (a,b) => b.points - a.points
-      )
-      .map((team,index) => `
-
-        <tr>
-
-          <td class="rank">
-            ${String(index+1).padStart(2,"0")}
-          </td>
-
-          <td>
-
-            <div class="team-cell">
-
-              <div class="team-logo">
-                ${escapeHtml(team.tag)}
-              </div>
-
-              ${escapeHtml(team.name)}
-
-            </div>
-
-          </td>
-
-          <td>
-            ${escapeHtml(team.captain)}
-          </td>
-
-          <td>
-            ${faNumber(team.players.length)} / ۵
-          </td>
-
-          <td>
-            ${faNumber(team.wins)}
-          </td>
-
-          <td>
-            ${faNumber(team.losses)}
-          </td>
-
-          <td>
-            ${faNumber(team.points)}
-          </td>
-
-        </tr>
-
-      `)
-      .join("");
-
-
-  document
-    .getElementById("teamRankingMini")
-    .innerHTML =
-      data.teams
-        .sort(
-          (a,b) => b.points - a.points
-        )
-        .slice(0,4)
-        .map((team,index) => `
-
-          <div style="
-            display:flex;
-            justify-content:space-between;
-            padding:8px 0;
-            border-bottom:1px solid rgba(255,255,255,.05);
-            font-size:12px;
-          ">
-
-            <span>
-              ${index+1}. ${escapeHtml(team.name)}
-            </span>
-
-            <strong style="color:var(--green)">
-              ${team.points}
-            </strong>
-
-          </div>
-
-        `)
-        .join("");
-
-}
-
-
-/* =====================================================
-   PLAYERS
-===================================================== */
-
-function renderPlayers(){
-
-  const table =
-    document.getElementById("playersTable");
-
-
-  if(!data.players.length){
-
-    table.innerHTML = `
-
-      <tr>
-
-        <td colspan="7"
-            style="text-align:center;color:#68757b;padding:30px">
-
-          هنوز بازیکنی ثبت نشده است.
-
-        </td>
-
-      </tr>
-
-    `;
-
-    return;
-
-  }
-
-
-  const players =
-    [...data.players]
-      .sort(
-        (a,b) => {
-
-          const kdA =
-            a.deaths
-              ? a.kills/a.deaths
-              : a.kills;
-
-          const kdB =
-            b.deaths
-              ? b.kills/b.deaths
-              : b.kills;
-
-          return kdB-kdA;
-
-        }
-      );
-
-
-  table.innerHTML =
-    players
-      .slice(0,20)
-      .map((player,index) => {
-
-        const kd =
-          player.deaths
-            ? (player.kills/player.deaths).toFixed(2)
-            : player.kills.toFixed(2);
-
-
-        return `
-
-          <tr>
-
-            <td class="rank">
-              ${String(index+1).padStart(2,"0")}
-            </td>
-
-            <td>
-              ${escapeHtml(player.name)}
-            </td>
-
-            <td>
-              ${escapeHtml(player.team)}
-            </td>
-
-            <td>
-              ${faNumber(player.kills)}
-            </td>
-
-            <td>
-              ${faNumber(player.deaths)}
-            </td>
-
-            <td>
-              ${kd}
-            </td>
-
-            <td>
-              ${faNumber(player.mvp)}
-            </td>
-
-          </tr>
-
-        `;
-
-      })
-      .join("");
-
-
-  document
-    .getElementById("playerRankingMini")
-    .innerHTML =
-      players
-        .slice(0,4)
-        .map((player,index) => `
-
-          <div style="
-            display:flex;
-            justify-content:space-between;
-            padding:8px 0;
-            border-bottom:1px solid rgba(255,255,255,.05);
-            font-size:12px;
-          ">
-
-            <span>
-              ${index+1}. ${escapeHtml(player.name)}
-            </span>
-
-            <strong style="color:var(--green)">
-              ${player.kills} K
-            </strong>
-
-          </div>
-
-        `)
-        .join("");
-
-}
-
-
-/* =====================================================
-   ADMIN
-===================================================== */
-
-function renderAdmin(){
-
-  document
-    .getElementById("adminTeams")
-    .textContent =
-    faNumber(data.teams.length);
-
-
-  document
-    .getElementById("adminPlayers")
-    .textContent =
-    faNumber(data.players.length);
-
-
-  document
-    .getElementById("adminPrize")
-    .textContent =
-    faNumber(data.prize);
-
-}
-
-
-/* =====================================================
-   NEWS
-===================================================== */
-
-function renderNews(){
-
-  if(!data.news.length)
-    return;
-
-
-  const grid =
-    document.querySelector(".news-grid");
-
-
-  const staticNews = `
-
-    <article class="news">
-
-      <div class="news-img"></div>
-
-      <div class="news-body">
-
-        <div class="news-date">
-          TOURNAMENT
-        </div>
-
-        <h3>
-          اولین مسابقه ۲۰ مهر برگزار می‌شود
-        </h3>
-
-        <p>
-          اولین Match تورنومنت روی Dust 2 برگزار خواهد شد.
-        </p>
-
-      </div>
-
-    </article>
-
-  `;
-
-
-  const custom =
-    data.news
-      .slice(0,3)
-      .map(news => `
-
-        <article class="news">
-
-          <div class="news-img"></div>
-
-          <div class="news-body">
-
-            <div class="news-date">
-              ${escapeHtml(news.date)}
-            </div>
-
-            <h3>
-              ${escapeHtml(news.title)}
-            </h3>
-
-            <p>
-              ${escapeHtml(news.text)}
-            </p>
-
-          </div>
-
-        </article>
-
-      `)
-      .join("");
-
-
-  grid.innerHTML =
-    custom + staticNews;
-
-}
-
-
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
-
-function escapeHtml(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-
-/* =====================================================
-   COUNTDOWN
-===================================================== */
-
-/*
-  20 مهر 1405
-  = 12 October 2026
-
-  ساعت موقتاً 20:00
-*/
-
-const MATCH_DATE =
-  new Date(
-    "2026-10-12T20:00:00+03:30"
-  ).getTime();
-
-
-function updateCountdown(){
-
-  const now =
-    Date.now();
-
-  let distance =
-    MATCH_DATE - now;
-
-
-  if(distance < 0){
-
-    distance = 0;
-
-  }
-
-
-  const days =
-    Math.floor(
-      distance /
-      (1000*60*60*24)
+  .getElementById("adminPassword")
+  .value;
+
+  /*
+    توجه:
+    این ورود برای نسخه دمو است.
+    برای امنیت واقعی باید Supabase Auth
+    و نقش admin پیاده شود.
+  */
+
+  if(
+    username === "admin" &&
+    password === "admin123"
+  ){
+
+    localStorage.setItem(
+      "cs16_admin",
+      "true"
     );
 
+    closeModal("adminLoginModal");
 
-  const hours =
-    Math.floor(
-      (distance %
-      (1000*60*60*24)) /
-      (1000*60*60)
-    );
-
-
-  const minutes =
-    Math.floor(
-      (distance %
-      (1000*60*60)) /
-      (1000*60)
-    );
-
-
-  const seconds =
-    Math.floor(
-      (distance %
-      (1000*60)) /
-      1000
-    );
-
-
-  document.getElementById("days")
-    .textContent =
-    String(days).padStart(2,"0");
-
-
-  document.getElementById("hours")
-    .textContent =
-    String(hours).padStart(2,"0");
-
-
-  document.getElementById("minutes")
-    .textContent =
-    String(minutes).padStart(2,"0");
-
-
-  document.getElementById("seconds")
-    .textContent =
-    String(seconds).padStart(2,"0");
-
-}
-
-
-setInterval(
-  updateCountdown,
-  1000
-);
-
-updateCountdown();
-
-
-/* =====================================================
-   ADMIN ACCESS
-===================================================== */
-
-/*
-  برای باز کردن پنل ادمین:
-
-  در کنسول مرورگر:
-  showAdminLogin()
-
-  یا می‌توانی بعداً یک دکمه Admin
-  به Header اضافه کنی.
-*/
-
-if(
-  localStorage.getItem("cs16_admin") === "true"
-){
-
-  document
+    document
     .getElementById("adminSection")
-    .classList
-    .add("active");
+    .classList.add("active");
+
+    toast("ورود ادمین موفق بود");
+
+  }else{
+
+    toast("اطلاعات ورود اشتباه است");
+
+  }
 
 }
 
@@ -3532,80 +1720,1181 @@ function logoutAdmin(){
   );
 
   document
-    .getElementById("adminSection")
-    .classList
-    .remove("active");
+  .getElementById("adminSection")
+  .classList.remove("active");
 
-  toast("از پنل ادمین خارج شد.");
+  toast("از پنل خارج شدید");
 
 }
 
 
-/* =====================================================
-   KEYBOARD ADMIN SHORTCUT
-===================================================== */
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+async function loadSettings(){
+
+  const result =
+  await db
+  .from("tournament_settings")
+  .select("*")
+  .eq("id",1)
+  .maybeSingle();
+
+  if(result.error){
+
+    console.error(result.error);
+    return;
+
+  }
+
+  if(!result.data){
+
+    return;
+
+  }
+
+  const prize =
+  Number(result.data.prize || 0);
+
+  document
+  .getElementById("prize")
+  .textContent =
+  prize.toLocaleString("fa-IR")+" تومان";
+
+  document
+  .getElementById("statPrize")
+  .textContent =
+  prize.toLocaleString("fa-IR");
+
+  document
+  .getElementById("adminPrize")
+  .value = prize;
+
+}
+
+
+async function updatePrize(){
+
+  const prize =
+  Number(
+    document
+    .getElementById("adminPrize")
+    .value
+  );
+
+  if(!Number.isFinite(prize)){
+
+    toast("مبلغ معتبر وارد کنید");
+    return;
+
+  }
+
+  const result =
+  await db
+  .from("tournament_settings")
+  .update({
+    prize:prize
+  })
+  .eq("id",1);
+
+  if(result.error){
+
+    console.error(result.error);
+
+    toast("خطا در ذخیره جایزه");
+
+    return;
+
+  }
+
+  toast("جایزه ذخیره شد");
+
+  loadSettings();
+
+}
+
+
+/* =========================================================
+   TEAMS
+========================================================= */
+
+async function loadTeams(){
+
+  const result =
+  await db
+  .from("teams")
+  .select("*")
+  .order("points",{ascending:false});
+
+  if(result.error){
+
+    console.error(result.error);
+
+    return [];
+
+  }
+
+  const teams =
+  result.data || [];
+
+  const tbody =
+  document.getElementById("teamsTable");
+
+  tbody.innerHTML = "";
+
+  teams.forEach((team,index)=>{
+
+    tbody.innerHTML += `
+
+      <tr>
+
+        <td class="rank">
+          ${faNumber(index+1)}
+        </td>
+
+        <td>
+
+          <div class="team-cell">
+
+            <div class="team-logo">
+              ${escapeHtml(team.logo || "🎮")}
+            </div>
+
+            <strong>
+              ${escapeHtml(team.name)}
+            </strong>
+
+          </div>
+
+        </td>
+
+        <td>
+          ${escapeHtml(team.tag)}
+        </td>
+
+        <td>
+          ${escapeHtml(team.captain)}
+        </td>
+
+        <td>
+          ${faNumber(team.wins)}
+        </td>
+
+        <td>
+          ${faNumber(team.losses)}
+        </td>
+
+        <td>
+          ${faNumber(team.points)}
+        </td>
+
+      </tr>
+
+    `;
+
+  });
+
+
+  document
+  .getElementById("teamCount")
+  .textContent =
+  faNumber(teams.length);
+
+
+  document
+  .getElementById("statTeams")
+  .textContent =
+  faNumber(teams.length);
+
+
+  updateTeamSelects(teams);
+
+  return teams;
+
+}
+
+
+function updateTeamSelects(teams){
+
+  const html =
+  teams.map(team=>`
+
+    <option value="${team.id}">
+      ${escapeHtml(team.name)}
+    </option>
+
+  `).join("");
+
+
+  document
+  .getElementById("matchTeam1")
+  .innerHTML = html;
+
+  document
+  .getElementById("matchTeam2")
+  .innerHTML = html;
+
+  document
+  .getElementById("deleteTeamSelect")
+  .innerHTML = html;
+
+}
+
+
+/* =========================================================
+   REGISTER TEAM
+========================================================= */
+
+async function registerTeam(){
+
+  const name =
+  document
+  .getElementById("regTeamName")
+  .value.trim();
+
+  const tag =
+  document
+  .getElementById("regTeamTag")
+  .value.trim();
+
+  const captain =
+  document
+  .getElementById("regCaptain")
+  .value.trim();
+
+
+  const players = [
+
+    document.getElementById("player1").value.trim(),
+    document.getElementById("player2").value.trim(),
+    document.getElementById("player3").value.trim(),
+    document.getElementById("player4").value.trim(),
+    document.getElementById("player5").value.trim()
+
+  ];
+
+
+  if(!name || !tag || !captain){
+
+    toast("نام تیم، TAG و کاپیتان الزامی است");
+
+    return;
+
+  }
+
+
+  if(players.some(player=>!player)){
+
+    toast("نام هر ۵ بازیکن را وارد کنید");
+
+    return;
+
+  }
+
+
+  const teamResult =
+  await db
+  .from("teams")
+  .insert({
+
+    name:name,
+    tag:tag,
+    captain:captain,
+    logo:"🎮",
+    wins:0,
+    losses:0,
+    points:0
+
+  })
+  .select()
+  .single();
+
+
+  if(teamResult.error){
+
+    console.error(teamResult.error);
+
+    toast("خطا در ثبت تیم");
+
+    return;
+
+  }
+
+
+  const rows =
+  players.map(player=>({
+
+    team_id:teamResult.data.id,
+    name:player,
+    kills:0,
+    deaths:0,
+    mvp:0
+
+  }));
+
+
+  const playerResult =
+  await db
+  .from("players")
+  .insert(rows);
+
+
+  if(playerResult.error){
+
+    console.error(playerResult.error);
+
+    toast("تیم ثبت شد ولی بازیکنان ذخیره نشدند");
+
+  }else{
+
+    toast("تیم با موفقیت ثبت شد");
+
+  }
+
+
+  closeModal("registerModal");
+
+
+  document
+  .querySelectorAll("#registerModal input")
+  .forEach(input=>{
+    input.value="";
+  });
+
+
+  refresh();
+
+}
+
+
+/* =========================================================
+   ADMIN ADD TEAM
+========================================================= */
+
+async function adminAddTeam(){
+
+  const name =
+  document
+  .getElementById("adminTeamName")
+  .value.trim();
+
+  const tag =
+  document
+  .getElementById("adminTeamTag")
+  .value.trim();
+
+  const captain =
+  document
+  .getElementById("adminCaptain")
+  .value.trim();
+
+
+  if(!name || !tag || !captain){
+
+    toast("اطلاعات تیم کامل نیست");
+
+    return;
+
+  }
+
+
+  const result =
+  await db
+  .from("teams")
+  .insert({
+
+    name:name,
+    tag:tag,
+    captain:captain,
+    logo:"🎮",
+    wins:0,
+    losses:0,
+    points:0
+
+  });
+
+
+  if(result.error){
+
+    console.error(result.error);
+
+    toast("خطا در افزودن تیم");
+
+    return;
+
+  }
+
+
+  document.getElementById("adminTeamName").value="";
+  document.getElementById("adminTeamTag").value="";
+  document.getElementById("adminCaptain").value="";
+
+
+  toast("تیم اضافه شد");
+
+  refresh();
+
+}
+
+
+/* =========================================================
+   DELETE TEAM
+========================================================= */
+
+async function deleteTeam(){
+
+  const id =
+  document
+  .getElementById("deleteTeamSelect")
+  .value;
+
+  if(!id){
+
+    toast("تیمی انتخاب نشده");
+
+    return;
+
+  }
+
+
+  if(!confirm("این تیم و بازیکنانش حذف شوند؟")){
+
+    return;
+
+  }
+
+
+  const result =
+  await db
+  .from("teams")
+  .delete()
+  .eq("id",id);
+
+
+  if(result.error){
+
+    console.error(result.error);
+
+    toast("خطا در حذف تیم");
+
+    return;
+
+  }
+
+
+  toast("تیم حذف شد");
+
+  refresh();
+
+}
+
+
+/* =========================================================
+   PLAYERS
+========================================================= */
+
+async function loadPlayers(){
+
+  const result =
+  await db
+  .from("players")
+  .select(`
+    *,
+    teams(name)
+  `)
+  .order("kills",{ascending:false});
+
+
+  if(result.error){
+
+    console.error(result.error);
+
+    return;
+
+  }
+
+
+  const players =
+  result.data || [];
+
+
+  const tbody =
+  document.getElementById("playersTable");
+
+  tbody.innerHTML="";
+
+
+  players.forEach((player,index)=>{
+
+    const kd =
+    player.deaths > 0
+    ? (player.kills / player.deaths).toFixed(2)
+    : Number(player.kills || 0).toFixed(2);
+
+
+    tbody.innerHTML += `
+
+      <tr>
+
+        <td class="rank">
+          ${faNumber(index+1)}
+        </td>
+
+        <td>
+          ${escapeHtml(player.name)}
+        </td>
+
+        <td>
+          ${escapeHtml(player.teams?.name || "---")}
+        </td>
+
+        <td>
+          ${faNumber(player.kills)}
+        </td>
+
+        <td>
+          ${faNumber(player.deaths)}
+        </td>
+
+        <td>
+          ${kd}
+        </td>
+
+        <td>
+          ${faNumber(player.mvp)}
+        </td>
+
+      </tr>
+
+    `;
+
+  });
+
+
+  document
+  .getElementById("playerCount")
+  .textContent =
+  faNumber(players.length);
+
+
+  document
+  .getElementById("statPlayers")
+  .textContent =
+  faNumber(players.length);
+
+
+  updatePlayerSelect(players);
+
+}
+
+
+/* =========================================================
+   PLAYER SELECT
+========================================================= */
+
+function updatePlayerSelect(players){
+
+  const select =
+  document.getElementById("playerSelect");
+
+
+  select.innerHTML =
+  players.map(player=>`
+
+    <option value="${player.id}">
+      ${escapeHtml(player.name)}
+    </option>
+
+  `).join("");
+
+}
+
+
+/* =========================================================
+   UPDATE PLAYER STATS
+========================================================= */
+
+async function updatePlayerStats(){
+
+  const id =
+  document
+  .getElementById("playerSelect")
+  .value;
+
+  const kills =
+  Number(
+    document
+    .getElementById("playerKills")
+    .value || 0
+  );
+
+  const deaths =
+  Number(
+    document
+    .getElementById("playerDeaths")
+    .value || 0
+  );
+
+  const mvp =
+  Number(
+    document
+    .getElementById("playerMvp")
+    .value || 0
+  );
+
+
+  if(!id){
+
+    toast("بازیکن انتخاب نشده");
+
+    return;
+
+  }
+
+
+  const result =
+  await db
+  .from("players")
+  .update({
+
+    kills:kills,
+    deaths:deaths,
+    mvp:mvp
+
+  })
+  .eq("id",id);
+
+
+  if(result.error){
+
+    console.error(result.error);
+
+    toast("خطا در ذخیره آمار");
+
+    return;
+
+  }
+
+
+  toast("آمار بازیکن ذخیره شد");
+
+  loadPlayers();
+
+}
+
+
+/* =========================================================
+   MATCHES
+========================================================= */
+
+async function loadMatches(){
+
+  const result =
+  await db
+  .from("matches")
+  .select("*")
+  .order("match_date",{ascending:true});
+
+
+  if(result.error){
+
+    console.error(result.error);
+
+    renderDefaultMatch();
+
+    return;
+
+  }
+
+
+  const matches =
+  result.data || [];
+
+
+  const container =
+  document.getElementById("matchesList");
+
+
+  container.innerHTML="";
+
+
+  if(!matches.length){
+
+    renderDefaultMatch();
+
+    document
+    .getElementById("statMatches")
+    .textContent="۰";
+
+    return;
+
+  }
+
+
+  const teamsResult =
+  await db
+  .from("teams")
+  .select("id,name");
+
+
+  const teamMap = {};
+
+  (teamsResult.data || [])
+  .forEach(team=>{
+    teamMap[team.id]=team.name;
+  });
+
+
+  matches.forEach((match,index)=>{
+
+    const date =
+    match.match_date
+    ? new Date(match.match_date)
+      .toLocaleString("fa-IR")
+    : "زمان مشخص نشده";
+
+
+    const team1 =
+    teamMap[match.team1_id] ||
+    "نامشخص";
+
+
+    const team2 =
+    teamMap[match.team2_id] ||
+    "نامشخص";
+
+
+    container.innerHTML += `
+
+      <div class="match">
+
+        <div class="match-number">
+          #${String(index+1).padStart(2,"0")}
+        </div>
+
+        <div class="teams-vs">
+
+          <div class="team-name">
+            ${escapeHtml(team1)}
+          </div>
+
+          <div class="vs">
+            ${faNumber(match.team1_score)}
+            :
+            ${faNumber(match.team2_score)}
+          </div>
+
+          <div class="team-name">
+            ${escapeHtml(team2)}
+          </div>
+
+        </div>
+
+        <div class="match-meta">
+
+          🗺 ${escapeHtml(match.map || "Dust 2")}<br>
+
+          📅 ${date}<br>
+
+          وضعیت:
+          ${escapeHtml(match.status || "upcoming")}
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+
+  document
+  .getElementById("statMatches")
+  .textContent =
+  faNumber(matches.length);
+
+}
+
+
+function renderDefaultMatch(){
+
+  document
+  .getElementById("matchesList")
+  .innerHTML = `
+
+    <div class="match">
+
+      <div class="match-number">
+        #01
+      </div>
+
+      <div class="teams-vs">
+
+        <div class="team-name">
+          هنوز مشخص نشده
+        </div>
+
+        <div class="vs">
+          VS
+        </div>
+
+        <div class="team-name">
+          هنوز مشخص نشده
+        </div>
+
+      </div>
+
+      <div class="match-meta">
+
+        🗺 Dust 2<br>
+        📅 ۲۰ مهر<br>
+        ⏰ ۲۰:۰۰
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   ADD MATCH
+========================================================= */
+
+async function addMatch(){
+
+  const team1 =
+  document
+  .getElementById("matchTeam1")
+  .value;
+
+  const team2 =
+  document
+  .getElementById("matchTeam2")
+  .value;
+
+  const score1 =
+  Number(
+    document
+    .getElementById("matchScore1")
+    .value || 0
+  );
+
+  const score2 =
+  Number(
+    document
+    .getElementById("matchScore2")
+    .value || 0
+  );
+
+  const date =
+  document
+  .getElementById("matchDate")
+  .value;
+
+
+  if(!team1 || !team2){
+
+    toast("دو تیم را انتخاب کنید");
+
+    return;
+
+  }
+
+
+  if(team1 === team2){
+
+    toast("دو تیم باید متفاوت باشند");
+
+    return;
+
+  }
+
+
+  const result =
+  await db
+  .from("matches")
+  .insert({
+
+    team1_id:team1,
+    team2_id:team2,
+    team1_score:score1,
+    team2_score:score2,
+    map:"Dust 2",
+    match_date:date || null,
+    status:"upcoming"
+
+  });
+
+
+  if(result.error){
+
+    console.error(result.error);
+
+    toast("خطا در ثبت مسابقه");
+
+    return;
+
+  }
+
+
+  toast("مسابقه ثبت شد");
+
+  loadMatches();
+
+}
+
+
+/* =========================================================
+   NEWS
+========================================================= */
+
+async function loadNews(){
+
+  const result =
+  await db
+  .from("news")
+  .select("*")
+  .order("created_at",{ascending:false});
+
+
+  if(result.error){
+
+    console.error(result.error);
+
+    return;
+
+  }
+
+
+  const news =
+  result.data || [];
+
+
+  const container =
+  document.getElementById("newsGrid");
+
+
+  container.innerHTML="";
+
+
+  if(!news.length){
+
+    container.innerHTML=`
+
+      <article class="news">
+
+        <h3>
+          ثبت‌نام تورنمنت آغاز شد
+        </h3>
+
+        <p>
+          اولین مسابقه در تاریخ ۲۰ مهر
+          روی نقشه Dust 2 برگزار خواهد شد.
+        </p>
+
+      </article>
+
+    `;
+
+    return;
+
+  }
+
+
+  news.forEach(item=>{
+
+    container.innerHTML += `
+
+      <article class="news">
+
+        <h3>
+          ${escapeHtml(item.title)}
+        </h3>
+
+        <p>
+          ${escapeHtml(item.body || "")}
+        </p>
+
+      </article>
+
+    `;
+
+  });
+
+}
+
+
+/* =========================================================
+   ADD NEWS
+========================================================= */
+
+async function addNews(){
+
+  const title =
+  document
+  .getElementById("newsTitle")
+  .value.trim();
+
+  const body =
+  document
+  .getElementById("newsBody")
+  .value.trim();
+
+
+  if(!title){
+
+    toast("عنوان خبر را وارد کنید");
+
+    return;
+
+  }
+
+
+  const result =
+  await db
+  .from("news")
+  .insert({
+
+    title:title,
+    body:body
+
+  });
+
+
+  if(result.error){
+
+    console.error(result.error);
+
+    toast("خطا در انتشار خبر");
+
+    return;
+
+  }
+
+
+  document.getElementById("newsTitle").value="";
+  document.getElementById("newsBody").value="";
+
+
+  toast("خبر منتشر شد");
+
+  loadNews();
+
+}
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+function updateCountdown(){
+
+  const diff =
+  MATCH_DATE - Date.now();
+
+
+  if(diff <= 0){
+
+    document.getElementById("days").textContent="00";
+    document.getElementById("hours").textContent="00";
+    document.getElementById("minutes").textContent="00";
+    document.getElementById("seconds").textContent="00";
+
+    return;
+
+  }
+
+
+  const days =
+  Math.floor(diff / 86400000);
+
+  const hours =
+  Math.floor(diff / 3600000) % 24;
+
+  const minutes =
+  Math.floor(diff / 60000) % 60;
+
+  const seconds =
+  Math.floor(diff / 1000) % 60;
+
+
+  document.getElementById("days")
+  .textContent =
+  String(days).padStart(2,"0");
+
+
+  document.getElementById("hours")
+  .textContent =
+  String(hours).padStart(2,"0");
+
+
+  document.getElementById("minutes")
+  .textContent =
+  String(minutes).padStart(2,"0");
+
+
+  document.getElementById("seconds")
+  .textContent =
+  String(seconds).padStart(2,"0");
+
+}
+
+
+/* =========================================================
+   REFRESH
+========================================================= */
+
+async function refresh(){
+
+  await Promise.all([
+
+    loadSettings(),
+    loadTeams(),
+    loadPlayers(),
+    loadMatches(),
+    loadNews()
+
+  ]);
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
 
 document.addEventListener(
-  "keydown",
-  function(e){
+"DOMContentLoaded",
+()=>{
 
-    if(
-      e.ctrlKey &&
-      e.shiftKey &&
-      e.key.toLowerCase() === "a"
-    ){
+  updateCountdown();
 
-      if(
-        localStorage.getItem("cs16_admin") === "true"
-      ){
-
-        document
-          .getElementById("adminSection")
-          .classList
-          .toggle("active");
-
-      }else{
-
-        showAdminLogin();
-
-      }
-
-    }
-
-  }
-);
+  setInterval(
+    updateCountdown,
+    1000
+  );
 
 
-/* =====================================================
-   INITIAL RENDER
-===================================================== */
+  if(
+    localStorage.getItem("cs16_admin")
+    ===
+    "true"
+  ){
 
-render();
-
-
-/* =====================================================
-   USERNAME
-===================================================== */
-
-const savedUser =
-  localStorage.getItem("cs16_username");
-
-
-if(savedUser){
-
-  const loginButton =
-    document.querySelector(
-      '.nav-actions .btn-outline'
-    );
-
-  if(loginButton){
-
-    loginButton.textContent =
-      savedUser;
+    document
+    .getElementById("adminSection")
+    .classList.add("active");
 
   }
 
-}
+
+  refresh();
+
+});
 
 </script>
 
