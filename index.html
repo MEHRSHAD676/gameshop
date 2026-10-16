@@ -35,11 +35,40 @@
 <section class="container section" id="products"><div class="section-head"><div><div class="goldline"></div><h2>محصولات فروشگاه</h2><p>محصول موردنظرت رو انتخاب کن و به سبد خرید اضافه کن</p></div><span class="eyebrow">🔥 پیشنهادهای ROYAL</span></div>
 <div class="toolbar"><input id="search" class="search" placeholder="🔎 جست‌وجوی محصول..." oninput="renderProducts()"><select id="sort" class="filter" onchange="renderProducts()"><option value="default">مرتب‌سازی پیش‌فرض</option><option value="low">ارزان‌ترین</option><option value="high">گران‌ترین</option></select></div><div class="products" id="productGrid"></div></section>
 <section class="container section"><div class="section-head"><div><div class="goldline"></div><h2>خرید مطمئن‌تر، با اطلاعات شفاف</h2><p>قبل از نهایی‌کردن سفارش، جزئیات رو با پشتیبانی بررسی کن</p></div></div><div class="trust"><div class="trust-card"><span class="trust-icon">🛡️</span><div><b>هماهنگی پیش از پرداخت</b><p>موجودی، قیمت و روش تحویل را قبل از پرداخت با پشتیبانی تأیید کن.</p></div></div><div class="trust-card"><span class="trust-icon">💬</span><div><b>ثبت سفارش در واتساپ</b><p>فهرست خریدت آماده می‌شود تا برای هماهنگی به واتساپ ارسال کنی.</p></div></div><div class="trust-card"><span class="trust-icon">🔐</span><div><b>حفاظت از اطلاعات</b><p>رمز عبور اکانتت را در فرم سفارش یا چت عمومی وارد نکن.</p></div></div></div></section>
+
+<section class="container section" id="account-request">
+  <div class="banner">
+    <div>
+      <h2>اکانت دلخواهت رو پیدا نکردی؟ 🎮</h2>
+      <p>درخواست خرید ثبت کن؛ مشخصات اکانت مدنظرت رو بنویس تا برای هماهنگی به واتساپ ارسال بشه.</p>
+    </div>
+    <button class="btn btn-gold" onclick="openRequest()">ثبت درخواست اکانت ←</button>
+  </div>
+</section>
+
 <section class="container section" id="support"><div class="banner"><div><h2>آماده‌ای سفارشت رو ثبت کنی؟ 👑</h2><p>سبدت رو مرور کن و برای تأیید نهایی با پشتیبانی در تماس باش.</p></div><button class="btn btn-gold" onclick="openCart()">رفتن به سبد خرید ←</button></div></section>
 </main>
-<footer class="footer"><div class="container footer-inner"><span>© ۲۰۲۶ <b>IRAN ROYAL</b> — فروشگاه محصولات کالاف موبایل</span><span>قیمت و موجودی نمونه‌اند؛ پیش از خرید تأیید شوند.</span></div></footer>
+<footer class="footer"><div class="container footer-inner"><span>© ۲۰۲۶ <b>IRAN ROYAL</b> — فروشگاه محصولات کالاف موبایل</span><span>قیمت‌ها نمونه‌اند؛ سفارش‌ها و تنظیمات در این نسخه فقط در همین مرورگر ذخیره می‌شوند.</span></div></footer>
 <div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><aside class="drawer"><div class="drawer-head"><h2>🛒 سبد خرید</h2><button class="close" onclick="closeCart()" aria-label="بستن">×</button></div><div id="cartContents"></div><div class="form-grid"><div class="field"><label for="customerName">نام شما</label><input id="customerName" placeholder="نام یا نام مستعار"></div><div class="field"><label for="customerPhone">شماره تماس (اختیاری)</label><input id="customerPhone" inputmode="tel" placeholder="شماره تماس"></div><div class="field"><label for="customerNote">توضیحات سفارش (اختیاری)</label><textarea id="customerNote" placeholder="مثلاً نوع پلتفرم یا توضیحات لازم؛ رمز اکانت را وارد نکنید"></textarea></div><button class="btn btn-red" onclick="checkout()">ارسال سفارش به واتساپ ↗</button></div><div class="note">با زدن دکمه، متن سفارش در واتساپ باز می‌شود. ثبت نهایی و پرداخت پس از تأیید فروشنده انجام می‌شود. این صفحه خودش پرداخت آنلاین دریافت نمی‌کند.</div></aside></div>
-<div class="admin-panel" id="adminPanel"><div class="admin-wrap"><div class="admin-top"><div><span class="eyebrow">⚙️ مدیریت فروشگاه</span><h1 style="font-size:30px;margin:12px 0">پنل مدیریت IRAN ROYAL</h1></div><button class="btn" onclick="closeAdmin()">✕ بستن</button></div><div id="adminLogin" class="admin-box" style="max-width:430px;margin-top:20px"><h3>ورود مدیر</h3><p style="font-size:12px;color:#aaa">رمز پیش‌فرض نمایشی: <b style="color:#f3c969">royal123</b> — حتماً در کد تغییرش بده. این قفل فقط سمت مرورگر است و امنیت واقعی پنل مدیریت محسوب نمی‌شود.</p><input id="adminPassword" type="password" placeholder="رمز مدیریت"><button class="btn btn-red" onclick="loginAdmin()">ورود</button></div><div id="adminWorkspace" style="display:none"><div class="admin-grid"><div class="admin-box"><h3>➕ افزودن محصول</h3><label>نام محصول</label><input id="newName" placeholder="مثلاً اکانت لجندری"><label>دسته‌بندی</label><select id="newCategory"><option value="account">اکانت</option><option value="cp">CP</option><option value="other">محصولات دیگر</option></select><label>قیمت به تومان</label><input id="newPrice" type="number" min="0" placeholder="مثلاً 250000"><label>توضیحات</label><textarea id="newDesc" placeholder="توضیح کوتاه محصول"></textarea><label>ایموجی محصول</label><input id="newEmoji" maxlength="4" placeholder="🎮"><button class="btn btn-red" onclick="addProduct()">افزودن محصول</button></div><div class="admin-box"><h3>📦 محصولات فعلی</h3><div class="admin-list" id="adminProductList"></div><p style="font-size:11px;color:#aaa;line-height:1.8">تغییرات این پنل در همین مرورگر ذخیره می‌شود. برای پنل واقعی چندکاربره باید به سرور/پایگاه‌داده با احراز هویت مدیر متصل شود.</p><button class="btn" onclick="resetProducts()">بازگردانی محصولات نمونه</button></div><div class="admin-box"><h3>📱 تنظیم واتساپ</h3><label>شماره واتساپ با کد کشور، فقط اعداد</label><input id="waNumber" placeholder="مثلاً 989121234567"><button class="btn btn-gold" onclick="saveWhatsApp()">ذخیره شماره</button><p style="font-size:11px;color:#aaa">شماره فقط روی همین مرورگر ذخیره می‌شود. شماره را با کد کشور و بدون + وارد کن.</p></div><div class="admin-box"><h3>🧾 نکته امنیتی</h3><p style="font-size:12px;color:#aaa;line-height:2">برای پرداخت واقعی، از درگاه معتبر و بک‌اند امن استفاده کن. کلید خصوصی درگاه، رمز مدیر یا اطلاعات حساس مشتری را در فایل HTML قرار نده. از این پنل نمایشی برای اطلاعات حساس یا مدیریت واقعی سفارش‌ها استفاده نکن.</p></div></div></div></div></div>
+
+<div class="overlay" id="requestOverlay" onclick="if(event.target===this)closeRequest()">
+  <aside class="drawer">
+    <div class="drawer-head"><h2>🎮 درخواست خرید اکانت</h2><button class="close" onclick="closeRequest()" aria-label="بستن">×</button></div>
+    <p style="color:#aaa;font-size:12px;line-height:1.9">مشخصات اکانتی که دنبالش هستی رو وارد کن. درخواست در همین مرورگر ذخیره می‌شه و برای ارسال به فروشگاه، واتساپ باز می‌شه.</p>
+    <div class="form-grid">
+      <div class="field"><label for="requestName">نام شما</label><input id="requestName" placeholder="نام یا نام مستعار"></div>
+      <div class="field"><label for="requestContact">راه تماس (اختیاری)</label><input id="requestContact" placeholder="شماره تماس یا آیدی"></div>
+      <div class="field"><label for="requestBudget">بودجه تقریبی به تومان (اختیاری)</label><input id="requestBudget" type="number" min="0" placeholder="مثلاً 1500000"></div>
+      <div class="field"><label for="requestDetails">مشخصات اکانت</label><textarea id="requestDetails" placeholder="مثلاً لجندری/میتیک، تعداد اسلحه‌ها، ریجن و موارد دلخواه"></textarea></div>
+      <button class="btn btn-red" onclick="submitAccountRequest()">ارسال درخواست به واتساپ ↗</button>
+    </div>
+    <div class="note">رمز عبور، کد تأیید یا اطلاعات ورود اکانت خودت رو در این فرم وارد نکن. خرید و انتقال اکانت باید با رعایت قوانین و شرایط سرویس بازی انجام بشه.</div>
+  </aside>
+</div>
+
+<div class="admin-panel" id="adminPanel"><div class="admin-wrap"><div class="admin-top"><div><span class="eyebrow">⚙️ مدیریت فروشگاه</span><h1 style="font-size:30px;margin:12px 0">پنل مدیریت IRAN ROYAL</h1></div><button class="btn" onclick="closeAdmin()">✕ بستن</button></div><div id="adminLogin" class="admin-box" style="max-width:430px;margin-top:20px"><h3>ورود مدیر</h3><p style="font-size:12px;color:#aaa">رمز پیش‌فرض نمایشی: <b style="color:#f3c969">royal123</b> — حتماً در کد تغییرش بده. این قفل فقط سمت مرورگر است و امنیت واقعی پنل مدیریت محسوب نمی‌شود.</p><input id="adminPassword" type="password" placeholder="رمز مدیریت"><button class="btn btn-red" onclick="loginAdmin()">ورود</button></div><div id="adminWorkspace" style="display:none"><div class="admin-grid"><div class="admin-box"><h3>➕ افزودن محصول</h3><label>نام محصول</label><input id="newName" placeholder="مثلاً اکانت لجندری"><label>دسته‌بندی</label><select id="newCategory"><option value="account">اکانت</option><option value="cp">CP</option><option value="other">محصولات دیگر</option></select><label>قیمت به تومان</label><input id="newPrice" type="number" min="0" placeholder="مثلاً 250000"><label>توضیحات</label><textarea id="newDesc" placeholder="توضیح کوتاه محصول"></textarea><label>ایموجی محصول</label><input id="newEmoji" maxlength="4" placeholder="🎮"><button class="btn btn-red" onclick="addProduct()">افزودن محصول</button></div><div class="admin-box"><h3>📦 محصولات فعلی</h3><div class="admin-list" id="adminProductList"></div><p style="font-size:11px;color:#aaa;line-height:1.8">تغییرات این پنل در همین مرورگر ذخیره می‌شود. برای پنل واقعی چندکاربره باید به سرور/پایگاه‌داده با احراز هویت مدیر متصل شود.</p><button class="btn" onclick="resetProducts()">بازگردانی محصولات نمونه</button></div><div class="admin-box"><h3>📱 تنظیم واتساپ</h3><label>شماره واتساپ با کد کشور، فقط اعداد</label><input id="waNumber" placeholder="مثلاً 989121234567"><button class="btn btn-gold" onclick="saveWhatsApp()">ذخیره شماره</button><p style="font-size:11px;color:#aaa">شماره فقط روی همین مرورگر ذخیره می‌شود. شماره را با کد کشور و بدون + وارد کن.</p></div>
+<div class="admin-box"><h3>📨 درخواست‌های خرید اکانت (این مرورگر)</h3><div id="adminRequests" class="admin-list"></div><button class="btn" onclick="renderAccountRequests()">به‌روزرسانی درخواست‌ها</button><p style="font-size:11px;color:#aaa;line-height:1.8">این فهرست فقط روی همین مرورگر ذخیره می‌شود و بین دستگاه‌ها همگام نیست.</p></div>
+<div class="admin-box"><h3>🧾 نکته امنیتی</h3><p style="font-size:12px;color:#aaa;line-height:2">برای پرداخت واقعی، از درگاه معتبر و بک‌اند امن استفاده کن. کلید خصوصی درگاه، رمز مدیر یا اطلاعات حساس مشتری را در فایل HTML قرار نده. از این پنل نمایشی برای اطلاعات حساس یا مدیریت واقعی سفارش‌ها استفاده نکن.</p></div></div></div></div></div>
 <div class="toast" id="toast"></div>
 <script>
 const seedProducts=[
@@ -95,7 +124,15 @@ function checkout(){
 function openAdmin(){document.getElementById('adminPanel').classList.add('show');document.getElementById('adminLogin').style.display='block';document.getElementById('adminWorkspace').style.display='none';document.getElementById('adminPassword').value=''}
 function closeAdmin(){document.getElementById('adminPanel').classList.remove('show')}
 function loginAdmin(){if(document.getElementById('adminPassword').value!=='royal123'){toast('رمز اشتباهه');return}document.getElementById('adminLogin').style.display='none';document.getElementById('adminWorkspace').style.display='block';renderAdminList()}
-function renderAdminList(){document.getElementById('adminProductList').innerHTML=products.map(p=>`<div class="admin-row"><span>${escapeHTML(p.emoji)} ${escapeHTML(p.name)} — ${toman(Number(p.price)||0)}</span><button class="remove" onclick="deleteProduct(${p.id})">حذف</button></div>`).join('')||'<p>محصولی وجود ندارد.</p>';document.getElementById('waNumber').value=localStorage.getItem(STORAGE_WA)||''}
+
+function renderAccountRequests(){
+ const el=document.getElementById('adminRequests');if(!el)return;
+ let reqs=[];try{reqs=JSON.parse(localStorage.getItem('iranRoyalAccountRequestsV1')||'[]')}catch(e){}
+ el.innerHTML=reqs.length?reqs.map(r=>`<div class="admin-row"><span><b>${escapeHTML(r.id)}</b> — ${escapeHTML(r.name)}<br><span style="color:#aaa">${escapeHTML(r.details)}</span></span><button class="remove" onclick="deleteAccountRequest('${escapeHTML(r.id)}')">حذف</button></div>`).join(''):'<p style="font-size:12px;color:#aaa">هنوز درخواستی در این مرورگر ثبت نشده.</p>';
+}
+function deleteAccountRequest(id){let reqs=[];try{reqs=JSON.parse(localStorage.getItem('iranRoyalAccountRequestsV1')||'[]')}catch(e){};localStorage.setItem('iranRoyalAccountRequestsV1',JSON.stringify(reqs.filter(r=>r.id!==id)));renderAccountRequests();toast('درخواست حذف شد')}
+
+function renderAdminList(){document.getElementById('adminProductList').innerHTML=products.map(p=>`<div class="admin-row"><span>${escapeHTML(p.emoji)} ${escapeHTML(p.name)} — ${toman(Number(p.price)||0)}</span><button class="remove" onclick="deleteProduct(${p.id})">حذف</button></div>`).join('')||'<p>محصولی وجود ندارد.</p>';document.getElementById('waNumber').value=localStorage.getItem(STORAGE_WA)||'';renderAccountRequests()}
 function addProduct(){
  const name=document.getElementById('newName').value.trim(),category=document.getElementById('newCategory').value,price=Number(document.getElementById('newPrice').value),desc=document.getElementById('newDesc').value.trim(),emoji=document.getElementById('newEmoji').value.trim()||'🎮';
  if(!name||!Number.isFinite(price)||price<0){toast('نام و قیمت معتبر وارد کن');return}
@@ -105,7 +142,31 @@ function deleteProduct(id){if(!confirm('این محصول حذف شود؟'))retu
 function resetProducts(){if(!confirm('محصولات نمونه جایگزین محصولات فعلی شوند؟'))return;products=structuredClone(seedProducts);saveProducts();renderProducts();renderAdminList();toast('محصولات نمونه برگشتند')}
 function saveWhatsApp(){const n=document.getElementById('waNumber').value.replace(/\D/g,'');if(n.length<8){toast('شماره معتبر با کد کشور وارد کن');return}localStorage.setItem(STORAGE_WA,n);toast('شماره واتساپ ذخیره شد')}
 let toastTimer;function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2600)}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();closeAdmin()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();closeAdmin();closeRequest()}});
+
+function openRequest(){document.getElementById('requestOverlay').classList.add('show')}
+function closeRequest(){document.getElementById('requestOverlay').classList.remove('show')}
+function submitAccountRequest(){
+ const name=document.getElementById('requestName').value.trim();
+ const contact=document.getElementById('requestContact').value.trim();
+ const budget=document.getElementById('requestBudget').value.trim();
+ const details=document.getElementById('requestDetails').value.trim();
+ if(!name){toast('لطفاً نامت رو وارد کن');document.getElementById('requestName').focus();return}
+ if(!details){toast('مشخصات اکانت رو بنویس');document.getElementById('requestDetails').focus();return}
+ const request={id:'REQ-'+Date.now(),name,contact,budget,details,createdAt:new Date().toISOString(),status:'در انتظار هماهنگی'};
+ try{
+   const previous=JSON.parse(localStorage.getItem('iranRoyalAccountRequestsV1')||'[]');
+   previous.unshift(request);
+   localStorage.setItem('iranRoyalAccountRequestsV1',JSON.stringify(previous.slice(0,100)));
+ }catch(e){}
+ const wa=(localStorage.getItem(STORAGE_WA)||'').replace(/\D/g,'');
+ if(!wa){toast('درخواست روی همین مرورگر ذخیره شد؛ شماره واتساپ را در پنل مدیریت تنظیم کن');return}
+ const msg=`سلام، می‌خوام درخواست خرید اکانت کالاف موبایل ثبت کنم 👑\n\nکد درخواست: ${request.id}\nنام: ${name}\n${contact?'راه تماس: '+contact+'\n':''}${budget?'بودجه تقریبی: '+new Intl.NumberFormat('fa-IR').format(Number(budget)||0)+' تومان\n':''}مشخصات اکانت:\n${details}\n\nلطفاً موجودی، قیمت و شرایط انتقال رو اعلام کنید.`;
+ window.open('https://wa.me/'+wa+'?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer');
+ toast('درخواست ذخیره شد');
+ closeRequest();
+}
+
 renderProducts();updateCartCount();
 </script>
 </body>
